@@ -24,6 +24,9 @@
 #endif
 
 #ifdef KALEID_MATH_DLL
+
+#include <GLM/glm.hpp>
+
 #define KALEID_MATH_API __declspec(dllexport)
 #else
 #define KALEID_MATH_API __declspec(dllimport)
