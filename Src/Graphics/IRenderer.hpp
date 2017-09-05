@@ -1,3 +1,5 @@
+#pragma once
+
 #include "stdafx.hpp"
 
 namespace Kaleid::Graphics

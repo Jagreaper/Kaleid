@@ -1,3 +1,5 @@
+#pragma once
+
 #ifdef KALEID_GRAPHICS_DLL
 #define KALEID_GRAPHICS_API __declspec(dllexport)
 #else
