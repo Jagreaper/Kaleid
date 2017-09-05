@@ -5,7 +5,7 @@
 
 namespace Kaleid::Math
 {
-	class Transform
+	class KALEID_MATH_API Transform sealed
 	{
 	public:
 		Transform();

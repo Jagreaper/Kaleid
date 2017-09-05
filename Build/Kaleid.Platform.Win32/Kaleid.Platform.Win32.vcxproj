@@ -94,6 +94,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
       <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
+      <AdditionalIncludeDirectories>$(SolutionDir)Src;$(SolutionDir)Include\</AdditionalIncludeDirectories>
     </ClCompile>
     <PostBuildEvent>
       <Command>copy "$(SolutionDir)Lib\GLEW\$(PlatformTarget)\glew32.dll" "$(SolutionDir)Bin\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
@@ -110,6 +111,7 @@ copy "$(SolutionDir)Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "$(Solution
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
       <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
+      <AdditionalIncludeDirectories>$(SolutionDir)Src;$(SolutionDir)Include\</AdditionalIncludeDirectories>
     </ClCompile>
     <PostBuildEvent>
       <Command>copy "$(SolutionDir)Lib\GLEW\$(PlatformTarget)\glew32.dll" "$(SolutionDir)Bin\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
@@ -128,6 +130,7 @@ copy "$(SolutionDir)Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "$(Solution
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
       <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
+      <AdditionalIncludeDirectories>$(SolutionDir)Src;$(SolutionDir)Include\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -150,6 +153,7 @@ copy "$(SolutionDir)Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "$(Solution
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
       <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
+      <AdditionalIncludeDirectories>$(SolutionDir)Src;$(SolutionDir)Include\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
