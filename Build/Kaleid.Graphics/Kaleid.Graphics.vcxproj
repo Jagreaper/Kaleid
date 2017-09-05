@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Src\Graphics\BufferBase.cpp" />
     <ClCompile Include="..\..\Src\Graphics\GraphicsFactory.cpp" />
     <ClCompile Include="..\..\Src\Graphics\IndexBuffer.cpp" />
     <ClCompile Include="..\..\Src\Graphics\Renderer.cpp" />
@@ -34,6 +35,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Src\Graphics\BufferBase.hpp" />
     <ClInclude Include="..\..\Src\Graphics\GraphicsFactory.hpp" />
     <ClInclude Include="..\..\Src\Graphics\IndexBuffer.hpp" />
     <ClInclude Include="..\..\Src\Graphics\Renderer.hpp" />
