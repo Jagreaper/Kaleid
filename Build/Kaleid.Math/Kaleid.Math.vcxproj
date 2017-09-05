@@ -150,6 +150,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Src\Math\CameraBase.cpp" />
     <ClCompile Include="..\..\Src\Math\PerspectiveCamera.cpp" />
     <ClCompile Include="..\..\Src\Math\Transform.cpp" />
     <ClCompile Include="..\..\Src\stdafx.cpp">
