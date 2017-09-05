@@ -20,7 +20,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Src\Graphics\GraphicsFactory.cpp" />
+    <ClCompile Include="..\..\Src\Graphics\IndexBuffer.cpp" />
     <ClCompile Include="..\..\Src\Graphics\Renderer.cpp" />
+    <ClCompile Include="..\..\Src\Graphics\Shader.cpp" />
+    <ClCompile Include="..\..\Src\Graphics\ShaderProgram.cpp" />
+    <ClCompile Include="..\..\Src\Graphics\VertexBuffer.cpp" />
     <ClCompile Include="..\..\Src\Graphics\Window.cpp" />
     <ClCompile Include="..\..\Src\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -31,7 +35,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\Graphics\GraphicsFactory.hpp" />
+    <ClInclude Include="..\..\Src\Graphics\IndexBuffer.hpp" />
     <ClInclude Include="..\..\Src\Graphics\Renderer.hpp" />
+    <ClInclude Include="..\..\Src\Graphics\Shader.hpp" />
+    <ClInclude Include="..\..\Src\Graphics\ShaderProgram.hpp" />
+    <ClInclude Include="..\..\Src\Graphics\VertexBuffer.hpp" />
     <ClInclude Include="..\..\Src\Graphics\Window.hpp" />
     <ClInclude Include="..\..\Src\stdafx.hpp" />
   </ItemGroup>
