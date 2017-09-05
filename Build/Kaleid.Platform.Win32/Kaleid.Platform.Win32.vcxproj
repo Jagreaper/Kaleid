@@ -173,6 +173,11 @@ copy "$(SolutionDir)Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "$(Solution
   <ItemGroup>
     <ClInclude Include="..\..\Src\stdafx.hpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Kaleid.Graphics.OpenGL\Kaleid.Graphics.OpenGL.vcxproj">
+      <Project>{a40a37d2-c6d0-4c83-9084-10d63826e642}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
