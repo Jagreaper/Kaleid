@@ -3,9 +3,13 @@
   <ItemGroup>
     <ClCompile Include="..\..\Src\Graphics\OpenGL\RendererGL.cpp" />
     <ClCompile Include="..\..\Src\stdafx.cpp" />
+    <ClCompile Include="..\..\Src\Graphics\OpenGL\WindowGL.cpp" />
+    <ClCompile Include="..\..\Src\Graphics\OpenGL\GraphicsFactoryGL.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\Graphics\OpenGL\RendererGL.hpp" />
     <ClInclude Include="..\..\Src\stdafx.hpp" />
+    <ClInclude Include="..\..\Src\Graphics\OpenGL\WindowGL.hpp" />
+    <ClInclude Include="..\..\Src\Graphics\OpenGL\GraphicsFactoryGL.hpp" />
   </ItemGroup>
 </Project>

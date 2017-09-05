@@ -3,7 +3,10 @@
 
 using namespace Kaleid::Graphics;
 
-void Renderer::Test()
+GraphicsFactory* Renderer::GetGraphicsFactory()
 {
-	int i = 5 + 6;
+	if (this->_graphics_factory == NULL)
+		this->_graphics_factory = this->CreateGraphicsFactory();
+
+	return this->_graphics_factory;
 }

@@ -178,7 +178,9 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Src\Graphics\OpenGL\GraphicsFactoryGL.cpp" />
     <ClCompile Include="..\..\Src\Graphics\OpenGL\RendererGL.cpp" />
+    <ClCompile Include="..\..\Src\Graphics\OpenGL\WindowGL.cpp" />
     <ClCompile Include="..\..\Src\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -187,7 +189,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Src\Graphics\OpenGL\GraphicsFactoryGL.hpp" />
     <ClInclude Include="..\..\Src\Graphics\OpenGL\RendererGL.hpp" />
+    <ClInclude Include="..\..\Src\Graphics\OpenGL\WindowGL.hpp" />
     <ClInclude Include="..\..\Src\stdafx.hpp" />
   </ItemGroup>
   <ItemGroup>
