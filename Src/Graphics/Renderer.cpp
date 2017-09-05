@@ -3,10 +3,12 @@
 
 using namespace Kaleid::Graphics;
 
-GraphicsFactory* Renderer::GetGraphicsFactory()
+void Renderer::Load()
 {
-	if (this->_graphics_factory == NULL)
-		this->_graphics_factory = this->CreateGraphicsFactory();
 
-	return this->_graphics_factory;
+}
+
+void Renderer::Dispose()
+{
+
 }

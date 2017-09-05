@@ -4,19 +4,18 @@
 
 namespace Kaleid::Graphics
 {
-	class KALEID_GRAPHICS_API Window abstract
+	class Window
 	{
 	public:
-		virtual void Dispose() = 0;
+		KALEID_GRAPHICS_API void Dispose();
 
-		virtual void MakeCurrent() = 0;
-		virtual void SwapBuffers() = 0;
+		KALEID_GRAPHICS_API void MakeCurrent();
+		KALEID_GRAPHICS_API void SwapBuffers();
 
-		virtual void GetSize(unsigned int* width, unsigned int* height) = 0;
-		virtual void SetSize(const unsigned int width, const unsigned int height) = 0;
+		KALEID_GRAPHICS_API void GetSize(unsigned int* width, unsigned int* height);
+		KALEID_GRAPHICS_API void SetSize(const unsigned int width, const unsigned int height);
 
-		virtual const char* GetTitle() = 0;
-		virtual void SetTitle(const char* title) = 0;
-	private:
+		KALEID_GRAPHICS_API const char* GetTitle();
+		KALEID_GRAPHICS_API void SetTitle(const char* title);
 	};
 }

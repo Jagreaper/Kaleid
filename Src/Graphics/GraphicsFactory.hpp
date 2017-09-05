@@ -5,10 +5,10 @@
 
 namespace Kaleid::Graphics
 {
-	class KALEID_GRAPHICS_API GraphicsFactory abstract
+	class KALEID_GRAPHICS_API GraphicsFactory
 	{
 	public:
-		virtual Window* CreateWindow(const unsigned int width, const unsigned int height, const char* title) = 0;
+		Window* CreateWindow(const unsigned int width, const unsigned int height, const char* title);
 	private:
 	};
 }
