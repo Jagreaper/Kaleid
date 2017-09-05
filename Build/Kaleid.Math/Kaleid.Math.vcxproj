@@ -150,6 +150,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Src\Math\PerspectiveCamera.cpp" />
     <ClCompile Include="..\..\Src\Math\Transform.cpp" />
     <ClCompile Include="..\..\Src\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -159,6 +160,8 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Src\Math\CameraBase.hpp" />
+    <ClInclude Include="..\..\Src\Math\PerspectiveCamera.hpp" />
     <ClInclude Include="..\..\Src\Math\Transform.hpp" />
     <ClInclude Include="..\..\Src\stdafx.hpp" />
   </ItemGroup>

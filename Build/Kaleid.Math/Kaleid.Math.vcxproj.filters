@@ -3,9 +3,12 @@
   <ItemGroup>
     <ClCompile Include="..\..\Src\Math\Transform.cpp" />
     <ClCompile Include="..\..\Src\stdafx.cpp" />
+    <ClCompile Include="..\..\Src\Math\PerspectiveCamera.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\Math\Transform.hpp" />
     <ClInclude Include="..\..\Src\stdafx.hpp" />
+    <ClInclude Include="..\..\Src\Math\PerspectiveCamera.hpp" />
+    <ClInclude Include="..\..\Src\Math\CameraBase.hpp" />
   </ItemGroup>
 </Project>
