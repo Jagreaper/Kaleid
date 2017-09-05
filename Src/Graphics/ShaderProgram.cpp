@@ -1,1 +1,217 @@
 #include "stdafx.hpp"
+#include "ShaderProgram.hpp"
+#include <stdexcept>
+#include <glm/gtc/type_ptr.hpp>
+
+using namespace polarious::graphics;
+
+ShaderProgram::ShaderProgram(const std::vector<Shader>& shaders)
+{
+	if (shaders.size() <= 0)
+		throw std::runtime_error("No fragments were provided to create the shader");
+
+	this->_id = glCreateProgram();
+	if (this->_id == 0)
+		throw std::runtime_error("glCreateProgram failed");
+
+
+	for (unsigned int index = 0; index < shaders.size(); index++)
+	{
+		Shader fragment = shaders[index];
+		glAttachShader(this->_id, fragment.GetId());
+	}
+
+	glLinkProgram(this->_id);
+	for (unsigned int index = 0; index < shaders.size(); index++)
+	{
+		Shader fragment = shaders[index];
+		glDetachShader(this->_id, fragment.GetId());
+	}
+
+	this->Validate();
+}
+
+ShaderProgram::ShaderProgram(Shader* shaders, unsigned int count)
+{
+	if (count <= 0)
+		throw std::runtime_error("No fragments were provided to create the shader");
+
+	this->_id = glCreateProgram();
+	if (this->_id == 0)
+		throw std::runtime_error("glCreateProgram failed");
+
+	for (unsigned int index = 0; index < count; index++)
+		glAttachShader(this->_id, shaders++->GetId());
+
+	glLinkProgram(this->_id);
+	for (unsigned int index = 0; index < count; index++)
+		glDetachShader(this->_id, shaders++->GetId());
+
+	this->Validate();
+}
+
+void ShaderProgram::Validate()
+{
+	GLint status;
+	glGetProgramiv(this->_id, GL_LINK_STATUS, &status);
+	if (status == GL_FALSE)
+	{
+		std::string msg("shader linking failure: ");
+
+		GLint infoLogLength;
+		glGetProgramiv(this->_id, GL_INFO_LOG_LENGTH, &infoLogLength);
+
+		char* strInfoLog = new char[infoLogLength + 1];
+		glGetProgramInfoLog(this->_id, infoLogLength, NULL, strInfoLog);
+
+		msg += strInfoLog;
+		delete[] strInfoLog;
+
+		this->Dispose();
+		throw std::runtime_error(msg);
+	}
+}
+
+ShaderProgram::~ShaderProgram()
+{
+	this->Dispose();
+}
+
+void ShaderProgram::Dispose()
+{
+	if (this->_id != 0)
+	{
+		glDeleteProgram(this->_id);
+		this->_id = 0;
+	}
+}
+
+const GLuint ShaderProgram::GetId() const
+{
+	return this->_id;
+}
+
+int ShaderProgram::GetUniformLocation(const char* name) const
+{
+	if (!name)
+		throw std::runtime_error("name was NULL");
+
+	int location = glGetUniformLocation(this->_id, name);
+	if (location == -1)
+		throw std::runtime_error(std::string("shader uniform not found: ") + name);
+
+	return location;
+}
+
+int ShaderProgram::GetAttribLocation(const char* name) const
+{
+	if (!name)
+		throw std::runtime_error("name was NULL");
+
+	int location = glGetAttribLocation(this->_id, name);
+	if (location == -1)
+		throw std::runtime_error(std::string("shader attribute not found: ") + name);
+
+	return location;
+}
+
+bool ShaderProgram::InUse() const
+{
+	int current_program = 0;
+	glGetIntegerv(GL_CURRENT_PROGRAM, &current_program);
+	return (current_program == (GLint)this->_id);
+}
+
+#define ATTRIB_N_UNIFORM_SETTERS(OGL_TYPE, TYPE_PREFIX, TYPE_SUFFIX) \
+\
+void ShaderProgram::SetAttrib(const char* name, OGL_TYPE v0) \
+    { assert(this->InUse()); glVertexAttrib ## TYPE_PREFIX ## 1 ## TYPE_SUFFIX (this->GetAttribLocation(name), v0); } \
+void ShaderProgram::SetAttrib(const char* name, OGL_TYPE v0, OGL_TYPE v1) \
+    { assert(this->InUse()); glVertexAttrib ## TYPE_PREFIX ## 2 ## TYPE_SUFFIX (this->GetAttribLocation(name), v0, v1); } \
+void ShaderProgram::SetAttrib(const char* name, OGL_TYPE v0, OGL_TYPE v1, OGL_TYPE v2) \
+    { assert(this->InUse()); glVertexAttrib ## TYPE_PREFIX ## 3 ## TYPE_SUFFIX (this->GetAttribLocation(name), v0, v1, v2); } \
+void ShaderProgram::SetAttrib(const char* name, OGL_TYPE v0, OGL_TYPE v1, OGL_TYPE v2, OGL_TYPE v3) \
+    { assert(this->InUse()); glVertexAttrib ## TYPE_PREFIX ## 4 ## TYPE_SUFFIX (this->GetAttribLocation(name), v0, v1, v2, v3); } \
+\
+void ShaderProgram::SetAttrib1v(const char* name, const OGL_TYPE* v) \
+    { assert(this->InUse()); glVertexAttrib ## TYPE_PREFIX ## 1 ## TYPE_SUFFIX ## v (this->GetAttribLocation(name), v); } \
+void ShaderProgram::SetAttrib2v(const char* name, const OGL_TYPE* v) \
+    { assert(this->InUse()); glVertexAttrib ## TYPE_PREFIX ## 2 ## TYPE_SUFFIX ## v (this->GetAttribLocation(name), v); } \
+void ShaderProgram::SetAttrib3v(const char* name, const OGL_TYPE* v) \
+    { assert(this->InUse()); glVertexAttrib ## TYPE_PREFIX ## 3 ## TYPE_SUFFIX ## v (this->GetAttribLocation(name), v); } \
+void ShaderProgram::SetAttrib4v(const char* name, const OGL_TYPE* v) \
+    { assert(this->InUse()); glVertexAttrib ## TYPE_PREFIX ## 4 ## TYPE_SUFFIX ## v (this->GetAttribLocation(name), v); } \
+\
+void ShaderProgram::SetUniform(const char* name, OGL_TYPE v0) \
+    { assert(this->InUse()); glUniform1 ## TYPE_SUFFIX (this->GetUniformLocation(name), v0); } \
+void ShaderProgram::SetUniform(const char* name, OGL_TYPE v0, OGL_TYPE v1) \
+    { assert(this->InUse()); glUniform2 ## TYPE_SUFFIX (this->GetUniformLocation(name), v0, v1); } \
+void ShaderProgram::SetUniform(const char* name, OGL_TYPE v0, OGL_TYPE v1, OGL_TYPE v2) \
+    { assert(this->InUse()); glUniform3 ## TYPE_SUFFIX (this->GetUniformLocation(name), v0, v1, v2); } \
+void ShaderProgram::SetUniform(const char* name, OGL_TYPE v0, OGL_TYPE v1, OGL_TYPE v2, OGL_TYPE v3) \
+    { assert(this->InUse()); glUniform4 ## TYPE_SUFFIX (this->GetUniformLocation(name), v0, v1, v2, v3); } \
+\
+void ShaderProgram::SetUniform1v(const char* name, const OGL_TYPE* v, int count) \
+    { assert(this->InUse()); glUniform1 ## TYPE_SUFFIX ## v (this->GetUniformLocation(name), count, v); } \
+void ShaderProgram::SetUniform2v(const char* name, const OGL_TYPE* v, int count) \
+    { assert(this->InUse()); glUniform2 ## TYPE_SUFFIX ## v (this->GetUniformLocation(name), count, v); } \
+void ShaderProgram::SetUniform3v(const char* name, const OGL_TYPE* v, int count) \
+    { assert(this->InUse()); glUniform3 ## TYPE_SUFFIX ## v (this->GetUniformLocation(name), count, v); } \
+void ShaderProgram::SetUniform4v(const char* name, const OGL_TYPE* v, int count) \
+    { assert(this->InUse()); glUniform4 ## TYPE_SUFFIX ## v (this->GetUniformLocation(name), count, v); }
+
+ATTRIB_N_UNIFORM_SETTERS(float, , f);
+ATTRIB_N_UNIFORM_SETTERS(double, , d);
+ATTRIB_N_UNIFORM_SETTERS(int, I, i);
+ATTRIB_N_UNIFORM_SETTERS(unsigned int, I, ui);
+
+void ShaderProgram::SetUniformMatrix2(const char* name, const float* v, int count, bool transpose)
+{
+	assert(this->InUse());
+	glUniformMatrix2fv(this->GetUniformLocation(name), count, transpose, v);
+}
+
+void ShaderProgram::SetUniformMatrix3(const char* name, const float* v, int count, bool transpose)
+{
+	assert(this->InUse());
+	glUniformMatrix3fv(this->GetUniformLocation(name), count, transpose, v);
+}
+
+void ShaderProgram::SetUniformMatrix4(const char* name, const float* v, int count, bool transpose)
+{
+	assert(this->InUse());
+	glUniformMatrix4fv(this->GetUniformLocation(name), count, transpose, v);
+}
+
+void ShaderProgram::SetUniform(const char* name, const glm::mat2& m, bool transpose)
+{
+	assert(this->InUse());
+	glUniformMatrix2fv(this->GetUniformLocation(name), 1, transpose, glm::value_ptr(m));
+}
+
+void ShaderProgram::SetUniform(const char* name, const glm::mat3& m, bool transpose)
+{
+	assert(this->InUse());
+	glUniformMatrix3fv(this->GetUniformLocation(name), 1, transpose, glm::value_ptr(m));
+}
+
+void ShaderProgram::SetUniform(const char* name, const glm::mat4& m, bool transpose)
+{
+	assert(this->InUse());
+	glUniformMatrix4fv(this->GetUniformLocation(name), 1, transpose, glm::value_ptr(m));
+}
+
+void ShaderProgram::SetUniform(const char* name, const glm::vec2& v)
+{
+	this->SetUniform2v(name, glm::value_ptr(v));
+}
+
+void ShaderProgram::SetUniform(const char* name, const glm::vec3& v)
+{
+	this->SetUniform3v(name, glm::value_ptr(v));
+}
+
+void ShaderProgram::SetUniform(const char* name, const glm::vec4& v)
+{
+	this->SetUniform4v(name, glm::value_ptr(v));
+}
