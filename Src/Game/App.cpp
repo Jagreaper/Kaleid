@@ -4,6 +4,11 @@
 
 using namespace Kaleid::Game;
 
+void App::Run()
+{
+	// TODO: Implemented Run Code
+}
+
 void App::SetRenderer(Kaleid::Graphics::Renderer*& renderer)
 {
 	this->_renderer = renderer;

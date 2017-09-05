@@ -11,6 +11,8 @@ namespace Kaleid::Game
 	class KALEID_GAME_API App sealed
 	{
 	public:
+		void Run();
+
 		void SetRenderer(Kaleid::Graphics::Renderer*& renderer);
 		Kaleid::Graphics::Renderer* GetRenderer();
 

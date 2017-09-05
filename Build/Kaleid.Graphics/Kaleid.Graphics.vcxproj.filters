@@ -4,10 +4,12 @@
     <ClCompile Include="..\..\Src\stdafx.cpp" />
     <ClCompile Include="..\..\Src\Graphics\Renderer.cpp" />
     <ClCompile Include="..\..\Src\Graphics\GraphicsFactory.cpp" />
+    <ClCompile Include="..\..\Src\Graphics\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\stdafx.hpp" />
     <ClInclude Include="..\..\Src\Graphics\Renderer.hpp" />
     <ClInclude Include="..\..\Src\Graphics\GraphicsFactory.hpp" />
+    <ClInclude Include="..\..\Src\Graphics\Window.hpp" />
   </ItemGroup>
 </Project>
