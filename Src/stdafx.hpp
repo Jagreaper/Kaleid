@@ -23,4 +23,10 @@
 #define KALEID_GAME_API __declspec(dllimport)
 #endif
 
+#ifdef KALEID_MATH_DLL
+#define KALEID_MATH_API __declspec(dllexport)
+#else
+#define KALEID_MATH_API __declspec(dllimport)
+#endif
+
 #include <iostream>

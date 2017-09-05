@@ -30,7 +30,7 @@ void WindowGL::SetSize(const unsigned int width, const unsigned int height)
 
 const char* WindowGL::GetTitle()
 {
-
+	return NULL;
 }
 
 void WindowGL::SetTitle(const char* title)
