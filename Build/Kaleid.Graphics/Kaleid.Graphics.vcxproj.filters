@@ -2,8 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="..\..\Src\stdafx.cpp" />
-    <ClCompile Include="..\..\Src\Graphics\Renderer.cpp" />
-    <ClCompile Include="..\..\Src\Graphics\GraphicsFactory.cpp" />
     <ClCompile Include="..\..\Src\Graphics\Window.cpp" />
     <ClCompile Include="..\..\Src\Graphics\VertexBuffer.cpp">
       <Filter>Buffers</Filter>
@@ -17,11 +15,15 @@
     <ClCompile Include="..\..\Src\Graphics\ShaderProgram.cpp">
       <Filter>Shaders</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Src\Graphics\GraphicsFactory.cpp">
+      <Filter>Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Graphics\Renderer.cpp">
+      <Filter>Rendering</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\stdafx.hpp" />
-    <ClInclude Include="..\..\Src\Graphics\Renderer.hpp" />
-    <ClInclude Include="..\..\Src\Graphics\GraphicsFactory.hpp" />
     <ClInclude Include="..\..\Src\Graphics\Window.hpp" />
     <ClInclude Include="..\..\Src\Graphics\VertexBuffer.hpp">
       <Filter>Buffers</Filter>
@@ -35,6 +37,12 @@
     <ClInclude Include="..\..\Src\Graphics\Shader.hpp">
       <Filter>Shaders</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Src\Graphics\Renderer.hpp">
+      <Filter>Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Graphics\GraphicsFactory.hpp">
+      <Filter>Rendering</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Buffers">
@@ -42,6 +50,9 @@
     </Filter>
     <Filter Include="Shaders">
       <UniqueIdentifier>{f0cff00b-2d10-4395-a3b9-6954c0bd58d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Rendering">
+      <UniqueIdentifier>{ee76b011-2d13-4753-94c2-2fd512a7159e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
