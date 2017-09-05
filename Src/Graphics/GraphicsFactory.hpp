@@ -4,7 +4,7 @@
 
 namespace Kaleid::Graphics
 {
-	class KALEID_GRAPHICS_API IRenderer abstract
+	class KALEID_GRAPHICS_API GraphicsFactory abstract
 	{
 	public:
 		void Test();

@@ -2,10 +2,12 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="..\..\Src\stdafx.cpp" />
-    <ClCompile Include="..\..\Src\Graphics\IRenderer.cpp" />
+    <ClCompile Include="..\..\Src\Graphics\Renderer.cpp" />
+    <ClCompile Include="..\..\Src\Graphics\GraphicsFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\stdafx.hpp" />
-    <ClInclude Include="..\..\Src\Graphics\IRenderer.hpp" />
+    <ClInclude Include="..\..\Src\Graphics\Renderer.hpp" />
+    <ClInclude Include="..\..\Src\Graphics\GraphicsFactory.hpp" />
   </ItemGroup>
 </Project>

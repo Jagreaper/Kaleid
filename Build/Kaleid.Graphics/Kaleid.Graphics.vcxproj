@@ -19,7 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Src\Graphics\IRenderer.cpp" />
+    <ClCompile Include="..\..\Src\Graphics\GraphicsFactory.cpp" />
+    <ClCompile Include="..\..\Src\Graphics\Renderer.cpp" />
     <ClCompile Include="..\..\Src\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -28,7 +29,8 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Src\Graphics\IRenderer.hpp" />
+    <ClInclude Include="..\..\Src\Graphics\GraphicsFactory.hpp" />
+    <ClInclude Include="..\..\Src\Graphics\Renderer.hpp" />
     <ClInclude Include="..\..\Src\stdafx.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

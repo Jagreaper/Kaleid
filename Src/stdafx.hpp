@@ -22,3 +22,5 @@
 #else
 #define KALEID_GAME_API __declspec(dllimport)
 #endif
+
+#include <iostream>

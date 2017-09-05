@@ -174,6 +174,9 @@ copy "$(SolutionDir)Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "$(Solution
     <ClInclude Include="..\..\Src\stdafx.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Kaleid.Game\Kaleid.Game.vcxproj">
+      <Project>{29dc283f-b80e-4650-a60e-a294947fdbcd}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\Kaleid.Graphics.OpenGL\Kaleid.Graphics.OpenGL.vcxproj">
       <Project>{a40a37d2-c6d0-4c83-9084-10d63826e642}</Project>
     </ProjectReference>

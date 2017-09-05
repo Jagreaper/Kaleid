@@ -1,9 +1,9 @@
 #include "stdafx.hpp"
-#include "IRenderer.hpp"
+#include "Renderer.hpp"
 
 using namespace Kaleid::Graphics;
 
-void IRenderer::Test()
+void Renderer::Test()
 {
 	int i = 5 + 6;
 }
