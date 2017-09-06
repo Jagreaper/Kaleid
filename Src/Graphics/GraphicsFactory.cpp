@@ -11,3 +11,8 @@ Window* GraphicsFactory::CreateWindow(const unsigned int width, const unsigned i
 	window->SetTitle(title);
 	return window;
 }
+
+ShaderProgram* CreateShaderProgram(const char** sources, const ShaderType* types, const unsigned short count)
+{
+	return NULL;
+}

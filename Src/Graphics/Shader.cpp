@@ -2,7 +2,7 @@
 #include "Shader.hpp"
 #include <stdexcept>
 
-using namespace polarious::graphics;
+using namespace Kaleid::Graphics;
 
 Shader::Shader(const char** source, const ShaderType type)
 {

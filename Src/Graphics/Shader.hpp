@@ -2,7 +2,7 @@
 
 #include "stdafx.hpp"
 
-namespace polarious::graphics
+namespace Kaleid::Graphics
 {
 	enum ShaderType
 	{

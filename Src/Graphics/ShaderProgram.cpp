@@ -3,7 +3,7 @@
 #include <stdexcept>
 #include <glm/gtc/type_ptr.hpp>
 
-using namespace polarious::graphics;
+using namespace Kaleid::Graphics;
 
 ShaderProgram::ShaderProgram(const std::vector<Shader>& shaders)
 {

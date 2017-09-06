@@ -4,7 +4,7 @@
 #include "Shader.hpp"
 #include <vector>
 
-namespace polarious::graphics
+namespace Kaleid::Graphics
 {
 	class ShaderProgram
 	{
