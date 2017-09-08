@@ -14,8 +14,10 @@ namespace Kaleid::Graphics
 		Window* CreateWindow(const unsigned int width, const unsigned int height, const char* title);
 		Shader* CreateShader(const char** source, const ShaderType type);
 		Shader** CreateShaders(const char*** sources, const ShaderType* types, const unsigned short count);
-		Shader** CreateShaders(const std::vector<const char**>& sources, const std::vector<const ShaderType>& types);
+		Shader** CreateShaders(const std::vector<const char**>& sources, const std::vector<ShaderType>& types);
 		ShaderProgram* CreateShaderProgram(const char*** sources, const ShaderType* types, const unsigned short count);
+		ShaderProgram* CreateShaderProgram(const std::vector<const char**>& sources, const std::vector<ShaderType>& types);
+		ShaderProgram* CreateShaderProgram(Shader** shaders, const unsigned short count);
 	private:
 	};
 }

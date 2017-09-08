@@ -26,7 +26,7 @@ Shader** GraphicsFactory::CreateShaders(const char*** sources, const ShaderType*
 	return shader;
 }
 
-Shader** GraphicsFactory::CreateShaders(const std::vector<const char**>& sources, const std::vector<const ShaderType>& types)
+Shader** GraphicsFactory::CreateShaders(const std::vector<const char**>& sources, const std::vector<ShaderType>& types)
 {
 	if (sources.size() != types.size())
 		throw new std::exception("sources length does not equal types length");
@@ -41,6 +41,17 @@ Shader** GraphicsFactory::CreateShaders(const std::vector<const char**>& sources
 ShaderProgram* GraphicsFactory::CreateShaderProgram(const char*** sources, const ShaderType* types, const unsigned short count)
 {
 	Shader** shaders = this->CreateShaders(sources, types, count);
+	return this->CreateShaderProgram(shaders, count);
+}
+
+ShaderProgram* GraphicsFactory::CreateShaderProgram(const std::vector<const char**>& sources, const std::vector<ShaderType>& types)
+{
+	Shader** shaders = this->CreateShaders(sources, types);
+	return this->CreateShaderProgram(shaders, sources.size());
+}
+
+ShaderProgram* GraphicsFactory::CreateShaderProgram(Shader** shaders, const unsigned short count)
+{
 	ShaderProgram* program = new ShaderProgram();
 	program->Attach(shaders, count);
 	program->Link();
