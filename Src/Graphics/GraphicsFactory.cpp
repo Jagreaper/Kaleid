@@ -58,3 +58,13 @@ ShaderProgram* GraphicsFactory::CreateShaderProgram(Shader** shaders, const unsi
 	program->Dettach(shaders, count);
 	return program;
 }
+
+VertexBuffer* GraphicsFactory::CreateVertexBuffer(const float* data, size_t count, unsigned int point_size, BufferUsage usage = BufferUsage::StaticDraw)
+{
+	return new VertexBuffer(data, count, point_size, usage);
+}
+
+IndexBuffer* GraphicsFactory::CreateVertexBuffer(const unsigned int* data, size_t count, BufferUsage usage = BufferUsage::StaticDraw)
+{
+	return new IndexBuffer(data, count, usage);
+}
