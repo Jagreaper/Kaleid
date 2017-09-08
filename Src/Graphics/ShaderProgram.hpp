@@ -6,7 +6,7 @@
 
 namespace Kaleid::Graphics
 {
-	class ShaderProgram
+	class KALEID_GRAPHICS_API ShaderProgram
 	{
 	public:
 		ShaderProgram();

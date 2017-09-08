@@ -6,7 +6,7 @@
 
 namespace Kaleid::Graphics
 {
-	class VertexBuffer : public BufferBase
+	class KALEID_GRAPHICS_API VertexBuffer : public BufferBase
 	{
 	public:
 		VertexBuffer();

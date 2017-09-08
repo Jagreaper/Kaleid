@@ -1,3 +1,5 @@
+#pragma once
+
 #include "stdafx.hpp"
 
 #define GL_STREAM_DRAW 0x88E0

@@ -20,7 +20,7 @@ Shader* GraphicsFactory::CreateShader(const char** source, const ShaderType type
 Shader** GraphicsFactory::CreateShaders(const char*** sources, const ShaderType* types, const unsigned short count)
 {
 	Shader** shader = new Shader*[count];
-	for (int index = 0; index++; index < count)
+	for (int index = 0; index < count; index++)
 		shader[index] = new Shader(sources[index], types[index]);
 
 	return shader;
@@ -32,7 +32,7 @@ Shader** GraphicsFactory::CreateShaders(const std::vector<const char**>& sources
 		throw new std::exception("sources length does not equal types length");
 
 	Shader** shader = new Shader*[sources.size()];
-	for (int index = 0; index++; index < sources.size())
+	for (unsigned int index = 0; index < sources.size(); index++)
 		shader[index] = new Shader(sources[index], types[index]);
 
 	return shader;
@@ -47,7 +47,7 @@ ShaderProgram* GraphicsFactory::CreateShaderProgram(const char*** sources, const
 ShaderProgram* GraphicsFactory::CreateShaderProgram(const std::vector<const char**>& sources, const std::vector<ShaderType>& types)
 {
 	Shader** shaders = this->CreateShaders(sources, types);
-	return this->CreateShaderProgram(shaders, sources.size());
+	return this->CreateShaderProgram(shaders, (unsigned int) sources.size());
 }
 
 ShaderProgram* GraphicsFactory::CreateShaderProgram(Shader** shaders, const unsigned short count)
@@ -59,12 +59,12 @@ ShaderProgram* GraphicsFactory::CreateShaderProgram(Shader** shaders, const unsi
 	return program;
 }
 
-VertexBuffer* GraphicsFactory::CreateVertexBuffer(const float* data, size_t count, unsigned int point_size, BufferUsage usage = BufferUsage::StaticDraw)
+VertexBuffer* GraphicsFactory::CreateVertexBuffer(const float* data, size_t count, unsigned int point_size, BufferUsage usage)
 {
 	return new VertexBuffer(data, count, point_size, usage);
 }
 
-IndexBuffer* GraphicsFactory::CreateVertexBuffer(const unsigned int* data, size_t count, BufferUsage usage = BufferUsage::StaticDraw)
+IndexBuffer* GraphicsFactory::CreateIndexBuffer(const unsigned int* data, size_t count, BufferUsage usage)
 {
 	return new IndexBuffer(data, count, usage);
 }

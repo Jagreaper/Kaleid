@@ -4,7 +4,7 @@
 
 namespace Kaleid::Graphics
 {
-	enum ShaderType
+	enum KALEID_GRAPHICS_API ShaderType
 	{
 		Fragment = 0x8B30,
 		Vertex = 0x8B31,
@@ -12,7 +12,7 @@ namespace Kaleid::Graphics
 		Compute = 0x91B9,
 	};
 
-	class Shader
+	class KALEID_GRAPHICS_API Shader
 	{
 	public:
 		Shader(const ShaderType type);
