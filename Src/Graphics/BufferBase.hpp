@@ -31,7 +31,7 @@ namespace Kaleid::Graphics
 		const unsigned int GetId() const;
 		const size_t GetLength() const;
 	protected:
-		unsigned int _id;
+		unsigned int _id = 0;
 		size_t _length = 0;
 	};
 }

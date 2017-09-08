@@ -1,7 +1,9 @@
 #pragma once
 
 #include "stdafx.hpp"
+#include <vector>
 #include "Window.hpp"
+#include "Shader.hpp"
 #include "ShaderProgram.hpp"
 
 namespace Kaleid::Graphics
@@ -10,7 +12,10 @@ namespace Kaleid::Graphics
 	{
 	public:
 		Window* CreateWindow(const unsigned int width, const unsigned int height, const char* title);
-		ShaderProgram* CreateShaderProgram(const char** sources, const ShaderType* types, const unsigned short count);
+		Shader* CreateShader(const char** source, const ShaderType type);
+		Shader** CreateShaders(const char*** sources, const ShaderType* types, const unsigned short count);
+		Shader** CreateShaders(const std::vector<const char**>& sources, const std::vector<const ShaderType>& types);
+		ShaderProgram* CreateShaderProgram(const char*** sources, const ShaderType* types, const unsigned short count);
 	private:
 	};
 }

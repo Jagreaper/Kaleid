@@ -15,8 +15,11 @@ namespace Kaleid::Graphics
 	class Shader
 	{
 	public:
+		Shader(const ShaderType type);
 		Shader(const char** source, const ShaderType type);
 		~Shader();
+		void SetSource(const char** source);
+		void Compile();
 		void Dispose();
 		const unsigned int GetId() const;
 	private:

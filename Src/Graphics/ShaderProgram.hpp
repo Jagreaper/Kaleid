@@ -9,11 +9,17 @@ namespace Kaleid::Graphics
 	class ShaderProgram
 	{
 	public:
-		ShaderProgram(const std::vector<Shader>& shaders);
-		ShaderProgram(Shader* shaders, unsigned int count);
+		ShaderProgram();
+		ShaderProgram(const std::vector<Shader*>& shaders);
+		ShaderProgram(Shader** shaders, unsigned int count);
 		~ShaderProgram();
+		void Attach(Shader** shaders, unsigned int count);
+		void Attach(const std::vector<Shader*>& shaders);
+		void Dettach(Shader** shaders, unsigned int count);
+		void Dettach(const std::vector<Shader*>& shaders);
+		void Link();
 		void Dispose();
-		const GLuint GetId() const;
+		const unsigned int GetId() const;
 		bool InUse() const;
 		int GetUniformLocation(const char* name) const;
 		int GetAttribLocation(const char* name) const;
@@ -44,17 +50,17 @@ namespace Kaleid::Graphics
 		_TDOGL_PROGRAM_ATTRIB_N_UNIFORM_SETTERS(int)
 		_TDOGL_PROGRAM_ATTRIB_N_UNIFORM_SETTERS(unsigned int)
 
-		void SetUniformMatrix2(const char* name, const float* v, int count = 1, bool transpose = GL_FALSE);
-		void SetUniformMatrix3(const char* name, const float* v, int count = 1, bool transpose = GL_FALSE);
-		void SetUniformMatrix4(const char* name, const float* v, int count = 1, bool transpose = GL_FALSE);
-		void SetUniform(const char* name, const glm::mat2& m, bool transpose = GL_FALSE);
-		void SetUniform(const char* name, const glm::mat3& m, bool transpose = GL_FALSE);
-		void SetUniform(const char* name, const glm::mat4& m, bool transpose = GL_FALSE);
+		void SetUniformMatrix2(const char* name, const float* v, int count = 1, bool transpose = false);
+		void SetUniformMatrix3(const char* name, const float* v, int count = 1, bool transpose = false);
+		void SetUniformMatrix4(const char* name, const float* v, int count = 1, bool transpose = false);
+		void SetUniform(const char* name, const glm::mat2& m, bool transpose = false);
+		void SetUniform(const char* name, const glm::mat3& m, bool transpose = false);
+		void SetUniform(const char* name, const glm::mat4& m, bool transpose = false);
 		void SetUniform(const char* name, const glm::vec2& v);
 		void SetUniform(const char* name, const glm::vec3& v);
 		void SetUniform(const char* name, const glm::vec4& v);
 	private:
 		void Validate();
-		GLuint _id;
+		unsigned int _id;
 	};
 }

@@ -5,48 +5,56 @@
 
 using namespace Kaleid::Graphics;
 
-ShaderProgram::ShaderProgram(const std::vector<Shader>& shaders)
+ShaderProgram::ShaderProgram()
 {
-	if (shaders.size() <= 0)
-		throw std::runtime_error("No fragments were provided to create the shader");
-
 	this->_id = glCreateProgram();
 	if (this->_id == 0)
 		throw std::runtime_error("glCreateProgram failed");
-
-
-	for (unsigned int index = 0; index < shaders.size(); index++)
-	{
-		Shader fragment = shaders[index];
-		glAttachShader(this->_id, fragment.GetId());
-	}
-
-	glLinkProgram(this->_id);
-	for (unsigned int index = 0; index < shaders.size(); index++)
-	{
-		Shader fragment = shaders[index];
-		glDetachShader(this->_id, fragment.GetId());
-	}
-
-	this->Validate();
 }
 
-ShaderProgram::ShaderProgram(Shader* shaders, unsigned int count)
+ShaderProgram::ShaderProgram(const std::vector<Shader*>& shaders)
+	: ShaderProgram()
 {
-	if (count <= 0)
-		throw std::runtime_error("No fragments were provided to create the shader");
+	this->Attach(shaders);
+	this->Link();
+	this->Dettach(shaders);
+}
 
-	this->_id = glCreateProgram();
-	if (this->_id == 0)
-		throw std::runtime_error("glCreateProgram failed");
+ShaderProgram::ShaderProgram(Shader** shaders, unsigned int count)
+	: ShaderProgram()
+{
+	this->Attach(shaders, count);
+	this->Link();
+	this->Dettach(shaders, count);
+}
 
+void ShaderProgram::Attach(Shader** shaders, unsigned int count)
+{
 	for (unsigned int index = 0; index < count; index++)
-		glAttachShader(this->_id, shaders++->GetId());
+		glAttachShader(this->_id, shaders[index]->GetId());
+}
 
+void ShaderProgram::Attach(const std::vector<Shader*>& shaders)
+{
+	for (unsigned int index = 0; index < shaders.size(); index++)
+		glAttachShader(this->_id, shaders[index]->GetId());
+}
+
+void ShaderProgram::Dettach(Shader** shaders, unsigned int count)
+{
+	for (unsigned int index = 0; index < count; index++)
+		glDetachShader(this->_id, shaders[index]->GetId());
+}
+
+void ShaderProgram::Dettach(const std::vector<Shader*>& shaders)
+{
+	for (unsigned int index = 0; index < shaders.size(); index++)
+		glDetachShader(this->_id, shaders[index]->GetId());
+}
+
+void ShaderProgram::Link()
+{
 	glLinkProgram(this->_id);
-	for (unsigned int index = 0; index < count; index++)
-		glDetachShader(this->_id, shaders++->GetId());
-
 	this->Validate();
 }
 

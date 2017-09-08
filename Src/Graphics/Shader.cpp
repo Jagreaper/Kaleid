@@ -4,21 +4,34 @@
 
 using namespace Kaleid::Graphics;
 
-Shader::Shader(const char** source, const ShaderType type)
+Shader::Shader(const ShaderType type)
 {
 	this->_id = glCreateShader(type);
 	if (this->_id == 0)
 		throw std::runtime_error("glCreateShader failed");
+}
 
-	glShaderSource(this->_id, 1, source, NULL);
-	glCompileShader(this->_id);
-
-	this->Validate();
+Shader::Shader(const char** source, const ShaderType type)
+	:Shader(type)
+{
+	this->SetSource(source);
+	this->Compile();
 }
 
 Shader::~Shader()
 {
 	this->Dispose();
+}
+
+void Shader::SetSource(const char** source)
+{
+	glShaderSource(this->_id, 1, source, NULL);
+}
+
+void Shader::Compile()
+{
+	glCompileShader(this->_id);
+	this->Validate();
 }
 
 void Shader::Validate()
