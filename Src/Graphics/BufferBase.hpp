@@ -27,11 +27,11 @@ namespace Kaleid::Graphics
 		DynamicCopy = 0x88EA,
 	};
 
-	class KALEID_GRAPHICS_API BufferBase abstract
+	class BufferBase abstract
 	{
 	public:
-		const unsigned int GetId() const;
-		const size_t GetLength() const;
+		KALEID_GRAPHICS_API const unsigned int GetId() const;
+		KALEID_GRAPHICS_API const size_t GetLength() const;
 	protected:
 		unsigned int _id = 0;
 		size_t _length = 0;
