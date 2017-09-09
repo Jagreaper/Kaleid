@@ -27,6 +27,7 @@ namespace Kaleid::Graphics
 		KALEID_GRAPHICS_API IndexBuffer* CreateIndexBuffer(const unsigned int* data, size_t count, BufferUsage usage = BufferUsage::StaticDraw);
 
 		KALEID_GRAPHICS_API void FreeWindow(Window* window);
+#ifdef KALEID_GRAPHICS_DLL
 	private:
 		static void Dispose();
 		static void Validate();
@@ -38,5 +39,6 @@ namespace Kaleid::Graphics
 		static unsigned int _count;
 
 		static std::vector<Window*> _windows;
+#endif
 	};
 }

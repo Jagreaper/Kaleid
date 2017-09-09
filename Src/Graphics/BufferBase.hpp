@@ -32,8 +32,10 @@ namespace Kaleid::Graphics
 	public:
 		KALEID_GRAPHICS_API const unsigned int GetId() const;
 		KALEID_GRAPHICS_API const size_t GetLength() const;
+#ifdef KALEID_GRAPHICS_DLL
 	protected:
 		unsigned int _id = 0;
 		size_t _length = 0;
+#endif
 	};
 }
