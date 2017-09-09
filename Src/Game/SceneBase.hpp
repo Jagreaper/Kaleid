@@ -11,10 +11,10 @@ namespace Kaleid::Game
 	{
 	public:
 		SceneBase(App*& app);
-		virtual void load() = 0;
-		virtual void update() = 0;
-		virtual void render() = 0;
-		virtual void dispose() = 0;
+		virtual void Load() = 0;
+		virtual void Update() = 0;
+		virtual void Render() = 0;
+		virtual void Dispose() = 0;
 	protected:
 		App* _app;
 		Kaleid::Graphics::Renderer* _renderer;

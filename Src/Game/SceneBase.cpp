@@ -3,7 +3,6 @@
 
 using namespace Kaleid::Game;
 
-
 SceneBase::SceneBase(App*& app)
 {
 	this->_app = app;

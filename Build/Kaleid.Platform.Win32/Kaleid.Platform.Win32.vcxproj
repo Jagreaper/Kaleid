@@ -94,12 +94,14 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
       <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
-      <AdditionalIncludeDirectories>$(SolutionDir)Src;$(SolutionDir)Include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Src\;$(SolutionDir)Src\Game\;$(SolutionDir)Src\Graphics\;$(SolutionDir)Include\</AdditionalIncludeDirectories>
     </ClCompile>
     <PostBuildEvent>
       <Command>copy "$(SolutionDir)Lib\GLEW\$(PlatformTarget)\glew32.dll" "$(SolutionDir)Bin\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
 copy "$(SolutionDir)Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "$(SolutionDir)Bin\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
-</Command>
+
+copy "$(SolutionDir)Bin\Kaleid.Game\$(Configuration)\$(PlatformTarget)\Kaleid.Game.dll" "$(SolutionDir)Bin\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
+copy "$(SolutionDir)Bin\Kaleid.Graphics\$(Configuration)\$(PlatformTarget)\Kaleid.Graphics.dll" "$(SolutionDir)Bin\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -111,12 +113,14 @@ copy "$(SolutionDir)Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "$(Solution
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
       <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
-      <AdditionalIncludeDirectories>$(SolutionDir)Src;$(SolutionDir)Include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Src\;$(SolutionDir)Src\Game\;$(SolutionDir)Src\Graphics\;$(SolutionDir)Include\</AdditionalIncludeDirectories>
     </ClCompile>
     <PostBuildEvent>
       <Command>copy "$(SolutionDir)Lib\GLEW\$(PlatformTarget)\glew32.dll" "$(SolutionDir)Bin\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
 copy "$(SolutionDir)Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "$(SolutionDir)Bin\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
-</Command>
+
+copy "$(SolutionDir)Bin\Kaleid.Game\$(Configuration)\$(PlatformTarget)\Kaleid.Game.dll" "$(SolutionDir)Bin\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
+copy "$(SolutionDir)Bin\Kaleid.Graphics\$(Configuration)\$(PlatformTarget)\Kaleid.Graphics.dll" "$(SolutionDir)Bin\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -130,7 +134,7 @@ copy "$(SolutionDir)Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "$(Solution
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
       <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
-      <AdditionalIncludeDirectories>$(SolutionDir)Src;$(SolutionDir)Include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Src\;$(SolutionDir)Src\Game\;$(SolutionDir)Src\Graphics\;$(SolutionDir)Include\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -139,7 +143,9 @@ copy "$(SolutionDir)Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "$(Solution
     <PostBuildEvent>
       <Command>copy "$(SolutionDir)Lib\GLEW\$(PlatformTarget)\glew32.dll" "$(SolutionDir)Bin\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
 copy "$(SolutionDir)Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "$(SolutionDir)Bin\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
-</Command>
+
+copy "$(SolutionDir)Bin\Kaleid.Game\$(Configuration)\$(PlatformTarget)\Kaleid.Game.dll" "$(SolutionDir)Bin\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
+copy "$(SolutionDir)Bin\Kaleid.Graphics\$(Configuration)\$(PlatformTarget)\Kaleid.Graphics.dll" "$(SolutionDir)Bin\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -153,7 +159,7 @@ copy "$(SolutionDir)Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "$(Solution
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
       <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
-      <AdditionalIncludeDirectories>$(SolutionDir)Src;$(SolutionDir)Include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Src\;$(SolutionDir)Src\Game\;$(SolutionDir)Src\Graphics\;$(SolutionDir)Include\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -162,7 +168,9 @@ copy "$(SolutionDir)Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "$(Solution
     <PostBuildEvent>
       <Command>copy "$(SolutionDir)Lib\GLEW\$(PlatformTarget)\glew32.dll" "$(SolutionDir)Bin\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
 copy "$(SolutionDir)Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "$(SolutionDir)Bin\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
-</Command>
+
+copy "$(SolutionDir)Bin\Kaleid.Game\$(Configuration)\$(PlatformTarget)\Kaleid.Game.dll" "$(SolutionDir)Bin\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
+copy "$(SolutionDir)Bin\Kaleid.Graphics\$(Configuration)\$(PlatformTarget)\Kaleid.Graphics.dll" "$(SolutionDir)Bin\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -180,6 +188,9 @@ copy "$(SolutionDir)Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "$(Solution
   <ItemGroup>
     <ProjectReference Include="..\Kaleid.Game\Kaleid.Game.vcxproj">
       <Project>{29dc283f-b80e-4650-a60e-a294947fdbcd}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Kaleid.Graphics\Kaleid.Graphics.vcxproj">
+      <Project>{b0d1fc24-7ed7-4f0a-b51b-0864f52f4f77}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

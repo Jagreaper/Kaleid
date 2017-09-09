@@ -2,6 +2,7 @@
 
 #include "stdafx.hpp"
 #include "Renderer.hpp"
+#include "Window.hpp"
 #include "GraphicsFactory.hpp"
 
 namespace Kaleid::Game
@@ -13,6 +14,7 @@ namespace Kaleid::Game
 	public:
 		void Load();
 		void Dispose();
+		void Run();
 
 		void SetRenderer(Kaleid::Graphics::Renderer*& renderer);
 		Kaleid::Graphics::Renderer* GetRenderer();
@@ -23,8 +25,9 @@ namespace Kaleid::Game
 		void SetScene(SceneBase*& current_scene);
 		SceneBase* GetScene();
 	private:
-		SceneBase* _current_scene;
-		Kaleid::Graphics::Renderer* _renderer;
-		Kaleid::Graphics::GraphicsFactory* _graphics_factory;
+		SceneBase* _current_scene = NULL;
+		Kaleid::Graphics::Renderer* _renderer = NULL;
+		Kaleid::Graphics::GraphicsFactory* _graphics_factory = NULL;
+		Kaleid::Graphics::Window* _window = NULL;
 	};
 }

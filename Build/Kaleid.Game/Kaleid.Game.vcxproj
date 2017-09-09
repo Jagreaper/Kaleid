@@ -151,6 +151,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Src\Game\App.cpp" />
+    <ClCompile Include="..\..\Src\Game\RootScene.cpp" />
     <ClCompile Include="..\..\Src\Game\SceneBase.cpp" />
     <ClCompile Include="..\..\Src\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -161,6 +162,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\Game\App.hpp" />
+    <ClInclude Include="..\..\Src\Game\RootScene.hpp" />
     <ClInclude Include="..\..\Src\Game\SceneBase.hpp" />
     <ClInclude Include="..\..\Src\stdafx.hpp" />
   </ItemGroup>

@@ -45,11 +45,6 @@
     <ClInclude Include="..\..\Src\Graphics\Window.hpp" />
     <ClInclude Include="..\..\Src\stdafx.hpp" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Kaleid.Helpers\Kaleid.Helpers.vcxproj">
-      <Project>{fa74e84f-8b9c-44fa-99be-b68865635073}</Project>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{B0D1FC24-7ED7-4F0A-B51B-0864F52F4F77}</ProjectGuid>

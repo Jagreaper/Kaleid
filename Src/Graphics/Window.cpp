@@ -44,3 +44,13 @@ void Window::SetTitle(const char* title)
 {
 	glfwSetWindowTitle(this->_handle, title);
 }
+
+bool Window::Exists()
+{
+	return !glfwWindowShouldClose(this->_handle);
+}
+
+void Window::PollEvents()
+{
+	glfwPollEvents();
+}
