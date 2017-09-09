@@ -9,21 +9,21 @@ namespace Kaleid::Game
 {
 	class SceneBase;
 
-	class KALEID_GAME_API App sealed
+	class App sealed
 	{
 	public:
-		void Load();
-		void Dispose();
-		void Run();
+		KALEID_GAME_API void Load();
+		KALEID_GAME_API void Dispose();
+		KALEID_GAME_API void Run();
 
-		void SetRenderer(Kaleid::Graphics::Renderer*& renderer);
-		Kaleid::Graphics::Renderer* GetRenderer();
+		KALEID_GAME_API void SetRenderer(Kaleid::Graphics::Renderer*& renderer);
+		KALEID_GAME_API Kaleid::Graphics::Renderer* GetRenderer();
 
-		void SetGraphicsFactory(Kaleid::Graphics::GraphicsFactory*& graphics_factory);
-		Kaleid::Graphics::GraphicsFactory* GetGraphicsFactory();
+		KALEID_GAME_API void SetGraphicsFactory(Kaleid::Graphics::GraphicsFactory*& graphics_factory);
+		KALEID_GAME_API Kaleid::Graphics::GraphicsFactory* GetGraphicsFactory();
 
-		void SetScene(SceneBase*& current_scene);
-		SceneBase* GetScene();
+		KALEID_GAME_API void SetScene(SceneBase*& current_scene);
+		KALEID_GAME_API SceneBase* GetScene();
 	private:
 		SceneBase* _current_scene = NULL;
 		Kaleid::Graphics::Renderer* _renderer = NULL;

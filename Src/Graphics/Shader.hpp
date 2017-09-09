@@ -15,15 +15,19 @@ namespace Kaleid::Graphics
 	class Shader
 	{
 	public:
+#ifdef KALEID_GRAPHICS_DLL
 		Shader(const ShaderType type);
 		Shader(const char** source, const ShaderType type);
 		~Shader();
+#endif
 		void KALEID_GRAPHICS_API SetSource(const char** source);
 		void KALEID_GRAPHICS_API Compile();
 		void KALEID_GRAPHICS_API Dispose();
 		const unsigned int KALEID_GRAPHICS_API GetId() const;
+#ifdef KALEID_GRAPHICS_DLL
 	private:
 		void Validate();
 		unsigned int _id;
+#endif
 	};
 }

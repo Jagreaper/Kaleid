@@ -9,10 +9,12 @@ namespace Kaleid::Graphics
 	class ShaderProgram
 	{
 	public:
+#ifdef KALEID_GRAPHICS_DLL
 		ShaderProgram();
 		ShaderProgram(const std::vector<Shader*>& shaders);
 		ShaderProgram(Shader** shaders, unsigned int count);
 		~ShaderProgram();
+#endif
 		void KALEID_GRAPHICS_API Attach(Shader** shaders, unsigned int count);
 		void KALEID_GRAPHICS_API Attach(const std::vector<Shader*>& shaders);
 		void KALEID_GRAPHICS_API Dettach(Shader** shaders, unsigned int count);
@@ -59,8 +61,10 @@ namespace Kaleid::Graphics
 		void KALEID_GRAPHICS_API SetUniform(const char* name, const glm::vec2& v);
 		void KALEID_GRAPHICS_API SetUniform(const char* name, const glm::vec3& v);
 		void KALEID_GRAPHICS_API SetUniform(const char* name, const glm::vec4& v);
+#ifdef KALEID_GRAPHICS_DLL
 	private:
 		void Validate();
 		unsigned int _id;
+#endif
 	};
 }
