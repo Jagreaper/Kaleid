@@ -7,7 +7,7 @@ namespace Kaleid::Graphics
 	class Window
 	{
 	public:
-		KALEID_GRAPHICS_API void Dispose();
+		void Dispose();
 
 		KALEID_GRAPHICS_API void MakeCurrent();
 		KALEID_GRAPHICS_API void SwapBuffers();

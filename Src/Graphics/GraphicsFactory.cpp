@@ -3,22 +3,89 @@
 
 using namespace Kaleid::Graphics;
 
+bool GraphicsFactory::_glfw_created = false;
+bool GraphicsFactory::_glew_created = false;
+std::vector<Window*> GraphicsFactory::_windows;
+
+unsigned int GraphicsFactory::_count = 0;
+
+GraphicsFactory::GraphicsFactory()
+{
+	if (GraphicsFactory::_count == 0)
+		this->InitGLFW();
+
+	GraphicsFactory::_count++;
+}
+
+GraphicsFactory::~GraphicsFactory()
+{
+	GraphicsFactory::_count--;
+
+	if (GraphicsFactory::_count == 0)
+		GraphicsFactory::Dispose();
+}
+
+void GraphicsFactory::Dispose()
+{
+	for each (Window* window in GraphicsFactory::_windows)
+		window->Dispose();
+
+	GraphicsFactory::_windows.clear();
+
+	if (GraphicsFactory::_glfw_created)
+		glfwTerminate();
+
+	GraphicsFactory::_glfw_created = false;
+}
+
+void GraphicsFactory::InitGLFW()
+{
+	if (!glfwInit())
+		throw std::runtime_error("Could not start GLFW3");
+
+	GraphicsFactory::_glfw_created = true;
+}
+
+void GraphicsFactory::InitGLEW()
+{
+	glewExperimental = GL_TRUE;
+	glewInit();
+
+	GraphicsFactory::_glew_created = true;
+}
+
+void GraphicsFactory::Validate()
+{
+	if (!GraphicsFactory::_glfw_created)
+		throw std::runtime_error("GLFW3 does not exist");
+
+	if (GraphicsFactory::_windows.size() == 0)
+		throw std::runtime_error("No OpenGL surface or context exists");
+
+	if (!GraphicsFactory::_glew_created)
+		GraphicsFactory::InitGLEW();
+}
 
 Window* GraphicsFactory::CreateWindow(const unsigned int width, const unsigned int height, const char* title)
 {
 	Window* window = new Window();
 	window->SetSize(width, height);
 	window->SetTitle(title);
+	GraphicsFactory::_windows.push_back(window);
 	return window;
 }
 
 Shader* GraphicsFactory::CreateShader(const char** source, const ShaderType type)
 {
+	this->Validate();
+
 	return new Shader(source, type);
 }
 
 Shader** GraphicsFactory::CreateShaders(const char*** sources, const ShaderType* types, const unsigned short count)
 {
+	this->Validate();
+
 	Shader** shader = new Shader*[count];
 	for (int index = 0; index < count; index++)
 		shader[index] = new Shader(sources[index], types[index]);
@@ -28,6 +95,8 @@ Shader** GraphicsFactory::CreateShaders(const char*** sources, const ShaderType*
 
 Shader** GraphicsFactory::CreateShaders(const std::vector<const char**>& sources, const std::vector<ShaderType>& types)
 {
+	this->Validate();
+
 	if (sources.size() != types.size())
 		throw new std::exception("sources length does not equal types length");
 
@@ -52,6 +121,8 @@ ShaderProgram* GraphicsFactory::CreateShaderProgram(const std::vector<const char
 
 ShaderProgram* GraphicsFactory::CreateShaderProgram(Shader** shaders, const unsigned short count)
 {
+	this->Validate();
+
 	ShaderProgram* program = new ShaderProgram();
 	program->Attach(shaders, count);
 	program->Link();
@@ -61,10 +132,33 @@ ShaderProgram* GraphicsFactory::CreateShaderProgram(Shader** shaders, const unsi
 
 VertexBuffer* GraphicsFactory::CreateVertexBuffer(const float* data, size_t count, unsigned int point_size, BufferUsage usage)
 {
+	this->Validate();
+
 	return new VertexBuffer(data, count, point_size, usage);
 }
 
 IndexBuffer* GraphicsFactory::CreateIndexBuffer(const unsigned int* data, size_t count, BufferUsage usage)
 {
+	this->Validate();
+
 	return new IndexBuffer(data, count, usage);
+}
+
+void GraphicsFactory::FreeWindow(Window* window)
+{
+	int location = -1;
+	for (unsigned int index = 0; index < GraphicsFactory::_windows.size(); index++)
+	{
+		if (window == GraphicsFactory::_windows[index])
+		{
+			location = (int)index;
+			break;
+		}
+	}
+
+	if (location != -1)
+		GraphicsFactory::_windows.erase(GraphicsFactory::_windows.begin() + location);
+
+	window->Dispose();
+	delete window;
 }
