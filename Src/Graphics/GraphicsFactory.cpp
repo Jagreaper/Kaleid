@@ -1,7 +1,9 @@
 #include "stdafx.hpp"
 #include "GraphicsFactory.hpp"
+#include "VectorHelper.hpp"
 
 using namespace Kaleid::Graphics;
+using namespace Kaleid::Helpers;
 
 bool GraphicsFactory::_glfw_created = false;
 bool GraphicsFactory::_glew_created = false;
@@ -146,18 +148,7 @@ IndexBuffer* GraphicsFactory::CreateIndexBuffer(const unsigned int* data, size_t
 
 void GraphicsFactory::FreeWindow(Window* window)
 {
-	int location = -1;
-	for (unsigned int index = 0; index < GraphicsFactory::_windows.size(); index++)
-	{
-		if (window == GraphicsFactory::_windows[index])
-		{
-			location = (int)index;
-			break;
-		}
-	}
-
-	if (location != -1)
-		GraphicsFactory::_windows.erase(GraphicsFactory::_windows.begin() + location);
+	VectorHelper::RemoveItem(&GraphicsFactory::_windows, window);
 
 	window->Dispose();
 	delete window;

@@ -23,5 +23,11 @@
 #define KALEID_MATH_API __declspec(dllimport)
 #endif
 
+#ifdef KALEID_HELPERS_DLL
+#define KALEID_HELPERS_API __declspec(dllexport)
+#else
+#define KALEID_HELPERS_API __declspec(dllimport)
+#endif
+
 #include <iostream>
 #include <GLM/glm.hpp>

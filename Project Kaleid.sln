@@ -13,6 +13,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Kaleid.Math", "Build\Kaleid
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Platforms", "Platforms", "{B913BA4C-C8DC-4B85-9CAB-7348C1884BAF}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Kaleid.Helpers", "Build\Kaleid.Helpers\Kaleid.Helpers.vcxproj", "{FA74E84F-8B9C-44FA-99BE-B68865635073}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -53,6 +55,14 @@ Global
 		{D7EA2988-DB27-4004-AB6B-C81A923164DF}.Release|x64.Build.0 = Release|x64
 		{D7EA2988-DB27-4004-AB6B-C81A923164DF}.Release|x86.ActiveCfg = Release|Win32
 		{D7EA2988-DB27-4004-AB6B-C81A923164DF}.Release|x86.Build.0 = Release|Win32
+		{FA74E84F-8B9C-44FA-99BE-B68865635073}.Debug|x64.ActiveCfg = Debug|x64
+		{FA74E84F-8B9C-44FA-99BE-B68865635073}.Debug|x64.Build.0 = Debug|x64
+		{FA74E84F-8B9C-44FA-99BE-B68865635073}.Debug|x86.ActiveCfg = Debug|Win32
+		{FA74E84F-8B9C-44FA-99BE-B68865635073}.Debug|x86.Build.0 = Debug|Win32
+		{FA74E84F-8B9C-44FA-99BE-B68865635073}.Release|x64.ActiveCfg = Release|x64
+		{FA74E84F-8B9C-44FA-99BE-B68865635073}.Release|x64.Build.0 = Release|x64
+		{FA74E84F-8B9C-44FA-99BE-B68865635073}.Release|x86.ActiveCfg = Release|Win32
+		{FA74E84F-8B9C-44FA-99BE-B68865635073}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
