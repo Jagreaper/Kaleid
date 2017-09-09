@@ -4,6 +4,14 @@
 
 using namespace Kaleid::Game;
 
+App::App()
+{
+	this->_current_scene = NULL;
+	this->_renderer = NULL;
+	this->_graphics_factory = NULL;
+	this->_window = NULL;
+}
+
 void App::Load()
 {
 	this->_window = this->_graphics_factory->CreateWindow(800, 600, "OpenGL Window");
