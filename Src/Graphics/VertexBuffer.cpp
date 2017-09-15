@@ -4,7 +4,9 @@
 using namespace Kaleid::Graphics;
 
 VertexBuffer::VertexBuffer()
+	: BufferBase()
 {
+	this->_point_size = 0;
 	glGenBuffers(1, &this->_id);
 }
 

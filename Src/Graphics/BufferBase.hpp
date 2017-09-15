@@ -33,9 +33,10 @@ namespace Kaleid::Graphics
 		KALEID_GRAPHICS_API const unsigned int GetId() const;
 		KALEID_GRAPHICS_API const size_t GetLength() const;
 #ifdef KALEID_GRAPHICS_DLL
+		BufferBase();
 	protected:
-		unsigned int _id = 0;
-		size_t _length = 0;
+		unsigned int _id;
+		size_t _length;
 #endif
 	};
 }

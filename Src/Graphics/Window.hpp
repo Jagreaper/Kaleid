@@ -17,8 +17,8 @@ namespace Kaleid::Graphics
 		KALEID_GRAPHICS_API bool Exists();
 		KALEID_GRAPHICS_API void PollEvents();
 #ifdef KALEID_GRAPHICS_DLL
-
 		Window(int width, int height, const char* title);
+
 		void Dispose();
 	private:
 		GLFWwindow* _handle;

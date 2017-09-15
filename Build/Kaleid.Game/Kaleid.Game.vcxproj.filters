@@ -13,10 +13,10 @@
   <ItemGroup>
     <ClInclude Include="..\..\Src\Game\App.hpp" />
     <ClInclude Include="..\..\Src\stdafx.hpp" />
-    <ClInclude Include="..\..\Src\Game\SceneBase.hpp">
+    <ClInclude Include="..\..\Src\Game\RootScene.hpp">
       <Filter>Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Src\Game\RootScene.hpp">
+    <ClInclude Include="..\..\Src\Game\SceneBase.hpp">
       <Filter>Scenes</Filter>
     </ClInclude>
   </ItemGroup>

@@ -4,6 +4,7 @@
 using namespace Kaleid::Graphics;
 
 IndexBuffer::IndexBuffer()
+	: BufferBase()
 {
 	glGenBuffers(1, &this->_id);
 }

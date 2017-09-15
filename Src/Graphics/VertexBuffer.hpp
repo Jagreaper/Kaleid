@@ -21,7 +21,7 @@ namespace Kaleid::Graphics
 		const unsigned int KALEID_GRAPHICS_API GetPointSize() const;
 #ifdef KALEID_GRAPHICS_DLL
 	private:
-		unsigned int _point_size = 0;
+		unsigned int _point_size;
 #endif
 	};
 }
