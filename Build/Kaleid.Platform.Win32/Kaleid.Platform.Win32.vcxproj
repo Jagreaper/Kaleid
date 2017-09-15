@@ -70,20 +70,20 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(SolutionDir)Bin\$(ProjectName)\$(Configuration)\$(PlatformTarget)\</OutDir>
-    <IntDir>$(SolutionDir)Obj\$(ProjectName)\$(Configuration)\$(PlatformTarget)\</IntDir>
+    <OutDir>$(SolutionDir)Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\</OutDir>
+    <IntDir>$(SolutionDir)Obj\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir)Bin\$(ProjectName)\$(Configuration)\$(PlatformTarget)\</OutDir>
-    <IntDir>$(SolutionDir)Obj\$(ProjectName)\$(Configuration)\$(PlatformTarget)\</IntDir>
+    <OutDir>$(SolutionDir)Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\</OutDir>
+    <IntDir>$(SolutionDir)Obj\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir)Bin\$(ProjectName)\$(Configuration)\$(PlatformTarget)\</OutDir>
-    <IntDir>$(SolutionDir)Obj\$(ProjectName)\$(Configuration)\$(PlatformTarget)\</IntDir>
+    <OutDir>$(SolutionDir)Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\</OutDir>
+    <IntDir>$(SolutionDir)Obj\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(SolutionDir)Bin\$(ProjectName)\$(Configuration)\$(PlatformTarget)\</OutDir>
-    <IntDir>$(SolutionDir)Obj\$(ProjectName)\$(Configuration)\$(PlatformTarget)\</IntDir>
+    <OutDir>$(SolutionDir)Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\</OutDir>
+    <IntDir>$(SolutionDir)Obj\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -97,11 +97,11 @@
       <AdditionalIncludeDirectories>$(SolutionDir)Src\;$(SolutionDir)Src\Game\;$(SolutionDir)Src\Graphics\;$(SolutionDir)Include\</AdditionalIncludeDirectories>
     </ClCompile>
     <PostBuildEvent>
-      <Command>copy "$(SolutionDir)Lib\GLEW\$(PlatformTarget)\glew32.dll" "$(SolutionDir)Bin\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
-copy "$(SolutionDir)Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "$(SolutionDir)Bin\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
+      <Command>copy "$(SolutionDir)Lib\GLEW\$(PlatformTarget)\glew32.dll" "$(SolutionDir)Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
+copy "$(SolutionDir)Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "$(SolutionDir)Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
 
-copy "$(SolutionDir)Bin\Kaleid.Game\$(Configuration)\$(PlatformTarget)\Kaleid.Game.dll" "$(SolutionDir)Bin\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
-copy "$(SolutionDir)Bin\Kaleid.Graphics\$(Configuration)\$(PlatformTarget)\Kaleid.Graphics.dll" "$(SolutionDir)Bin\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y</Command>
+copy "$(SolutionDir)Bin\Windows\Kaleid.Game\$(Configuration)\$(PlatformTarget)\Kaleid.Game.dll" "$(SolutionDir)Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
+copy "$(SolutionDir)Bin\Windows\Kaleid.Graphics\$(Configuration)\$(PlatformTarget)\Kaleid.Graphics.dll" "$(SolutionDir)Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -116,11 +116,11 @@ copy "$(SolutionDir)Bin\Kaleid.Graphics\$(Configuration)\$(PlatformTarget)\Kalei
       <AdditionalIncludeDirectories>$(SolutionDir)Src\;$(SolutionDir)Src\Game\;$(SolutionDir)Src\Graphics\;$(SolutionDir)Include\</AdditionalIncludeDirectories>
     </ClCompile>
     <PostBuildEvent>
-      <Command>copy "$(SolutionDir)Lib\GLEW\$(PlatformTarget)\glew32.dll" "$(SolutionDir)Bin\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
-copy "$(SolutionDir)Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "$(SolutionDir)Bin\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
+      <Command>copy "$(SolutionDir)Lib\GLEW\$(PlatformTarget)\glew32.dll" "$(SolutionDir)Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
+copy "$(SolutionDir)Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "$(SolutionDir)Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
 
-copy "$(SolutionDir)Bin\Kaleid.Game\$(Configuration)\$(PlatformTarget)\Kaleid.Game.dll" "$(SolutionDir)Bin\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
-copy "$(SolutionDir)Bin\Kaleid.Graphics\$(Configuration)\$(PlatformTarget)\Kaleid.Graphics.dll" "$(SolutionDir)Bin\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y</Command>
+copy "$(SolutionDir)Bin\Windows\Kaleid.Game\$(Configuration)\$(PlatformTarget)\Kaleid.Game.dll" "$(SolutionDir)Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
+copy "$(SolutionDir)Bin\Windows\Kaleid.Graphics\$(Configuration)\$(PlatformTarget)\Kaleid.Graphics.dll" "$(SolutionDir)Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -141,11 +141,11 @@ copy "$(SolutionDir)Bin\Kaleid.Graphics\$(Configuration)\$(PlatformTarget)\Kalei
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(SolutionDir)Lib\GLEW\$(PlatformTarget)\glew32.dll" "$(SolutionDir)Bin\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
-copy "$(SolutionDir)Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "$(SolutionDir)Bin\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
+      <Command>copy "$(SolutionDir)Lib\GLEW\$(PlatformTarget)\glew32.dll" "$(SolutionDir)Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
+copy "$(SolutionDir)Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "$(SolutionDir)Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
 
-copy "$(SolutionDir)Bin\Kaleid.Game\$(Configuration)\$(PlatformTarget)\Kaleid.Game.dll" "$(SolutionDir)Bin\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
-copy "$(SolutionDir)Bin\Kaleid.Graphics\$(Configuration)\$(PlatformTarget)\Kaleid.Graphics.dll" "$(SolutionDir)Bin\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y</Command>
+copy "$(SolutionDir)Bin\Windows\Kaleid.Game\$(Configuration)\$(PlatformTarget)\Kaleid.Game.dll" "$(SolutionDir)Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
+copy "$(SolutionDir)Bin\Windows\Kaleid.Graphics\$(Configuration)\$(PlatformTarget)\Kaleid.Graphics.dll" "$(SolutionDir)Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -166,11 +166,11 @@ copy "$(SolutionDir)Bin\Kaleid.Graphics\$(Configuration)\$(PlatformTarget)\Kalei
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(SolutionDir)Lib\GLEW\$(PlatformTarget)\glew32.dll" "$(SolutionDir)Bin\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
-copy "$(SolutionDir)Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "$(SolutionDir)Bin\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
+      <Command>copy "$(SolutionDir)Lib\GLEW\$(PlatformTarget)\glew32.dll" "$(SolutionDir)Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
+copy "$(SolutionDir)Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "$(SolutionDir)Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
 
-copy "$(SolutionDir)Bin\Kaleid.Game\$(Configuration)\$(PlatformTarget)\Kaleid.Game.dll" "$(SolutionDir)Bin\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
-copy "$(SolutionDir)Bin\Kaleid.Graphics\$(Configuration)\$(PlatformTarget)\Kaleid.Graphics.dll" "$(SolutionDir)Bin\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y</Command>
+copy "$(SolutionDir)Bin\Windows\Kaleid.Game\$(Configuration)\$(PlatformTarget)\Kaleid.Game.dll" "$(SolutionDir)Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
+copy "$(SolutionDir)Bin\Windows\Kaleid.Graphics\$(Configuration)\$(PlatformTarget)\Kaleid.Graphics.dll" "$(SolutionDir)Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
