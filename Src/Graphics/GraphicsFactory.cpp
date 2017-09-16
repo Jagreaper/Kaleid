@@ -109,12 +109,6 @@ Shader** GraphicsFactory::CreateShaders(const std::vector<const char**>& sources
 	return shader;
 }
 
-ShaderProgram* GraphicsFactory::CreateShaderProgram(const char*** sources, const ShaderType* types, const unsigned short count)
-{
-	Shader** shaders = this->CreateShaders(sources, types, count);
-	return this->CreateShaderProgram(shaders, count);
-}
-
 ShaderProgram* GraphicsFactory::CreateShaderProgram(const std::vector<const char**>& sources, const std::vector<ShaderType>& types)
 {
 	Shader** shaders = this->CreateShaders(sources, types);

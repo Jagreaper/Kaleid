@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Kaleid.Graphics", "Build\Kaleid.Graphics\Kaleid.Graphics.vcxproj", "{B0D1FC24-7ED7-4F0A-B51B-0864F52F4F77}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Kaleid.Graphics", "Build\Windows\Kaleid.Graphics\Kaleid.Graphics.vcxproj", "{B0D1FC24-7ED7-4F0A-B51B-0864F52F4F77}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Kaleid.Platform.Win32", "Build\Kaleid.Platform.Win32\Kaleid.Platform.Win32.vcxproj", "{1C805FD6-885C-4307-9EDA-18F072986F5B}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Kaleid.Platform.Win32", "Build\Windows\Kaleid.Platform.Win32\Kaleid.Platform.Win32.vcxproj", "{1C805FD6-885C-4307-9EDA-18F072986F5B}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Kaleid.Game", "Build\Kaleid.Game\Kaleid.Game.vcxproj", "{29DC283F-B80E-4650-A60E-A294947FDBCD}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Kaleid.Game", "Build\Windows\Kaleid.Game\Kaleid.Game.vcxproj", "{29DC283F-B80E-4650-A60E-A294947FDBCD}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Kaleid.Math", "Build\Kaleid.Math\Kaleid.Math.vcxproj", "{D7EA2988-DB27-4004-AB6B-C81A923164DF}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Kaleid.Math", "Build\Windows\Kaleid.Math\Kaleid.Math.vcxproj", "{D7EA2988-DB27-4004-AB6B-C81A923164DF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Platforms", "Platforms", "{B913BA4C-C8DC-4B85-9CAB-7348C1884BAF}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Kaleid.Helpers", "Build\Kaleid.Helpers\Kaleid.Helpers.vcxproj", "{FA74E84F-8B9C-44FA-99BE-B68865635073}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Kaleid.Helpers", "Build\Windows\Kaleid.Helpers\Kaleid.Helpers.vcxproj", "{FA74E84F-8B9C-44FA-99BE-B68865635073}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="..\..\Src\Game\App.cpp" />
-    <ClCompile Include="..\..\Src\stdafx.cpp" />
-    <ClCompile Include="..\..\Src\Game\SceneBase.cpp">
+    <ClCompile Include="..\..\..\Src\Game\App.cpp" />
+    <ClCompile Include="..\..\..\Src\stdafx.cpp" />
+    <ClCompile Include="..\..\..\Src\Game\SceneBase.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Src\Game\RootScene.cpp">
@@ -11,12 +11,12 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Src\Game\App.hpp" />
-    <ClInclude Include="..\..\Src\stdafx.hpp" />
-    <ClInclude Include="..\..\Src\Game\RootScene.hpp">
+    <ClInclude Include="..\..\..\Src\Game\App.hpp" />
+    <ClInclude Include="..\..\..\Src\stdafx.hpp" />
+    <ClInclude Include="..\..\..\Src\Game\RootScene.hpp">
       <Filter>Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Src\Game\SceneBase.hpp">
+    <ClInclude Include="..\..\..\Src\Game\SceneBase.hpp">
       <Filter>Scenes</Filter>
     </ClInclude>
   </ItemGroup>

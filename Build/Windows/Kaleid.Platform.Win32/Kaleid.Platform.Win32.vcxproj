@@ -18,61 +18,34 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\Src\Graphics\BufferBase.cpp" />
-    <ClCompile Include="..\..\Src\Graphics\GraphicsFactory.cpp" />
-    <ClCompile Include="..\..\Src\Graphics\IndexBuffer.cpp" />
-    <ClCompile Include="..\..\Src\Graphics\Renderer.cpp" />
-    <ClCompile Include="..\..\Src\Graphics\Shader.cpp" />
-    <ClCompile Include="..\..\Src\Graphics\ShaderProgram.cpp" />
-    <ClCompile Include="..\..\Src\Graphics\VertexBuffer.cpp" />
-    <ClCompile Include="..\..\Src\Graphics\Window.cpp" />
-    <ClCompile Include="..\..\Src\stdafx.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\Src\Graphics\BufferBase.hpp" />
-    <ClInclude Include="..\..\Src\Graphics\GraphicsFactory.hpp" />
-    <ClInclude Include="..\..\Src\Graphics\IndexBuffer.hpp" />
-    <ClInclude Include="..\..\Src\Graphics\Renderer.hpp" />
-    <ClInclude Include="..\..\Src\Graphics\Shader.hpp" />
-    <ClInclude Include="..\..\Src\Graphics\ShaderProgram.hpp" />
-    <ClInclude Include="..\..\Src\Graphics\VertexBuffer.hpp" />
-    <ClInclude Include="..\..\Src\Graphics\Window.hpp" />
-    <ClInclude Include="..\..\Src\stdafx.hpp" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{B0D1FC24-7ED7-4F0A-B51B-0864F52F4F77}</ProjectGuid>
-    <RootNamespace>KaleidGraphics</RootNamespace>
+    <ProjectGuid>{1C805FD6-885C-4307-9EDA-18F072986F5B}</ProjectGuid>
+    <RootNamespace>KaleidPlatformWin32</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -117,34 +90,38 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_WINDLL;KALEID_GRAPHICS_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
       <LanguageStandard>stdcpplatest</LanguageStandard>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)Include\;$(SolutionDir)Src\;$(SolutionDir)Src\Graphics\;$(SolutionDir)Src\Helpers\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
+      <AdditionalIncludeDirectories>$(SolutionDir)Src\;$(SolutionDir)Src\Game\;$(SolutionDir)Src\Graphics\;$(SolutionDir)Include\</AdditionalIncludeDirectories>
     </ClCompile>
-    <Link>
-      <AdditionalDependencies>OpenGL32.lib;glew32.lib;glew32s.lib;glfw3.lib;glfw3dll.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)Lib\GLFW\$(PlatformTarget)\lib-vc2015\;$(SolutionDir)Lib\GLEW\$(PlatformTarget)\;$(SolutionDir)Lib\GL\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-    </Link>
+    <PostBuildEvent>
+      <Command>copy "$(SolutionDir)Lib\GLEW\$(PlatformTarget)\glew32.dll" "$(SolutionDir)Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
+copy "$(SolutionDir)Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "$(SolutionDir)Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
+
+copy "$(SolutionDir)Bin\Windows\Kaleid.Game\$(Configuration)\$(PlatformTarget)\Kaleid.Game.dll" "$(SolutionDir)Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
+copy "$(SolutionDir)Bin\Windows\Kaleid.Graphics\$(Configuration)\$(PlatformTarget)\Kaleid.Graphics.dll" "$(SolutionDir)Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_WINDLL;KALEID_GRAPHICS_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
       <LanguageStandard>stdcpplatest</LanguageStandard>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)Include\;$(SolutionDir)Src\;$(SolutionDir)Src\Graphics\;$(SolutionDir)Src\Helpers\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
+      <AdditionalIncludeDirectories>$(SolutionDir)Src\;$(SolutionDir)Src\Game\;$(SolutionDir)Src\Graphics\;$(SolutionDir)Include\</AdditionalIncludeDirectories>
     </ClCompile>
-    <Link>
-      <AdditionalDependencies>OpenGL32.lib;glew32.lib;glew32s.lib;glfw3.lib;glfw3dll.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)Lib\GLFW\$(PlatformTarget)\lib-vc2015\;$(SolutionDir)Lib\GLEW\$(PlatformTarget)\;$(SolutionDir)Lib\GL\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-    </Link>
+    <PostBuildEvent>
+      <Command>copy "$(SolutionDir)Lib\GLEW\$(PlatformTarget)\glew32.dll" "$(SolutionDir)Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
+copy "$(SolutionDir)Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "$(SolutionDir)Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
+
+copy "$(SolutionDir)Bin\Windows\Kaleid.Game\$(Configuration)\$(PlatformTarget)\Kaleid.Game.dll" "$(SolutionDir)Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
+copy "$(SolutionDir)Bin\Windows\Kaleid.Graphics\$(Configuration)\$(PlatformTarget)\Kaleid.Graphics.dll" "$(SolutionDir)Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -153,19 +130,23 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_WINDLL;KALEID_GRAPHICS_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
       <LanguageStandard>stdcpplatest</LanguageStandard>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)Include\;$(SolutionDir)Src\;$(SolutionDir)Src\Graphics\;$(SolutionDir)Src\Helpers\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
+      <AdditionalIncludeDirectories>$(SolutionDir)Src\;$(SolutionDir)Src\Game\;$(SolutionDir)Src\Graphics\;$(SolutionDir)Include\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>OpenGL32.lib;glew32.lib;glew32s.lib;glfw3.lib;glfw3dll.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)Lib\GLFW\$(PlatformTarget)\lib-vc2015\;$(SolutionDir)Lib\GLEW\$(PlatformTarget)\;$(SolutionDir)Lib\GL\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Command>copy "$(SolutionDir)Lib\GLEW\$(PlatformTarget)\glew32.dll" "$(SolutionDir)Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
+copy "$(SolutionDir)Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "$(SolutionDir)Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
+
+copy "$(SolutionDir)Bin\Windows\Kaleid.Game\$(Configuration)\$(PlatformTarget)\Kaleid.Game.dll" "$(SolutionDir)Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
+copy "$(SolutionDir)Bin\Windows\Kaleid.Graphics\$(Configuration)\$(PlatformTarget)\Kaleid.Graphics.dll" "$(SolutionDir)Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -174,20 +155,44 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_WINDLL;KALEID_GRAPHICS_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
       <LanguageStandard>stdcpplatest</LanguageStandard>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)Include\;$(SolutionDir)Src\;$(SolutionDir)Src\Graphics\;$(SolutionDir)Src\Helpers\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
+      <AdditionalIncludeDirectories>$(SolutionDir)Src\;$(SolutionDir)Src\Game\;$(SolutionDir)Src\Graphics\;$(SolutionDir)Include\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>OpenGL32.lib;glew32.lib;glew32s.lib;glfw3.lib;glfw3dll.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)Lib\GLFW\$(PlatformTarget)\lib-vc2015\;$(SolutionDir)Lib\GLEW\$(PlatformTarget)\;$(SolutionDir)Lib\GL\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Command>copy "$(SolutionDir)Lib\GLEW\$(PlatformTarget)\glew32.dll" "$(SolutionDir)Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
+copy "$(SolutionDir)Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "$(SolutionDir)Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
+
+copy "$(SolutionDir)Bin\Windows\Kaleid.Game\$(Configuration)\$(PlatformTarget)\Kaleid.Game.dll" "$(SolutionDir)Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
+copy "$(SolutionDir)Bin\Windows\Kaleid.Graphics\$(Configuration)\$(PlatformTarget)\Kaleid.Graphics.dll" "$(SolutionDir)Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\Src\main.cpp" />
+    <ClCompile Include="..\..\..\Src\stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Src\stdafx.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Kaleid.Game\Kaleid.Game.vcxproj">
+      <Project>{29dc283f-b80e-4650-a60e-a294947fdbcd}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Kaleid.Graphics\Kaleid.Graphics.vcxproj">
+      <Project>{b0d1fc24-7ed7-4f0a-b51b-0864f52f4f77}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

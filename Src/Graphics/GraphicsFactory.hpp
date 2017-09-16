@@ -20,7 +20,6 @@ namespace Kaleid::Graphics
 		KALEID_GRAPHICS_API Shader* CreateShader(const char** source, const ShaderType type);
 		KALEID_GRAPHICS_API Shader** CreateShaders(const char*** sources, const ShaderType* types, const unsigned short count);
 		KALEID_GRAPHICS_API Shader** CreateShaders(const std::vector<const char**>& sources, const std::vector<ShaderType>& types);
-		KALEID_GRAPHICS_API ShaderProgram* CreateShaderProgram(const char*** sources, const ShaderType* types, const unsigned short count);
 		KALEID_GRAPHICS_API ShaderProgram* CreateShaderProgram(const std::vector<const char**>& sources, const std::vector<ShaderType>& types);
 		KALEID_GRAPHICS_API ShaderProgram* CreateShaderProgram(Shader** shaders, const unsigned short count);
 		KALEID_GRAPHICS_API VertexBuffer* CreateVertexBuffer(const float* data, size_t count, unsigned int point_size, BufferUsage usage = BufferUsage::StaticDraw);
