@@ -37,9 +37,6 @@ DEP = $(OBJ:%.o=%.d)
 CXX = g++
 CXXFLAGS = -dynamiclib -v $(INCLUDE_DIRS) $(PREPROCCESOR_MACROS)
 
-# Build Rules
-build : $(PROJECT_NAME)
-
 $(PROJECT_NAME) : $(OUT_DIR)
 
 $(OUT_DIR) : $(OBJ)
