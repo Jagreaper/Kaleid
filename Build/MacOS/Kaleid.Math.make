@@ -43,13 +43,13 @@ build : $(PROJECT_NAME)
 $(PROJECT_NAME) : $(OUT_DIR)
 
 $(OUT_DIR) : $(OBJ) 
-	mkdir -p $(@D)
+	mkdir -p $(OUT_DIR)
 	$(CXX) $(CXXFLAGS) $^ -o $@
 
 -include $(DEP)
 
 $(INT_DIR)/%.o : %.cpp
-	mkdir -p $(@D)
+	mkdir -p $(INT_DIR)
 	$(CXX) $(CXXFLAGS) -MMD -c $< -o $@
 	
 .PHONY : clean
