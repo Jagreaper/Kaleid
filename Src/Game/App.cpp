@@ -3,6 +3,7 @@
 #include "SceneBase.hpp"
 
 using namespace Kaleid::Game;
+using namespace Kaleid::Graphics;
 
 App::App()
 {
@@ -48,7 +49,7 @@ void App::SetRenderer(Kaleid::Graphics::Renderer*& renderer)
 	this->_renderer = renderer;
 }
 
-Kaleid::Graphics::Renderer* App::GetRenderer()
+Renderer* App::GetRenderer()
 {
 	return this->_renderer;
 }
@@ -58,7 +59,7 @@ void App::SetGraphicsFactory(Kaleid::Graphics::GraphicsFactory*& graphics_factor
 	this->_graphics_factory = graphics_factory;
 }
 
-Kaleid::Graphics::GraphicsFactory* App::GetGraphicsFactory()
+GraphicsFactory* App::GetGraphicsFactory()
 {
 	return this->_graphics_factory;
 }
