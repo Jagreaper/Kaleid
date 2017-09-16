@@ -5,8 +5,8 @@
 #include <AL/alc.h>
 #include <AL/al.h>
 #elif defined(__APPLE__)
-#include <OpenAL/alc.h>
-#include <OpenAL/al.h>
+#include <AL/alc.h>
+#include <AL/al.h>
 #else
 #include <AL/al.h>
 #include <AL/alc.h>
