@@ -42,17 +42,17 @@ build : $(PROJECT_NAME)
 
 $(PROJECT_NAME) : $(OUT_DIR)
 
-$(OUT_DIR) : $(OBJ)
-    mkdir -p $(@D)
-    $(CXX) $(CXXFLAGS) $^ -o $(TARGET) $@
-    
+$(OUT_DIR) : $(OBJ) 
+	mkdir -p $(@D)
+	$(CXX) $(CXXFLAGS) $^ -o $(TARGET) $@
+
 -include $(DEP)
 
 $(INT_DIR)/%.o : %.cpp
-    mkdir -p $(@D)
-    $(CXX) $(CXXFLAGS) -MMD -c $< -o $@
-
+	mkdir -p $(@D)
+	$(CXX) $(CXXFLAGS) -MMD -c $< -o $@
+	
 .PHONY : clean
 clean :
-    -rm $(OUT_DIR) $(OBJ) $(DEP)
-    -rm $(INT_DIR) $(OBJ) $(DEP)
+	-rm $(OUT_DIR) $(OBJ) $(DEP)
+	-rm $(INT_DIR) $(OBJ) $(DEP)
