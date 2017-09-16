@@ -6,9 +6,7 @@
     <ClCompile Include="..\..\..\Src\Game\SceneBase.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Src\Game\RootScene.cpp">
-      <Filter>Scenes</Filter>
-    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Game\RootScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Src\Game\App.hpp" />
