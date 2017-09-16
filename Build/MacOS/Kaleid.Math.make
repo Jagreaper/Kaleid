@@ -8,7 +8,9 @@ SRC_DIR = $(ROOT_DIR)\Src
 
 PLATFORM_TARGET = x64
 PLATFORM_NAME = MacOS
+
 CONFIGURATION = Debug
+CONFIGURATION_MACRO = DEBUG
 
 PROJECT_NAME = Kaleid.Math
 
@@ -27,26 +29,28 @@ INCLUDE_DIRS = -I$(ROOT_DIR)\Include -I$(SRC_DIR)\ -I$(SRC_DIR)\Math\
 
 SOURCE_FILES = $(wildcard $(SRD_DIR)\*.cpp) $(wildcard $(SRD_DIR)\Math\*.cpp)
 
-PREPROCCESOR_MACROS = KALEID_MATH_DLL
+PREPROCCESOR_MACROS = -D KALEID_MATH_DLL
 
 OBJ = $(SOURCE_FILES:%.cpp=$(INT_DIR)/%.o)
 DEP = $(OBJ:%.o=%.d)
 
-COMPILIER = gcc
-COMPILIER_FLAGS = $(INCLUDE_DIRS)
+CXX = g++
+CXXFLAGS = -dynamiclib -v $(INCLUDE_DIRS) $(PREPROCCESOR_MACROS)
 
 # Build Rules
+build : $(PROJECT_NAME)
+
 $(PROJECT_NAME) : $(OUT_DIR)
 
 $(OUT_DIR) : $(OBJ)
     mkdir -p $(@D)
-    $(COMPILIER) $(COMPILIER_FLAGS) $^ -o $@
+    $(CXX) $(CXXFLAGS) $^ -o $(TARGET) $@
     
 -include $(DEP)
 
 $(INT_DIR)/%.o : %.cpp
     mkdir -p $(@D)
-    $(COMPILIER) $(COMPILIER_FLAGS) -MMD -c $< -o $@
+    $(CXX) $(CXXFLAGS) -MMD -c $< -o $@
 
 .PHONY : clean
 clean :
