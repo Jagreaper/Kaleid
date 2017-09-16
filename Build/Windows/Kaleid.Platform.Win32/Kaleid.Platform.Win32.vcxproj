@@ -95,6 +95,7 @@
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
       <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
       <AdditionalIncludeDirectories>..\..\..\Src\;..\..\..\Src\Game\;..\..\..\Src\Graphics\;..\..\..\Include\</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_MBCS;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <PostBuildEvent>
       <Command>copy "..\..\..\Lib\GLEW\$(PlatformTarget)\glew32.dll" "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
@@ -114,6 +115,7 @@ copy "..\..\..\Bin\Windows\Kaleid.Graphics\$(Configuration)\$(PlatformTarget)\Ka
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
       <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
       <AdditionalIncludeDirectories>..\..\..\Src\;..\..\..\Src\Game\;..\..\..\Src\Graphics\;..\..\..\Include\</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_MBCS;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <PostBuildEvent>
       <Command>copy "..\..\..\Lib\GLEW\$(PlatformTarget)\glew32.dll" "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
@@ -135,6 +137,7 @@ copy "..\..\..\Bin\Windows\Kaleid.Graphics\$(Configuration)\$(PlatformTarget)\Ka
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
       <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
       <AdditionalIncludeDirectories>..\..\..\Src\;..\..\..\Src\Game\;..\..\..\Src\Graphics\;..\..\..\Include\</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_MBCS;RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -160,6 +163,7 @@ copy "..\..\..\Bin\Windows\Kaleid.Graphics\$(Configuration)\$(PlatformTarget)\Ka
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
       <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
       <AdditionalIncludeDirectories>..\..\..\Src\;..\..\..\Src\Game\;..\..\..\Src\Graphics\;..\..\..\Include\</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_MBCS;RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
