@@ -44,7 +44,7 @@ $(PROJECT_NAME) : $(OUT_DIR)
 
 $(OUT_DIR) : $(OBJ) 
 	mkdir -p $(@D)
-	$(CXX) $(CXXFLAGS) $^ -o $(TARGET) $@
+	$(CXX) $(CXXFLAGS) $^ -o $@
 
 -include $(DEP)
 
