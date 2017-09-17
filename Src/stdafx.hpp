@@ -1,32 +1,69 @@
 #pragma once
 
-#ifdef KALEID_GRAPHICS_DLL
+#ifdef _WIN32
+	#ifdef KALEID_GRAPHICS_DLL
+	#include <GLEW/glew.h>
+	#define GLFW_DLL
+	#include <GLFW/glfw3.h>
 
-#include <GLEW/glew.h>
-#define GLFW_DLL
-#include <GLFW/glfw3.h>
+	#define KALEID_GRAPHICS_API __declspec(dllexport)
+	#else
+	#define KALEID_GRAPHICS_API __declspec(dllimport)
+	#endif
 
-#define KALEID_GRAPHICS_API __declspec(dllexport)
+	#ifdef KALEID_GAME_DLL
+	#define KALEID_GAME_API __declspec(dllexport)
+	#else
+	#define KALEID_GAME_API __declspec(dllimport)
+	#endif
+
+	#ifdef KALEID_MATH_DLL
+	#define KALEID_MATH_API __declspec(dllexport)
+	#else
+	#define KALEID_MATH_API __declspec(dllimport)
+	#endif
+
+	#ifdef KALEID_HELPERS_DLL
+	#define KALEID_HELPERS_API __declspec(dllexport)
+	#else
+	#define KALEID_HELPERS_API __declspec(dllimport)
+	#endif
 #else
-#define KALEID_GRAPHICS_API __declspec(dllimport)
+	#ifdef KALEID_GRAPHICS_DLL
+	#include <GLEW/glew.h>
+	#define GLFW_DLL
+	#include <GLFW/glfw3.h>
+
+	#define KALEID_GRAPHICS_API __attribute__((visibility("default")))
+	#else
+	#define KALEID_GRAPHICS_API extern
+	#endif
+
+	#ifdef KALEID_GAME_DLL
+	#define KALEID_GAME_API __attribute__((visibility("default")))
+	#else
+	#define KALEID_GAME_API extern
+	#endif
+
+	#ifdef KALEID_MATH_DLL
+	#define KALEID_MATH_API __attribute__((visibility("default")))
+	#else
+	#define KALEID_MATH_API extern
+	#endif
+
+	#ifdef KALEID_HELPERS_DLL
+	#define KALEID_HELPERS_API __attribute__((visibility("default")))
+	#else
+	#define KALEID_HELPERS_API extern
+	#endif
 #endif
 
-#ifdef KALEID_GAME_DLL
-#define KALEID_GAME_API __declspec(dllexport)
+#ifdef __cplusplus
+#define API_BEGIN extern "C" {
+#define API_END }
 #else
-#define KALEID_GAME_API __declspec(dllimport)
-#endif
-
-#ifdef KALEID_MATH_DLL
-#define KALEID_MATH_API __declspec(dllexport)
-#else
-#define KALEID_MATH_API __declspec(dllimport)
-#endif
-
-#ifdef KALEID_HELPERS_DLL
-#define KALEID_HELPERS_API __declspec(dllexport)
-#else
-#define KALEID_HELPERS_API __declspec(dllimport)
+#define API_BEGIN
+#define API_END
 #endif
 
 #include <iostream>

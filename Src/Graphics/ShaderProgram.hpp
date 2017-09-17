@@ -4,6 +4,7 @@
 #include "Shader.hpp"
 #include <vector>
 
+API_BEGIN
 namespace Kaleid::Graphics
 {
 	class ShaderProgram
@@ -67,3 +68,4 @@ namespace Kaleid::Graphics
 #endif
 	};
 }
+API_END

@@ -3,6 +3,11 @@
 
 using namespace Kaleid::Graphics;
 
+Renderer::Renderer()
+{
+
+}
+
 void Renderer::Load()
 {
 

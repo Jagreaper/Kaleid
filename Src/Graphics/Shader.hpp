@@ -2,6 +2,7 @@
 
 #include "stdafx.hpp"
 
+API_BEGIN
 namespace Kaleid::Graphics
 {
 	enum KALEID_GRAPHICS_API ShaderType
@@ -30,3 +31,4 @@ namespace Kaleid::Graphics
 #endif
 	};
 }
+API_END

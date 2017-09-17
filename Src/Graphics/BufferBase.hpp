@@ -12,6 +12,7 @@
 #define GL_DYNAMIC_READ 0x88E9
 #define GL_DYNAMIC_COPY 0x88EA
 
+API_BEGIN
 namespace Kaleid::Graphics
 {
 	enum KALEID_GRAPHICS_API BufferUsage
@@ -40,3 +41,4 @@ namespace Kaleid::Graphics
 #endif
 	};
 }
+API_END

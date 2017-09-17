@@ -82,3 +82,8 @@ SceneBase* App::GetScene()
 {
 	return this->_current_scene;
 }
+
+Window* App::GetWindow()
+{
+	return this->_window;
+}

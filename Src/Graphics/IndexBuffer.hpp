@@ -4,6 +4,7 @@
 #include "BufferBase.hpp"
 #include <vector>
 
+API_BEGIN
 namespace Kaleid::Graphics
 {
 	class IndexBuffer : public BufferBase
@@ -20,3 +21,4 @@ namespace Kaleid::Graphics
 		void KALEID_GRAPHICS_API Dispose();
 	};
 }
+API_END

@@ -3,12 +3,15 @@
 #include "stdafx.hpp"
 #include "GraphicsFactory.hpp"
 
+API_BEGIN
 namespace Kaleid::Graphics
 {
-	class KALEID_GRAPHICS_API Renderer
+	class Renderer
 	{
 	public:
-		void Load();
-		void Dispose();
+		KALEID_GRAPHICS_API Renderer();
+		KALEID_GRAPHICS_API void Load();
+		KALEID_GRAPHICS_API void Dispose();
 	};
 }
+API_END

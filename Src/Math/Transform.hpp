@@ -3,6 +3,7 @@
 #include "stdafx.hpp"
 #include <vector>
 
+API_BEGIN
 namespace Kaleid::Math
 {
 	class Transform sealed
@@ -63,3 +64,4 @@ namespace Kaleid::Math
 #endif
 	};
 }
+API_END

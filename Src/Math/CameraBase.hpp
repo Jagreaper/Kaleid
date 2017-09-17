@@ -2,6 +2,7 @@
 
 #include "stdafx.hpp"
 
+API_BEGIN
 namespace Kaleid::Math
 {
 	class CameraBase abstract
@@ -45,3 +46,4 @@ namespace Kaleid::Math
 #endif
 	};
 }
+API_END

@@ -4,6 +4,7 @@
 #include "BufferBase.hpp"
 #include <vector>
 
+API_BEGIN
 namespace Kaleid::Graphics
 {
 	class VertexBuffer : public BufferBase
@@ -25,3 +26,4 @@ namespace Kaleid::Graphics
 #endif
 	};
 }
+API_END

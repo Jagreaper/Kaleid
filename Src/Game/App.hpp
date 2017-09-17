@@ -5,6 +5,7 @@
 #include "Window.hpp"
 #include "GraphicsFactory.hpp"
 
+API_BEGIN
 namespace Kaleid::Game
 {
 	class SceneBase;
@@ -25,6 +26,8 @@ namespace Kaleid::Game
 
 		KALEID_GAME_API void SetScene(SceneBase*& current_scene);
 		KALEID_GAME_API SceneBase* GetScene();
+
+		KALEID_GAME_API Kaleid::Graphics::Window* GetWindow();
 #ifdef KALEID_GAME_DLL
 	private:
 		SceneBase* _current_scene = NULL;
@@ -34,3 +37,4 @@ namespace Kaleid::Game
 #endif
 	};
 }
+API_END

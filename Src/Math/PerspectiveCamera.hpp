@@ -3,6 +3,7 @@
 #include "stdafx.hpp"
 #include "CameraBase.hpp"
 
+API_BEGIN
 namespace Kaleid::Math
 {
 	class PerspectiveCamera sealed : public CameraBase
@@ -28,3 +29,4 @@ namespace Kaleid::Math
 #endif
 	};
 }
+API_END
