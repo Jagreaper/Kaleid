@@ -16,10 +16,10 @@ namespace Kaleid::Graphics
 		VertexBuffer(const std::vector<float>* data, unsigned int point_size, BufferUsage usage = BufferUsage::StaticDraw);
 		~VertexBuffer();
 #endif
-		void KALEID_GRAPHICS_API BufferData(const float* data, size_t count, unsigned int point_size, BufferUsage usage = BufferUsage::StaticDraw);
-		void KALEID_GRAPHICS_API BufferData(const std::vector<float>* data, unsigned int point_size, BufferUsage usage = BufferUsage::StaticDraw);
-		void KALEID_GRAPHICS_API Dispose();
-		const unsigned int KALEID_GRAPHICS_API GetPointSize() const;
+		KALEID_GRAPHICS_API void BufferData(const float* data, size_t count, unsigned int point_size, BufferUsage usage = BufferUsage::StaticDraw);
+		KALEID_GRAPHICS_API void BufferData(const std::vector<float>* data, unsigned int point_size, BufferUsage usage = BufferUsage::StaticDraw);
+		KALEID_GRAPHICS_API void Dispose();
+		KALEID_GRAPHICS_API const unsigned int GetPointSize() const;
 #ifdef KALEID_GRAPHICS_DLL
 	private:
 		unsigned int _point_size;

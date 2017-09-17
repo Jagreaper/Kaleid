@@ -16,9 +16,9 @@ namespace Kaleid::Graphics
 		IndexBuffer(const std::vector<unsigned int>* data, BufferUsage usage = BufferUsage::StaticDraw);
 		~IndexBuffer();
 #endif
-		void KALEID_GRAPHICS_API BufferData(const unsigned int* data, size_t count, BufferUsage usage = BufferUsage::StaticDraw);
-		void KALEID_GRAPHICS_API BufferData(const std::vector<unsigned int>* data, BufferUsage usage = BufferUsage::StaticDraw);
-		void KALEID_GRAPHICS_API Dispose();
+		KALEID_GRAPHICS_API void BufferData(const unsigned int* data, size_t count, BufferUsage usage = BufferUsage::StaticDraw);
+		KALEID_GRAPHICS_API void BufferData(const std::vector<unsigned int>* data, BufferUsage usage = BufferUsage::StaticDraw);
+		KALEID_GRAPHICS_API void Dispose();
 	};
 }
 API_END
