@@ -99,10 +99,7 @@
     </ClCompile>
     <PostBuildEvent>
       <Command>copy "..\..\..\Lib\GLEW\$(PlatformTarget)\glew32.dll" "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
-copy "..\..\..\Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
-
-copy "..\..\..\Bin\Windows\Kaleid.Game\$(Configuration)\$(PlatformTarget)\Kaleid.Game.dll" "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
-copy "..\..\..\Bin\Windows\Kaleid.Graphics\$(Configuration)\$(PlatformTarget)\Kaleid.Graphics.dll" "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y</Command>
+copy "..\..\..\Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -119,10 +116,7 @@ copy "..\..\..\Bin\Windows\Kaleid.Graphics\$(Configuration)\$(PlatformTarget)\Ka
     </ClCompile>
     <PostBuildEvent>
       <Command>copy "..\..\..\Lib\GLEW\$(PlatformTarget)\glew32.dll" "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
-copy "..\..\..\Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
-
-copy "..\..\..\Bin\Windows\Kaleid.Game\$(Configuration)\$(PlatformTarget)\Kaleid.Game.dll" "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
-copy "..\..\..\Bin\Windows\Kaleid.Graphics\$(Configuration)\$(PlatformTarget)\Kaleid.Graphics.dll" "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y</Command>
+copy "..\..\..\Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -145,10 +139,7 @@ copy "..\..\..\Bin\Windows\Kaleid.Graphics\$(Configuration)\$(PlatformTarget)\Ka
     </Link>
     <PostBuildEvent>
       <Command>copy "..\..\..\Lib\GLEW\$(PlatformTarget)\glew32.dll" "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
-copy "..\..\..\Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
-
-copy "..\..\..\Bin\Windows\Kaleid.Game\$(Configuration)\$(PlatformTarget)\Kaleid.Game.dll" "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
-copy "..\..\..\Bin\Windows\Kaleid.Graphics\$(Configuration)\$(PlatformTarget)\Kaleid.Graphics.dll" "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y</Command>
+copy "..\..\..\Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -171,10 +162,7 @@ copy "..\..\..\Bin\Windows\Kaleid.Graphics\$(Configuration)\$(PlatformTarget)\Ka
     </Link>
     <PostBuildEvent>
       <Command>copy "..\..\..\Lib\GLEW\$(PlatformTarget)\glew32.dll" "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
-copy "..\..\..\Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
-
-copy "..\..\..\Bin\Windows\Kaleid.Game\$(Configuration)\$(PlatformTarget)\Kaleid.Game.dll" "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y
-copy "..\..\..\Bin\Windows\Kaleid.Graphics\$(Configuration)\$(PlatformTarget)\Kaleid.Graphics.dll" "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y</Command>
+copy "..\..\..\Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
