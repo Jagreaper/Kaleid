@@ -55,7 +55,7 @@ namespace Kaleid::Math
 		bool _is_scale_dirty;
 		bool _is_model_matrix_dirty;
 
-		Transform* _parent = NULL;
+		Transform* _parent;
 		std::vector<Transform*> _children;
 
 		void MarkPositionDirty();

@@ -30,10 +30,10 @@ namespace Kaleid::Game
 		KALEID_GAME_API Kaleid::Graphics::Window* GetWindow();
 #ifdef KALEID_GAME_DLL
 	private:
-		SceneBase* _current_scene = NULL;
-		Kaleid::Graphics::Renderer* _renderer = NULL;
-		Kaleid::Graphics::GraphicsFactory* _graphics_factory = NULL;
-		Kaleid::Graphics::Window* _window = NULL;
+		SceneBase* _current_scene;
+		Kaleid::Graphics::Renderer* _renderer;
+		Kaleid::Graphics::GraphicsFactory* _graphics_factory;
+		Kaleid::Graphics::Window* _window;
 #endif
 	};
 }

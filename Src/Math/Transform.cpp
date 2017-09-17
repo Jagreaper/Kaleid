@@ -15,6 +15,8 @@ Transform::Transform()
 	this->_is_rotation_dirty = true;
 	this->_is_scale_dirty = true;
 	this->_is_model_matrix_dirty = true;
+
+	this->_parent = NULL;
 }
 
 Transform::~Transform()
