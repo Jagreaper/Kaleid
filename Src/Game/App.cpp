@@ -1,6 +1,7 @@
 #include "stdafx.hpp"
 #include "App.hpp"
 #include "SceneBase.hpp"
+#include "RootScene.hpp"
 
 using namespace Kaleid::Game;
 using namespace Kaleid::Graphics;
@@ -17,6 +18,8 @@ void App::Load()
 {
 	this->_window = this->_graphics_factory->CreateWindow(800, 600, "OpenGL Window");
 	this->_window->MakeCurrent();
+
+	this->SetScene(new RootScene(this));
 }
 
 void App::Dispose()
@@ -44,7 +47,7 @@ void App::Run()
 	}
 }
 
-void App::SetRenderer(Kaleid::Graphics::Renderer*& renderer)
+void App::SetRenderer(Kaleid::Graphics::Renderer* renderer)
 {
 	this->_renderer = renderer;
 }
@@ -54,7 +57,7 @@ Renderer* App::GetRenderer()
 	return this->_renderer;
 }
 
-void App::SetGraphicsFactory(Kaleid::Graphics::GraphicsFactory*& graphics_factory)
+void App::SetGraphicsFactory(Kaleid::Graphics::GraphicsFactory* graphics_factory)
 {
 	this->_graphics_factory = graphics_factory;
 }
@@ -64,7 +67,7 @@ GraphicsFactory* App::GetGraphicsFactory()
 	return this->_graphics_factory;
 }
 
-void App::SetScene(SceneBase*& current_scene)
+void App::SetScene(SceneBase* current_scene)
 {
 	if (this->_current_scene != NULL)
 	{

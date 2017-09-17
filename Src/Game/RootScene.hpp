@@ -8,7 +8,7 @@ namespace Kaleid::Game
 	class RootScene : public SceneBase
 	{
 	public:
-		RootScene(App*& app);
+		RootScene(App* app);
 		void Load();
 		void Update();
 		void Render();
