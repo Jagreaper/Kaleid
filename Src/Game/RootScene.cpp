@@ -21,7 +21,7 @@ void RootScene::Update()
 
 void RootScene::Render()
 {
-	this->_renderer->Clear(1.0f, 0.0f, 0.0f, 1.0f);
+	this->_renderer->Clear(0.0f, 0.0f, 0.0f, 1.0f);
 
 	this->_app->GetWindow()->SwapBuffers();
 }
