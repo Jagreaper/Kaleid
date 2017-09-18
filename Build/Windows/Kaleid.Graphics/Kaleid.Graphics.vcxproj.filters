@@ -24,6 +24,13 @@
     <ClCompile Include="..\..\..\Src\Graphics\BufferBase.cpp">
       <Filter>Buffers</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\Src\Graphics\Mesh.cpp" />
+    <ClCompile Include="..\..\..\Src\Graphics\Texture.cpp">
+      <Filter>Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Graphics\TextureBase.cpp">
+      <Filter>Textures</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Src\stdafx.hpp" />
@@ -49,6 +56,13 @@
     <ClInclude Include="..\..\..\Src\Graphics\BufferBase.hpp">
       <Filter>Buffers</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Src\Graphics\Mesh.hpp" />
+    <ClInclude Include="..\..\..\Src\Graphics\TextureBase.hpp">
+      <Filter>Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Graphics\Texture.hpp">
+      <Filter>Textures</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Buffers">
@@ -59,6 +73,9 @@
     </Filter>
     <Filter Include="Rendering">
       <UniqueIdentifier>{ee76b011-2d13-4753-94c2-2fd512a7159e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Textures">
+      <UniqueIdentifier>{9a394d25-4be0-47e2-a0bb-a66e1168b3d3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

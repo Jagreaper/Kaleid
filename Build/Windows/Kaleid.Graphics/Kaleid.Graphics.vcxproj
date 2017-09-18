@@ -22,9 +22,12 @@
     <ClCompile Include="..\..\..\Src\Graphics\BufferBase.cpp" />
     <ClCompile Include="..\..\..\Src\Graphics\GraphicsFactory.cpp" />
     <ClCompile Include="..\..\..\Src\Graphics\IndexBuffer.cpp" />
+    <ClCompile Include="..\..\..\Src\Graphics\Mesh.cpp" />
     <ClCompile Include="..\..\..\Src\Graphics\Renderer.cpp" />
     <ClCompile Include="..\..\..\Src\Graphics\Shader.cpp" />
     <ClCompile Include="..\..\..\Src\Graphics\ShaderProgram.cpp" />
+    <ClCompile Include="..\..\..\Src\Graphics\Texture.cpp" />
+    <ClCompile Include="..\..\..\Src\Graphics\TextureBase.cpp" />
     <ClCompile Include="..\..\..\Src\Graphics\VertexBuffer.cpp" />
     <ClCompile Include="..\..\..\Src\Graphics\Window.cpp" />
     <ClCompile Include="..\..\..\Src\stdafx.cpp">
@@ -38,9 +41,12 @@
     <ClInclude Include="..\..\..\Src\Graphics\BufferBase.hpp" />
     <ClInclude Include="..\..\..\Src\Graphics\GraphicsFactory.hpp" />
     <ClInclude Include="..\..\..\Src\Graphics\IndexBuffer.hpp" />
+    <ClInclude Include="..\..\..\Src\Graphics\Mesh.hpp" />
     <ClInclude Include="..\..\..\Src\Graphics\Renderer.hpp" />
     <ClInclude Include="..\..\..\Src\Graphics\Shader.hpp" />
     <ClInclude Include="..\..\..\Src\Graphics\ShaderProgram.hpp" />
+    <ClInclude Include="..\..\..\Src\Graphics\Texture.hpp" />
+    <ClInclude Include="..\..\..\Src\Graphics\TextureBase.hpp" />
     <ClInclude Include="..\..\..\Src\Graphics\VertexBuffer.hpp" />
     <ClInclude Include="..\..\..\Src\Graphics\Window.hpp" />
     <ClInclude Include="..\..\..\Src\stdafx.hpp" />
