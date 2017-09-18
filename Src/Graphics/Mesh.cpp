@@ -8,7 +8,6 @@ Mesh::Mesh()
 	glGenVertexArrays(1, &this->_vao_id);
 }
 
-
 void Mesh::Dispose()
 {
 	if (this->_vao_id != 0)
