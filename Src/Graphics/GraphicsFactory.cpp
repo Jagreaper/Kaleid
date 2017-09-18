@@ -84,35 +84,15 @@ Shader* GraphicsFactory::CreateShader(const char** source, const ShaderType type
 	return new Shader(source, type);
 }
 
-Shader** GraphicsFactory::CreateShaders(const char*** sources, const ShaderType* types, const unsigned short count)
+ShaderProgram* GraphicsFactory::CreateShaderProgram(const std::vector<Shader*>& shaders, const std::vector<ShaderType>& types)
 {
 	this->Validate();
 
-	Shader** shader = new Shader*[count];
-	for (int index = 0; index < count; index++)
-		shader[index] = new Shader(sources[index], types[index]);
-
-	return shader;
-}
-
-Shader** GraphicsFactory::CreateShaders(const std::vector<const char**>& sources, const std::vector<ShaderType>& types)
-{
-	this->Validate();
-
-	if (sources.size() != types.size())
-		throw new std::exception("sources length does not equal types length");
-
-	Shader** shader = new Shader*[sources.size()];
-	for (unsigned int index = 0; index < sources.size(); index++)
-		shader[index] = new Shader(sources[index], types[index]);
-
-	return shader;
-}
-
-ShaderProgram* GraphicsFactory::CreateShaderProgram(const std::vector<const char**>& sources, const std::vector<ShaderType>& types)
-{
-	Shader** shaders = this->CreateShaders(sources, types);
-	return this->CreateShaderProgram(shaders, (unsigned int) sources.size());
+	ShaderProgram* program = new ShaderProgram();
+	program->Attach(shaders);
+	program->Link();
+	program->Dettach(shaders);
+	return program;
 }
 
 ShaderProgram* GraphicsFactory::CreateShaderProgram(Shader** shaders, const unsigned short count)

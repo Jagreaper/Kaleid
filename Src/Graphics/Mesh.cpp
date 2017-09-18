@@ -6,6 +6,7 @@ using namespace Kaleid::Graphics;
 Mesh::Mesh()
 {
 	glGenVertexArrays(1, &this->_vao_id);
+	this->_vbos = new std::vector<VertexBuffer*>();
 }
 
 void Mesh::Dispose()
@@ -14,17 +15,6 @@ void Mesh::Dispose()
 	{
 		glDeleteVertexArrays(1, &this->_vao_id);
 		this->_vao_id = 0;
-
-		this->_ibo->Dispose();
-		delete this->_ibo;
-
-		for (int index = 0; index < this->_vbos->size(); index++)
-		{
-			VertexBuffer* vbo = this->_vbos->at(index);
-			vbo->Dispose();
-			delete vbo;
-		}
-
 		delete this->_vbos;
 	}
 }
@@ -94,7 +84,9 @@ void Mesh::SetIndexBuffer(IndexBuffer* buffer)
 
 void Mesh::SetVertexBuffers(std::vector<VertexBuffer*>* buffers)
 {
-	this->_vbos = buffers;
+	this->_vbos->clear();
+	for (int index = 0; index < buffers->size(); index++)
+		this->_vbos->push_back(buffers->at(index));
 }
 
 const IndexBuffer* Mesh::GetIndexBuffer() const
