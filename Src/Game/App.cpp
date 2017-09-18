@@ -35,7 +35,6 @@ void App::Dispose()
 	{
 		Window* window = this->GetWindow(index);
 		this->_graphics_factory->FreeWindow(window);
-		delete window;
 	}
 
 	this->_windows->clear();
