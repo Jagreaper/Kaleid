@@ -8,6 +8,8 @@ using namespace Kaleid::Helpers;
 bool GraphicsFactory::_glfw_created = false;
 bool GraphicsFactory::_glew_created = false;
 std::vector<Window*> GraphicsFactory::_windows;
+std::vector<Shader*> _shaders;
+std::vector<ShaderProgram*> _shader_programs;
 std::vector<VertexBuffer*> GraphicsFactory::_vertex_buffers;
 std::vector<IndexBuffer*> GraphicsFactory::_index_buffers;
 std::vector<Mesh*> GraphicsFactory::_meshes;
@@ -35,7 +37,27 @@ void GraphicsFactory::Dispose()
 	for each (Window* window in GraphicsFactory::_windows)
 		window->Dispose();
 
+	for each (Shader* shader in GraphicsFactory::_shaders)
+		shader->Dispose();
+
+	for each (ShaderProgram* shader_program in GraphicsFactory::_shader_programs)
+		shader_program->Dispose();
+
+	for each (VertexBuffer* vertex_buffer in GraphicsFactory::_vertex_buffers)
+		vertex_buffer->Dispose();
+
+	for each (IndexBuffer* index_buffer in GraphicsFactory::_index_buffers)
+		index_buffer->Dispose();
+
+	for each (Mesh* mesh in GraphicsFactory::_meshes)
+		mesh->Dispose();
+
 	GraphicsFactory::_windows.clear();
+	GraphicsFactory::_shaders.clear();
+	GraphicsFactory::_shader_programs.clear();
+	GraphicsFactory::_vertex_buffers.clear();
+	GraphicsFactory::_index_buffers.clear();
+	GraphicsFactory::_meshes.clear();
 
 	if (GraphicsFactory::_glfw_created)
 		glfwTerminate();
@@ -165,6 +187,22 @@ void GraphicsFactory::FreeWindow(Window*& window)
 
 	window->Dispose();
 	delete window;
+}
+
+void GraphicsFactory::FreeShader(Shader*& shader)
+{
+	VectorHelper::RemoveItem(&GraphicsFactory::_shaders, shader);
+
+	shader->Dispose();
+	delete shader;
+}
+
+void GraphicsFactory::FreeShaderProgram(ShaderProgram*& shader_program)
+{
+	VectorHelper::RemoveItem(&GraphicsFactory::_shader_programs, shader_program);
+
+	shader_program->Dispose();
+	delete shader_program;
 }
 
 void GraphicsFactory::FreeVertexBuffer(VertexBuffer*& vertex_buffer)
