@@ -224,3 +224,8 @@ void ShaderProgram::SetUniform(const char* name, const glm::vec4& v)
 {
 	this->SetUniform4v(name, glm::value_ptr(v));
 }
+
+void ShaderProgram::Bind()
+{
+	glUseProgram(this->_id);
+}

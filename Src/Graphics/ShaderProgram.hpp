@@ -15,8 +15,6 @@ namespace Kaleid::Graphics
 		KALEID_GRAPHICS_API void Dettach(Shader** shaders, unsigned int count);
 		KALEID_GRAPHICS_API void Dettach(const std::vector<Shader*>& shaders);
 		KALEID_GRAPHICS_API void Link();
-		KALEID_GRAPHICS_API void Dispose();
-		KALEID_GRAPHICS_API const unsigned int GetId() const;
 		KALEID_GRAPHICS_API bool InUse() const;
 		KALEID_GRAPHICS_API int GetUniformLocation(const char* name) const;
 		KALEID_GRAPHICS_API int GetAttribLocation(const char* name) const;
@@ -58,11 +56,14 @@ namespace Kaleid::Graphics
 		KALEID_GRAPHICS_API void SetUniform(const char* name, const glm::vec3& v);
 		KALEID_GRAPHICS_API void SetUniform(const char* name, const glm::vec4& v);
 #ifdef KALEID_GRAPHICS_DLL
+		void Dispose();
 		ShaderProgram();
 		ShaderProgram(const std::vector<Shader*>& shaders);
 		ShaderProgram(Shader** shaders, unsigned int count);
 		~ShaderProgram();
 
+		void Bind();
+		const unsigned int GetId() const;
 	private:
 		void Validate();
 		unsigned int _id;

@@ -41,9 +41,6 @@
     <ClInclude Include="..\..\..\Src\Graphics\IndexBuffer.hpp">
       <Filter>Buffers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Src\Graphics\ShaderProgram.hpp">
-      <Filter>Shaders</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Src\Graphics\Shader.hpp">
       <Filter>Shaders</Filter>
     </ClInclude>
@@ -62,6 +59,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Src\Graphics\Texture.hpp">
       <Filter>Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Graphics\ShaderProgram.hpp">
+      <Filter>Shaders</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
