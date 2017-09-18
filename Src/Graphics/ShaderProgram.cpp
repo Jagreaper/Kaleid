@@ -130,49 +130,49 @@ bool ShaderProgram::InUse() const
 	return (current_program == (GLint)this->_id);
 }
 
-#define ATTRIB_N_UNIFORM_SETTERS(OGL_TYPE, TYPE_PREFIX, TYPE_SUFFIX) \
+#define PROGRAM_ATTRIB_N_UNIFORM_SETTERS(TYPE, TYPE_PREFIX, TYPE_SUFFIX) \
 \
-void ShaderProgram::SetAttrib(const char* name, OGL_TYPE v0) \
+void ShaderProgram::SetAttrib(const char* name, TYPE v0) \
     { assert(this->InUse()); glVertexAttrib ## TYPE_PREFIX ## 1 ## TYPE_SUFFIX (this->GetAttribLocation(name), v0); } \
-void ShaderProgram::SetAttrib(const char* name, OGL_TYPE v0, OGL_TYPE v1) \
+void ShaderProgram::SetAttrib(const char* name, TYPE v0, TYPE v1) \
     { assert(this->InUse()); glVertexAttrib ## TYPE_PREFIX ## 2 ## TYPE_SUFFIX (this->GetAttribLocation(name), v0, v1); } \
-void ShaderProgram::SetAttrib(const char* name, OGL_TYPE v0, OGL_TYPE v1, OGL_TYPE v2) \
+void ShaderProgram::SetAttrib(const char* name, TYPE v0, TYPE v1, TYPE v2) \
     { assert(this->InUse()); glVertexAttrib ## TYPE_PREFIX ## 3 ## TYPE_SUFFIX (this->GetAttribLocation(name), v0, v1, v2); } \
-void ShaderProgram::SetAttrib(const char* name, OGL_TYPE v0, OGL_TYPE v1, OGL_TYPE v2, OGL_TYPE v3) \
+void ShaderProgram::SetAttrib(const char* name, TYPE v0, TYPE v1, TYPE v2, TYPE v3) \
     { assert(this->InUse()); glVertexAttrib ## TYPE_PREFIX ## 4 ## TYPE_SUFFIX (this->GetAttribLocation(name), v0, v1, v2, v3); } \
 \
-void ShaderProgram::SetAttrib1v(const char* name, const OGL_TYPE* v) \
+void ShaderProgram::SetAttrib1v(const char* name, const TYPE* v) \
     { assert(this->InUse()); glVertexAttrib ## TYPE_PREFIX ## 1 ## TYPE_SUFFIX ## v (this->GetAttribLocation(name), v); } \
-void ShaderProgram::SetAttrib2v(const char* name, const OGL_TYPE* v) \
+void ShaderProgram::SetAttrib2v(const char* name, const TYPE* v) \
     { assert(this->InUse()); glVertexAttrib ## TYPE_PREFIX ## 2 ## TYPE_SUFFIX ## v (this->GetAttribLocation(name), v); } \
-void ShaderProgram::SetAttrib3v(const char* name, const OGL_TYPE* v) \
+void ShaderProgram::SetAttrib3v(const char* name, const TYPE* v) \
     { assert(this->InUse()); glVertexAttrib ## TYPE_PREFIX ## 3 ## TYPE_SUFFIX ## v (this->GetAttribLocation(name), v); } \
-void ShaderProgram::SetAttrib4v(const char* name, const OGL_TYPE* v) \
+void ShaderProgram::SetAttrib4v(const char* name, const TYPE* v) \
     { assert(this->InUse()); glVertexAttrib ## TYPE_PREFIX ## 4 ## TYPE_SUFFIX ## v (this->GetAttribLocation(name), v); } \
 \
-void ShaderProgram::SetUniform(const char* name, OGL_TYPE v0) \
+void ShaderProgram::SetUniform(const char* name, TYPE v0) \
     { assert(this->InUse()); glUniform1 ## TYPE_SUFFIX (this->GetUniformLocation(name), v0); } \
-void ShaderProgram::SetUniform(const char* name, OGL_TYPE v0, OGL_TYPE v1) \
+void ShaderProgram::SetUniform(const char* name, TYPE v0, TYPE v1) \
     { assert(this->InUse()); glUniform2 ## TYPE_SUFFIX (this->GetUniformLocation(name), v0, v1); } \
-void ShaderProgram::SetUniform(const char* name, OGL_TYPE v0, OGL_TYPE v1, OGL_TYPE v2) \
+void ShaderProgram::SetUniform(const char* name, TYPE v0, TYPE v1, TYPE v2) \
     { assert(this->InUse()); glUniform3 ## TYPE_SUFFIX (this->GetUniformLocation(name), v0, v1, v2); } \
-void ShaderProgram::SetUniform(const char* name, OGL_TYPE v0, OGL_TYPE v1, OGL_TYPE v2, OGL_TYPE v3) \
+void ShaderProgram::SetUniform(const char* name, TYPE v0, TYPE v1, TYPE v2, TYPE v3) \
     { assert(this->InUse()); glUniform4 ## TYPE_SUFFIX (this->GetUniformLocation(name), v0, v1, v2, v3); } \
 \
-void ShaderProgram::SetUniform1v(const char* name, const OGL_TYPE* v, int count) \
+void ShaderProgram::SetUniform1v(const char* name, const TYPE* v, int count) \
     { assert(this->InUse()); glUniform1 ## TYPE_SUFFIX ## v (this->GetUniformLocation(name), count, v); } \
-void ShaderProgram::SetUniform2v(const char* name, const OGL_TYPE* v, int count) \
+void ShaderProgram::SetUniform2v(const char* name, const TYPE* v, int count) \
     { assert(this->InUse()); glUniform2 ## TYPE_SUFFIX ## v (this->GetUniformLocation(name), count, v); } \
-void ShaderProgram::SetUniform3v(const char* name, const OGL_TYPE* v, int count) \
+void ShaderProgram::SetUniform3v(const char* name, const TYPE* v, int count) \
     { assert(this->InUse()); glUniform3 ## TYPE_SUFFIX ## v (this->GetUniformLocation(name), count, v); } \
-void ShaderProgram::SetUniform4v(const char* name, const OGL_TYPE* v, int count) \
+void ShaderProgram::SetUniform4v(const char* name, const TYPE* v, int count) \
     { assert(this->InUse()); glUniform4 ## TYPE_SUFFIX ## v (this->GetUniformLocation(name), count, v); }
 
-ATTRIB_N_UNIFORM_SETTERS(float, , f);
-ATTRIB_N_UNIFORM_SETTERS(double, , d);
-ATTRIB_N_UNIFORM_SETTERS(int, I, i);
-ATTRIB_N_UNIFORM_SETTERS(unsigned int, I, ui);
-#undef ATTRIB_N_UNIFORM_SETTERS
+PROGRAM_ATTRIB_N_UNIFORM_SETTERS(float, , f);
+PROGRAM_ATTRIB_N_UNIFORM_SETTERS(double, , d);
+PROGRAM_ATTRIB_N_UNIFORM_SETTERS(int, I, i);
+PROGRAM_ATTRIB_N_UNIFORM_SETTERS(unsigned int, I, ui);
+#undef PROGRAM_ATTRIB_N_UNIFORM_SETTERS
 
 void ShaderProgram::SetUniformMatrix2(const char* name, const float* v, int count, bool transpose)
 {

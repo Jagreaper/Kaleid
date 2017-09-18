@@ -41,11 +41,11 @@ void Texture::SetDefaultParameters()
 	this->SetParameter(TextureParameter::MagFilter, TextureMagFilter::Linear);
 }
 
-#define TEXTURE_PARAMETER_SETTERS(OGL_TYPE) \
-void Texture::SetParameter(TextureParameter pname, OGL_TYPE value) \
+#define TEXTURE_PARAMETER_SETTERS(TYPE) \
+void Texture::SetParameter(TextureParameter pname, TYPE value) \
 { \
 	this->Bind(); \
-	glTexParameteri(GL_TEXTURE_2D, static_cast<std::underlying_type_t<TextureParameter>>(pname), static_cast<std::underlying_type_t<OGL_TYPE>>(value)); \
+	glTexParameteri(GL_TEXTURE_2D, static_cast<std::underlying_type_t<TextureParameter>>(pname), static_cast<std::underlying_type_t<TYPE>>(value)); \
 } \
 
 TEXTURE_PARAMETER_SETTERS(DepthStencilTextureMode)

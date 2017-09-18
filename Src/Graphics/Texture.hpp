@@ -14,7 +14,7 @@ namespace Kaleid::Graphics
 		KALEID_GRAPHICS_API void SetDefaultParameters();
 		KALEID_GRAPHICS_API void SetParameter(TextureParameter pname, int value);
 
-#define _TEXTURE_PARAMETER_SETTERS(OGL_TYPE) KALEID_GRAPHICS_API void SetParameter(TextureParameter pname, OGL_TYPE value);
+#define _TEXTURE_PARAMETER_SETTERS(TYPE) KALEID_GRAPHICS_API void SetParameter(TextureParameter pname, TYPE value);
 		_TEXTURE_PARAMETER_SETTERS(DepthStencilTextureMode)
 		_TEXTURE_PARAMETER_SETTERS(TextureCompareFunc)
 		_TEXTURE_PARAMETER_SETTERS(TextureCompareMode)

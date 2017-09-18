@@ -10,11 +10,16 @@ namespace Kaleid::Graphics
 	class IndexBuffer : public BufferBase
 	{
 	public:
-		KALEID_GRAPHICS_API void BufferData(const unsigned int* data, size_t count, BufferUsage usage = BufferUsage::StaticDraw);
-		KALEID_GRAPHICS_API void BufferData(const std::vector<unsigned int>* data, BufferUsage usage = BufferUsage::StaticDraw);
+#define _INDEX_BUFFER_DATA_SETTER(TYPE) \
+		KALEID_GRAPHICS_API void BufferData(const TYPE* data, size_t count, BufferUsage usage = BufferUsage::StaticDraw); \
+		KALEID_GRAPHICS_API void BufferData(const std::vector<TYPE>* data, BufferUsage usage = BufferUsage::StaticDraw); \
+
+		_INDEX_BUFFER_DATA_SETTER(unsigned char)
+		_INDEX_BUFFER_DATA_SETTER(unsigned short)
+		_INDEX_BUFFER_DATA_SETTER(unsigned int)
+#undef _INDEX_BUFFER_DATA_SETTER
 #ifdef KALEID_GRAPHICS_DLL
 		void Bind();
-
 		IndexBuffer();
 #endif
 	};

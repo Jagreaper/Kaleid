@@ -31,6 +31,7 @@ namespace Kaleid::Graphics
 	protected:
 		unsigned int _id;
 		size_t _length;
+		int _type_info;
 #endif
 	};
 }
