@@ -21,12 +21,10 @@ namespace Kaleid::Math
 		KALEID_MATH_API void SetFarZ(float z_far);
 
 		KALEID_MATH_API glm::mat4 GetProjectionMatrix();
-#ifdef KALEID_MATH_DLL
 	private:
 		float _z_near;
 		float _z_far;
 		float _fov;
-#endif
 	};
 }
 API_END

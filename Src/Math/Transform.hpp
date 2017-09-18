@@ -38,7 +38,6 @@ namespace Kaleid::Math
 		KALEID_MATH_API void AttachChild(Transform*& child);
 		KALEID_MATH_API void DettachParent(Transform*& parent);
 		KALEID_MATH_API void DettachChild(Transform*& child);
-#ifdef KALEID_MATH_DLL
 	private:
 		glm::vec3 _r_position;
 		glm::vec3 _r_rotation;
@@ -61,7 +60,6 @@ namespace Kaleid::Math
 		void MarkPositionDirty();
 		void MarkRotationDirty();
 		void MarkScaleDirty();
-#endif
 	};
 }
 API_END
