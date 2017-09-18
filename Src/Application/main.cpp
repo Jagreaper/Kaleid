@@ -13,10 +13,10 @@ int main()
 {
 	App app;
 
-	GraphicsFactory* graphicsFactory = new GraphicsFactory();
-	Renderer* renderer = new Renderer();
-	app.SetGraphicsFactory(graphicsFactory);
-	app.SetRenderer(renderer);
+	GraphicsFactory graphicsFactory;
+	Renderer renderer;
+	app.SetGraphicsFactory(&graphicsFactory);
+	app.SetRenderer(&renderer);
 	app.SetScene(SceneManager::CreateRootScene(&app), std::bind(SceneManager::FreeScene, app.GetScene()));
 
 	app.Load();
