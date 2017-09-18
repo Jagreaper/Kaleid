@@ -229,11 +229,11 @@ namespace Kaleid::Graphics
 		KALEID_GRAPHICS_API const unsigned int GetWidth() const;
 		KALEID_GRAPHICS_API const unsigned int GetHeight() const;
 		KALEID_GRAPHICS_API void GetSize(unsigned int* width, unsigned int* height) const;
+		KALEID_GRAPHICS_API bool Exists() const;
 
 		KALEID_GRAPHICS_API virtual void SetDefaultParameters() = 0;
 		KALEID_GRAPHICS_API virtual void GenerateMipmap() = 0;
 		KALEID_GRAPHICS_API virtual void SetParameter(TextureParameter pname, int value) = 0;
-
 #define _TEXTURE_BASE_PARAMETER_SETTERS(OGL_TYPE) KALEID_GRAPHICS_API virtual void SetParameter(TextureParameter pname, OGL_TYPE value) = 0;
 		_TEXTURE_BASE_PARAMETER_SETTERS(DepthStencilTextureMode)
 		_TEXTURE_BASE_PARAMETER_SETTERS(TextureCompareFunc)
@@ -250,6 +250,7 @@ namespace Kaleid::Graphics
 
 #ifdef KALEID_GRAPHICS_DLL
 		TextureBase();
+		virtual void Bind() = 0;
 		void Dispose();
 		const unsigned int GetId() const;
 	protected:

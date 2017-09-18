@@ -2,16 +2,6 @@
 
 #include "stdafx.hpp"
 
-#define GL_STREAM_DRAW 0x88E0
-#define GL_STREAM_READ 0x88E1
-#define GL_STREAM_COPY 0x88E2
-#define GL_STATIC_DRAW 0x88E4
-#define GL_STATIC_READ 0x88E5
-#define GL_STATIC_COPY 0x88E6
-#define GL_DYNAMIC_DRAW 0x88E8
-#define GL_DYNAMIC_READ 0x88E9
-#define GL_DYNAMIC_COPY 0x88EA
-
 API_BEGIN
 namespace Kaleid::Graphics
 {
@@ -31,10 +21,13 @@ namespace Kaleid::Graphics
 	class BufferBase abstract
 	{
 	public:
-		KALEID_GRAPHICS_API const unsigned int GetId() const;
 		KALEID_GRAPHICS_API const size_t GetLength() const;
+		KALEID_GRAPHICS_API const bool Exists() const;
 #ifdef KALEID_GRAPHICS_DLL
 		BufferBase();
+		virtual void Bind() = 0;
+		void Dispose();
+		const unsigned int GetId() const;
 	protected:
 		unsigned int _id;
 		size_t _length;

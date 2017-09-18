@@ -6,8 +6,23 @@ using namespace Kaleid::Graphics;
 
 BufferBase::BufferBase()
 {
+	glGenBuffers(1, &this->_id);
 	this->_id = 0;
 	this->_length = 0;
+}
+
+const size_t BufferBase::GetLength() const
+{
+	return this->_length;
+}
+
+void BufferBase::Dispose()
+{
+	if (this->_id != 0)
+	{
+		glDeleteBuffers(1, &this->_id);
+		this->_id = 0;
+	}
 }
 
 const unsigned int BufferBase::GetId() const
@@ -15,7 +30,7 @@ const unsigned int BufferBase::GetId() const
 	return this->_id;
 }
 
-const size_t BufferBase::GetLength() const
+const bool BufferBase::Exists() const
 {
-	return this->_length;
+	return this->_id != 0;
 }

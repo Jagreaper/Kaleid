@@ -39,3 +39,8 @@ const unsigned int TextureBase::GetId() const
 {
 	return this->_id;
 }
+
+bool TextureBase::Exists() const
+{
+	return this->_id != 0;
+}

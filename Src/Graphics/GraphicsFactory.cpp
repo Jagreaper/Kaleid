@@ -130,14 +130,18 @@ VertexBuffer* GraphicsFactory::CreateVertexBuffer(const float* data, size_t coun
 {
 	this->Validate();
 
-	return new VertexBuffer(data, count, point_size, usage);
+	VertexBuffer* buffer = new VertexBuffer();
+	buffer->BufferData(data, count, point_size, usage);
+	return buffer;
 }
 
 IndexBuffer* GraphicsFactory::CreateIndexBuffer(const unsigned int* data, size_t count, BufferUsage usage)
 {
 	this->Validate();
 
-	return new IndexBuffer(data, count, usage);
+	IndexBuffer* buffer = new IndexBuffer();
+	buffer->BufferData(data, count, usage);
+	return buffer;
 }
 
 void GraphicsFactory::FreeWindow(Window* window)

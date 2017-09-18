@@ -29,6 +29,8 @@ namespace Kaleid::Graphics
 #undef _TEXTURE_PARAMETER_SETTERS
 #ifdef KALEID_GRAPHICS_DLL
 		Texture();
+		
+		void Bind();
 #endif
 	};
 }
