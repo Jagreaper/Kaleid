@@ -44,7 +44,6 @@ namespace Kaleid::Graphics
 		KALEID_GRAPHICS_API void FreeVertexBuffer(VertexBuffer*& vertex_buffer);
 		KALEID_GRAPHICS_API void FreeIndexBuffer(IndexBuffer*& index_buffer);
 		KALEID_GRAPHICS_API void FreeMesh(Mesh*& mesh);
-#ifdef KALEID_GRAPHICS_DLL
 	private:
 		static void Dispose();
 		static void Validate();
@@ -61,7 +60,6 @@ namespace Kaleid::Graphics
 		static std::vector<VertexBuffer*> _vertex_buffers;
 		static std::vector<IndexBuffer*> _index_buffers;
 		static std::vector<Mesh*> _meshes;
-#endif
 	};
 }
 API_END
