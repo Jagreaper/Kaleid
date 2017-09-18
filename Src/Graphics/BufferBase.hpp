@@ -18,24 +18,24 @@ namespace Kaleid::Graphics
 		DynamicCopy = 0x88EA,
 	};
 
+	class Mesh;
+
 	class BufferBase abstract
 	{
+		friend class Mesh;
 	public:
-		KALEID_GRAPHICS_API const size_t GetLength() const;
-		KALEID_GRAPHICS_API const bool Exists() const;
-#ifdef KALEID_GRAPHICS_DLL
 		BufferBase();
 
-		virtual void Bind() = 0;
-
-		void Dispose();
-		const unsigned int GetId() const;
-		const int GetTypeInfo() const;
+		KALEID_GRAPHICS_API const size_t GetLength() const;
+		KALEID_GRAPHICS_API const bool Exists() const;
 	protected:
 		unsigned int _id;
 		size_t _length;
 		int _type_info;
-#endif
+		virtual void Bind() = 0;
+		void Dispose();
+		const unsigned int GetId() const;
+		const int GetTypeInfo() const;
 	};
 }
 API_END
