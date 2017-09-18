@@ -11,13 +11,14 @@ App::App()
 	this->_current_scene = NULL;
 	this->_renderer = NULL;
 	this->_graphics_factory = NULL;
-	this->_window = NULL;
+	this->_is_running = false;
+	this->_windows = new std::vector<Window*>();
 }
 
 void App::Load()
 {
-	this->_window = this->_graphics_factory->CreateWindow(800, 600, "OpenGL Window");
-	this->_window->MakeCurrent();
+	Window* window = this->_graphics_factory->CreateWindow(800, 600, "OpenGL Window");
+	this->_windows->push_back(window);
 
 	this->SetScene(new RootScene(this));
 }
@@ -30,14 +31,23 @@ void App::Dispose()
 		delete this->_current_scene;
 	}
 
-	this->_graphics_factory->FreeWindow(this->_window);
+	for (int index = 0; index < this->_windows->size(); index++)
+	{
+		Window* window = this->GetWindow(index);
+		this->_graphics_factory->FreeWindow(window);
+		delete window;
+	}
+
+	this->_windows->clear();
 }
 
 void App::Run()
 {
-	while (this->_window->Exists()) // Main Loop
+	this->_is_running = true;
+
+	while (this->_is_running) // Main Loop
 	{
-		this->_window->PollEvents();
+		Window::PollEvents();
 
 		if (this->_current_scene != NULL)
 		{
@@ -45,6 +55,11 @@ void App::Run()
 			this->_current_scene->Render();
 		}
 	}
+}
+
+void App::Close()
+{
+	this->_is_running = false;
 }
 
 void App::SetRenderer(Kaleid::Graphics::Renderer* renderer)
@@ -86,7 +101,17 @@ SceneBase* App::GetScene()
 	return this->_current_scene;
 }
 
-Window* App::GetWindow()
+std::vector<Kaleid::Graphics::Window*>* App::GetWindows()
 {
-	return this->_window;
+	return this->_windows;
+}
+
+Kaleid::Graphics::Window* App::GetWindow(int index)
+{
+	return this->_windows->at(index);
+}
+
+bool App::IsRunning()
+{
+	return this->_is_running;
 }

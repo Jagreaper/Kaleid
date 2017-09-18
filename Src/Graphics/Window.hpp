@@ -16,7 +16,7 @@ namespace Kaleid::Graphics
 
 		KALEID_GRAPHICS_API void SetTitle(const char* title);
 		KALEID_GRAPHICS_API bool Exists();
-		KALEID_GRAPHICS_API void PollEvents();
+		KALEID_GRAPHICS_API static void PollEvents();
 #ifdef KALEID_GRAPHICS_DLL
 		Window(int width, int height, const char* title);
 
