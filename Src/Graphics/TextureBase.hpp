@@ -4,12 +4,12 @@
 API_BEGIN
 namespace Kaleid::Graphics
 {
-	enum DepthStencilTextureMode
+	enum class DepthStencilTextureMode
 	{
 		DepthComponent = 0x1902,
 	};
 
-	enum TextureCompareFunc
+	enum class TextureCompareFunc
 	{
 		LessEqual = 0x0203,
 		GreaterEqual = 0x0206,
@@ -21,13 +21,13 @@ namespace Kaleid::Graphics
 		Never = 0x0200,
 	};
 
-	enum TextureCompareMode
+	enum class TextureCompareMode
 	{
 		CompareRefToTexture = 0x884E,
 		None = 0,
 	};
 
-	enum TextureMinFilter
+	enum class TextureMinFilter
 	{
 		Nearest = 0x2600,
 		Linear = 0x2601,
@@ -37,13 +37,13 @@ namespace Kaleid::Graphics
 		LinearMipmapLinear = 0x2703,
 	};
 
-	enum TextureMagFilter
+	enum class TextureMagFilter
 	{
 		Nearest = 0x2600,
 		Linear = 0x2601,
 	};
 
-	enum TextureSwizzle
+	enum class TextureSwizzle
 	{
 		Red = 0x1903,
 		Green = 0x1904,
@@ -53,7 +53,7 @@ namespace Kaleid::Graphics
 		Zero = 0,
 	};
 
-	enum TextureWrap
+	enum class TextureWrap
 	{
 		ClampToEdge = 0x812F,
 		ClampToborder = 0x812D,
@@ -62,7 +62,7 @@ namespace Kaleid::Graphics
 		MirrorClampToEdge = 0x8743,
 	};
 
-	enum TextureParameter
+	enum class TextureParameter
 	{
 		DepthStencilTextureMode = 0x90EA,
 		BaseLevel = 0x813C,
@@ -89,7 +89,7 @@ namespace Kaleid::Graphics
 		WrapR = 0x8072,
 	};
 
-	enum InternalTextureFormat
+	enum class InternalTextureFormat
 	{
 		DepthComponent = 0x1902,
 		DepthStencil = 0x84F9,
@@ -193,7 +193,7 @@ namespace Kaleid::Graphics
 		CompressedRgbBptcUnsignedFloat = 0x8E8F,
 	};
 
-	enum TextureFormat
+	enum class TextureFormat
 	{
 		Red = 0x1903,
 		Rg = 0x8227,
@@ -212,7 +212,7 @@ namespace Kaleid::Graphics
 		DepthStencil = 0x84F9,
 	};
 
-	enum TextureDataType
+	enum class TextureDataType
 	{
 		UnsignedByte = 0x1401,
 		Byte = 0x1400,
@@ -229,6 +229,25 @@ namespace Kaleid::Graphics
 		KALEID_GRAPHICS_API const unsigned int GetWidth() const;
 		KALEID_GRAPHICS_API const unsigned int GetHeight() const;
 		KALEID_GRAPHICS_API void GetSize(unsigned int* width, unsigned int* height) const;
+
+		KALEID_GRAPHICS_API virtual void SetDefaultParameters() = 0;
+		KALEID_GRAPHICS_API virtual void GenerateMipmap() = 0;
+		KALEID_GRAPHICS_API virtual void SetParameter(TextureParameter pname, int value) = 0;
+
+#define _TEXTURE_BASE_PARAMETER_SETTERS(OGL_TYPE) KALEID_GRAPHICS_API virtual void SetParameter(TextureParameter pname, OGL_TYPE value) = 0;
+		_TEXTURE_BASE_PARAMETER_SETTERS(DepthStencilTextureMode)
+		_TEXTURE_BASE_PARAMETER_SETTERS(TextureCompareFunc)
+		_TEXTURE_BASE_PARAMETER_SETTERS(TextureCompareMode)
+		_TEXTURE_BASE_PARAMETER_SETTERS(TextureMinFilter)
+		_TEXTURE_BASE_PARAMETER_SETTERS(TextureMagFilter)
+		_TEXTURE_BASE_PARAMETER_SETTERS(TextureSwizzle)
+		_TEXTURE_BASE_PARAMETER_SETTERS(TextureWrap)
+		_TEXTURE_BASE_PARAMETER_SETTERS(TextureParameter)
+		_TEXTURE_BASE_PARAMETER_SETTERS(InternalTextureFormat)
+		_TEXTURE_BASE_PARAMETER_SETTERS(TextureFormat)
+		_TEXTURE_BASE_PARAMETER_SETTERS(TextureDataType)
+#undef _TEXTURE_BASE_PARAMETER_SETTERS
+
 #ifdef KALEID_GRAPHICS_DLL
 		TextureBase();
 		void Dispose();

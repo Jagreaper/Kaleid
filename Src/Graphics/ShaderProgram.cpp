@@ -172,6 +172,7 @@ ATTRIB_N_UNIFORM_SETTERS(float, , f);
 ATTRIB_N_UNIFORM_SETTERS(double, , d);
 ATTRIB_N_UNIFORM_SETTERS(int, I, i);
 ATTRIB_N_UNIFORM_SETTERS(unsigned int, I, ui);
+#undef ATTRIB_N_UNIFORM_SETTERS
 
 void ShaderProgram::SetUniformMatrix2(const char* name, const float* v, int count, bool transpose)
 {

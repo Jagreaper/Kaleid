@@ -21,7 +21,7 @@ namespace Kaleid::Graphics
 		KALEID_GRAPHICS_API int GetUniformLocation(const char* name) const;
 		KALEID_GRAPHICS_API int GetAttribLocation(const char* name) const;
 
-#define _TDOGL_PROGRAM_ATTRIB_N_UNIFORM_SETTERS(OGL_TYPE) \
+#define _PROGRAM_ATTRIB_N_UNIFORM_SETTERS(OGL_TYPE) \
 		KALEID_GRAPHICS_API void SetAttrib(const char* name, OGL_TYPE v0); \
 		KALEID_GRAPHICS_API void SetAttrib(const char* name, OGL_TYPE v0, OGL_TYPE v1); \
 		KALEID_GRAPHICS_API void SetAttrib(const char* name, OGL_TYPE v0, OGL_TYPE v1, OGL_TYPE v2); \
@@ -42,10 +42,11 @@ namespace Kaleid::Graphics
 		KALEID_GRAPHICS_API void SetUniform3v(const char* name, const OGL_TYPE* v, int count=1); \
 		KALEID_GRAPHICS_API void SetUniform4v(const char* name, const OGL_TYPE* v, int count=1); \
 
-		_TDOGL_PROGRAM_ATTRIB_N_UNIFORM_SETTERS(float)
-		_TDOGL_PROGRAM_ATTRIB_N_UNIFORM_SETTERS(double)
-		_TDOGL_PROGRAM_ATTRIB_N_UNIFORM_SETTERS(int)
-		_TDOGL_PROGRAM_ATTRIB_N_UNIFORM_SETTERS(unsigned int)
+		_PROGRAM_ATTRIB_N_UNIFORM_SETTERS(float)
+		_PROGRAM_ATTRIB_N_UNIFORM_SETTERS(double)
+		_PROGRAM_ATTRIB_N_UNIFORM_SETTERS(int)
+		_PROGRAM_ATTRIB_N_UNIFORM_SETTERS(unsigned int)
+#undef _PROGRAM_ATTRIB_N_UNIFORM_SETTERS
 
 		KALEID_GRAPHICS_API void SetUniformMatrix2(const char* name, const float* v, int count = 1, bool transpose = false);
 		KALEID_GRAPHICS_API void SetUniformMatrix3(const char* name, const float* v, int count = 1, bool transpose = false);
