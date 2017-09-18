@@ -12,22 +12,6 @@ ShaderProgram::ShaderProgram()
 		throw std::runtime_error("glCreateProgram failed");
 }
 
-ShaderProgram::ShaderProgram(const std::vector<Shader*>& shaders)
-	: ShaderProgram()
-{
-	this->Attach(shaders);
-	this->Link();
-	this->Dettach(shaders);
-}
-
-ShaderProgram::ShaderProgram(Shader** shaders, unsigned int count)
-	: ShaderProgram()
-{
-	this->Attach(shaders, count);
-	this->Link();
-	this->Dettach(shaders, count);
-}
-
 void ShaderProgram::Attach(Shader** shaders, unsigned int count)
 {
 	for (unsigned int index = 0; index < count; index++)
@@ -78,11 +62,6 @@ void ShaderProgram::Validate()
 		this->Dispose();
 		throw std::runtime_error(msg);
 	}
-}
-
-ShaderProgram::~ShaderProgram()
-{
-	this->Dispose();
 }
 
 void ShaderProgram::Dispose()

@@ -8,8 +8,8 @@ using namespace Kaleid::Helpers;
 bool GraphicsFactory::_glfw_created = false;
 bool GraphicsFactory::_glew_created = false;
 std::vector<Window*> GraphicsFactory::_windows;
-std::vector<Shader*> _shaders;
-std::vector<ShaderProgram*> _shader_programs;
+std::vector<Shader*> GraphicsFactory::_shaders;
+std::vector<ShaderProgram*> GraphicsFactory::_shader_programs;
 std::vector<VertexBuffer*> GraphicsFactory::_vertex_buffers;
 std::vector<IndexBuffer*> GraphicsFactory::_index_buffers;
 std::vector<Mesh*> GraphicsFactory::_meshes;
@@ -102,18 +102,35 @@ Window* GraphicsFactory::CreateWindow(const unsigned int width, const unsigned i
 	return window;
 }
 
-Shader* GraphicsFactory::CreateShader(const char** source, const ShaderType type)
+Shader* GraphicsFactory::CreateShader(const ShaderType type)
 {
 	this->Validate();
 
-	return new Shader(source, type);
+	Shader* shader = new Shader(type);
+	GraphicsFactory::_shaders.push_back(shader);
+	return shader;
 }
 
-ShaderProgram* GraphicsFactory::CreateShaderProgram(const std::vector<Shader*>& shaders, const std::vector<ShaderType>& types)
+Shader* GraphicsFactory::CreateShader(const char** source, const ShaderType type)
+{
+	Shader* shader = this->CreateShader(type);
+	shader->SetSource(source);
+	shader->Compile();
+	return shader;
+}
+
+ShaderProgram* GraphicsFactory::CreateShaderProgram()
 {
 	this->Validate();
 
 	ShaderProgram* program = new ShaderProgram();
+	GraphicsFactory::_shader_programs.push_back(program);
+	return program;
+}
+
+ShaderProgram* GraphicsFactory::CreateShaderProgram(const std::vector<Shader*>& shaders, const std::vector<ShaderType>& types)
+{
+	ShaderProgram* program = this->CreateShaderProgram();
 	program->Attach(shaders);
 	program->Link();
 	program->Dettach(shaders);
@@ -122,9 +139,7 @@ ShaderProgram* GraphicsFactory::CreateShaderProgram(const std::vector<Shader*>& 
 
 ShaderProgram* GraphicsFactory::CreateShaderProgram(Shader** shaders, const unsigned short count)
 {
-	this->Validate();
-
-	ShaderProgram* program = new ShaderProgram();
+	ShaderProgram* program = this->CreateShaderProgram();
 	program->Attach(shaders, count);
 	program->Link();
 	program->Dettach(shaders, count);

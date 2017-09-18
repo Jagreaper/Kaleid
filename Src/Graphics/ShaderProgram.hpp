@@ -58,9 +58,6 @@ namespace Kaleid::Graphics
 #ifdef KALEID_GRAPHICS_DLL
 		void Dispose();
 		ShaderProgram();
-		ShaderProgram(const std::vector<Shader*>& shaders);
-		ShaderProgram(Shader** shaders, unsigned int count);
-		~ShaderProgram();
 
 		void Bind();
 		const unsigned int GetId() const;

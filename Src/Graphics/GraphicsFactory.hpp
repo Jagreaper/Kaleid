@@ -19,9 +19,10 @@ namespace Kaleid::Graphics
 	public:
 		KALEID_GRAPHICS_API GraphicsFactory();
 		KALEID_GRAPHICS_API ~GraphicsFactory();
+
 		KALEID_GRAPHICS_API Window* CreateWindow(const unsigned int width, const unsigned int height, const char* title);
 
-		KALEID_GRAPHICS_API Shader* CreateShader();
+		KALEID_GRAPHICS_API Shader* CreateShader(const ShaderType type);
 		KALEID_GRAPHICS_API Shader* CreateShader(const char** source, const ShaderType type);
 
 		KALEID_GRAPHICS_API ShaderProgram* CreateShaderProgram();

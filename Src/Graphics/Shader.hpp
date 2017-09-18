@@ -5,7 +5,7 @@
 API_BEGIN
 namespace Kaleid::Graphics
 {
-	enum KALEID_GRAPHICS_API ShaderType
+	enum ShaderType
 	{
 		Fragment = 0x8B30,
 		Vertex = 0x8B31,
@@ -20,8 +20,6 @@ namespace Kaleid::Graphics
 		KALEID_GRAPHICS_API void Compile();
 #ifdef KALEID_GRAPHICS_DLL
 		Shader(const ShaderType type);
-		Shader(const char** source, const ShaderType type);
-		~Shader();
 
 		void Dispose();
 		const unsigned int GetId() const;

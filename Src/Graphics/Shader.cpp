@@ -11,18 +11,6 @@ Shader::Shader(const ShaderType type)
 		throw std::runtime_error("glCreateShader failed");
 }
 
-Shader::Shader(const char** source, const ShaderType type)
-	:Shader(type)
-{
-	this->SetSource(source);
-	this->Compile();
-}
-
-Shader::~Shader()
-{
-	this->Dispose();
-}
-
 void Shader::SetSource(const char** source)
 {
 	glShaderSource(this->_id, 1, source, NULL);
