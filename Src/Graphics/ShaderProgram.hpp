@@ -7,8 +7,13 @@
 API_BEGIN
 namespace Kaleid::Graphics
 {
+	class GraphicsFactory;
+	class Mesh;
+
 	class ShaderProgram sealed
 	{
+		friend class GraphicsFactory;
+		friend class Mesh;
 	public:
 		KALEID_GRAPHICS_API void Attach(Shader** shaders, unsigned int count);
 		KALEID_GRAPHICS_API void Attach(const std::vector<Shader*>& shaders);
@@ -55,16 +60,14 @@ namespace Kaleid::Graphics
 		KALEID_GRAPHICS_API void SetUniform(const char* name, const glm::vec2& v);
 		KALEID_GRAPHICS_API void SetUniform(const char* name, const glm::vec3& v);
 		KALEID_GRAPHICS_API void SetUniform(const char* name, const glm::vec4& v);
-#ifdef KALEID_GRAPHICS_DLL
-		void Dispose();
-		ShaderProgram();
-
-		void Bind();
-		const unsigned int GetId() const;
 	private:
+		ShaderProgram();
+		void Dispose();
+		void Bind();
 		void Validate();
+		const unsigned int GetId() const;
+
 		unsigned int _id;
-#endif
 	};
 }
 API_END

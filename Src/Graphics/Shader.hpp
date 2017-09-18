@@ -13,20 +13,23 @@ namespace Kaleid::Graphics
 		Compute = 0x91B9,
 	};
 
+	class GraphicsFactory;
+	class ShaderProgram;
+
 	class Shader sealed
 	{
+		friend class GraphicsFactory;
+		friend class ShaderProgram;
 	public:
 		KALEID_GRAPHICS_API void SetSource(const char** source);
 		KALEID_GRAPHICS_API void Compile();
-#ifdef KALEID_GRAPHICS_DLL
-		Shader(const ShaderType type);
-
-		void Dispose();
-		const unsigned int GetId() const;
 	private:
+		Shader(const ShaderType type);
+		void Dispose();
 		void Validate();
+		const unsigned int GetId() const;
+
 		unsigned int _id;
-#endif
 	};
 }
 API_END

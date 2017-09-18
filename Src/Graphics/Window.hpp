@@ -5,8 +5,11 @@
 API_BEGIN
 namespace Kaleid::Graphics
 {
+	class GraphicsFactory;
+
 	class Window sealed
 	{
+		friend class GraphicsFactory;
 	public:
 		KALEID_GRAPHICS_API void MakeCurrent();
 		KALEID_GRAPHICS_API void SwapBuffers();
@@ -17,11 +20,11 @@ namespace Kaleid::Graphics
 		KALEID_GRAPHICS_API void SetTitle(const char* title);
 		KALEID_GRAPHICS_API bool Exists();
 		KALEID_GRAPHICS_API static void PollEvents();
-#ifdef KALEID_GRAPHICS_DLL
-		Window(int width, int height, const char* title);
 
-		void Dispose();
 	private:
+		Window(int width, int height, const char* title);
+		void Dispose();
+#ifdef KALEID_GRAPHICS_DLL
 		GLFWwindow* _handle;
 #endif
 	};

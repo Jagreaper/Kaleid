@@ -7,8 +7,11 @@
 API_BEGIN
 namespace Kaleid::Graphics
 {
+	class GraphicsFactory;
+
 	class VertexBuffer sealed : public BufferBase
 	{
+		friend class GraphicsFactory;
 	public:
 #define _VERTEX_BUFFER_DATA_SETTER(TYPE) \
 		KALEID_GRAPHICS_API void BufferData(const TYPE* data, size_t count, unsigned int point_size, BufferUsage usage = BufferUsage::StaticDraw); \
@@ -24,13 +27,11 @@ namespace Kaleid::Graphics
 		_VERTEX_BUFFER_DATA_SETTER(double)
 #undef _VERTEX_BUFFER_DATA_SETTER
 		KALEID_GRAPHICS_API const unsigned int GetPointSize() const;
-#ifdef KALEID_GRAPHICS_DLL
+	private:
+		VertexBuffer();
 		void Bind();
 
-		VertexBuffer();
-	private:
 		unsigned int _point_size;
-#endif
 	};
 }
 API_END

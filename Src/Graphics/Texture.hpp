@@ -6,8 +6,11 @@
 API_BEGIN
 namespace Kaleid::Graphics
 {
+	class GraphicsFactory;
+
 	class Texture sealed : public TextureBase
 	{
+		friend class GraphicsFactory;
 	public:
 		KALEID_GRAPHICS_API void BufferImage(unsigned char* data, unsigned int width, unsigned int height, InternalTextureFormat internal_format = InternalTextureFormat::Rgb, TextureFormat format = TextureFormat::Rgb, TextureDataType type = TextureDataType::UnsignedByte);
 		KALEID_GRAPHICS_API void GenerateMipmap();
@@ -27,11 +30,9 @@ namespace Kaleid::Graphics
 		_TEXTURE_PARAMETER_SETTERS(TextureFormat)
 		_TEXTURE_PARAMETER_SETTERS(TextureDataType)
 #undef _TEXTURE_PARAMETER_SETTERS
-#ifdef KALEID_GRAPHICS_DLL
+	private:
 		Texture();
-		
 		void Bind();
-#endif
 	};
 }
 API_END

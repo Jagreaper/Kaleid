@@ -6,7 +6,6 @@ using namespace Kaleid::Graphics;
 Mesh::Mesh()
 {
 	glGenVertexArrays(1, &this->_vao_id);
-	this->_vbos = new std::vector<VertexBuffer*>();
 }
 
 void Mesh::Dispose()
@@ -15,7 +14,6 @@ void Mesh::Dispose()
 	{
 		glDeleteVertexArrays(1, &this->_vao_id);
 		this->_vao_id = 0;
-		delete this->_vbos;
 	}
 }
 
@@ -24,9 +22,9 @@ void Mesh::Compose()
 	this->_b_vbo_length = 0;
 
 	glBindVertexArray(this->_vao_id);
-	for (int index = 0; index < this->_vbos->size(); index++)
+	for (int index = 0; index < this->_vbos.size(); index++)
 	{
-		VertexBuffer* vbo = this->_vbos->at(index);
+		VertexBuffer* vbo = this->_vbos[index];
 		glBindBuffer(GL_ARRAY_BUFFER, vbo->GetId());
 
 		if (vbo->GetLength() > this->_b_vbo_length)
@@ -38,7 +36,7 @@ void Mesh::Compose()
 	glBindVertexArray(0);
 }
 
-void BindTextures(const std::vector<TextureBase*>* textures)
+void Mesh::BindTextures(const std::vector<TextureBase*>* textures)
 {
 	if (textures != NULL)
 	{
@@ -84,9 +82,9 @@ void Mesh::SetIndexBuffer(IndexBuffer* buffer)
 
 void Mesh::SetVertexBuffers(std::vector<VertexBuffer*>* buffers)
 {
-	this->_vbos->clear();
+	this->_vbos.clear();
 	for (int index = 0; index < buffers->size(); index++)
-		this->_vbos->push_back(buffers->at(index));
+		this->_vbos.push_back(buffers->at(index));
 }
 
 const IndexBuffer* Mesh::GetIndexBuffer() const
@@ -96,7 +94,7 @@ const IndexBuffer* Mesh::GetIndexBuffer() const
 
 const std::vector<VertexBuffer*>* Mesh::GetVertexBuffers() const
 {
-	return this->_vbos;
+	return &this->_vbos;
 }
 
 const size_t Mesh::GetBestVboLength() const
@@ -111,5 +109,5 @@ bool Mesh::HasIndexBuffer() const
 
 bool Mesh::HasVertexBuffers() const
 {
-	return this->_vbos != NULL && this->_vbos->size() > 0;
+	return this->_vbos.size() > 0;
 }

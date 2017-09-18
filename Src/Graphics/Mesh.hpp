@@ -11,8 +11,11 @@
 API_BEGIN
 namespace Kaleid::Graphics
 {
+	class GraphicsFactory;
+
 	class Mesh sealed
 	{
+		friend class GraphicsFactory;
 	public:
 		void Compose();
 		void SetIndexBuffer(IndexBuffer* buffer);
@@ -22,17 +25,17 @@ namespace Kaleid::Graphics
 		const size_t GetBestVboLength() const;
 		bool HasIndexBuffer() const;
 		bool HasVertexBuffers() const;
-#ifdef KALEID_GRAPHICS_DLL
-		Mesh();
 		void Render(const ShaderProgram* shader, const std::vector<TextureBase*>* textures, std::function<void()> arguments);
 		void Dispose();
 		const unsigned int GetVertexArrayId() const;
 	private:
+		Mesh();
+		void Mesh::BindTextures(const std::vector<TextureBase*>* textures);
+
 		unsigned int _vao_id;
 		IndexBuffer* _ibo;
-		std::vector<VertexBuffer*>* _vbos;
+		std::vector<VertexBuffer*> _vbos;
 		size_t _b_vbo_length;
-#endif
 	};
 }
 API_END

@@ -224,8 +224,13 @@ namespace Kaleid::Graphics
 		Float = 0x1406,
 	};
 
+	class GraphicsFactory;
+	class Mesh;
+
 	class TextureBase abstract
 	{
+		friend class GraphicsFactory;
+		friend class Mesh;
 	public:
 		KALEID_GRAPHICS_API const unsigned int GetWidth() const;
 		KALEID_GRAPHICS_API const unsigned int GetHeight() const;
@@ -249,16 +254,15 @@ namespace Kaleid::Graphics
 		_TEXTURE_BASE_PARAMETER_SETTERS(TextureDataType)
 #undef _TEXTURE_BASE_PARAMETER_SETTERS
 
-#ifdef KALEID_GRAPHICS_DLL
+	protected:
 		TextureBase();
 		virtual void Bind() = 0;
 		void Dispose();
 		const unsigned int GetId() const;
-	protected:
+
 		unsigned int _id;
 		unsigned int _width;
 		unsigned int _height;
-#endif
 	};
 }
 API_END

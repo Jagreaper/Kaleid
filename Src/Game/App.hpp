@@ -39,7 +39,7 @@ namespace Kaleid::Game
 		Kaleid::Graphics::Renderer* _renderer;
 		Kaleid::Graphics::GraphicsFactory* _graphics_factory;
 
-		std::vector<Kaleid::Graphics::Window*>* _windows;
+		std::vector<Kaleid::Graphics::Window*> _windows;
 
 		bool _is_running;
 	};
