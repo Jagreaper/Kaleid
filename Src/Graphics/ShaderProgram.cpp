@@ -166,7 +166,7 @@ void ShaderProgram::SetUniform2v(const char* name, const TYPE* v, int count) \
 void ShaderProgram::SetUniform3v(const char* name, const TYPE* v, int count) \
     { assert(this->InUse()); glUniform3 ## TYPE_SUFFIX ## v (this->GetUniformLocation(name), count, v); } \
 void ShaderProgram::SetUniform4v(const char* name, const TYPE* v, int count) \
-    { assert(this->InUse()); glUniform4 ## TYPE_SUFFIX ## v (this->GetUniformLocation(name), count, v); }
+    { assert(this->InUse()); glUniform4 ## TYPE_SUFFIX ## v (this->GetUniformLocation(name), count, v); } \
 
 PROGRAM_ATTRIB_N_UNIFORM_SETTERS(float, , f);
 PROGRAM_ATTRIB_N_UNIFORM_SETTERS(double, , d);

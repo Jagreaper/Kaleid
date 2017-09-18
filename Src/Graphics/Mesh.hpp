@@ -14,25 +14,23 @@ namespace Kaleid::Graphics
 	class Mesh
 	{
 	public:
-		KALEID_GRAPHICS_API void MakeCurrent();
-		void Render(const ShaderProgram* shader, const std::vector<TextureBase*>* textures, std::function<void()> arguments = NULL);
-		const GLuint GetVertexArrayId() const;
+		void Compose();
+		void SetIndexBuffer(IndexBuffer* buffer);
+		void SetVertexBuffers(std::vector<VertexBuffer*>* buffers);
 		const IndexBuffer* GetIndexBuffer() const;
 		const std::vector<VertexBuffer*>* GetVertexBuffers() const;
+		const size_t GetBestVboLength() const;
 		bool HasIndexBuffer() const;
 		bool HasVertexBuffers() const;
-		const size_t GetBestVboLength() const;
+		void Render(const ShaderProgram* shader, const std::vector<TextureBase*>* textures, std::function<void()> arguments);
 #ifdef KALEID_GRAPHICS_DLL
 		Mesh();
-		Mesh(IndexBuffer* ibo, VertexBuffer* vbo);
-		Mesh(IndexBuffer* ibo, std::vector<VertexBuffer*>* vbos);
 		void Dispose();
+		const unsigned int GetVertexArrayId() const;
 	private:
-		void BuildVertexArray();
-
-		GLuint _vao_id;
+		unsigned int _vao_id;
 		IndexBuffer* _ibo;
-		std::vector<VertexBuffer*> _vbos;
+		std::vector<VertexBuffer*>* _vbos;
 		size_t _b_vbo_length;
 #endif
 	};

@@ -28,6 +28,7 @@ namespace Kaleid::Graphics
 		virtual void Bind() = 0;
 		void Dispose();
 		const unsigned int GetId() const;
+		const int GetTypeInfo() const;
 	protected:
 		unsigned int _id;
 		size_t _length;

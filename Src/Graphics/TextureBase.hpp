@@ -1,4 +1,5 @@
 #pragma once
+
 #include "stdafx.hpp"
 
 API_BEGIN
