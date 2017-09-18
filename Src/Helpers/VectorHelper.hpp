@@ -3,7 +3,7 @@
 
 namespace Kaleid::Helpers
 {
-	class KALEID_HELPERS_API VectorHelper
+	class KALEID_HELPERS_API VectorHelper sealed
 	{
 	public:
 		template<class Type>

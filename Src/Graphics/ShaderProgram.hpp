@@ -7,7 +7,7 @@
 API_BEGIN
 namespace Kaleid::Graphics
 {
-	class ShaderProgram
+	class ShaderProgram sealed
 	{
 	public:
 		KALEID_GRAPHICS_API void Attach(Shader** shaders, unsigned int count);

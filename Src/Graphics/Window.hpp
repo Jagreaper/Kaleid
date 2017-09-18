@@ -5,7 +5,7 @@
 API_BEGIN
 namespace Kaleid::Graphics
 {
-	class Window
+	class Window sealed
 	{
 	public:
 		KALEID_GRAPHICS_API void MakeCurrent();

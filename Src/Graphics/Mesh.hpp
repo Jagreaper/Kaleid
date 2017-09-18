@@ -11,7 +11,7 @@
 API_BEGIN
 namespace Kaleid::Graphics
 {
-	class Mesh
+	class Mesh sealed
 	{
 	public:
 		void Compose();

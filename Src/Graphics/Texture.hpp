@@ -6,7 +6,7 @@
 API_BEGIN
 namespace Kaleid::Graphics
 {
-	class Texture : public TextureBase
+	class Texture sealed : public TextureBase
 	{
 	public:
 		KALEID_GRAPHICS_API void BufferImage(unsigned char* data, unsigned int width, unsigned int height, InternalTextureFormat internal_format = InternalTextureFormat::Rgb, TextureFormat format = TextureFormat::Rgb, TextureDataType type = TextureDataType::UnsignedByte);

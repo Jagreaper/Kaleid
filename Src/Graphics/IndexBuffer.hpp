@@ -7,7 +7,7 @@
 API_BEGIN
 namespace Kaleid::Graphics
 {
-	class IndexBuffer : public BufferBase
+	class IndexBuffer sealed : public BufferBase
 	{
 	public:
 #define _INDEX_BUFFER_DATA_SETTER(TYPE) \

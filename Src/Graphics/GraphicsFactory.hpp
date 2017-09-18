@@ -14,7 +14,7 @@
 API_BEGIN
 namespace Kaleid::Graphics
 {
-	class GraphicsFactory
+	class GraphicsFactory sealed
 	{
 	public:
 		KALEID_GRAPHICS_API GraphicsFactory();

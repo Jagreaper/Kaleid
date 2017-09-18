@@ -6,7 +6,7 @@
 API_BEGIN
 namespace Kaleid::Graphics
 {
-	class Renderer
+	class Renderer sealed
 	{
 	public:
 		KALEID_GRAPHICS_API Renderer();

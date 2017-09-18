@@ -7,7 +7,7 @@
 API_BEGIN
 namespace Kaleid::Graphics
 {
-	class VertexBuffer : public BufferBase
+	class VertexBuffer sealed : public BufferBase
 	{
 	public:
 #define _VERTEX_BUFFER_DATA_SETTER(TYPE) \

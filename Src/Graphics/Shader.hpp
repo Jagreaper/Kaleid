@@ -13,7 +13,7 @@ namespace Kaleid::Graphics
 		Compute = 0x91B9,
 	};
 
-	class Shader
+	class Shader sealed
 	{
 	public:
 		KALEID_GRAPHICS_API void SetSource(const char** source);
