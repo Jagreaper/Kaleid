@@ -22,9 +22,9 @@ namespace Kaleid::Graphics
 		const size_t GetBestVboLength() const;
 		bool HasIndexBuffer() const;
 		bool HasVertexBuffers() const;
-		void Render(const ShaderProgram* shader, const std::vector<TextureBase*>* textures, std::function<void()> arguments);
 #ifdef KALEID_GRAPHICS_DLL
 		Mesh();
+		void Render(const ShaderProgram* shader, const std::vector<TextureBase*>* textures, std::function<void()> arguments);
 		void Dispose();
 		const unsigned int GetVertexArrayId() const;
 	private:

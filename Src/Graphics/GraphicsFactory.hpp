@@ -8,7 +8,7 @@
 #include "BufferBase.hpp"
 #include "VertexBuffer.hpp"
 #include "IndexBuffer.hpp"
-#include <memory>
+#include "Mesh.hpp"
 
 
 API_BEGIN
@@ -23,10 +23,20 @@ namespace Kaleid::Graphics
 		KALEID_GRAPHICS_API Shader* CreateShader(const char** source, const ShaderType type);
 		KALEID_GRAPHICS_API ShaderProgram* CreateShaderProgram(const std::vector<Shader*>& shaders, const std::vector<ShaderType>& types);
 		KALEID_GRAPHICS_API ShaderProgram* CreateShaderProgram(Shader** shaders, const unsigned short count);
+
+		KALEID_GRAPHICS_API VertexBuffer* CreateVertexBuffer();
 		KALEID_GRAPHICS_API VertexBuffer* CreateVertexBuffer(const float* data, size_t count, unsigned int point_size, BufferUsage usage = BufferUsage::StaticDraw);
+
+		KALEID_GRAPHICS_API IndexBuffer* CreateIndexBuffer();
 		KALEID_GRAPHICS_API IndexBuffer* CreateIndexBuffer(const unsigned int* data, size_t count, BufferUsage usage = BufferUsage::StaticDraw);
 
-		KALEID_GRAPHICS_API void FreeWindow(Window* window);
+		KALEID_GRAPHICS_API Mesh* CreateMesh();
+		KALEID_GRAPHICS_API Mesh* CreateMesh(IndexBuffer*& index_buffer, std::vector<VertexBuffer*>* vertex_buffers);
+
+		KALEID_GRAPHICS_API void FreeWindow(Window*& window);
+		KALEID_GRAPHICS_API void FreeVertexBuffer(VertexBuffer*& vertex_buffer);
+		KALEID_GRAPHICS_API void FreeIndexBuffer(IndexBuffer*& index_buffer);
+		KALEID_GRAPHICS_API void FreeMesh(Mesh*& mesh);
 #ifdef KALEID_GRAPHICS_DLL
 	private:
 		static void Dispose();
@@ -39,6 +49,9 @@ namespace Kaleid::Graphics
 		static unsigned int _count;
 
 		static std::vector<Window*> _windows;
+		static std::vector<VertexBuffer*> _vertex_buffers;
+		static std::vector<IndexBuffer*> _index_buffers;
+		static std::vector<Mesh*> _meshes;
 #endif
 	};
 }

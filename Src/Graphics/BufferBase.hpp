@@ -25,7 +25,9 @@ namespace Kaleid::Graphics
 		KALEID_GRAPHICS_API const bool Exists() const;
 #ifdef KALEID_GRAPHICS_DLL
 		BufferBase();
+
 		virtual void Bind() = 0;
+
 		void Dispose();
 		const unsigned int GetId() const;
 		const int GetTypeInfo() const;

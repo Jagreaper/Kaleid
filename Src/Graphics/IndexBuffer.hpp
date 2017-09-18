@@ -20,6 +20,7 @@ namespace Kaleid::Graphics
 #undef _INDEX_BUFFER_DATA_SETTER
 #ifdef KALEID_GRAPHICS_DLL
 		void Bind();
+
 		IndexBuffer();
 #endif
 	};
