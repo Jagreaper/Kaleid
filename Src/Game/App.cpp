@@ -1,7 +1,6 @@
 #include "stdafx.hpp"
 #include "App.hpp"
 #include "SceneBase.hpp"
-#include "RootScene.hpp"
 
 using namespace Kaleid::Game;
 using namespace Kaleid::Graphics;
@@ -9,6 +8,7 @@ using namespace Kaleid::Graphics;
 App::App()
 {
 	this->_current_scene = NULL;
+	this->_disposal = NULL;
 	this->_renderer = NULL;
 	this->_graphics_factory = NULL;
 	this->_is_running = false;
@@ -19,8 +19,6 @@ void App::Load()
 {
 	Window* window = this->_graphics_factory->CreateWindow(800, 600, "OpenGL Window");
 	this->_windows->push_back(window);
-
-	this->SetScene(new RootScene(this));
 }
 
 void App::Dispose()
@@ -43,6 +41,9 @@ void App::Dispose()
 void App::Run()
 {
 	this->_is_running = true;
+
+	if (this->_current_scene != NULL)
+		this->_current_scene->Load();
 
 	while (this->_is_running) // Main Loop
 	{
@@ -81,17 +82,23 @@ GraphicsFactory* App::GetGraphicsFactory()
 	return this->_graphics_factory;
 }
 
-void App::SetScene(SceneBase* current_scene)
+void App::SetScene(SceneBase* current_scene, std::function<void()> disposal)
 {
 	if (this->_current_scene != NULL)
 	{
-		this->_current_scene->Dispose();
-		delete this->_current_scene;
+		if (this->_disposal != NULL)
+			this->_disposal;
+		else
+		{
+			this->_current_scene->Dispose();
+			delete this->_current_scene;
+		}
 	}
 
 	this->_current_scene = current_scene;
+	this->_disposal = disposal;
 
-	if (this->_current_scene != NULL)
+	if (this->IsRunning() && this->_current_scene != NULL)
 		this->_current_scene->Load();
 }
 

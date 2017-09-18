@@ -94,7 +94,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
       <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
-      <AdditionalIncludeDirectories>..\..\..\Src\;..\..\..\Src\Game\;..\..\..\Src\Graphics\;..\..\..\Include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\Src\;..\..\..\Src\Game\;..\..\..\Src\Graphics\;..\..\..\Include\;..\..\..\Src\Shared\;..\..\..\Src\Application\</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_MBCS;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <PostBuildEvent>
@@ -111,7 +111,7 @@ copy "..\..\..\Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "..\..\..\Bin\Wi
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
       <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
-      <AdditionalIncludeDirectories>..\..\..\Src\;..\..\..\Src\Game\;..\..\..\Src\Graphics\;..\..\..\Include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\Src\;..\..\..\Src\Game\;..\..\..\Src\Graphics\;..\..\..\Include\;..\..\..\Src\Shared\;..\..\..\Src\Application\</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_MBCS;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <PostBuildEvent>
@@ -130,7 +130,7 @@ copy "..\..\..\Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "..\..\..\Bin\Wi
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
       <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
-      <AdditionalIncludeDirectories>..\..\..\Src\;..\..\..\Src\Game\;..\..\..\Src\Graphics\;..\..\..\Include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\Src\;..\..\..\Src\Game\;..\..\..\Src\Graphics\;..\..\..\Include\;..\..\..\Src\Shared\;..\..\..\Src\Application\</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_MBCS;RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -153,7 +153,7 @@ copy "..\..\..\Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "..\..\..\Bin\Wi
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
       <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
-      <AdditionalIncludeDirectories>..\..\..\Src\;..\..\..\Src\Game\;..\..\..\Src\Graphics\;..\..\..\Include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\Src\;..\..\..\Src\Game\;..\..\..\Src\Graphics\;..\..\..\Include\;..\..\..\Src\Shared\;..\..\..\Src\Application\</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_MBCS;RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -166,16 +166,15 @@ copy "..\..\..\Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "..\..\..\Bin\Wi
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\Src\main.cpp" />
-    <ClCompile Include="..\..\..\Src\stdafx.cpp">
+    <ClCompile Include="..\..\..\Src\Application\main.cpp" />
+    <ClCompile Include="..\..\..\Src\Application\RootScene.cpp" />
+    <ClCompile Include="..\..\..\Src\Application\SceneManager.cpp" />
+    <ClCompile Include="..\..\..\Src\Shared\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\..\Src\stdafx.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Kaleid.Game\Kaleid.Game.vcxproj">
@@ -184,6 +183,11 @@ copy "..\..\..\Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "..\..\..\Bin\Wi
     <ProjectReference Include="..\Kaleid.Graphics\Kaleid.Graphics.vcxproj">
       <Project>{b0d1fc24-7ed7-4f0a-b51b-0864f52f4f77}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Src\Application\RootScene.hpp" />
+    <ClInclude Include="..\..\..\Src\Application\SceneManager.hpp" />
+    <ClInclude Include="..\..\..\Src\Shared\stdafx.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

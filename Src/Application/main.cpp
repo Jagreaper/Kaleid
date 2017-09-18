@@ -3,6 +3,8 @@
 #include "App.hpp"
 #include "GraphicsFactory.hpp"
 #include "Renderer.hpp"
+#include "RootScene.hpp"
+#include "SceneManager.hpp"
 
 using namespace Kaleid::Game;
 using namespace Kaleid::Graphics;
@@ -15,6 +17,7 @@ int main()
 	Renderer* renderer = new Renderer();
 	app.SetGraphicsFactory(graphicsFactory);
 	app.SetRenderer(renderer);
+	app.SetScene(SceneManager::CreateRootScene(&app), std::bind(SceneManager::FreeScene, app.GetScene()));
 
 	app.Load();
 	app.Run();

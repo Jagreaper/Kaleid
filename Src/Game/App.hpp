@@ -5,6 +5,7 @@
 #include "Window.hpp"
 #include "GraphicsFactory.hpp"
 #include <vector>
+#include <functional>
 
 API_BEGIN
 namespace Kaleid::Game
@@ -26,22 +27,21 @@ namespace Kaleid::Game
 		KALEID_GAME_API void SetGraphicsFactory(Kaleid::Graphics::GraphicsFactory* graphics_factory);
 		KALEID_GAME_API Kaleid::Graphics::GraphicsFactory* GetGraphicsFactory();
 
-		KALEID_GAME_API void SetScene(SceneBase* current_scene);
+		KALEID_GAME_API void SetScene(SceneBase* current_scene, std::function<void()> disposal);
 		KALEID_GAME_API SceneBase* GetScene();
 
 		KALEID_GAME_API std::vector<Kaleid::Graphics::Window*>* GetWindows();
 		KALEID_GAME_API Kaleid::Graphics::Window* GetWindow(int index);
 		KALEID_GAME_API bool IsRunning();
-#ifdef KALEID_GAME_DLL
 	private:
 		SceneBase* _current_scene;
+		std::function<void()> _disposal;
 		Kaleid::Graphics::Renderer* _renderer;
 		Kaleid::Graphics::GraphicsFactory* _graphics_factory;
 
 		std::vector<Kaleid::Graphics::Window*>* _windows;
 
 		bool _is_running;
-#endif
 	};
 }
 API_END

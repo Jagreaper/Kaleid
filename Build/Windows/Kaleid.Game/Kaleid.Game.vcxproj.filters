@@ -2,27 +2,12 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="..\..\..\Src\Game\App.cpp" />
-    <ClCompile Include="..\..\..\Src\stdafx.cpp" />
-    <ClCompile Include="..\..\..\Src\Game\SceneBase.cpp">
-      <Filter>Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Src\Game\RootScene.cpp">
-      <Filter>Scenes</Filter>
-    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Game\SceneBase.cpp" />
+    <ClCompile Include="..\..\..\Src\Shared\stdafx.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Src\Game\App.hpp" />
-    <ClInclude Include="..\..\..\Src\stdafx.hpp" />
-    <ClInclude Include="..\..\..\Src\Game\RootScene.hpp">
-      <Filter>Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Src\Game\SceneBase.hpp">
-      <Filter>Scenes</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Filter Include="Scenes">
-      <UniqueIdentifier>{f80deed0-d018-44e7-9c3f-ec06810eed46}</UniqueIdentifier>
-    </Filter>
+    <ClInclude Include="..\..\..\Src\Game\SceneBase.hpp" />
+    <ClInclude Include="..\..\..\Src\Shared\stdafx.hpp" />
   </ItemGroup>
 </Project>

@@ -2,23 +2,23 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="..\..\..\Src\Math\Transform.cpp" />
-    <ClCompile Include="..\..\..\Src\stdafx.cpp" />
     <ClCompile Include="..\..\..\Src\Math\CameraBase.cpp">
       <Filter>Cameras</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\Src\Math\PerspectiveCamera.cpp">
       <Filter>Cameras</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\Src\Shared\stdafx.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Src\Math\Transform.hpp" />
-    <ClInclude Include="..\..\..\Src\stdafx.hpp" />
     <ClInclude Include="..\..\..\Src\Math\CameraBase.hpp">
       <Filter>Cameras</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Src\Math\PerspectiveCamera.hpp">
       <Filter>Cameras</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Src\Shared\stdafx.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Cameras">
