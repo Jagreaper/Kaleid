@@ -189,6 +189,9 @@ copy "..\..\..\Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "..\..\..\Bin\Wi
     <ProjectReference Include="..\Kaleid.IO\Kaleid.IO.vcxproj">
       <Project>{5e0f4e87-9ae9-4401-a95d-7c23e44f2579}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\Kaleid.Math\Kaleid.Math.vcxproj">
+      <Project>{d7ea2988-db27-4004-ab6b-c81a923164df}</Project>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Src\Application\RootScene.hpp" />
