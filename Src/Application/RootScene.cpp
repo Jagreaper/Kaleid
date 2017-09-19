@@ -3,6 +3,7 @@
 #include "ObjStreamDecoder.hpp"
 #include "App.hpp"
 #include "Renderer.hpp"
+#include "Window.hpp"
 #include <iostream>
 #include <fstream>
 

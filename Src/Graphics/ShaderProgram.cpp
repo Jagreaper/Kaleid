@@ -1,5 +1,6 @@
 #include "stdafx.hpp"
 #include "ShaderProgram.hpp"
+#include "Shader.hpp"
 #include <stdexcept>
 #include <glm/gtc/type_ptr.hpp>
 

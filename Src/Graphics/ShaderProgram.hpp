@@ -1,7 +1,6 @@
 #pragma once
 
 #include "stdafx.hpp"
-#include "Shader.hpp"
 #include <vector>
 
 API_BEGIN
@@ -9,6 +8,7 @@ namespace Kaleid::Graphics
 {
 	class GraphicsFactory;
 	class Mesh;
+	class Shader;
 
 	class KALEID_GRAPHICS_API ShaderProgram sealed
 	{

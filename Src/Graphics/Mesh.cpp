@@ -1,5 +1,9 @@
 #include "stdafx.hpp"
 #include "Mesh.hpp"
+#include "IndexBuffer.hpp"
+#include "VertexBuffer.hpp"
+#include "ShaderProgram.hpp"
+#include "TextureBase.hpp"
 
 using namespace Kaleid::Graphics;
 

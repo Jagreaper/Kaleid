@@ -1,5 +1,12 @@
 #include "stdafx.hpp"
 #include "GraphicsFactory.hpp"
+#include "Window.hpp"
+#include "Shader.hpp"
+#include "ShaderProgram.hpp"
+#include "BufferBase.hpp"
+#include "VertexBuffer.hpp"
+#include "IndexBuffer.hpp"
+#include "Mesh.hpp"
 #include "VectorHelper.hpp"
 
 using namespace Kaleid::Graphics;
@@ -155,9 +162,13 @@ VertexBuffer* GraphicsFactory::CreateVertexBuffer()
 	return buffer;
 }
 
+VertexBuffer* GraphicsFactory::CreateVertexBuffer(const float* data, size_t count, unsigned int point_size)
+{
+	return this->CreateVertexBuffer(data, count, point_size, BufferUsage::StaticDraw);
+}
+
 VertexBuffer* GraphicsFactory::CreateVertexBuffer(const float* data, size_t count, unsigned int point_size, BufferUsage usage)
 {
-
 	VertexBuffer* buffer = this->CreateVertexBuffer();
 	buffer->BufferData(data, count, point_size, usage);
 	return buffer;
@@ -170,6 +181,11 @@ IndexBuffer* GraphicsFactory::CreateIndexBuffer()
 	IndexBuffer* buffer = new IndexBuffer();
 	GraphicsFactory::_index_buffers.push_back(buffer);
 	return buffer;
+}
+
+IndexBuffer* GraphicsFactory::CreateIndexBuffer(const unsigned int* data, size_t count)
+{
+	return this->CreateIndexBuffer(data, count, BufferUsage::StaticDraw);
 }
 
 IndexBuffer* GraphicsFactory::CreateIndexBuffer(const unsigned int* data, size_t count, BufferUsage usage)

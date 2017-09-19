@@ -1,10 +1,6 @@
 #pragma once
 
 #include "stdafx.hpp"
-#include "IndexBuffer.hpp"
-#include "VertexBuffer.hpp"
-#include "ShaderProgram.hpp"
-#include "TextureBase.hpp"
 #include <vector>
 #include <functional>
 
@@ -25,7 +21,12 @@ namespace Kaleid::Graphics
 		TriangleStripAdjacency = 0x000D,
 		Patches = 0xE,
 	};
+
 	class GraphicsFactory;
+	class IndexBuffer;
+	class VertexBuffer;
+	class ShaderProgram;
+	class TextureBase;
 
 	class KALEID_GRAPHICS_API Mesh sealed
 	{

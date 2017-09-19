@@ -2,18 +2,20 @@
 
 #include "stdafx.hpp"
 #include <vector>
-#include "Window.hpp"
-#include "Shader.hpp"
-#include "ShaderProgram.hpp"
-#include "BufferBase.hpp"
-#include "VertexBuffer.hpp"
-#include "IndexBuffer.hpp"
-#include "Mesh.hpp"
-
 
 API_BEGIN
 namespace Kaleid::Graphics
 {
+	class Window;
+	class Shader;
+	class ShaderProgram;
+	class VertexBuffer;
+	class IndexBuffer;
+	class Mesh;
+
+	enum ShaderType;
+	enum BufferUsage;
+
 	class KALEID_GRAPHICS_API GraphicsFactory sealed
 	{
 	public:
@@ -30,10 +32,12 @@ namespace Kaleid::Graphics
 		ShaderProgram* CreateShaderProgram(Shader** shaders, const unsigned short count);
 
 		VertexBuffer* CreateVertexBuffer();
-		VertexBuffer* CreateVertexBuffer(const float* data, size_t count, unsigned int point_size, BufferUsage usage = BufferUsage::StaticDraw);
+		VertexBuffer* CreateVertexBuffer(const float* data, size_t count, unsigned int point_size);
+		VertexBuffer* CreateVertexBuffer(const float* data, size_t count, unsigned int point_size, BufferUsage usage);
 
 		IndexBuffer* CreateIndexBuffer();
-		IndexBuffer* CreateIndexBuffer(const unsigned int* data, size_t count, BufferUsage usage = BufferUsage::StaticDraw);
+		IndexBuffer* CreateIndexBuffer(const unsigned int* data, size_t count);
+		IndexBuffer* CreateIndexBuffer(const unsigned int* data, size_t count, BufferUsage usage);
 
 		Mesh* CreateMesh();
 		Mesh* CreateMesh(IndexBuffer*& index_buffer, std::vector<VertexBuffer*>* vertex_buffers);
