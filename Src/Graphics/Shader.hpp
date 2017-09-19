@@ -16,13 +16,11 @@ namespace Kaleid::Graphics
 	class GraphicsFactory;
 	class ShaderProgram;
 
-	class Shader sealed
+	class KALEID_GRAPHICS_API Shader sealed
 	{
-		friend class GraphicsFactory;
-		friend class ShaderProgram;
 	public:
-		KALEID_GRAPHICS_API void SetSource(const char** source);
-		KALEID_GRAPHICS_API void Compile();
+		void SetSource(const char** source);
+		void Compile();
 	private:
 		Shader(const ShaderType type);
 		void Dispose();
@@ -30,6 +28,9 @@ namespace Kaleid::Graphics
 		const unsigned int GetId() const;
 
 		unsigned int _id;
+
+		friend class GraphicsFactory;
+		friend class ShaderProgram;
 	};
 }
 API_END

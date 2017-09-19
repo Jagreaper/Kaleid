@@ -13,9 +13,8 @@ namespace Kaleid::Graphics
 {
 	class GraphicsFactory;
 
-	class Mesh sealed
+	class KALEID_GRAPHICS_API Mesh sealed
 	{
-		friend class GraphicsFactory;
 	public:
 		void Compose();
 		void SetIndexBuffer(IndexBuffer* buffer);
@@ -36,6 +35,8 @@ namespace Kaleid::Graphics
 		IndexBuffer* _ibo;
 		std::vector<VertexBuffer*> _vbos;
 		size_t _b_vbo_length;
+
+		friend class GraphicsFactory;
 	};
 }
 API_END

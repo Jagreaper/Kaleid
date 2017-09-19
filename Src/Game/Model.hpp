@@ -7,7 +7,7 @@
 API_BEGIN
 namespace Kaleid::Game
 {
-	class Model sealed
+	class KALEID_GAME_API Model sealed
 	{
 	public:
 		Kaleid::Graphics::Mesh* MeshAt(int index);

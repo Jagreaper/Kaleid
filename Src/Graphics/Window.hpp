@@ -7,23 +7,24 @@ namespace Kaleid::Graphics
 {
 	class GraphicsFactory;
 
-	class Window sealed
+	class KALEID_GRAPHICS_API Window sealed
 	{
-		friend class GraphicsFactory;
 	public:
-		KALEID_GRAPHICS_API void MakeCurrent();
-		KALEID_GRAPHICS_API void SwapBuffers();
+		void MakeCurrent();
+		void SwapBuffers();
 
-		KALEID_GRAPHICS_API void GetSize(unsigned int* width, unsigned int* height);
-		KALEID_GRAPHICS_API void SetSize(const unsigned int width, const unsigned int height);
+		void GetSize(unsigned int* width, unsigned int* height);
+		void SetSize(const unsigned int width, const unsigned int height);
 
-		KALEID_GRAPHICS_API void SetTitle(const char* title);
-		KALEID_GRAPHICS_API bool Exists();
-		KALEID_GRAPHICS_API static void PollEvents();
+		void SetTitle(const char* title);
+		bool Exists();
+		static void PollEvents();
 
 	private:
 		Window(int width, int height, const char* title);
 		void Dispose();
+
+		friend class GraphicsFactory;
 #ifdef KALEID_GRAPHICS_DLL
 		GLFWwindow* _handle;
 #endif

@@ -8,16 +8,17 @@ namespace Kaleid::Graphics
 {
 	class GraphicsFactory;
 
-	class Texture sealed : public TextureBase
+	class KALEID_GRAPHICS_API Texture sealed : public TextureBase
 	{
-		friend class GraphicsFactory;
 	public:
-		KALEID_GRAPHICS_API void BufferImage(unsigned char* data, unsigned int width, unsigned int height, InternalTextureFormat internal_format = InternalTextureFormat::Rgb, TextureFormat format = TextureFormat::Rgb, TextureDataType type = TextureDataType::UnsignedByte);
-		KALEID_GRAPHICS_API void GenerateMipmap();
-		KALEID_GRAPHICS_API void SetDefaultParameters();
-		KALEID_GRAPHICS_API void SetParameter(TextureParameter pname, int value);
+		void BufferImage(unsigned char* data, unsigned int width, unsigned int height, InternalTextureFormat internal_format = InternalTextureFormat::Rgb, TextureFormat format = TextureFormat::Rgb, TextureDataType type = TextureDataType::UnsignedByte);
+		void GenerateMipmap();
+		void SetDefaultParameters();
+		void SetParameter(TextureParameter pname, int value);
 
-#define _TEXTURE_PARAMETER_SETTERS(TYPE) KALEID_GRAPHICS_API void SetParameter(TextureParameter pname, TYPE value);
+#define _TEXTURE_PARAMETER_SETTERS(TYPE) \
+		void SetParameter(TextureParameter pname, TYPE value); \
+
 		_TEXTURE_PARAMETER_SETTERS(DepthStencilTextureMode)
 		_TEXTURE_PARAMETER_SETTERS(TextureCompareFunc)
 		_TEXTURE_PARAMETER_SETTERS(TextureCompareMode)
@@ -33,6 +34,8 @@ namespace Kaleid::Graphics
 	private:
 		Texture();
 		void Bind();
+
+		friend class GraphicsFactory;
 	};
 }
 API_END

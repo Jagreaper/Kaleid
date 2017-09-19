@@ -5,7 +5,7 @@
 API_BEGIN
 namespace Kaleid::Graphics
 {
-	enum KALEID_GRAPHICS_API BufferUsage
+	enum BufferUsage
 	{
 		StreamDraw = 0x88E0,
 		StreamRead = 0x88E1,
@@ -20,15 +20,13 @@ namespace Kaleid::Graphics
 
 	class Mesh;
 
-	class BufferBase abstract
+	class KALEID_GRAPHICS_API BufferBase abstract
 	{
-		friend class Mesh;
 	public:
-		BufferBase();
-
-		KALEID_GRAPHICS_API const size_t GetLength() const;
-		KALEID_GRAPHICS_API const bool Exists() const;
+		const size_t GetLength() const;
+		const bool Exists() const;
 	protected:
+		BufferBase();
 		unsigned int _id;
 		size_t _length;
 		int _type_info;
@@ -36,6 +34,8 @@ namespace Kaleid::Graphics
 		void Dispose();
 		const unsigned int GetId() const;
 		const int GetTypeInfo() const;
+
+		friend class Mesh;
 	};
 }
 API_END
