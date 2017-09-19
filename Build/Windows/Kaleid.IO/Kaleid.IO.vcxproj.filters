@@ -9,7 +9,7 @@
       <Filter>Encoders</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\Src\IO\ObjStreamDecoder.cpp">
-      <Filter>Decoders</Filter>
+      <Filter>Decoders\Models</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -27,7 +27,7 @@
       <Filter>Encoders</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Src\IO\ObjStreamDecoder.hpp">
-      <Filter>Decoders</Filter>
+      <Filter>Decoders\Models</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -36,6 +36,9 @@
     </Filter>
     <Filter Include="Decoders">
       <UniqueIdentifier>{af32de59-dd62-4659-9a2a-b0d771fcf0a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Decoders\Models">
+      <UniqueIdentifier>{28d86a6d-d277-4a84-bb2a-86bc8c8a1b76}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

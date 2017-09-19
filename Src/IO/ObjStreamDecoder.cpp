@@ -16,6 +16,8 @@ bool ObjStreamDecoder::TryDecode(std::istream& source, Mesh* output, GraphicsFac
 		{
 			std::string nline = line.substr(2, line.size() - 2);
 			std::vector<std::string> strings = StringHelper::Split(nline, ' ');
+
+			// Verticies
 		}
 	}
 

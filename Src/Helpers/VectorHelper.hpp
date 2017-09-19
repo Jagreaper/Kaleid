@@ -7,7 +7,14 @@ namespace Kaleid::Helpers
 	{
 	public:
 		template<class Type>
-		static inline void RemoveItem(std::vector<Type>* vector, Type item)
+		static inline void AddRange(std::vector<Type>* vector, std::vector<Type>* items)
+		{
+			for (int index = 0; index < items->size(); index++)
+				vector->push_back(items->at(index));
+		}
+
+		template<class Type>
+		static inline void RemoveItem(std::vector<Type>* vector, Type& item)
 		{
 			auto index = std::find(vector->begin(), vector->end(), item);
 			if (index != vector->end())

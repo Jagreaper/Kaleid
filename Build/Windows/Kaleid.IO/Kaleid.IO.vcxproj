@@ -177,6 +177,9 @@
     <ClInclude Include="..\..\..\Src\Shared\stdafx.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Kaleid.Game\Kaleid.Game.vcxproj">
+      <Project>{29dc283f-b80e-4650-a60e-a294947fdbcd}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\Kaleid.Graphics\Kaleid.Graphics.vcxproj">
       <Project>{b0d1fc24-7ed7-4f0a-b51b-0864f52f4f77}</Project>
     </ProjectReference>

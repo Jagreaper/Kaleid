@@ -4,10 +4,12 @@
     <ClCompile Include="..\..\..\Src\Game\App.cpp" />
     <ClCompile Include="..\..\..\Src\Game\SceneBase.cpp" />
     <ClCompile Include="..\..\..\Src\Shared\stdafx.cpp" />
+    <ClCompile Include="..\..\..\Src\Game\Model.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Src\Game\App.hpp" />
     <ClInclude Include="..\..\..\Src\Game\SceneBase.hpp" />
     <ClInclude Include="..\..\..\Src\Shared\stdafx.hpp" />
+    <ClInclude Include="..\..\..\Src\Game\Model.hpp" />
   </ItemGroup>
 </Project>
