@@ -2,11 +2,19 @@
 
 #include "stdafx.hpp"
 #include "DecoderBase.hpp"
-#include "GraphicsFactory.hpp"
-#include "Model.hpp"
 #include <istream>
 
 API_BEGIN
+namespace Kaleid::Graphics
+{
+	class GraphicsFactory;
+}
+
+namespace Kaleid::Game
+{
+	class Model;
+}
+
 namespace Kaleid::IO
 {
 	class KALEID_IO_API ObjStreamDecoder : public DecoderBase<std::istream&, Kaleid::Game::Model, Kaleid::Graphics::GraphicsFactory>

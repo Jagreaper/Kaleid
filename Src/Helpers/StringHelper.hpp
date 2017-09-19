@@ -1,9 +1,6 @@
 #include "stdafx.hpp"
-#include <algorithm>
-#include <string>
 #include <sstream>
 #include <vector>
-#include <iterator>
 
 namespace Kaleid::Helpers
 {

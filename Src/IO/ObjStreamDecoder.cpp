@@ -1,5 +1,7 @@
 #include "stdafx.hpp"
 #include "ObjStreamDecoder.hpp"
+#include "GraphicsFactory.hpp"
+#include "Model.hpp"
 #include "StringHelper.hpp"
 #include <string>
 
