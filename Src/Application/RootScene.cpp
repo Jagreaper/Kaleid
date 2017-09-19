@@ -1,6 +1,8 @@
 #include "stdafx.hpp"
 #include "RootScene.hpp"
 #include "ObjStreamDecoder.hpp"
+#include "App.hpp"
+#include "Renderer.hpp"
 #include <iostream>
 #include <fstream>
 

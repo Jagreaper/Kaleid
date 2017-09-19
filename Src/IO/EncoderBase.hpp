@@ -4,7 +4,7 @@
 
 namespace Kaleid::IO
 {
-	template<class SourceType, class ArgumentType, class InputType>
+	template<class SourceType, class InputType, class ArgumentType>
 	class KALEID_IO_API EncoderBase abstract
 	{
 	public:

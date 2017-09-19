@@ -7,7 +7,7 @@ using namespace Kaleid::IO;
 using namespace Kaleid::Graphics;
 using namespace Kaleid::Helpers;
 
-bool ObjStreamDecoder::TryDecode(std::istream& source, Mesh* output, GraphicsFactory* arg)
+bool ObjStreamDecoder::TryDecode(std::istream& source, Kaleid::Game::Model* output, Kaleid::Graphics::GraphicsFactory* arg)
 {
 	std::string line;
 	while (std::getline(source, line))

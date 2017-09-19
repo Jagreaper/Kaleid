@@ -1,5 +1,6 @@
 #include "stdafx.hpp"
 #include "SceneBase.hpp"
+#include "App.hpp"
 
 using namespace Kaleid::Game;
 

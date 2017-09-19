@@ -1,13 +1,18 @@
 #pragma once
 
 #include "stdafx.hpp"
-#include "App.hpp"
-#include "Renderer.hpp"
-#include "GraphicsFactory.hpp"
 
 API_BEGIN
+namespace Kaleid::Graphics
+{
+	class Renderer;
+	class GraphicsFactory;
+}
+
 namespace Kaleid::Game
 {
+	class App;
+
 	class KALEID_GAME_API SceneBase abstract
 	{
 	public:

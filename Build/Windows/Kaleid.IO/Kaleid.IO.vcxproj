@@ -90,7 +90,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\;..\..\..\Src\Graphics\;..\..\..\Src\IO\;..\..\..\Src\Shared\;..\..\..\Src\Helpers\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\;..\..\..\Src\Game\;..\..\..\Src\Graphics\;..\..\..\Src\IO\;..\..\..\Src\Shared\;..\..\..\Src\Helpers\</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_WINDLL;KALEID_IO_DLL;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -105,7 +105,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\;..\..\..\Src\Graphics\;..\..\..\Src\IO\;..\..\..\Src\Shared\;..\..\..\Src\Helpers\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\;..\..\..\Src\Game\;..\..\..\Src\Graphics\;..\..\..\Src\IO\;..\..\..\Src\Shared\;..\..\..\Src\Helpers\</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_WINDLL;KALEID_IO_DLL;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -122,7 +122,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\;..\..\..\Src\Graphics\;..\..\..\Src\IO\;..\..\..\Src\Shared\;..\..\..\Src\Helpers\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\;..\..\..\Src\Game\;..\..\..\Src\Graphics\;..\..\..\Src\IO\;..\..\..\Src\Shared\;..\..\..\Src\Helpers\</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_WINDLL;KALEID_IO_DLL;RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -143,7 +143,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\;..\..\..\Src\Graphics\;..\..\..\Src\IO\;..\..\..\Src\Shared\;..\..\..\Src\Helpers\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\;..\..\..\Src\Game\;..\..\..\Src\Graphics\;..\..\..\Src\IO\;..\..\..\Src\Shared\;..\..\..\Src\Helpers\</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_WINDLL;KALEID_IO_DLL;RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>

@@ -1,13 +1,17 @@
 #pragma once
 
 #include "stdafx.hpp"
-#include "Renderer.hpp"
-#include "Window.hpp"
-#include "GraphicsFactory.hpp"
 #include <vector>
 #include <functional>
 
 API_BEGIN
+namespace Kaleid::Graphics
+{
+	class Window;
+	class GraphicsFactory;
+	class Renderer;
+}
+
 namespace Kaleid::Game
 {
 	class SceneBase;

@@ -1,10 +1,14 @@
 #pragma once
 
 #include "stdafx.hpp"
-#include "Mesh.hpp"
 #include <vector>
 
 API_BEGIN
+namespace Kaleid::Graphics
+{
+	class Mesh;
+}
+
 namespace Kaleid::Game
 {
 	class KALEID_GAME_API Model sealed

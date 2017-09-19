@@ -1,6 +1,8 @@
 #include "stdafx.hpp"
 #include "App.hpp"
 #include "SceneBase.hpp"
+#include "Window.hpp"
+#include "GraphicsFactory.hpp"
 
 using namespace Kaleid::Game;
 using namespace Kaleid::Graphics;
