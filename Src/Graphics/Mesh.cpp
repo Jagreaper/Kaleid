@@ -5,6 +5,7 @@ using namespace Kaleid::Graphics;
 
 Mesh::Mesh()
 {
+	this->_primitive_type = PrimitiveType::Triangles;
 	glGenVertexArrays(1, &this->_vao_id);
 }
 
@@ -64,10 +65,10 @@ void Mesh::Render(const ShaderProgram* shader, const std::vector<TextureBase*>* 
 	if (this->HasIndexBuffer())
 	{
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, this->GetIndexBuffer()->GetId());
-		glDrawElements(GL_TRIANGLES, (GLsizei)this->GetIndexBuffer()->GetLength(), this->GetIndexBuffer()->GetTypeInfo(), NULL);
+		glDrawElements(this->_primitive_type, (GLsizei)this->GetIndexBuffer()->GetLength(), this->GetIndexBuffer()->GetTypeInfo(), NULL);
 	}
 	else
-		glDrawArrays(GL_TRIANGLES, 0, (GLsizei)this->GetBestVboLength());
+		glDrawArrays(this->_primitive_type, 0, (GLsizei)this->GetBestVboLength());
 }
 
 const unsigned int Mesh::GetVertexArrayId() const
@@ -110,4 +111,14 @@ bool Mesh::HasIndexBuffer() const
 bool Mesh::HasVertexBuffers() const
 {
 	return this->_vbos.size() > 0;
+}
+
+void Mesh::SetPrimitiveType(const PrimitiveType type)
+{
+	this->_primitive_type = type;
+}
+
+PrimitiveType Mesh::GetPrimitiveType()
+{
+	return this->_primitive_type;
 }
