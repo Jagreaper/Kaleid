@@ -6,38 +6,38 @@
 API_BEGIN
 namespace Kaleid::Math
 {
-	class Transform sealed
+	class KALEID_MATH_API Transform sealed
 	{
 	public:
-		KALEID_MATH_API Transform();
-		KALEID_MATH_API ~Transform();
+		Transform();
+		~Transform();
 
-		KALEID_MATH_API void TranslateRelative(glm::vec3& position);
-		KALEID_MATH_API void RotateRelative(glm::vec3& rotation);
-		KALEID_MATH_API void ScaleRelative(glm::vec3& scale);
+		void TranslateRelative(glm::vec3& position);
+		void RotateRelative(glm::vec3& rotation);
+		void ScaleRelative(glm::vec3& scale);
 
-		KALEID_MATH_API void SetRelativePosition(glm::vec3& position);
-		KALEID_MATH_API void SetRelativeRotation(glm::vec3& rotation);
-		KALEID_MATH_API void SetRelativeScale(glm::vec3& scale);
-		KALEID_MATH_API void SetWorldPosition(glm::vec3& position);
-		KALEID_MATH_API void SetWorldRotation(glm::vec3& rotation);
-		KALEID_MATH_API void SetWorldScale(glm::vec3& scale);
+		void SetRelativePosition(glm::vec3& position);
+		void SetRelativeRotation(glm::vec3& rotation);
+		void SetRelativeScale(glm::vec3& scale);
+		void SetWorldPosition(glm::vec3& position);
+		void SetWorldRotation(glm::vec3& rotation);
+		void SetWorldScale(glm::vec3& scale);
 
-		KALEID_MATH_API glm::vec3 GetRelativePosition();
-		KALEID_MATH_API glm::vec3 GetRelativeRotation();
-		KALEID_MATH_API glm::vec3 GetRelativeScale();
-		KALEID_MATH_API glm::vec3 GetWorldPosition();
-		KALEID_MATH_API glm::vec3 GetWorldRotation();
-		KALEID_MATH_API glm::vec3 GetWorldScale();
+		glm::vec3 GetRelativePosition();
+		glm::vec3 GetRelativeRotation();
+		glm::vec3 GetRelativeScale();
+		glm::vec3 GetWorldPosition();
+		glm::vec3 GetWorldRotation();
+		glm::vec3 GetWorldScale();
 
-		KALEID_MATH_API Transform* GetParent();
+		Transform* GetParent();
 
-		KALEID_MATH_API glm::mat4 GetModelMatrix();
+		glm::mat4 GetModelMatrix();
 
-		KALEID_MATH_API void AttachParent(Transform*& parent);
-		KALEID_MATH_API void AttachChild(Transform*& child);
-		KALEID_MATH_API void DettachParent(Transform*& parent);
-		KALEID_MATH_API void DettachChild(Transform*& child);
+		void AttachParent(Transform*& parent);
+		void AttachChild(Transform*& child);
+		void DettachParent(Transform*& parent);
+		void DettachChild(Transform*& child);
 	private:
 		glm::vec3 _r_position;
 		glm::vec3 _r_rotation;

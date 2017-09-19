@@ -6,21 +6,21 @@
 API_BEGIN
 namespace Kaleid::Math
 {
-	class PerspectiveCamera sealed : public CameraBase
+	class KALEID_MATH_API PerspectiveCamera sealed : public CameraBase
 	{
 	public:
-		KALEID_MATH_API PerspectiveCamera();
+		PerspectiveCamera();
 
-		KALEID_MATH_API float GetFov() const;
-		KALEID_MATH_API void SetFov(float fov);
+		float GetFov() const;
+		void SetFov(float fov);
 
-		KALEID_MATH_API float GetNearZ() const;
-		KALEID_MATH_API void SetNearZ(float z_near);
+		float GetNearZ() const;
+		void SetNearZ(float z_near);
 
-		KALEID_MATH_API float GetFarZ() const;
-		KALEID_MATH_API void SetFarZ(float z_far);
+		float GetFarZ() const;
+		void SetFarZ(float z_far);
 
-		KALEID_MATH_API glm::mat4 GetProjectionMatrix();
+		glm::mat4 GetProjectionMatrix();
 	private:
 		float _z_near;
 		float _z_far;

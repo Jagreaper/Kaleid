@@ -5,32 +5,32 @@
 API_BEGIN
 namespace Kaleid::Math
 {
-	class CameraBase abstract
+	class KALEID_MATH_API CameraBase abstract
 	{
 	public:
-		KALEID_MATH_API CameraBase();
+		CameraBase();
 
-		KALEID_MATH_API const glm::vec3& GetPosition() const;
-		KALEID_MATH_API void SetPosition(const glm::vec3& position);
-		KALEID_MATH_API void TranslatePosition(const glm::vec3& offset);
+		const glm::vec3& GetPosition() const;
+		void SetPosition(const glm::vec3& position);
+		void TranslatePosition(const glm::vec3& offset);
 
-		KALEID_MATH_API const glm::vec3& GetRotation() const;
-		KALEID_MATH_API void SetRotation(const glm::vec3& rotation);
-		KALEID_MATH_API void TranslateRotation(const glm::vec3& offset);
+		const glm::vec3& GetRotation() const;
+		void SetRotation(const glm::vec3& rotation);
+		void TranslateRotation(const glm::vec3& offset);
 
-		KALEID_MATH_API float GetAspectRatio() const;
-		KALEID_MATH_API void SetAspectRatio(float aspect_ratio);
+		float GetAspectRatio() const;
+		void SetAspectRatio(float aspect_ratio);
 
-		KALEID_MATH_API glm::mat4 GetOrientation() const;
+		glm::mat4 GetOrientation() const;
 
-		KALEID_MATH_API glm::vec3 GetForward() const;
-		KALEID_MATH_API glm::vec3 GetRight() const;
-		KALEID_MATH_API glm::vec3 GetUp() const;
+		glm::vec3 GetForward() const;
+		glm::vec3 GetRight() const;
+		glm::vec3 GetUp() const;
 
-		KALEID_MATH_API virtual glm::mat4 GetProjectionMatrix() = 0;
-		KALEID_MATH_API glm::mat4 GetViewMatrix();
+		virtual glm::mat4 GetProjectionMatrix() = 0;
+		glm::mat4 GetViewMatrix();
 	protected:
-		KALEID_MATH_API void NormalizeRotation();
+		void NormalizeRotation();
 
 		glm::vec3 _position;
 		glm::vec3 _rotation;
