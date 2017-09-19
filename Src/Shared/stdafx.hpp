@@ -28,6 +28,12 @@
 	#else
 		#define KALEID_HELPERS_API __declspec(dllimport)
 	#endif
+
+	#ifdef KALEID_IO_DLL
+		#define KALEID_IO_API __declspec(dllexport)
+	#else
+		#define KALEID_IO_API __declspec(dllimport)
+	#endif
 #else
 	#ifdef KALEID_GRAPHICS_DLL
 		#include <GLEW/glew.h>
@@ -55,6 +61,12 @@
 		#define KALEID_HELPERS_API __attribute__((visibility("default")))
 	#else
 		#define KALEID_HELPERS_API extern
+	#endif
+
+	#ifdef KALEID_IO_DLL
+		#define KALEID_IO_API __attribute__((visibility("default")))
+	#else
+		#define KALEID_IO_API extern
 	#endif
 #endif
 

@@ -2,8 +2,40 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="..\..\..\Src\Shared\stdafx.cpp" />
+    <ClCompile Include="..\..\..\Src\IO\DecoderFactory.cpp">
+      <Filter>Decoders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\IO\EncoderFactory.cpp">
+      <Filter>Encoders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\IO\ObjStreamDecoder.cpp">
+      <Filter>Decoders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Src\Shared\stdafx.hpp" />
+    <ClInclude Include="..\..\..\Src\IO\EncoderBase.hpp">
+      <Filter>Encoders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\IO\DecoderBase.hpp">
+      <Filter>Decoders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\IO\DecoderFactory.hpp">
+      <Filter>Decoders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\IO\EncoderFactory.hpp">
+      <Filter>Encoders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\IO\ObjStreamDecoder.hpp">
+      <Filter>Decoders</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Encoders">
+      <UniqueIdentifier>{295c46b0-1791-4326-8463-5c8147e90a5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Decoders">
+      <UniqueIdentifier>{af32de59-dd62-4659-9a2a-b0d771fcf0a1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

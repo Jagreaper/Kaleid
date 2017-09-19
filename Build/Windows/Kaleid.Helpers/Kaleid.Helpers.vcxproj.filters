@@ -3,8 +3,10 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\Src\Helpers\VectorHelper.hpp" />
     <ClInclude Include="..\..\..\Src\Shared\stdafx.hpp" />
+    <ClInclude Include="..\..\..\Src\Helpers\StringHelper.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Src\Shared\stdafx.cpp" />
+    <ClCompile Include="..\..\..\Src\Helpers\StringHelper.cpp" />
   </ItemGroup>
 </Project>
