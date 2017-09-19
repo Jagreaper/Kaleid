@@ -11,11 +11,17 @@ namespace Kaleid::Helpers
 	{
 	public:
 		template<class TContainer>
-		static inline bool BeginsWith(const TContainer& input, const TContainer match)
+		static inline bool BeginsWith(const TContainer& input, const TContainer& match)
 		{
-			return input.size() >= match.size() && equal(match.begin(), match.end(), input.begin());
+			return input.size() >= match.size() && std::equal(match.begin(), match.end(), input.begin());
 		}
-		
+
+		template<class TContainer>
+		static inline bool EndsWith(const TContainer& input, const TContainer& match)
+		{
+			return match.size() <= input.size() && std::equal(match.rbegin(), match.rend(), input.rbegin());
+		}
+
 		template<typename Out>
 		static inline void Split(const std::string &s, char delim, Out result)
 		{

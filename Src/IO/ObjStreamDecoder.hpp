@@ -5,6 +5,7 @@
 #include "GraphicsFactory.hpp"
 #include <istream>
 
+API_BEGIN
 namespace Kaleid::IO
 {
 	class KALEID_IO_API ObjStreamDecoder : public DecoderBase<std::istream&, Kaleid::Graphics::GraphicsFactory, Kaleid::Graphics::Mesh>
@@ -13,3 +14,4 @@ namespace Kaleid::IO
 		bool TryDecode(std::istream& source, Kaleid::Graphics::Mesh* output, Kaleid::Graphics::GraphicsFactory* arg);
 	};
 }
+API_END
