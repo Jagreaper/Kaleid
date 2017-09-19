@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{D7EA2988-DB27-4004-AB6B-C81A923164DF}</ProjectGuid>
-    <RootNamespace>KaleidMath</RootNamespace>
+    <ProjectGuid>{5E0F4E87-9AE9-4401-A95D-7C23E44F2579}</ProjectGuid>
+    <RootNamespace>KaleidIO</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -90,15 +90,14 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\;..\..\..\Src\Math\;..\..\..\Src\Shared\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_WINDLL;KALEID_MATH_DLL;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\;..\..\..\Src\IO\;..\..\..\Src\Shared\</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_WINDLL;KALEID_IO_DLL;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
-      <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
     </ClCompile>
     <PostBuildEvent>
-      <Command>copy "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\Kaleid.Math.dll" "..\..\..\Bin\Windows\Kaleid.Platform.Win32\$(Configuration)\$(PlatformTarget)\" /y</Command>
+      <Command>copy "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\Kaleid.IO.dll" "..\..\..\Bin\Windows\Kaleid.Platform.Win32\$(Configuration)\$(PlatformTarget)\" /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -106,15 +105,14 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\;..\..\..\Src\Math\;..\..\..\Src\Shared\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_WINDLL;KALEID_MATH_DLL;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\;..\..\..\Src\IO\;..\..\..\Src\Shared\</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_WINDLL;KALEID_IO_DLL;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
-      <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
     </ClCompile>
     <PostBuildEvent>
-      <Command>copy "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\Kaleid.Math.dll" "..\..\..\Bin\Windows\Kaleid.Platform.Win32\$(Configuration)\$(PlatformTarget)\" /y</Command>
+      <Command>copy "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\Kaleid.IO.dll" "..\..\..\Bin\Windows\Kaleid.Platform.Win32\$(Configuration)\$(PlatformTarget)\" /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -124,19 +122,18 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\;..\..\..\Src\Math\;..\..\..\Src\Shared\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_WINDLL;KALEID_MATH_DLL;RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\;..\..\..\Src\IO\;..\..\..\Src\Shared\</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_WINDLL;KALEID_IO_DLL;RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
-      <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PostBuildEvent>
-      <Command>copy "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\Kaleid.Math.dll" "..\..\..\Bin\Windows\Kaleid.Platform.Win32\$(Configuration)\$(PlatformTarget)\" /y</Command>
+      <Command>copy "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\Kaleid.IO.dll" "..\..\..\Bin\Windows\Kaleid.Platform.Win32\$(Configuration)\$(PlatformTarget)\" /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -146,25 +143,21 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\;..\..\..\Src\Math\;..\..\..\Src\Shared\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_WINDLL;KALEID_MATH_DLL;RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\;..\..\..\Src\IO\;..\..\..\Src\Shared\</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_WINDLL;KALEID_IO_DLL;RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
-      <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PostBuildEvent>
-      <Command>copy "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\Kaleid.Math.dll" "..\..\..\Bin\Windows\Kaleid.Platform.Win32\$(Configuration)\$(PlatformTarget)\" /y</Command>
+      <Command>copy "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\Kaleid.IO.dll" "..\..\..\Bin\Windows\Kaleid.Platform.Win32\$(Configuration)\$(PlatformTarget)\" /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\Src\Math\CameraBase.cpp" />
-    <ClCompile Include="..\..\..\Src\Math\PerspectiveCamera.cpp" />
-    <ClCompile Include="..\..\..\Src\Math\Transform.cpp" />
     <ClCompile Include="..\..\..\Src\Shared\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -173,9 +166,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Src\Math\CameraBase.hpp" />
-    <ClInclude Include="..\..\..\Src\Math\PerspectiveCamera.hpp" />
-    <ClInclude Include="..\..\..\Src\Math\Transform.hpp" />
     <ClInclude Include="..\..\..\Src\Shared\stdafx.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
