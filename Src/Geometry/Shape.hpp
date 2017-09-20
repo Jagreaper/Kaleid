@@ -1,7 +1,6 @@
 #pragma once
 
 #include "stdafx.hpp"
-#include "Face.hpp"
 #include <vector>
 
 API_BEGIN

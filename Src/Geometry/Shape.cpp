@@ -1,5 +1,6 @@
 #include "stdafx.hpp"
 #include "Shape.hpp"
+#include "Face.hpp"
 
 using namespace Kaleid::Geometry;
 
