@@ -90,7 +90,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\Game\;..\..\..\Src\Geometry\;..\..\..\Src\Graphics\;..\..\..\Src\IO\;..\..\..\Src\Shared\;..\..\..\Src\Helpers\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\Math\;..\..\..\Src\Game\;..\..\..\Src\Geometry\;..\..\..\Src\Graphics\;..\..\..\Src\IO\;..\..\..\Src\Shared\;..\..\..\Src\Helpers\</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_WINDLL;KALEID_IO_DLL;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -106,7 +106,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\Game\;..\..\..\Src\Geometry\;..\..\..\Src\Graphics\;..\..\..\Src\IO\;..\..\..\Src\Shared\;..\..\..\Src\Helpers\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\Math\;..\..\..\Src\Game\;..\..\..\Src\Geometry\;..\..\..\Src\Graphics\;..\..\..\Src\IO\;..\..\..\Src\Shared\;..\..\..\Src\Helpers\</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_WINDLL;KALEID_IO_DLL;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -124,7 +124,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\Game\;..\..\..\Src\Geometry\;..\..\..\Src\Graphics\;..\..\..\Src\IO\;..\..\..\Src\Shared\;..\..\..\Src\Helpers\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\Math\;..\..\..\Src\Game\;..\..\..\Src\Geometry\;..\..\..\Src\Graphics\;..\..\..\Src\IO\;..\..\..\Src\Shared\;..\..\..\Src\Helpers\</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_WINDLL;KALEID_IO_DLL;RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -146,7 +146,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\Game\;..\..\..\Src\Geometry\;..\..\..\Src\Graphics\;..\..\..\Src\IO\;..\..\..\Src\Shared\;..\..\..\Src\Helpers\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\Math\;..\..\..\Src\Game\;..\..\..\Src\Geometry\;..\..\..\Src\Graphics\;..\..\..\Src\IO\;..\..\..\Src\Shared\;..\..\..\Src\Helpers\</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_WINDLL;KALEID_IO_DLL;RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -192,6 +192,9 @@
     </ProjectReference>
     <ProjectReference Include="..\Kaleid.Helpers\Kaleid.Helpers.vcxproj">
       <Project>{fa74e84f-8b9c-44fa-99be-b68865635073}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Kaleid.Math\Kaleid.Math.vcxproj">
+      <Project>{d7ea2988-db27-4004-ab6b-c81a923164df}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
