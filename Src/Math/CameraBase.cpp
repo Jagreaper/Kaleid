@@ -6,41 +6,41 @@ using namespace Kaleid::Math;
 
 CameraBase::CameraBase()
 {
-	this->SetPosition(glm::vec3(0.0f, 0.0f, 0.0f));
-	this->SetRotation(glm::vec3(0.0f, 0.0f, 0.0f));
+	this->SetPosition(Vector3f(0.0f, 0.0f, 0.0f));
+	this->SetRotation(Vector3f(0.0f, 0.0f, 0.0f));
 	this->SetAspectRatio(4.0f / 3.0f);
 }
 
-const glm::vec3& CameraBase::GetPosition() const
+const Vector3f& CameraBase::GetPosition() const
 {
 	return this->_position;
 }
 
-void CameraBase::SetPosition(const glm::vec3& position)
+void CameraBase::SetPosition(const Vector3f& position)
 {
 	this->_position = position;
 	this->_is_view_matrix_dirty = true;
 }
 
-void CameraBase::TranslatePosition(const glm::vec3& offset)
+void CameraBase::TranslatePosition(const Vector3f& offset)
 {
 	this->_position += offset;
 	this->_is_view_matrix_dirty = true;
 }
 
-const glm::vec3& CameraBase::GetRotation() const
+const Vector3f& CameraBase::GetRotation() const
 {
 	return this->_rotation;
 }
 
-void CameraBase::SetRotation(const glm::vec3& rotation)
+void CameraBase::SetRotation(const Vector3f& rotation)
 {
 	this->_rotation = rotation;
 	this->NormalizeRotation();
 	this->_is_view_matrix_dirty = true;
 }
 
-void CameraBase::TranslateRotation(const glm::vec3& offset)
+void CameraBase::TranslateRotation(const Vector3f& offset)
 {
 	this->_rotation += offset;
 	this->NormalizeRotation();
@@ -60,38 +60,38 @@ void CameraBase::SetAspectRatio(float aspect_ratio)
 	this->_is_projection_matrix_dirty = true;
 }
 
-glm::mat4 CameraBase::GetOrientation() const
+Matrix4f CameraBase::GetOrientation() const
 {
-	glm::mat4 orientation;
-	orientation = glm::rotate(orientation, glm::radians(this->_rotation.x), glm::vec3(1, 0, 0));
-	orientation = glm::rotate(orientation, glm::radians(this->_rotation.y), glm::vec3(0, 1, 0));
-	orientation = glm::rotate(orientation, glm::radians(this->_rotation.z), glm::vec3(0, 0, 1));
+	Matrix4f orientation;
+	orientation = glm::rotate(orientation, glm::radians(this->_rotation.x), Vector3f(1, 0, 0));
+	orientation = glm::rotate(orientation, glm::radians(this->_rotation.y), Vector3f(0, 1, 0));
+	orientation = glm::rotate(orientation, glm::radians(this->_rotation.z), Vector3f(0, 0, 1));
 	return orientation;
 }
 
-glm::vec3 CameraBase::GetForward() const
+Vector3f CameraBase::GetForward() const
 {
 	glm::vec4 forward = glm::inverse(this->GetOrientation()) * glm::vec4(0, 0, -1, 1);
-	return glm::vec3(forward);
+	return Vector3f(forward);
 }
 
-glm::vec3 CameraBase::GetRight() const
+Vector3f CameraBase::GetRight() const
 {
 	glm::vec4 right = glm::inverse(this->GetOrientation()) * glm::vec4(1, 0, 0, 1);
-	return glm::vec3(right);
+	return Vector3f(right);
 }
 
-glm::vec3 CameraBase::GetUp() const
+Vector3f CameraBase::GetUp() const
 {
 	glm::vec4 up = glm::inverse(this->GetOrientation()) * glm::vec4(0, 1, 0, 1);
-	return glm::vec3(up);
+	return Vector3f(up);
 }
 
-glm::mat4 CameraBase::GetViewMatrix()
+Matrix4f CameraBase::GetViewMatrix()
 {
 	if (this->_is_view_matrix_dirty)
 	{
-		this->_view_matrix = this->GetOrientation() * glm::translate(glm::mat4(), -this->_position);
+		this->_view_matrix = this->GetOrientation() * glm::translate(Matrix4f(), -this->_position);
 		this->_is_view_matrix_dirty = false;
 	}
 

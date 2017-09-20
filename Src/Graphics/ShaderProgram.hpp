@@ -1,6 +1,8 @@
 #pragma once
 
 #include "stdafx.hpp"
+#include "Vector.hpp"
+#include "Matrix.hpp"
 #include <vector>
 
 API_BEGIN
@@ -52,12 +54,12 @@ namespace Kaleid::Graphics
 		void SetUniformMatrix2(const char* name, const float* v, int count = 1, bool transpose = false);
 		void SetUniformMatrix3(const char* name, const float* v, int count = 1, bool transpose = false);
 		void SetUniformMatrix4(const char* name, const float* v, int count = 1, bool transpose = false);
-		void SetUniform(const char* name, const glm::mat2& m, bool transpose = false);
-		void SetUniform(const char* name, const glm::mat3& m, bool transpose = false);
-		void SetUniform(const char* name, const glm::mat4& m, bool transpose = false);
-		void SetUniform(const char* name, const glm::vec2& v);
-		void SetUniform(const char* name, const glm::vec3& v);
-		void SetUniform(const char* name, const glm::vec4& v);
+		void SetUniform(const char* name, const Kaleid::Math::Matrix2f& m, bool transpose = false);
+		void SetUniform(const char* name, const Kaleid::Math::Matrix3f& m, bool transpose = false);
+		void SetUniform(const char* name, const Kaleid::Math::Matrix4f& m, bool transpose = false);
+		void SetUniform(const char* name, const Kaleid::Math::Vector2f& v);
+		void SetUniform(const char* name, const Kaleid::Math::Vector3f& v);
+		void SetUniform(const char* name, const Kaleid::Math::Vector4f& v);
 	private:
 		ShaderProgram();
 		void Dispose();

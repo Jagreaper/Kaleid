@@ -34,6 +34,12 @@
 	#else
 		#define KALEID_IO_API __declspec(dllimport)
 	#endif
+
+	#ifdef KALEID_GEOMETRY_DLL
+		#define KALEID_GEOMETRY_API __declspec(dllexport)
+	#else
+		#define KALEID_GEOMETRY_API __declspec(dllimport)
+	#endif
 #else
 	#ifdef KALEID_GRAPHICS_DLL
 		#include <GLEW/glew.h>
@@ -68,6 +74,12 @@
 	#else
 		#define KALEID_IO_API extern
 	#endif
+
+	#ifdef KALEID_GEOMETRY_DLL
+		#define KALEID_GEOMETRY_API __attribute__((visibility("default")))
+	#else
+		#define KALEID_GEOMETRY_API extern
+	#endif
 #endif
 
 #ifdef __cplusplus
@@ -79,4 +91,3 @@
 #endif
 
 #include <iostream>
-#include <GLM/glm.hpp>

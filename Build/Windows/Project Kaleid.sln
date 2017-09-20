@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.15
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Kaleid.Graphics", "Kaleid.Graphics\Kaleid.Graphics.vcxproj", "{B0D1FC24-7ED7-4F0A-B51B-0864F52F4F77}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Kaleid.Helpers", "Kaleid.Helpers\Kaleid.Helpers.vcxproj", "{FA74E84F-8B9C-44FA-99BE-B68865635073}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Kaleid.IO", "Kaleid.IO\Kaleid.IO.vcxproj", "{5E0F4E87-9AE9-4401-A95D-7C23E44F2579}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Kaleid.Geometry", "Kaleid.Geometry\Kaleid.Geometry.vcxproj", "{F5E121A6-0652-4FE0-8D93-4C05A473FFCE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +73,14 @@ Global
 		{5E0F4E87-9AE9-4401-A95D-7C23E44F2579}.Release|x64.Build.0 = Release|x64
 		{5E0F4E87-9AE9-4401-A95D-7C23E44F2579}.Release|x86.ActiveCfg = Release|Win32
 		{5E0F4E87-9AE9-4401-A95D-7C23E44F2579}.Release|x86.Build.0 = Release|Win32
+		{F5E121A6-0652-4FE0-8D93-4C05A473FFCE}.Debug|x64.ActiveCfg = Debug|x64
+		{F5E121A6-0652-4FE0-8D93-4C05A473FFCE}.Debug|x64.Build.0 = Debug|x64
+		{F5E121A6-0652-4FE0-8D93-4C05A473FFCE}.Debug|x86.ActiveCfg = Debug|Win32
+		{F5E121A6-0652-4FE0-8D93-4C05A473FFCE}.Debug|x86.Build.0 = Debug|Win32
+		{F5E121A6-0652-4FE0-8D93-4C05A473FFCE}.Release|x64.ActiveCfg = Release|x64
+		{F5E121A6-0652-4FE0-8D93-4C05A473FFCE}.Release|x64.Build.0 = Release|x64
+		{F5E121A6-0652-4FE0-8D93-4C05A473FFCE}.Release|x86.ActiveCfg = Release|Win32
+		{F5E121A6-0652-4FE0-8D93-4C05A473FFCE}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

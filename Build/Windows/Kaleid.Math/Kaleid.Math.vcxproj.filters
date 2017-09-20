@@ -19,6 +19,8 @@
       <Filter>Cameras</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Src\Shared\stdafx.hpp" />
+    <ClInclude Include="..\..\..\Src\Math\Vector.hpp" />
+    <ClInclude Include="..\..\..\Src\Math\Matrix.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Cameras">

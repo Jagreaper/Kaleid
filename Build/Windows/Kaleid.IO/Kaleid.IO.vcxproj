@@ -90,11 +90,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\;..\..\..\Src\Game\;..\..\..\Src\Graphics\;..\..\..\Src\IO\;..\..\..\Src\Shared\;..\..\..\Src\Helpers\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\Game\;..\..\..\Src\Graphics\;..\..\..\Src\IO\;..\..\..\Src\Shared\;..\..\..\Src\Helpers\</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_WINDLL;KALEID_IO_DLL;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
+      <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
     </ClCompile>
     <PostBuildEvent>
       <Command>copy "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\$(TargetFileName)" "..\..\..\Bin\Windows\Kaleid.Platform.Win32\$(Configuration)\$(PlatformTarget)\" /y</Command>
@@ -105,11 +106,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\;..\..\..\Src\Game\;..\..\..\Src\Graphics\;..\..\..\Src\IO\;..\..\..\Src\Shared\;..\..\..\Src\Helpers\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\Game\;..\..\..\Src\Graphics\;..\..\..\Src\IO\;..\..\..\Src\Shared\;..\..\..\Src\Helpers\</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_WINDLL;KALEID_IO_DLL;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
+      <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
     </ClCompile>
     <PostBuildEvent>
       <Command>copy "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\$(TargetFileName)" "..\..\..\Bin\Windows\Kaleid.Platform.Win32\$(Configuration)\$(PlatformTarget)\" /y</Command>
@@ -122,11 +124,12 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\;..\..\..\Src\Game\;..\..\..\Src\Graphics\;..\..\..\Src\IO\;..\..\..\Src\Shared\;..\..\..\Src\Helpers\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\Game\;..\..\..\Src\Graphics\;..\..\..\Src\IO\;..\..\..\Src\Shared\;..\..\..\Src\Helpers\</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_WINDLL;KALEID_IO_DLL;RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
+      <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -143,11 +146,12 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\;..\..\..\Src\Game\;..\..\..\Src\Graphics\;..\..\..\Src\IO\;..\..\..\Src\Shared\;..\..\..\Src\Helpers\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\Game\;..\..\..\Src\Graphics\;..\..\..\Src\IO\;..\..\..\Src\Shared\;..\..\..\Src\Helpers\</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_WINDLL;KALEID_IO_DLL;RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
+      <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -179,6 +183,9 @@
   <ItemGroup>
     <ProjectReference Include="..\Kaleid.Game\Kaleid.Game.vcxproj">
       <Project>{29dc283f-b80e-4650-a60e-a294947fdbcd}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Kaleid.Geometry\Kaleid.Geometry.vcxproj">
+      <Project>{f5e121a6-0652-4fe0-8d93-4c05a473ffce}</Project>
     </ProjectReference>
     <ProjectReference Include="..\Kaleid.Graphics\Kaleid.Graphics.vcxproj">
       <Project>{b0d1fc24-7ed7-4f0a-b51b-0864f52f4f77}</Project>

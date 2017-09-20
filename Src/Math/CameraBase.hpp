@@ -1,6 +1,8 @@
 #pragma once
 
 #include "stdafx.hpp"
+#include "Vector.hpp"
+#include "Matrix.hpp"
 
 API_BEGIN
 namespace Kaleid::Math
@@ -10,33 +12,33 @@ namespace Kaleid::Math
 	public:
 		CameraBase();
 
-		const glm::vec3& GetPosition() const;
-		void SetPosition(const glm::vec3& position);
-		void TranslatePosition(const glm::vec3& offset);
+		const Vector3f& GetPosition() const;
+		void SetPosition(const Vector3f& position);
+		void TranslatePosition(const Vector3f& offset);
 
-		const glm::vec3& GetRotation() const;
-		void SetRotation(const glm::vec3& rotation);
-		void TranslateRotation(const glm::vec3& offset);
+		const Vector3f& GetRotation() const;
+		void SetRotation(const Vector3f& rotation);
+		void TranslateRotation(const Vector3f& offset);
 
 		float GetAspectRatio() const;
 		void SetAspectRatio(float aspect_ratio);
 
-		glm::mat4 GetOrientation() const;
+		Matrix4f GetOrientation() const;
 
-		glm::vec3 GetForward() const;
-		glm::vec3 GetRight() const;
-		glm::vec3 GetUp() const;
+		Vector3f GetForward() const;
+		Vector3f GetRight() const;
+		Vector3f GetUp() const;
 
-		virtual glm::mat4 GetProjectionMatrix() = 0;
-		glm::mat4 GetViewMatrix();
+		virtual Matrix4f GetProjectionMatrix() = 0;
+		Matrix4f GetViewMatrix();
 	protected:
 		void NormalizeRotation();
 
-		glm::vec3 _position;
-		glm::vec3 _rotation;
+		Vector3f _position;
+		Vector3f _rotation;
 
-		glm::mat4 _projection_matrix;
-		glm::mat4 _view_matrix;
+		Matrix4f _projection_matrix;
+		Matrix4f _view_matrix;
 
 		bool _is_projection_matrix_dirty;
 		bool _is_view_matrix_dirty;

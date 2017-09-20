@@ -55,6 +55,9 @@
     <ProjectReference Include="..\Kaleid.Helpers\Kaleid.Helpers.vcxproj">
       <Project>{fa74e84f-8b9c-44fa-99be-b68865635073}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\Kaleid.Math\Kaleid.Math.vcxproj">
+      <Project>{d7ea2988-db27-4004-ab6b-c81a923164df}</Project>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
@@ -133,7 +136,7 @@
       <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\;..\..\..\Src\Graphics\;..\..\..\Src\Helpers\;..\..\..\Src\Shared\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\Math\;..\..\..\Src\Graphics\;..\..\..\Src\Helpers\;..\..\..\Src\Shared\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>OpenGL32.lib;glew32.lib;glew32s.lib;glfw3.lib;glfw3dll.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -153,7 +156,7 @@
       <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\;..\..\..\Src\Graphics\;..\..\..\Src\Helpers\;..\..\..\Src\Shared\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\Math\;..\..\..\Src\Graphics\;..\..\..\Src\Helpers\;..\..\..\Src\Shared\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>OpenGL32.lib;glew32.lib;glew32s.lib;glfw3.lib;glfw3dll.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -175,7 +178,7 @@
       <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\;..\..\..\Src\Graphics\;..\..\..\Src\Helpers\;..\..\..\Src\Shared\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\Math\;..\..\..\Src\Graphics\;..\..\..\Src\Helpers\;..\..\..\Src\Shared\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -199,7 +202,7 @@
       <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\;..\..\..\Src\Graphics\;..\..\..\Src\Helpers\;..\..\..\Src\Shared\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\Math\;..\..\..\Src\Graphics\;..\..\..\Src\Helpers\;..\..\..\Src\Shared\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>

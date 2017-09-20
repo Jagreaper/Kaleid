@@ -1,6 +1,8 @@
 #pragma once
 
 #include "stdafx.hpp"
+#include "Matrix.hpp"
+#include "Vector.hpp"
 #include <vector>
 
 API_BEGIN
@@ -12,42 +14,42 @@ namespace Kaleid::Math
 		Transform();
 		~Transform();
 
-		void TranslateRelative(glm::vec3& position);
-		void RotateRelative(glm::vec3& rotation);
-		void ScaleRelative(glm::vec3& scale);
+		void TranslateRelative(Vector3f& position);
+		void RotateRelative(Vector3f& rotation);
+		void ScaleRelative(Vector3f& scale);
 
-		void SetRelativePosition(glm::vec3& position);
-		void SetRelativeRotation(glm::vec3& rotation);
-		void SetRelativeScale(glm::vec3& scale);
-		void SetWorldPosition(glm::vec3& position);
-		void SetWorldRotation(glm::vec3& rotation);
-		void SetWorldScale(glm::vec3& scale);
+		void SetRelativePosition(Vector3f& position);
+		void SetRelativeRotation(Vector3f& rotation);
+		void SetRelativeScale(Vector3f& scale);
+		void SetWorldPosition(Vector3f& position);
+		void SetWorldRotation(Vector3f& rotation);
+		void SetWorldScale(Vector3f& scale);
 
-		glm::vec3 GetRelativePosition();
-		glm::vec3 GetRelativeRotation();
-		glm::vec3 GetRelativeScale();
-		glm::vec3 GetWorldPosition();
-		glm::vec3 GetWorldRotation();
-		glm::vec3 GetWorldScale();
+		Vector3f GetRelativePosition();
+		Vector3f GetRelativeRotation();
+		Vector3f GetRelativeScale();
+		Vector3f GetWorldPosition();
+		Vector3f GetWorldRotation();
+		Vector3f GetWorldScale();
 
 		Transform* GetParent();
 
-		glm::mat4 GetModelMatrix();
+		Matrix4f GetModelMatrix();
 
 		void AttachParent(Transform*& parent);
 		void AttachChild(Transform*& child);
 		void DettachParent(Transform*& parent);
 		void DettachChild(Transform*& child);
 	private:
-		glm::vec3 _r_position;
-		glm::vec3 _r_rotation;
-		glm::vec3 _r_scale;
+		Vector3f _r_position;
+		Vector3f _r_rotation;
+		Vector3f _r_scale;
 
-		glm::vec3 _w_position;
-		glm::vec3 _w_rotation;
-		glm::vec3 _w_scale;
+		Vector3f _w_position;
+		Vector3f _w_rotation;
+		Vector3f _w_scale;
 
-		glm::mat4 _model_matrix;
+		Matrix4f _model_matrix;
 
 		bool _is_position_dirty;
 		bool _is_rotation_dirty;

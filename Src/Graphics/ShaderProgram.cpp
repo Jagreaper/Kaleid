@@ -5,6 +5,7 @@
 #include <glm/gtc/type_ptr.hpp>
 
 using namespace Kaleid::Graphics;
+using namespace Kaleid::Math;
 
 ShaderProgram::ShaderProgram()
 {
@@ -172,35 +173,35 @@ void ShaderProgram::SetUniformMatrix4(const char* name, const float* v, int coun
 	glUniformMatrix4fv(this->GetUniformLocation(name), count, transpose, v);
 }
 
-void ShaderProgram::SetUniform(const char* name, const glm::mat2& m, bool transpose)
+void ShaderProgram::SetUniform(const char* name, const Matrix2f& m, bool transpose)
 {
 	assert(this->InUse());
 	glUniformMatrix2fv(this->GetUniformLocation(name), 1, transpose, glm::value_ptr(m));
 }
 
-void ShaderProgram::SetUniform(const char* name, const glm::mat3& m, bool transpose)
+void ShaderProgram::SetUniform(const char* name, const Matrix3f& m, bool transpose)
 {
 	assert(this->InUse());
 	glUniformMatrix3fv(this->GetUniformLocation(name), 1, transpose, glm::value_ptr(m));
 }
 
-void ShaderProgram::SetUniform(const char* name, const glm::mat4& m, bool transpose)
+void ShaderProgram::SetUniform(const char* name, const Matrix4f& m, bool transpose)
 {
 	assert(this->InUse());
 	glUniformMatrix4fv(this->GetUniformLocation(name), 1, transpose, glm::value_ptr(m));
 }
 
-void ShaderProgram::SetUniform(const char* name, const glm::vec2& v)
+void ShaderProgram::SetUniform(const char* name, const Vector2f& v)
 {
 	this->SetUniform2v(name, glm::value_ptr(v));
 }
 
-void ShaderProgram::SetUniform(const char* name, const glm::vec3& v)
+void ShaderProgram::SetUniform(const char* name, const Vector3f& v)
 {
 	this->SetUniform3v(name, glm::value_ptr(v));
 }
 
-void ShaderProgram::SetUniform(const char* name, const glm::vec4& v)
+void ShaderProgram::SetUniform(const char* name, const Vector4f& v)
 {
 	this->SetUniform4v(name, glm::value_ptr(v));
 }

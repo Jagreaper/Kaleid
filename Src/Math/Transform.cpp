@@ -7,9 +7,9 @@ using namespace Kaleid::Math;
 
 Transform::Transform()
 {
-	this->_r_position = glm::vec3(0.0f, 0.0f, 0.0f);
-	this->_r_rotation = glm::vec3(0.0f, 0.0f, 0.0f);
-	this->_r_scale = glm::vec3(1.0f, 1.0f, 1.0f);
+	this->_r_position = Vector3f(0.0f, 0.0f, 0.0f);
+	this->_r_rotation = Vector3f(0.0f, 0.0f, 0.0f);
+	this->_r_scale = Vector3f(1.0f, 1.0f, 1.0f);
 
 	this->_is_position_dirty = true;
 	this->_is_rotation_dirty = true;
@@ -63,43 +63,43 @@ void Transform::MarkScaleDirty()
 	}
 }
 
-void Transform::TranslateRelative(glm::vec3& position)
+void Transform::TranslateRelative(Vector3f& position)
 {
 	this->_r_position += position;
 	this->MarkPositionDirty();
 }
 
-void Transform::RotateRelative(glm::vec3& rotation)
+void Transform::RotateRelative(Vector3f& rotation)
 {
 	this->_r_rotation += rotation;
 	this->MarkRotationDirty();
 }
 
-void Transform::ScaleRelative(glm::vec3& scale)
+void Transform::ScaleRelative(Vector3f& scale)
 {
 	this->_r_scale *= scale;
 	this->MarkScaleDirty();
 }
 
-void Transform::SetRelativePosition(glm::vec3& position)
+void Transform::SetRelativePosition(Vector3f& position)
 {
 	this->_r_position = position;
 	this->MarkPositionDirty();
 }
 
-void Transform::SetRelativeRotation(glm::vec3& rotation)
+void Transform::SetRelativeRotation(Vector3f& rotation)
 {
 	this->_r_rotation = rotation;
 	this->MarkRotationDirty();
 }
 
-void Transform::SetRelativeScale(glm::vec3& scale)
+void Transform::SetRelativeScale(Vector3f& scale)
 {
 	this->_r_scale = scale;
 	this->MarkScaleDirty();
 }
 
-glm::vec3 RotateRelativeByWorld(glm::vec3& p_rotation, glm::vec3& r_postion)
+Vector3f RotateRelativeByWorld(Vector3f& p_rotation, Vector3f& r_postion)
 {
 	glm::vec2 xy = glm::rotate(glm::vec2(r_postion.x, r_postion.y), glm::radians(p_rotation.z));
 	glm::vec2 zy = glm::rotate(glm::vec2(r_postion.z, r_postion.y), glm::radians(p_rotation.x));
@@ -109,10 +109,10 @@ glm::vec3 RotateRelativeByWorld(glm::vec3& p_rotation, glm::vec3& r_postion)
 	float y = xy.y + zy.y;
 	float z = zy.x + xz.y;
 
-	return glm::vec3(x, y, z);
+	return Vector3f(x, y, z);
 }
 
-void Transform::SetWorldPosition(glm::vec3& position)
+void Transform::SetWorldPosition(Vector3f& position)
 {
 	if (this->_parent != NULL)
 		this->SetRelativePosition(position - RotateRelativeByWorld(-this->_parent->GetWorldRotation(), this->_parent->GetWorldPosition()));
@@ -122,7 +122,7 @@ void Transform::SetWorldPosition(glm::vec3& position)
 	this->MarkPositionDirty();
 }
 
-void Transform::SetWorldRotation(glm::vec3& rotation)
+void Transform::SetWorldRotation(Vector3f& rotation)
 {
 	if (this->_parent != NULL)
 		this->SetRelativeRotation(rotation - this->_parent->GetWorldRotation());
@@ -132,7 +132,7 @@ void Transform::SetWorldRotation(glm::vec3& rotation)
 	this->MarkRotationDirty();
 }
 
-void Transform::SetWorldScale(glm::vec3& scale)
+void Transform::SetWorldScale(Vector3f& scale)
 {
 	if (this->_parent != NULL)
 		this->SetRelativeScale(scale / this->_parent->GetWorldScale());
@@ -142,22 +142,22 @@ void Transform::SetWorldScale(glm::vec3& scale)
 	this->MarkScaleDirty();
 }
 
-glm::vec3 Transform::GetRelativePosition()
+Vector3f Transform::GetRelativePosition()
 {
 	return this->_r_position;
 }
 
-glm::vec3 Transform::GetRelativeRotation()
+Vector3f Transform::GetRelativeRotation()
 {
 	return this->_r_rotation;
 }
 
-glm::vec3 Transform::GetRelativeScale()
+Vector3f Transform::GetRelativeScale()
 {
 	return this->_r_scale;
 }
 
-glm::vec3 Transform::GetWorldPosition()
+Vector3f Transform::GetWorldPosition()
 {
 	if (this->_is_position_dirty)
 	{
@@ -172,7 +172,7 @@ glm::vec3 Transform::GetWorldPosition()
 	return this->_w_position;
 }
 
-glm::vec3 Transform::GetWorldRotation()
+Vector3f Transform::GetWorldRotation()
 {
 	if (this->_is_rotation_dirty)
 	{
@@ -187,7 +187,7 @@ glm::vec3 Transform::GetWorldRotation()
 	return this->_w_rotation;
 }
 
-glm::vec3 Transform::GetWorldScale()
+Vector3f Transform::GetWorldScale()
 {
 	if (this->_is_scale_dirty)
 	{
@@ -208,19 +208,19 @@ Transform* Transform::GetParent()
 }
 
 
-glm::mat4 Transform::GetModelMatrix()
+Matrix4f Transform::GetModelMatrix()
 {
 	if (this->_is_model_matrix_dirty)
 	{
-		glm::vec3 w_position = this->GetWorldPosition();
-		glm::vec3 w_rotation = this->GetWorldRotation();
-		glm::vec3 w_scale = this->GetWorldScale();
-		glm::mat4 translation = glm::translate(glm::mat4(), w_position);
-		glm::mat4 rot_x = glm::rotate(glm::radians(w_rotation.x), glm::vec3(1.0f, 0.0f, 0.0f));
-		glm::mat4 rot_y = glm::rotate(glm::radians(w_rotation.y), glm::vec3(0.0f, 1.0f, 0.0f));
-		glm::mat4 rot_z = glm::rotate(glm::radians(w_rotation.z), glm::vec3(0.0f, 0.0f, 1.0f));
-		glm::mat4 scale = glm::scale(w_scale);
-		glm::mat4 rot = rot_x * rot_y * rot_z;
+		Vector3f w_position = this->GetWorldPosition();
+		Vector3f w_rotation = this->GetWorldRotation();
+		Vector3f w_scale = this->GetWorldScale();
+		Matrix4f translation = glm::translate(Matrix4f(), w_position);
+		Matrix4f rot_x = glm::rotate(glm::radians(w_rotation.x), Vector3f(1.0f, 0.0f, 0.0f));
+		Matrix4f rot_y = glm::rotate(glm::radians(w_rotation.y), Vector3f(0.0f, 1.0f, 0.0f));
+		Matrix4f rot_z = glm::rotate(glm::radians(w_rotation.z), Vector3f(0.0f, 0.0f, 1.0f));
+		Matrix4f scale = glm::scale(w_scale);
+		Matrix4f rot = rot_x * rot_y * rot_z;
 		this->_model_matrix = translation * rot * scale;
 		this->_is_model_matrix_dirty = false;
 	}
