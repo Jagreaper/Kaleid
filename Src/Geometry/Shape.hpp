@@ -1,21 +1,36 @@
 #pragma once
 
 #include "stdafx.hpp"
+#include "Face.hpp"
 #include <vector>
 
-API_BEGIN
 namespace Kaleid::Geometry
 {
-	class Face;
-
-	class KALEID_GEOMETRY_API Shape
+	template<class T>
+	class Shape
 	{
 	public:
-		void SetFaces(std::vector<Face>& faces);
-		std::vector<Face>& GetFaces();
-		std::vector<Face> GetFaces() const;
+		inline void SetFaces(std::vector<Face<T>>& faces)
+		{
+			this->_faces = faces;
+		}
+
+		inline std::vector<Face<T>>& GetFaces()
+		{
+			return this->_faces;
+		}
+
+		inline std::vector<Face<T>> GetFaces() const
+		{
+			return this->_faces;
+		}
 	private:
-		std::vector<Face> _faces;
+		std::vector<Face<T>> _faces;
 	};
+
+	using ShapeF = Shape<float>;
+	using ShapeD = Shape<double>;
+	using ShapeS = Shape<short>;
+	using ShapeI = Shape<int>;
+	using ShapeL = Shape<int64_t>;
 }
-API_END

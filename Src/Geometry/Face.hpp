@@ -4,17 +4,33 @@
 #include "Vertex.hpp"
 #include <vector>
 
-API_BEGIN
 namespace Kaleid::Geometry
 {
-	class KALEID_GEOMETRY_API Face
+	template<class T>
+	class Face
 	{
 	public:
-		void SetVerticies(std::vector<Vertex>& verticies);
-		std::vector<Vertex>& GetVerticies();
-		std::vector<Vertex> GetVerticies() const;
-	private:
-		std::vector<Vertex> _verticies;
+		inline void SetVerticies(std::vector<Vertex<T>>& verticies)
+		{
+			this->_verticies = verticies;
+		}
+
+		inline std::vector<Vertex<T>>& GetVerticies()
+		{
+			return this->_verticies;
+		}
+
+		inline std::vector<Vertex<T>> GetVerticies() const
+		{
+			return this->_verticies;
+		}
+	protected:
+		std::vector<Vertex<T>> _verticies;
 	};
+
+	using FaceF = Face<float>;
+	using FaceD = Face<double>;
+	using FaceS = Face<short>;
+	using FaceI = Face<int>;
+	using FaceL = Face<int64_t>;
 }
-API_END

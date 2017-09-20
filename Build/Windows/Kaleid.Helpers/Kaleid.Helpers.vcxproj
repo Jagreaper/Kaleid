@@ -168,7 +168,6 @@
     <ClInclude Include="..\..\..\Src\Shared\stdafx.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\Src\Helpers\Nullable.cpp" />
     <ClCompile Include="..\..\..\Src\Helpers\StringHelper.cpp" />
     <ClCompile Include="..\..\..\Src\Shared\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

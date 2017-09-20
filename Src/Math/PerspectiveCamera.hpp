@@ -20,7 +20,7 @@ namespace Kaleid::Math
 		float GetFarZ() const;
 		void SetFarZ(float z_far);
 
-		Matrix4f GetProjectionMatrix();
+		Matrix4F GetProjectionMatrix();
 	private:
 		float _z_near;
 		float _z_far;

@@ -2,14 +2,13 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="..\..\..\Src\Shared\stdafx.cpp" />
-    <ClCompile Include="..\..\..\Src\Geometry\Face.cpp" />
-    <ClCompile Include="..\..\..\Src\Geometry\Shape.cpp" />
-    <ClCompile Include="..\..\..\Src\Geometry\Vertex.cpp" />
+    <ClCompile Include="..\..\..\Src\Geometry\Triangle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Src\Shared\stdafx.hpp" />
     <ClInclude Include="..\..\..\Src\Geometry\Face.hpp" />
     <ClInclude Include="..\..\..\Src\Geometry\Shape.hpp" />
     <ClInclude Include="..\..\..\Src\Geometry\Vertex.hpp" />
+    <ClInclude Include="..\..\..\Src\Geometry\Triangle.hpp" />
   </ItemGroup>
 </Project>

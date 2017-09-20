@@ -54,12 +54,12 @@ namespace Kaleid::Graphics
 		void SetUniformMatrix2(const char* name, const float* v, int count = 1, bool transpose = false);
 		void SetUniformMatrix3(const char* name, const float* v, int count = 1, bool transpose = false);
 		void SetUniformMatrix4(const char* name, const float* v, int count = 1, bool transpose = false);
-		void SetUniform(const char* name, const Kaleid::Math::Matrix2f& m, bool transpose = false);
-		void SetUniform(const char* name, const Kaleid::Math::Matrix3f& m, bool transpose = false);
-		void SetUniform(const char* name, const Kaleid::Math::Matrix4f& m, bool transpose = false);
-		void SetUniform(const char* name, const Kaleid::Math::Vector2f& v);
-		void SetUniform(const char* name, const Kaleid::Math::Vector3f& v);
-		void SetUniform(const char* name, const Kaleid::Math::Vector4f& v);
+		void SetUniform(const char* name, const Kaleid::Math::Matrix2F& m, bool transpose = false);
+		void SetUniform(const char* name, const Kaleid::Math::Matrix3F& m, bool transpose = false);
+		void SetUniform(const char* name, const Kaleid::Math::Matrix4F& m, bool transpose = false);
+		void SetUniform(const char* name, const Kaleid::Math::Vector2F& v);
+		void SetUniform(const char* name, const Kaleid::Math::Vector3F& v);
+		void SetUniform(const char* name, const Kaleid::Math::Vector4F& v);
 	private:
 		ShaderProgram();
 		void Dispose();

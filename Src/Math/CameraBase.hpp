@@ -12,33 +12,33 @@ namespace Kaleid::Math
 	public:
 		CameraBase();
 
-		const Vector3f& GetPosition() const;
-		void SetPosition(const Vector3f& position);
-		void TranslatePosition(const Vector3f& offset);
+		const Vector3F& GetPosition() const;
+		void SetPosition(const Vector3F& position);
+		void TranslatePosition(const Vector3F& offset);
 
-		const Vector3f& GetRotation() const;
-		void SetRotation(const Vector3f& rotation);
-		void TranslateRotation(const Vector3f& offset);
+		const Vector3F& GetRotation() const;
+		void SetRotation(const Vector3F& rotation);
+		void TranslateRotation(const Vector3F& offset);
 
 		float GetAspectRatio() const;
 		void SetAspectRatio(float aspect_ratio);
 
-		Matrix4f GetOrientation() const;
+		Matrix4F GetOrientation() const;
 
-		Vector3f GetForward() const;
-		Vector3f GetRight() const;
-		Vector3f GetUp() const;
+		Vector3F GetForward() const;
+		Vector3F GetRight() const;
+		Vector3F GetUp() const;
 
-		virtual Matrix4f GetProjectionMatrix() = 0;
-		Matrix4f GetViewMatrix();
+		virtual Matrix4F GetProjectionMatrix() = 0;
+		Matrix4F GetViewMatrix();
 	protected:
 		void NormalizeRotation();
 
-		Vector3f _position;
-		Vector3f _rotation;
+		Vector3F _position;
+		Vector3F _rotation;
 
-		Matrix4f _projection_matrix;
-		Matrix4f _view_matrix;
+		Matrix4F _projection_matrix;
+		Matrix4F _view_matrix;
 
 		bool _is_projection_matrix_dirty;
 		bool _is_view_matrix_dirty;

@@ -9,6 +9,5 @@
   <ItemGroup>
     <ClCompile Include="..\..\..\Src\Shared\stdafx.cpp" />
     <ClCompile Include="..\..\..\Src\Helpers\StringHelper.cpp" />
-    <ClCompile Include="..\..\..\Src\Helpers\Nullable.cpp" />
   </ItemGroup>
 </Project>

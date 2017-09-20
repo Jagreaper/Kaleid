@@ -162,9 +162,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\Src\Geometry\Face.cpp" />
-    <ClCompile Include="..\..\..\Src\Geometry\Shape.cpp" />
-    <ClCompile Include="..\..\..\Src\Geometry\Vertex.cpp" />
+    <ClCompile Include="..\..\..\Src\Geometry\Triangle.cpp" />
     <ClCompile Include="..\..\..\Src\Shared\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -175,6 +173,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\Src\Geometry\Face.hpp" />
     <ClInclude Include="..\..\..\Src\Geometry\Shape.hpp" />
+    <ClInclude Include="..\..\..\Src\Geometry\Triangle.hpp" />
     <ClInclude Include="..\..\..\Src\Geometry\Vertex.hpp" />
     <ClInclude Include="..\..\..\Src\Shared\stdafx.hpp" />
   </ItemGroup>

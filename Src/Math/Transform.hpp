@@ -14,42 +14,42 @@ namespace Kaleid::Math
 		Transform();
 		~Transform();
 
-		void TranslateRelative(Vector3f& position);
-		void RotateRelative(Vector3f& rotation);
-		void ScaleRelative(Vector3f& scale);
+		void TranslateRelative(Vector3F& position);
+		void RotateRelative(Vector3F& rotation);
+		void ScaleRelative(Vector3F& scale);
 
-		void SetRelativePosition(Vector3f& position);
-		void SetRelativeRotation(Vector3f& rotation);
-		void SetRelativeScale(Vector3f& scale);
-		void SetWorldPosition(Vector3f& position);
-		void SetWorldRotation(Vector3f& rotation);
-		void SetWorldScale(Vector3f& scale);
+		void SetRelativePosition(Vector3F& position);
+		void SetRelativeRotation(Vector3F& rotation);
+		void SetRelativeScale(Vector3F& scale);
+		void SetWorldPosition(Vector3F& position);
+		void SetWorldRotation(Vector3F& rotation);
+		void SetWorldScale(Vector3F& scale);
 
-		Vector3f GetRelativePosition();
-		Vector3f GetRelativeRotation();
-		Vector3f GetRelativeScale();
-		Vector3f GetWorldPosition();
-		Vector3f GetWorldRotation();
-		Vector3f GetWorldScale();
+		Vector3F GetRelativePosition();
+		Vector3F GetRelativeRotation();
+		Vector3F GetRelativeScale();
+		Vector3F GetWorldPosition();
+		Vector3F GetWorldRotation();
+		Vector3F GetWorldScale();
 
 		Transform* GetParent();
 
-		Matrix4f GetModelMatrix();
+		Matrix4F GetModelMatrix();
 
 		void AttachParent(Transform*& parent);
 		void AttachChild(Transform*& child);
 		void DettachParent(Transform*& parent);
 		void DettachChild(Transform*& child);
 	private:
-		Vector3f _r_position;
-		Vector3f _r_rotation;
-		Vector3f _r_scale;
+		Vector3F _r_position;
+		Vector3F _r_rotation;
+		Vector3F _r_scale;
 
-		Vector3f _w_position;
-		Vector3f _w_rotation;
-		Vector3f _w_scale;
+		Vector3F _w_position;
+		Vector3F _w_rotation;
+		Vector3F _w_scale;
 
-		Matrix4f _model_matrix;
+		Matrix4F _model_matrix;
 
 		bool _is_position_dirty;
 		bool _is_rotation_dirty;

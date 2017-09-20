@@ -48,7 +48,7 @@ void PerspectiveCamera::SetFarZ(float z_far)
 	this->_is_projection_matrix_dirty = true;
 }
 
-Matrix4f PerspectiveCamera::GetProjectionMatrix()
+Matrix4F PerspectiveCamera::GetProjectionMatrix()
 {
 	if (this->_is_projection_matrix_dirty)
 	{
