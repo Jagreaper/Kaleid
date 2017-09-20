@@ -1,13 +1,14 @@
 #pragma once
 
 #include "stdafx.hpp"
-#include "GLM\glm.hpp"
+#include "Vector.hpp"
+#include "Nullable.hpp"
 
 namespace Kaleid::Geometry
 {
-	using VectorGeometry = glm::vec3;
-	using VectorNormal = glm::vec3;
-	using VectorTexture = glm::vec2;
+	using VectorGeometry = Kaleid::Helpers::Nullable<Kaleid::Math::Vector3f>;
+	using VectorNormal = Kaleid::Helpers::Nullable<Kaleid::Math::Vector3f>;
+	using VectorTexture = Kaleid::Helpers::Nullable<Kaleid::Math::Vector2f>;
 
 	class Vertex
 	{
