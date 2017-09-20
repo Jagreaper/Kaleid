@@ -22,7 +22,7 @@ struct ObjData
 	std::vector<Vector3F> Normals;
 	std::vector<Vector2F> Texels;
 
-	std::vector<std::vector<Vector3<unsigned long>>> IndexedFaces;
+	std::vector<std::vector<std::vector<unsigned long>>> IndexedFaces;
 };
 
 bool TryReadVertex(std::string& line, ObjData& data)
@@ -55,30 +55,16 @@ bool TryReadFace(std::string& line, ObjData& data)
 	std::string nline = line.substr(2, line.size() - 2);
 	std::vector<std::string> face_strings = StringHelper::Split(nline, ' ');
 
-	std::vector<Vector3<unsigned long>>	indexed_face;
+	std::vector<std::vector<unsigned long>>	indexed_face;
 	for (int face_index = 0; face_index < face_strings.size(); face_index++)
 	{
-		Vector3<unsigned long> vertex;
+		std::vector<unsigned long> vertex;
 		std::vector<std::string> vert_strings = StringHelper::Split(face_strings[face_index], '/');
-		for (int type_index = 0; type_index < vert_strings.size(); type_index++)
-		{
-			switch (type_index)
-			{
-			case 0:
-				vertex.x = std::stoul(vert_strings[type_index]);
-				break;
-			case 1:
-				vertex.y = std::stoul(vert_strings[type_index]);
-				break;
-			case 2:
-				vertex.z = std::stoul(vert_strings[type_index]);
-				break;
-			default:
-				return false;
-			}
 
-			indexed_face.push_back(vertex);
-		}
+		for (int type_index = 0; type_index < vert_strings.size(); type_index++)
+			vertex.push_back(std::stoul(vert_strings[type_index]));
+
+		indexed_face.push_back(vertex);
 	}
 
 	data.IndexedFaces.push_back(indexed_face);
@@ -102,9 +88,39 @@ bool TryReadLine(std::string& line, ObjData& data)
 	return true;
 }
 
-bool BuildModel(ObjData& data, Model* model)
+bool BakeFaces(ObjData& data, std::vector<FaceF>* faces)
 {
-	return false;
+	for (int face_index = 0; face_index < data.IndexedFaces.size(); face_index++)
+	{
+		FaceF face;
+		for (int vert_index = 0; vert_index < data.IndexedFaces[face_index].size(); vert_index++)
+		{
+			VertexF vertex;
+			for (int type_index = 0; type_index < data.IndexedFaces[face_index][vert_index].size(); type_index++)
+			{
+				switch (type_index)
+				{
+				case 0:
+					vertex.VectorGeometry = data.Verticies[data.IndexedFaces[face_index][vert_index][type_index] - 1];
+					break;
+				case 1:
+					vertex.VectorTexture = data.Texels[data.IndexedFaces[face_index][vert_index][type_index] - 1];
+					break;
+				case 2:
+					vertex.VectorNormal = data.Normals[data.IndexedFaces[face_index][vert_index][type_index] - 1];
+					break;
+				default:
+					return false;
+				}
+			}
+
+			face.AddVerticies(vertex);
+		}
+
+		faces->push_back(face);
+	}
+
+	return true;
 }
 
 bool ObjStreamDecoder::TryDecode(std::istream& source, Kaleid::Game::Model* output, Kaleid::Graphics::GraphicsFactory* arg)
@@ -122,8 +138,9 @@ bool ObjStreamDecoder::TryDecode(std::istream& source, Kaleid::Game::Model* outp
 		}
 	}
 
-	if (!BuildModel(data, output))
-		throw std::runtime_error("Could not build model");
+	std::vector<FaceF> faces;
+	if (!BakeFaces(data, &faces))
+		throw std::runtime_error("Could not bake faces");
 
 	return false;
 }
