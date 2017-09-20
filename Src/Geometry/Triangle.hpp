@@ -6,7 +6,7 @@
 
 namespace Kaleid::Geometry
 {
-	class KALEID_GEOMETRY_API Triangle : protected FaceF
+	class KALEID_GEOMETRY_API Triangle : public FaceF
 	{
 	public:
 		Triangle();
