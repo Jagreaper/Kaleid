@@ -14,28 +14,38 @@ ShaderProgram::ShaderProgram()
 		throw std::runtime_error("glCreateProgram failed");
 }
 
+void ShaderProgram::Attach(Shader* shader)
+{
+	glAttachShader(this->_id, shader->_id);
+}
+
 void ShaderProgram::Attach(Shader** shaders, unsigned int count)
 {
 	for (unsigned int index = 0; index < count; index++)
-		glAttachShader(this->_id, shaders[index]->_id);
+		this->Attach(shaders[index]);
 }
 
 void ShaderProgram::Attach(const std::vector<Shader*>& shaders)
 {
 	for (unsigned int index = 0; index < shaders.size(); index++)
-		glAttachShader(this->_id, shaders[index]->_id);
+		this->Attach(shaders[index]);
+}
+
+void ShaderProgram::Dettach(Shader* shader)
+{
+	glDetachShader(this->_id, shader->_id);
 }
 
 void ShaderProgram::Dettach(Shader** shaders, unsigned int count)
 {
 	for (unsigned int index = 0; index < count; index++)
-		glDetachShader(this->_id, shaders[index]->_id);
+		this->Dettach(shaders[index]);
 }
 
 void ShaderProgram::Dettach(const std::vector<Shader*>& shaders)
 {
 	for (unsigned int index = 0; index < shaders.size(); index++)
-		glDetachShader(this->_id, shaders[index]->_id);
+		this->Dettach(shaders[index]);
 }
 
 void ShaderProgram::Link()

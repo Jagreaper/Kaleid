@@ -5,7 +5,6 @@
 #include <functional>
 
 API_BEGIN
-
 namespace Kaleid::Graphics
 {
 	class Mesh;

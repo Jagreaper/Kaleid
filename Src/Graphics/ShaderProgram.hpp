@@ -16,8 +16,10 @@ namespace Kaleid::Graphics
 	class KALEID_GRAPHICS_API ShaderProgram sealed
 	{
 	public:
+		void Attach(Shader* shader);
 		void Attach(Shader** shaders, unsigned int count);
 		void Attach(const std::vector<Shader*>& shaders);
+		void Dettach(Shader* shader);
 		void Dettach(Shader** shaders, unsigned int count);
 		void Dettach(const std::vector<Shader*>& shaders);
 		void Link();
