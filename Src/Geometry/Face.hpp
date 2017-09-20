@@ -10,6 +10,11 @@ namespace Kaleid::Geometry
 	class Face
 	{
 	public:
+		inline void AddVerticies(Vertex<T>& vertex)
+		{
+			this->_verticies.push_back(vertex);
+		}
+
 		inline void SetVerticies(std::vector<Vertex<T>>& verticies)
 		{
 			this->_verticies = verticies;
