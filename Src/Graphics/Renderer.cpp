@@ -20,7 +20,8 @@ void Renderer::Load()
 	{
 		if (this->_use_defaults)
 		{
-			// TODO: Defaults
+			glEnable(GL_DEPTH_TEST);
+			glEnable(GL_TEXTURE_2D);
 		}
 
 		this->_is_loaded = true;
