@@ -2,7 +2,6 @@
 
 #include "stdafx.hpp"
 #include "Face.hpp"
-#include <vector>
 
 namespace Kaleid::Geometry
 {

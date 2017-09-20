@@ -3,7 +3,6 @@
 
 #include "stdafx.hpp"
 #include "Face.hpp"
-#include "Vertex.hpp"
 
 namespace Kaleid::Geometry
 {

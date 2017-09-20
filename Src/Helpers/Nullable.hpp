@@ -5,7 +5,7 @@
 namespace Kaleid::Helpers
 {
 	template <class T>
-	class Nullable
+	class Nullable sealed
 	{
 	public:
 		inline Nullable()
