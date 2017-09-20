@@ -4,6 +4,7 @@
 #include "App.hpp"
 #include "Renderer.hpp"
 #include "Window.hpp"
+#include "Model.hpp"
 #include <iostream>
 #include <fstream>
 
@@ -24,8 +25,9 @@ void RootScene::Load()
 	std::ifstream obj_stream;
 	obj_stream.open(path);
 
+	Model model;
 	ObjStreamDecoder decoder;
-	decoder.TryDecode(obj_stream, NULL, NULL);
+	decoder.TryDecode(obj_stream, &model, NULL);
 	obj_stream.close();
 }
 
