@@ -8,19 +8,28 @@
 
 using namespace Kaleid::Graphics;
 
-Renderer::Renderer()
+Renderer::Renderer(bool use_defaults)
 {
-
+	this->_use_defaults = use_defaults;
+	this->_is_loaded = false;
 }
 
 void Renderer::Load()
 {
+	if (!this->_is_loaded)
+	{
+		if (this->_use_defaults)
+		{
+			// TODO: Defaults
+		}
 
+		this->_is_loaded = true;
+	}
 }
 
-void Renderer::Dispose()
+bool Renderer::IsLoaded()
 {
-
+	return this->_is_loaded;
 }
 
 void Renderer::Clear(float red, float green, float blue, float alpha)

@@ -3,6 +3,7 @@
 #include "SceneBase.hpp"
 #include "Window.hpp"
 #include "GraphicsFactory.hpp"
+#include "Renderer.hpp"
 
 using namespace Kaleid::Game;
 using namespace Kaleid::Graphics;
@@ -41,10 +42,12 @@ void App::Dispose()
 
 void App::Run()
 {
-	this->_is_running = true;
+	this->_renderer->Load();
 
 	if (this->_current_scene != NULL)
 		this->_current_scene->Load();
+
+	this->_is_running = true;
 
 	while (this->_is_running) // Main Loop
 	{

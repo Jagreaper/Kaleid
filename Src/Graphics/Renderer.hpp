@@ -5,6 +5,7 @@
 #include <functional>
 
 API_BEGIN
+
 namespace Kaleid::Graphics
 {
 	class Mesh;
@@ -14,13 +15,15 @@ namespace Kaleid::Graphics
 	class KALEID_GRAPHICS_API Renderer sealed
 	{
 	public:
-		Renderer();
+		Renderer(bool use_defaults = true);
 		void Load();
-		void Dispose();
+		bool IsLoaded();
 
 		void Clear(float red, float green, float blue, float alpha);
 		void BindTextures(std::vector<TextureBase*>& textures);
 		void RenderMesh(Mesh*& mesh, ShaderProgram*& shader, std::vector<TextureBase*>& textures, std::function<void()> arguments);
+	private:
+		bool _use_defaults, _is_loaded;
 	};
 }
 API_END
