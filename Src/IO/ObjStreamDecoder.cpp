@@ -153,12 +153,8 @@ struct MeshData
 	std::vector<unsigned int> Indicies;
 };
 
-void AddVertexData(MeshData* data, FaceF& face)
+void AddVerticies(MeshData* data, VertexF& v1, VertexF& v2, VertexF& v3)
 {
-	VertexF v1 = face.GetVerticies()[0];
-	VertexF v2 = face.GetVerticies()[1];
-	VertexF v3 = face.GetVerticies()[2];
-
 	if (!v1.VectorGeometry.IsNull())
 	{
 		data->Verticies.push_back(v1.VectorGeometry.GetValue().x);
@@ -179,7 +175,11 @@ void AddVertexData(MeshData* data, FaceF& face)
 		data->Verticies.push_back(v3.VectorGeometry.GetValue().y);
 		data->Verticies.push_back(v3.VectorGeometry.GetValue().z);
 	}
+}
 
+
+void AddNormals(MeshData* data, VertexF& v1, VertexF& v2, VertexF& v3)
+{
 	if (!v1.VectorNormal.IsNull())
 	{
 		data->Normals.push_back(v1.VectorNormal.GetValue().x);
@@ -200,7 +200,10 @@ void AddVertexData(MeshData* data, FaceF& face)
 		data->Normals.push_back(v3.VectorNormal.GetValue().y);
 		data->Normals.push_back(v3.VectorNormal.GetValue().z);
 	}
+}
 
+void AddTexels(MeshData* data, VertexF& v1, VertexF& v2, VertexF& v3)
+{
 	if (!v1.VectorTexture.IsNull())
 	{
 		data->Texels.push_back(v1.VectorTexture.GetValue().x);
@@ -218,6 +221,17 @@ void AddVertexData(MeshData* data, FaceF& face)
 		data->Texels.push_back(v3.VectorTexture.GetValue().x);
 		data->Texels.push_back(v3.VectorTexture.GetValue().y);
 	}
+}
+
+void AddVertexData(MeshData* data, FaceF& face)
+{
+	VertexF v1 = face.GetVerticies()[0];
+	VertexF v2 = face.GetVerticies()[1];
+	VertexF v3 = face.GetVerticies()[2];
+
+	AddVerticies(data, v1, v2, v3);
+	AddNormals(data, v1, v2, v3);
+	AddTexels(data, v1, v2, v3);
 }
 
 bool TryBuildMeshData(MeshData* data, std::vector<FaceF>* baked_faces)
