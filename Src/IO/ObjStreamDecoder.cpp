@@ -88,6 +88,25 @@ bool TryReadLine(std::string& line, ObjData& data)
 	return true;
 }
 
+bool TesselateFaces(std::vector<FaceF>* faces)
+{
+	std::vector<FaceF> tess_faces;
+	for (int face_index = 0; face_index < faces->size(); faces++)
+	{
+		FaceF face = faces->at(face_index);
+
+		int length = face.GetVerticies().size() - 2;
+		VertexF origin = face.GetVerticies()[0];
+
+		for (int index = 0; index < length; index++)
+		{
+			// TODO: Tesslate Verticies;
+		}
+	}
+
+	return false;
+}
+
 bool BakeFaces(ObjData& data, std::vector<FaceF>* faces)
 {
 	for (int face_index = 0; face_index < data.IndexedFaces.size(); face_index++)
@@ -141,6 +160,9 @@ bool ObjStreamDecoder::TryDecode(std::istream& source, Kaleid::Game::Model* outp
 	std::vector<FaceF> faces;
 	if (!BakeFaces(data, &faces))
 		throw std::runtime_error("Could not bake faces");
+
+	if (!TesselateFaces(&faces))
+		throw std::runtime_error("Could not tesselate faces");
 
 	return false;
 }
