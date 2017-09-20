@@ -2,6 +2,7 @@
 
 #include "stdafx.hpp"
 #include "Transform.hpp"
+#include <functional>
 #include <vector>
 
 API_BEGIN
@@ -25,7 +26,7 @@ namespace Kaleid::Game
 		void SetShaderProgram(Kaleid::Graphics::ShaderProgram*& shader_program);
 		Kaleid::Graphics::ShaderProgram* GetShaderProgram();
 		Kaleid::Math::Transform* GetTransform();
-		void Render(Kaleid::Graphics::Renderer*& renderer);
+		void Render(Kaleid::Graphics::Renderer*& renderer, std::function<void()> arguments);
 	private:
 		Kaleid::Graphics::Mesh* _mesh;
 		std::vector<Kaleid::Graphics::TextureBase*> _textures;

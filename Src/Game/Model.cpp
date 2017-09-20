@@ -44,6 +44,7 @@ Transform* Model::GetTransform()
 	return &this->_transform;
 }
 
-void Model::Render(Kaleid::Graphics::Renderer*& renderer)
+void Model::Render(Kaleid::Graphics::Renderer*& renderer, std::function<void()> arguments)
 {
+	renderer->RenderMesh(this->_mesh, this->_shader_program, this->_textures, arguments);
 }

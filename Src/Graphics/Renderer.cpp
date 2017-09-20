@@ -51,15 +51,15 @@ void Renderer::BindTextures(std::vector<TextureBase*>& textures)
 	}
 }
 
-void Renderer::RenderMesh(Mesh*& mesh, ShaderProgram*& shader, std::vector<TextureBase*>& textures, std::function<void()> arguments)
+void Renderer::RenderMesh(Mesh*& mesh, ShaderProgram*& shader_program, std::vector<TextureBase*>& textures, std::function<void()> arguments)
 {
-	if (shader == NULL || !mesh->HasVertexBuffers())
+	if (shader_program == NULL || !mesh->HasVertexBuffers())
 		throw std::runtime_error("Missing fields to render mesh");
 
 	this->BindTextures(textures);
 
 	glBindVertexArray(mesh->_vao_id);
-	glUseProgram(shader->_id);
+	glUseProgram(shader_program->_id);
 
 	if (arguments != NULL)
 		arguments();
