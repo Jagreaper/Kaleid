@@ -8,6 +8,7 @@
 API_BEGIN
 namespace Kaleid::Graphics
 {
+	class Renderer;
 	class GraphicsFactory;
 	class Mesh;
 	class Shader;
@@ -65,12 +66,12 @@ namespace Kaleid::Graphics
 		void Dispose();
 		void Bind();
 		void Validate();
-		const unsigned int GetId() const;
 
 		unsigned int _id;
 
 		friend class GraphicsFactory;
 		friend class Mesh;
+		friend class Renderer;
 	};
 }
 API_END

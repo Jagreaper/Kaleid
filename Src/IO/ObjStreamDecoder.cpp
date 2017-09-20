@@ -51,7 +51,6 @@ bool TryReadTexel(std::string& line, ObjData& data)
 	return true;
 }
 
-
 bool TryReadFace(std::string& line, ObjData& data)
 {
 	std::string nline = line.substr(2, line.size() - 2);
@@ -176,7 +175,6 @@ void AddVerticies(MeshData* data, VertexF& v1, VertexF& v2, VertexF& v3)
 		data->Verticies.push_back(v3.VectorGeometry.GetValue().z);
 	}
 }
-
 
 void AddNormals(MeshData* data, VertexF& v1, VertexF& v2, VertexF& v3)
 {
@@ -307,6 +305,6 @@ bool ObjStreamDecoder::TryDecode(std::istream& source, Model* output, GraphicsFa
 			throw std::runtime_error("Could build mesh");
 	}
 
-	output->AddMesh(mesh);
+	output->SetMesh(mesh);
 	return true;
 }

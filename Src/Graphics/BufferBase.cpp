@@ -24,18 +24,7 @@ void BufferBase::Dispose()
 		this->_id = 0;
 	}
 }
-
-const unsigned int BufferBase::GetId() const
-{
-	return this->_id;
-}
-
 const bool BufferBase::Exists() const
 {
 	return this->_id != 0;
-}
-
-const int BufferBase::GetTypeInfo() const
-{
-	return this->_type_info;
 }

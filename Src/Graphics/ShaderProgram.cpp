@@ -17,25 +17,25 @@ ShaderProgram::ShaderProgram()
 void ShaderProgram::Attach(Shader** shaders, unsigned int count)
 {
 	for (unsigned int index = 0; index < count; index++)
-		glAttachShader(this->_id, shaders[index]->GetId());
+		glAttachShader(this->_id, shaders[index]->_id);
 }
 
 void ShaderProgram::Attach(const std::vector<Shader*>& shaders)
 {
 	for (unsigned int index = 0; index < shaders.size(); index++)
-		glAttachShader(this->_id, shaders[index]->GetId());
+		glAttachShader(this->_id, shaders[index]->_id);
 }
 
 void ShaderProgram::Dettach(Shader** shaders, unsigned int count)
 {
 	for (unsigned int index = 0; index < count; index++)
-		glDetachShader(this->_id, shaders[index]->GetId());
+		glDetachShader(this->_id, shaders[index]->_id);
 }
 
 void ShaderProgram::Dettach(const std::vector<Shader*>& shaders)
 {
 	for (unsigned int index = 0; index < shaders.size(); index++)
-		glDetachShader(this->_id, shaders[index]->GetId());
+		glDetachShader(this->_id, shaders[index]->_id);
 }
 
 void ShaderProgram::Link()
@@ -73,11 +73,6 @@ void ShaderProgram::Dispose()
 		glDeleteProgram(this->_id);
 		this->_id = 0;
 	}
-}
-
-const GLuint ShaderProgram::GetId() const
-{
-	return this->_id;
 }
 
 int ShaderProgram::GetUniformLocation(const char* name) const

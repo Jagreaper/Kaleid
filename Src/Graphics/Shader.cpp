@@ -53,8 +53,3 @@ void Shader::Dispose()
 		this->_id = 0;
 	}
 }
-
-const unsigned int Shader::GetId() const
-{
-	return this->_id;
-}

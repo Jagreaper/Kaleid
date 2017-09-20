@@ -23,6 +23,7 @@ namespace Kaleid::Graphics
 	};
 
 	class GraphicsFactory;
+	class Renderer;
 	class IndexBuffer;
 	class VertexBuffer;
 	class ShaderProgram;
@@ -34,19 +35,15 @@ namespace Kaleid::Graphics
 		void Compose();
 		void SetIndexBuffer(IndexBuffer* buffer);
 		void SetVertexBuffers(std::vector<VertexBuffer*>* buffers);
+		void SetPrimitiveType(const PrimitiveType type);
 		const IndexBuffer* GetIndexBuffer() const;
 		const std::vector<VertexBuffer*>* GetVertexBuffers() const;
-		const size_t GetBestVboLength() const;
+		PrimitiveType GetPrimitiveType();
 		bool HasIndexBuffer() const;
 		bool HasVertexBuffers() const;
-		void Render(const ShaderProgram* shader, const std::vector<TextureBase*>* textures, std::function<void()> arguments);
-		void Dispose();
-		void SetPrimitiveType(const PrimitiveType type);
-		PrimitiveType GetPrimitiveType();
-		const unsigned int GetVertexArrayId() const;
 	private:
 		Mesh();
-		void Mesh::BindTextures(const std::vector<TextureBase*>* textures);
+		void Dispose();
 
 		unsigned int _vao_id;
 		IndexBuffer* _ibo;
@@ -55,6 +52,7 @@ namespace Kaleid::Graphics
 		PrimitiveType _primitive_type;
 
 		friend class GraphicsFactory;
+		friend class Renderer;
 	};
 }
 API_END

@@ -1,42 +1,49 @@
 #include "stdafx.hpp"
 #include "Model.hpp"
 #include "VectorHelper.hpp"
+#include "Renderer.hpp"
 
+using namespace Kaleid::Math;
 using namespace Kaleid::Game;
 using namespace Kaleid::Graphics;
-using namespace Kaleid::Helpers;
 
-Mesh* Model::MeshAt(int index)
+
+void Model::SetMesh(Mesh*& mesh)
 {
-	return this->_meshes[index];
+	this->_mesh = mesh;
 }
 
-void Model::AddMesh(Mesh* meshes)
+Mesh* Model::GetMesh()
 {
-	this->_meshes.push_back(meshes);
+	return this->_mesh;
 }
 
-void Model::AddMeshes(std::vector<Mesh*>* meshes)
+void Model::SetTextures(std::vector<TextureBase*>& textures)
 {
-	VectorHelper::AddRange(&this->_meshes, meshes);
+	for each (TextureBase* const tex in textures)
+		this->_textures.push_back(tex);
 }
 
-void Model::RemoveMesh(int index)
+std::vector<TextureBase*>* Model::GetTextures()
 {
-	this->_meshes.erase(this->_meshes.begin() + index);
+	return &this->_textures;
 }
 
-void Model::RemoveMesh(Mesh* mesh)
+void Model::SetShaderProgram(ShaderProgram*& shader_program)
 {
-	VectorHelper::RemoveItem(&this->_meshes, mesh);
+	this->_shader_program = shader_program;
 }
 
-void Model::SetMeshes(std::vector<Mesh*>& meshes)
+ShaderProgram* Model::GetShaderProgram()
 {
-	this->_meshes = meshes;
+	return this->_shader_program;
 }
 
-std::vector<Mesh*>* Model::GetMeshes()
+Transform* Model::GetTransform()
 {
-	return &this->_meshes;
+	return &this->_transform;
+}
+
+void Model::Render(Kaleid::Graphics::Renderer*& renderer)
+{
 }

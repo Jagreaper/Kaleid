@@ -7,6 +7,7 @@
 API_BEGIN
 namespace Kaleid::Graphics
 {
+	class Renderer;
 	class GraphicsFactory;
 
 	class KALEID_GRAPHICS_API IndexBuffer sealed : public BufferBase
@@ -25,6 +26,7 @@ namespace Kaleid::Graphics
 		void Bind();
 
 		friend class GraphicsFactory;
+		friend class Renderer;
 	};
 }
 API_END

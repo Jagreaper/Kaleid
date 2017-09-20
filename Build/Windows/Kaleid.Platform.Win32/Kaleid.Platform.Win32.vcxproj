@@ -94,7 +94,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
       <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
-      <AdditionalIncludeDirectories>..\..\..\Src\Game\;..\..\..\Src\Graphics\;..\..\..\Src\IO\;..\..\..\Include\;..\..\..\Src\Shared\;..\..\..\Src\Application\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\Src\Math\;..\..\..\Src\Game\;..\..\..\Src\Graphics\;..\..\..\Src\IO\;..\..\..\Include\;..\..\..\Src\Shared\;..\..\..\Src\Application\</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_MBCS;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <PostBuildEvent>
@@ -111,7 +111,7 @@ copy "..\..\..\Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "..\..\..\Bin\Wi
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
       <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
-      <AdditionalIncludeDirectories>..\..\..\Src\Game\;..\..\..\Src\Graphics\;..\..\..\Src\IO\;..\..\..\Include\;..\..\..\Src\Shared\;..\..\..\Src\Application\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\Src\Math\;..\..\..\Src\Game\;..\..\..\Src\Graphics\;..\..\..\Src\IO\;..\..\..\Include\;..\..\..\Src\Shared\;..\..\..\Src\Application\</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_MBCS;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <PostBuildEvent>
@@ -130,7 +130,7 @@ copy "..\..\..\Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "..\..\..\Bin\Wi
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
       <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
-      <AdditionalIncludeDirectories>..\..\..\Src\Game\;..\..\..\Src\Graphics\;..\..\..\Src\IO\;..\..\..\Include\;..\..\..\Src\Shared\;..\..\..\Src\Application\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\Src\Math\;..\..\..\Src\Game\;..\..\..\Src\Graphics\;..\..\..\Src\IO\;..\..\..\Include\;..\..\..\Src\Shared\;..\..\..\Src\Application\</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_MBCS;RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -153,7 +153,7 @@ copy "..\..\..\Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "..\..\..\Bin\Wi
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
       <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
-      <AdditionalIncludeDirectories>..\..\..\Src\Game\;..\..\..\Src\Graphics\;..\..\..\Src\IO\;..\..\..\Include\;..\..\..\Src\Shared\;..\..\..\Src\Application\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\Src\Math\;..\..\..\Src\Game\;..\..\..\Src\Graphics\;..\..\..\Src\IO\;..\..\..\Include\;..\..\..\Src\Shared\;..\..\..\Src\Application\</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_MBCS;RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>

@@ -32,8 +32,6 @@ namespace Kaleid::Graphics
 		int _type_info;
 		virtual void Bind() = 0;
 		void Dispose();
-		const unsigned int GetId() const;
-		const int GetTypeInfo() const;
 
 		friend class Mesh;
 	};

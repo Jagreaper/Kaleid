@@ -25,7 +25,6 @@ namespace Kaleid::Graphics
 		Shader(const ShaderType type);
 		void Dispose();
 		void Validate();
-		const unsigned int GetId() const;
 
 		unsigned int _id;
 

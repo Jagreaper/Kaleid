@@ -5,6 +5,8 @@
 API_BEGIN
 namespace Kaleid::Graphics
 {
+	class Renderer;
+
 	enum class DepthStencilTextureMode
 	{
 		DepthComponent = 0x1902,
@@ -237,11 +239,11 @@ namespace Kaleid::Graphics
 		void GetSize(unsigned int* width, unsigned int* height) const;
 		bool Exists() const;
 
-		virtual void SetDefaultParameters() = 0;
-		virtual void GenerateMipmap() = 0;
-		virtual void SetParameter(TextureParameter pname, int value) = 0;
+		void SetDefaultParameters();
+		void GenerateMipmap();
+		void SetParameter(TextureParameter pname, int value);
 #define _TEXTURE_BASE_PARAMETER_SETTERS(OGL_TYPE) \
-		virtual void SetParameter(TextureParameter pname, OGL_TYPE value) = 0; \
+		void SetParameter(TextureParameter pname, OGL_TYPE value); \
 
 		_TEXTURE_BASE_PARAMETER_SETTERS(DepthStencilTextureMode)
 		_TEXTURE_BASE_PARAMETER_SETTERS(TextureCompareFunc)
@@ -258,13 +260,15 @@ namespace Kaleid::Graphics
 
 	protected:
 		TextureBase();
-		virtual void Bind() = 0;
+		void Bind();
 		void Dispose();
-		const unsigned int GetId() const;
+
+		int _type_info;
 
 		unsigned int _id;
 		unsigned int _width;
 		unsigned int _height;
+		friend class Renderer;
 	};
 }
 API_END

@@ -7,6 +7,7 @@
 API_BEGIN
 namespace Kaleid::Graphics
 {
+	class Renderer;
 	class GraphicsFactory;
 
 	class KALEID_GRAPHICS_API VertexBuffer sealed : public BufferBase
@@ -33,6 +34,7 @@ namespace Kaleid::Graphics
 		unsigned int _point_size;
 
 		friend class GraphicsFactory;
+		friend class Renderer;
 	};
 }
 API_END
