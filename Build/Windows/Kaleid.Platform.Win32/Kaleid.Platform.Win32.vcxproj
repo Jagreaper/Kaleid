@@ -166,6 +166,7 @@ copy "..\..\..\Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "..\..\..\Bin\Wi
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\Src\Application\Cube.cpp" />
     <ClCompile Include="..\..\..\Src\Application\main.cpp" />
     <ClCompile Include="..\..\..\Src\Application\RootScene.cpp" />
     <ClCompile Include="..\..\..\Src\Application\SceneManager.cpp" />
@@ -194,6 +195,7 @@ copy "..\..\..\Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "..\..\..\Bin\Wi
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\Src\Application\Cube.hpp" />
     <ClInclude Include="..\..\..\Src\Application\RootScene.hpp" />
     <ClInclude Include="..\..\..\Src\Application\SceneManager.hpp" />
     <ClInclude Include="..\..\..\Src\Shared\stdafx.hpp" />

@@ -9,6 +9,7 @@
     <ClCompile Include="..\..\..\Src\Application\SceneManager.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\Src\Application\Cube.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scenes">
@@ -23,5 +24,6 @@
     <ClInclude Include="..\..\..\Src\Application\SceneManager.hpp">
       <Filter>Scenes</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Src\Application\Cube.hpp" />
   </ItemGroup>
 </Project>

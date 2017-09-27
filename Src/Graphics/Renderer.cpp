@@ -39,6 +39,11 @@ void Renderer::Clear(float red, float green, float blue, float alpha)
 	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 }
 
+void Renderer::SetViewport(float x, float y, float width, float height)
+{
+	glViewport(x, y, width, height);
+}
+
 void Renderer::BindTextures(std::vector<TextureBase*>& textures)
 {
 	if (textures.size() > 0)

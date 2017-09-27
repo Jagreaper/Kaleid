@@ -2,6 +2,8 @@
 
 #include "stdafx.hpp"
 #include "SceneBase.hpp"
+#include "Model.hpp"
+#include "PerspectiveCamera.hpp"
 
 class RootScene : public Kaleid::Game::SceneBase
 {
@@ -11,4 +13,7 @@ public:
 	void Update();
 	void Render();
 	void Dispose();
+private:
+	Kaleid::Game::Model _model;
+	Kaleid::Math::PerspectiveCamera _camera;
 };

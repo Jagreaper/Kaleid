@@ -13,7 +13,12 @@ void Model::SetMesh(Mesh*& mesh)
 	this->_mesh = mesh;
 }
 
-Mesh* Model::GetMesh()
+const Mesh* Model::GetMesh() const
+{
+	return this->_mesh;
+}
+
+Mesh*& Model::GetMesh()
 {
 	return this->_mesh;
 }
@@ -24,7 +29,7 @@ void Model::SetTextures(std::vector<TextureBase*>& textures)
 		this->_textures.push_back(tex);
 }
 
-std::vector<TextureBase*>* Model::GetTextures()
+const std::vector<TextureBase*>* Model::GetTextures() const
 {
 	return &this->_textures;
 }
@@ -34,7 +39,12 @@ void Model::SetShaderProgram(ShaderProgram*& shader_program)
 	this->_shader_program = shader_program;
 }
 
-ShaderProgram* Model::GetShaderProgram()
+const ShaderProgram* Model::GetShaderProgram() const
+{
+	return this->_shader_program;
+}
+
+ShaderProgram*& Model::GetShaderProgram()
 {
 	return this->_shader_program;
 }

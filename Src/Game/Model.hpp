@@ -20,11 +20,13 @@ namespace Kaleid::Game
 	{
 	public:
 		void SetMesh(Kaleid::Graphics::Mesh*& mesh);
-		Kaleid::Graphics::Mesh* GetMesh();
+		const Kaleid::Graphics::Mesh* GetMesh() const;
+		Kaleid::Graphics::Mesh*& GetMesh();
 		void SetTextures(std::vector<Kaleid::Graphics::TextureBase*>& textures);
-		std::vector<Kaleid::Graphics::TextureBase*>* GetTextures();
+		const std::vector<Kaleid::Graphics::TextureBase*>* GetTextures() const;
 		void SetShaderProgram(Kaleid::Graphics::ShaderProgram*& shader_program);
-		Kaleid::Graphics::ShaderProgram* GetShaderProgram();
+		const Kaleid::Graphics::ShaderProgram* GetShaderProgram() const;
+		Kaleid::Graphics::ShaderProgram*& GetShaderProgram();
 		Kaleid::Math::Transform* GetTransform();
 		void Render(Kaleid::Graphics::Renderer*& renderer, std::function<void()> arguments);
 	private:
