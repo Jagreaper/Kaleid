@@ -204,6 +204,13 @@ Mesh* GraphicsFactory::CreateMesh()
 	return mesh;
 }
 
+Mesh* GraphicsFactory::CreateMesh(IndexBuffer*& index_buffer, VertexBuffer*& vertex_buffer)
+{
+	std::vector<VertexBuffer*> vertex_buffers;
+	vertex_buffers.push_back(vertex_buffer);
+	return this->CreateMesh(index_buffer, &vertex_buffers);
+}
+
 Mesh* GraphicsFactory::CreateMesh(IndexBuffer*& index_buffer, std::vector<VertexBuffer*>* vertex_buffers)
 {
 	Mesh* mesh = this->CreateMesh();
@@ -236,7 +243,7 @@ void GraphicsFactory::FreeShaderProgram(ShaderProgram*& shader_program)
 	delete shader_program;
 }
 
-void GraphicsFactory::FreeVertexBuffer(VertexBuffer*& vertex_buffer)
+void GraphicsFactory::FreeVertexBuffer(VertexBuffer* vertex_buffer)
 {
 	VectorHelper::RemoveItem(&GraphicsFactory::_vertex_buffers, vertex_buffer);
 
@@ -244,12 +251,60 @@ void GraphicsFactory::FreeVertexBuffer(VertexBuffer*& vertex_buffer)
 	delete vertex_buffer;
 }
 
-void GraphicsFactory::FreeIndexBuffer(IndexBuffer*& index_buffer)
+void GraphicsFactory::FreeVertexBuffers(std::vector<VertexBuffer*>& vertex_buffers)
+{
+	for (int index = 0; index < vertex_buffers.size(); index++)
+	{
+		VertexBuffer* vbo = vertex_buffers[index];
+		this->FreeVertexBuffer(vbo);
+
+		VectorHelper::RemoveItem(&GraphicsFactory::_vertex_buffers, vbo);
+		delete vbo;
+	}
+}
+
+void GraphicsFactory::FreeVertexBuffers(const std::vector<VertexBuffer*>* vertex_buffers)
+{
+	for (int index = 0; index < vertex_buffers->size(); index++)
+	{
+		VertexBuffer* vbo = vertex_buffers->at(index);
+		this->FreeVertexBuffer(vbo);
+
+		VectorHelper::RemoveItem(&GraphicsFactory::_vertex_buffers, vbo);
+		delete vbo;
+	}
+}
+
+void GraphicsFactory::FreeIndexBuffer(IndexBuffer* index_buffer)
 {
 	VectorHelper::RemoveItem(&GraphicsFactory::_index_buffers, index_buffer);
 
 	index_buffer->Dispose();
 	delete index_buffer;
+}
+
+void GraphicsFactory::FreeIndexBuffers(std::vector<IndexBuffer*>& index_buffers)
+{
+	for (int index = 0; index < index_buffers.size(); index++)
+	{
+		IndexBuffer* ibo = index_buffers[index];
+		this->FreeIndexBuffer(ibo);
+
+		VectorHelper::RemoveItem(&GraphicsFactory::_index_buffers, ibo);
+		delete ibo;
+	}
+}
+
+void GraphicsFactory::FreeIndexBuffers(const std::vector<IndexBuffer*>* index_buffers)
+{
+	for (int index = 0; index < index_buffers->size(); index++)
+	{
+		IndexBuffer* ibo = index_buffers->at(index);
+		this->FreeIndexBuffer(ibo);
+
+		VectorHelper::RemoveItem(&GraphicsFactory::_index_buffers, ibo);
+		delete ibo;
+	}
 }
 
 void GraphicsFactory::FreeMesh(Mesh*& mesh)

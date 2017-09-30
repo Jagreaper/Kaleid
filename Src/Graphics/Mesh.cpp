@@ -53,12 +53,12 @@ void Mesh::SetVertexBuffers(std::vector<VertexBuffer*>* buffers)
 		this->_vbos.push_back(buffers->at(index));
 }
 
-const IndexBuffer* Mesh::GetIndexBuffer() const
+IndexBuffer* Mesh::GetIndexBuffer() const
 {
 	return this->_ibo;
 }
 
-const std::vector<VertexBuffer*>* Mesh::GetVertexBuffers() const
+std::vector<VertexBuffer*>* Mesh::GetVertexBuffers()
 {
 	return &this->_vbos;
 }

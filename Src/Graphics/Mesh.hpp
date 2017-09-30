@@ -36,8 +36,8 @@ namespace Kaleid::Graphics
 		void SetIndexBuffer(IndexBuffer* buffer);
 		void SetVertexBuffers(std::vector<VertexBuffer*>* buffers);
 		void SetPrimitiveType(const PrimitiveType type);
-		const IndexBuffer* GetIndexBuffer() const;
-		const std::vector<VertexBuffer*>* GetVertexBuffers() const;
+		IndexBuffer* GetIndexBuffer() const;
+		std::vector<VertexBuffer*>* GetVertexBuffers();
 		PrimitiveType GetPrimitiveType();
 		bool HasIndexBuffer() const;
 		bool HasVertexBuffers() const;

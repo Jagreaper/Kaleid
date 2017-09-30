@@ -56,7 +56,41 @@ void Renderer::BindTextures(std::vector<TextureBase*>& textures)
 	}
 }
 
+void Renderer::BindTextures(std::vector<TextureBase*>* textures)
+{
+	if (textures != NULL && textures->size() > 0)
+	{
+		for (unsigned int index = 0; index < textures->size(); index++)
+		{
+			glActiveTexture(GL_TEXTURE0 + index);
+			glBindTexture(textures->at(index)->_type_info, textures->at(index)->_id);
+		}
+	}
+}
+
 void Renderer::RenderMesh(Mesh*& mesh, ShaderProgram*& shader_program, std::vector<TextureBase*>& textures, std::function<void()> arguments)
+{
+	if (shader_program == NULL || !mesh->HasVertexBuffers())
+		throw std::runtime_error("Missing fields to render mesh");
+
+	this->BindTextures(textures);
+
+	glBindVertexArray(mesh->_vao_id);
+	glUseProgram(shader_program->_id);
+
+	if (arguments != NULL)
+		arguments();
+
+	if (mesh->HasIndexBuffer())
+	{
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->GetIndexBuffer()->_id);
+		glDrawElements(mesh->_primitive_type, (GLsizei)mesh->GetIndexBuffer()->GetLength(), mesh->GetIndexBuffer()->_type_info, NULL);
+	}
+	else
+		glDrawArrays(mesh->_primitive_type, 0, (GLsizei)mesh->_b_vbo_length);
+}
+
+void Renderer::RenderMesh(Mesh*& mesh, ShaderProgram*& shader_program, std::vector<TextureBase*>* textures, std::function<void()> arguments)
 {
 	if (shader_program == NULL || !mesh->HasVertexBuffers())
 		throw std::runtime_error("Missing fields to render mesh");

@@ -6,6 +6,7 @@
 #include "ShaderProgram.hpp"
 #include "App.hpp"
 #include "Renderer.hpp"
+#include "Mesh.hpp"
 #include "Window.hpp"
 #include "Matrix.hpp"
 #include <iostream>
@@ -25,6 +26,8 @@ RootScene::RootScene(App* app)
 void RootScene::Load()
 {
 	this->_app->GetWindow(0)->MakeCurrent();
+
+	Cube::Load(this->_graphics_factory);
 
 	// Read in parking lot model
 	const char* path = "Models\\Parking Lot\\parking lot.obj";
@@ -85,9 +88,11 @@ void RootScene::Load()
 	// Clean Up
 	this->_graphics_factory->FreeShader(vertex_shader);
 	this->_graphics_factory->FreeShader(fragment_shader);
+	this->_shader_program = program;
 	this->_model.SetShaderProgram(program);
+	this->_cube.SetShaderProgram(program);
 
-	this->_camera.SetPosition(Vector3F(0.0f, 0.0f, 5.0f));
+	this->_camera.SetPosition(Vector3F(0.0f, 0.0f, -5.0f));
 }
 
 void RootScene::Update()
@@ -104,10 +109,10 @@ void RootScene::Render()
 	this->_renderer->SetViewport(0.0f, 0.0f, width, height);
 
 	// Render Scene
-	ShaderProgram* shader_program = this->_model.GetShaderProgram();
-	Matrix4F mvp = this->_camera.GetProjectionMatrix() * this->_camera.GetViewMatrix() * this->_model.GetTransform()->GetModelMatrix();
+	ShaderProgram* shader_program = this->_shader_program;
+	Matrix4F mvp = this->_camera.GetProjectionMatrix() * this->_camera.GetViewMatrix() * this->_cube.GetTransform()->GetModelMatrix();
 
-	this->_model.Render(this->_renderer, [&, shader_program, mvp]
+	this->_cube.Render(this->_renderer, [&, shader_program, mvp]
 	{
 		shader_program->SetUniform("mvp", mvp);
 	});
@@ -118,6 +123,9 @@ void RootScene::Render()
 
 void RootScene::Dispose()
 {
+	Cube::Dispose(this->_graphics_factory);
 	this->_graphics_factory->FreeShaderProgram(this->_model.GetShaderProgram());
+	this->_graphics_factory->FreeIndexBuffer(this->_model.GetMesh()->GetIndexBuffer());
+	this->_graphics_factory->FreeVertexBuffers(this->_model.GetMesh()->GetVertexBuffers());
 	this->_graphics_factory->FreeMesh(this->_model.GetMesh());
 }

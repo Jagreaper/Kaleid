@@ -40,13 +40,18 @@ namespace Kaleid::Graphics
 		IndexBuffer* CreateIndexBuffer(const unsigned int* data, size_t count, BufferUsage usage);
 
 		Mesh* CreateMesh();
+		Mesh* CreateMesh(IndexBuffer*& index_buffer, VertexBuffer*& vertex_buffer);
 		Mesh* CreateMesh(IndexBuffer*& index_buffer, std::vector<VertexBuffer*>* vertex_buffers);
 
 		void FreeWindow(Window*& window);
 		void FreeShader(Shader*& shader);
 		void FreeShaderProgram(ShaderProgram*& shader_program);
-		void FreeVertexBuffer(VertexBuffer*& vertex_buffer);
-		void FreeIndexBuffer(IndexBuffer*& index_buffer);
+		void FreeVertexBuffer(VertexBuffer* vertex_buffer);
+		void FreeVertexBuffers(std::vector<VertexBuffer*>& vertex_buffers);
+		void FreeVertexBuffers(const std::vector<VertexBuffer*>* vertex_buffers);
+		void FreeIndexBuffer(IndexBuffer* index_buffer);
+		void FreeIndexBuffers(std::vector<IndexBuffer*>& index_buffers);
+		void FreeIndexBuffers(const std::vector<IndexBuffer*>* index_buffers);
 		void FreeMesh(Mesh*& mesh);
 	private:
 		static void Dispose();
