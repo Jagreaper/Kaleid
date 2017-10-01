@@ -25,7 +25,7 @@ namespace Kaleid::Graphics
 		void RenderMesh(Mesh*& mesh, ShaderProgram*& shader_program, std::vector<TextureBase*>& textures, std::function<void()> arguments);
 		void RenderMesh(Mesh*& mesh, ShaderProgram*& shader_program, std::vector<TextureBase*>* textures, std::function<void()> arguments);
 	private:
-#if DEBUG
+#ifdef DEBUG
 		void ErrorCheck();
 #endif
 		bool _use_defaults, _is_loaded;

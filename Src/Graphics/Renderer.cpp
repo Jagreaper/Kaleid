@@ -27,7 +27,7 @@ void Renderer::Load()
 		this->_is_loaded = true;
 	}
 
-#if DEBUG
+#ifdef DEBUG
 	this->ErrorCheck();
 #endif
 }
@@ -42,7 +42,7 @@ void Renderer::Clear(float red, float green, float blue, float alpha)
 	glClearColor(red, green, blue, alpha);
 	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
-#if DEBUG
+#ifdef DEBUG
 	this->ErrorCheck();
 #endif
 }
@@ -51,7 +51,7 @@ void Renderer::SetViewport(float x, float y, float width, float height)
 {
 	glViewport(x, y, width, height);
 
-#if DEBUG
+#ifdef DEBUG
 	this->ErrorCheck();
 #endif
 }
@@ -67,7 +67,7 @@ void Renderer::BindTextures(std::vector<TextureBase*>& textures)
 		}
 	}
 
-#if DEBUG
+#ifdef DEBUG
 	this->ErrorCheck();
 #endif
 }
@@ -83,7 +83,7 @@ void Renderer::BindTextures(std::vector<TextureBase*>* textures)
 		}
 	}
 
-#if DEBUG
+#ifdef DEBUG
 	this->ErrorCheck();
 #endif
 }
@@ -109,7 +109,7 @@ void Renderer::RenderMesh(Mesh*& mesh, ShaderProgram*& shader_program, std::vect
 	else
 		glDrawArrays(mesh->_primitive_type, 0, (GLsizei)mesh->_b_vbo_length);
 
-#if DEBUG
+#ifdef DEBUG
 	this->ErrorCheck();
 #endif
 }
@@ -135,13 +135,13 @@ void Renderer::RenderMesh(Mesh*& mesh, ShaderProgram*& shader_program, std::vect
 	else
 		glDrawArrays(mesh->_primitive_type, 0, (GLsizei)mesh->_b_vbo_length);
 
-#if DEBUG
+#ifdef DEBUG
 	this->ErrorCheck();
 #endif
 }
 
 
-#if DEBUG
+#ifdef DEBUG
 
 void Renderer::ErrorCheck()
 {
