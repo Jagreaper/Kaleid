@@ -56,6 +56,14 @@ void Renderer::SetViewport(float x, float y, float width, float height)
 #endif
 }
 
+void Renderer::SetWireframeMode(bool enabled)
+{
+	if (enabled)
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	else
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+}
+
 void Renderer::BindTextures(std::vector<TextureBase*>& textures)
 {
 	if (textures.size() > 0)

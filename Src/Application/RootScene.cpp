@@ -109,11 +109,12 @@ void RootScene::Render()
 	this->_renderer->Clear(0.0f, 0.0f, 0.0f, 1.0f);
 	this->_renderer->SetViewport(0.0f, 0.0f, width, height);
 
+	this->_renderer->SetWireframeMode(true);
 	// Render Scene
 	ShaderProgram* shader_program = this->_shader_program;
-	Matrix4F mvp = (&this->_camera)->GetProjectionMatrix() * (&this->_camera)->GetViewMatrix() * this->_cube.GetTransform()->GetModelMatrix();
+	Matrix4F mvp = (&this->_camera)->GetProjectionMatrix() * (&this->_camera)->GetViewMatrix() * this->_model.GetTransform()->GetModelMatrix();
 
-	this->_cube.Render(this->_renderer, [&]
+	this->_model.Render(this->_renderer, [&]
 	{
 		shader_program->SetUniform("mvp", mvp);
 	});
