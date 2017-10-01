@@ -88,7 +88,7 @@ void TestScene::BuildMesh()
 
 void TestScene::Load()
 {
-	this->_app->GetWindow(0)->MakeCurrent();
+	//this->_app->GetWindow(0)->MakeCurrent();
 
 	this->BuildShaderProgram();
 	this->BuildMesh();
