@@ -102,7 +102,7 @@
       <AdditionalLibraryDirectories>..\..\..\Lib\GLFW\$(PlatformTarget)\lib-vc2015\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>copy "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\$(TargetFileName)" "..\..\..\Bin\Windows\Kaleid.Platform.Win32\$(Configuration)\$(PlatformTarget)\" /y</Command>
+      <Command>copy "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\$(TargetFileName)" "..\..\..\Bin\Windows\Kaleid.Application\$(Configuration)\$(PlatformTarget)\" /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -122,7 +122,7 @@
       <AdditionalLibraryDirectories>..\..\..\Lib\GLFW\$(PlatformTarget)\lib-vc2015\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>copy "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\$(TargetFileName)" "..\..\..\Bin\Windows\Kaleid.Platform.Win32\$(Configuration)\$(PlatformTarget)\" /y</Command>
+      <Command>copy "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\$(TargetFileName)" "..\..\..\Bin\Windows\Kaleid.Application\$(Configuration)\$(PlatformTarget)\" /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -146,7 +146,7 @@
       <AdditionalLibraryDirectories>..\..\..\Lib\GLFW\$(PlatformTarget)\lib-vc2015\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>copy "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\$(TargetFileName)" "..\..\..\Bin\Windows\Kaleid.Platform.Win32\$(Configuration)\$(PlatformTarget)\" /y</Command>
+      <Command>copy "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\$(TargetFileName)" "..\..\..\Bin\Windows\Kaleid.Application\$(Configuration)\$(PlatformTarget)\" /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -170,7 +170,7 @@
       <AdditionalLibraryDirectories>..\..\..\Lib\GLFW\$(PlatformTarget)\lib-vc2015\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>copy "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\$(TargetFileName)" "..\..\..\Bin\Windows\Kaleid.Platform.Win32\$(Configuration)\$(PlatformTarget)\" /y</Command>
+      <Command>copy "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\$(TargetFileName)" "..\..\..\Bin\Windows\Kaleid.Application\$(Configuration)\$(PlatformTarget)\" /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

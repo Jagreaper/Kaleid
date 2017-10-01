@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Kaleid.Graphics", "Kaleid.Graphics\Kaleid.Graphics.vcxproj", "{B0D1FC24-7ED7-4F0A-B51B-0864F52F4F77}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Kaleid.Platform.Win32", "Kaleid.Platform.Win32\Kaleid.Platform.Win32.vcxproj", "{1C805FD6-885C-4307-9EDA-18F072986F5B}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Kaleid.Application", "Kaleid.Application\Kaleid.Application.vcxproj", "{1C805FD6-885C-4307-9EDA-18F072986F5B}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Kaleid.Game", "Kaleid.Game\Kaleid.Game.vcxproj", "{29DC283F-B80E-4650-A60E-A294947FDBCD}"
 EndProject
