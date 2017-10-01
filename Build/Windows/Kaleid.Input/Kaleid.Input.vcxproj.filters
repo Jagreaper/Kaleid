@@ -3,9 +3,11 @@
   <ItemGroup>
     <ClCompile Include="..\..\..\Src\Input\KeyBinding.cpp" />
     <ClCompile Include="..\..\..\Src\Shared\stdafx.cpp" />
+    <ClCompile Include="..\..\..\Src\Input\Keyboard.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Src\Input\KeyBinding.hpp" />
     <ClInclude Include="..\..\..\Src\Shared\stdafx.hpp" />
+    <ClInclude Include="..\..\..\Src\Input\Keyboard.hpp" />
   </ItemGroup>
 </Project>

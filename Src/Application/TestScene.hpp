@@ -15,9 +15,11 @@ public:
 	void Update();
 	void Render();
 	void Dispose();
+	double GetDeltaTime();
 private:
 	void BuildShaderProgram();
 	void BuildMesh();
+	void CreateKeyboardBindings();
 
 	Kaleid::Math::PerspectiveCamera _camera;
 	Cube _cube;

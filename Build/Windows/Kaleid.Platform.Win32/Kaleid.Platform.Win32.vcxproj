@@ -94,7 +94,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
       <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
-      <AdditionalIncludeDirectories>..\..\..\Src\Math\;..\..\..\Src\Game\;..\..\..\Src\Graphics\;..\..\..\Src\IO\;..\..\..\Include\;..\..\..\Src\Shared\;..\..\..\Src\Application\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\Src\Math\;..\..\..\Src\Game\;..\..\..\Src\Graphics\;..\..\..\Src\Input\;..\..\..\Src\IO\;..\..\..\Include\;..\..\..\Src\Shared\;..\..\..\Src\Application\</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_MBCS;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <PostBuildEvent>
@@ -111,7 +111,7 @@ copy "..\..\..\Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "..\..\..\Bin\Wi
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
       <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
-      <AdditionalIncludeDirectories>..\..\..\Src\Math\;..\..\..\Src\Game\;..\..\..\Src\Graphics\;..\..\..\Src\IO\;..\..\..\Include\;..\..\..\Src\Shared\;..\..\..\Src\Application\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\Src\Math\;..\..\..\Src\Game\;..\..\..\Src\Graphics\;..\..\..\Src\Input\;..\..\..\Src\IO\;..\..\..\Include\;..\..\..\Src\Shared\;..\..\..\Src\Application\</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_MBCS;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <PostBuildEvent>
@@ -130,7 +130,7 @@ copy "..\..\..\Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "..\..\..\Bin\Wi
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
       <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
-      <AdditionalIncludeDirectories>..\..\..\Src\Math\;..\..\..\Src\Game\;..\..\..\Src\Graphics\;..\..\..\Src\IO\;..\..\..\Include\;..\..\..\Src\Shared\;..\..\..\Src\Application\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\Src\Math\;..\..\..\Src\Game\;..\..\..\Src\Graphics\;..\..\..\Src\Input\;..\..\..\Src\IO\;..\..\..\Include\;..\..\..\Src\Shared\;..\..\..\Src\Application\</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_MBCS;RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -153,7 +153,7 @@ copy "..\..\..\Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "..\..\..\Bin\Wi
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
       <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
-      <AdditionalIncludeDirectories>..\..\..\Src\Math\;..\..\..\Src\Game\;..\..\..\Src\Graphics\;..\..\..\Src\IO\;..\..\..\Include\;..\..\..\Src\Shared\;..\..\..\Src\Application\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\Src\Math\;..\..\..\Src\Game\;..\..\..\Src\Graphics\;..\..\..\Src\Input\;..\..\..\Src\IO\;..\..\..\Include\;..\..\..\Src\Shared\;..\..\..\Src\Application\</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_MBCS;RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -187,6 +187,9 @@ copy "..\..\..\Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "..\..\..\Bin\Wi
     </ProjectReference>
     <ProjectReference Include="..\Kaleid.Helpers\Kaleid.Helpers.vcxproj">
       <Project>{fa74e84f-8b9c-44fa-99be-b68865635073}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Kaleid.Input\Kaleid.Input.vcxproj">
+      <Project>{ea568d2a-de04-4ee7-b141-c6f66afa0b84}</Project>
     </ProjectReference>
     <ProjectReference Include="..\Kaleid.IO\Kaleid.IO.vcxproj">
       <Project>{5e0f4e87-9ae9-4401-a95d-7c23e44f2579}</Project>

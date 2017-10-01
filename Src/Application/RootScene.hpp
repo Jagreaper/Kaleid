@@ -5,6 +5,7 @@
 #include "Model.hpp"
 #include "Cube.hpp"
 #include "PerspectiveCamera.hpp"
+#include <time.h>
 
 class RootScene : public Kaleid::Game::SceneBase
 {
@@ -14,7 +15,16 @@ public:
 	void Update();
 	void Render();
 	void Dispose();
+	double GetDeltaTime();
 private:
+	void BuildShaderProgram();
+	void BuildMesh();
+	void CreateKeyboardBindings();
+
 	Kaleid::Game::Model _model;
 	Kaleid::Math::PerspectiveCamera _camera;
+
+	clock_t _o_time;
+	clock_t _n_time;
+	double _delta_time;
 };

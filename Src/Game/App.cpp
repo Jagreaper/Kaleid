@@ -55,6 +55,9 @@ void App::Run()
 
 		if (this->_current_scene != NULL)
 		{
+			for (unsigned int index = 0; index < this->_windows.size(); index++)
+				this->_current_scene->Poll(this->_windows[index]);
+
 			this->_current_scene->Update();
 			this->_current_scene->Render();
 		}

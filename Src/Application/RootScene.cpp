@@ -9,6 +9,8 @@
 #include "Mesh.hpp"
 #include "Window.hpp"
 #include "Matrix.hpp"
+#include "Keyboard.hpp"
+#include "KeyBinding.hpp"
 #include <iostream>
 #include <fstream>
 
@@ -16,6 +18,7 @@ using namespace Kaleid::Math;
 using namespace Kaleid::Game;
 using namespace Kaleid::Graphics;
 using namespace Kaleid::IO;
+using namespace Kaleid::Input;
 
 RootScene::RootScene(App* app)
 	: SceneBase(app)
@@ -23,22 +26,9 @@ RootScene::RootScene(App* app)
 	// Skip
 }
 
-void RootScene::Load()
+
+void RootScene::BuildShaderProgram()
 {
-	this->_app->GetWindow(0)->MakeCurrent();
-
-	Cube::Load(this->_graphics_factory);
-
-	// Read in parking lot model
-	const char* path = "Models\\Parking Lot\\parking lot.obj";
-	std::ifstream obj_stream;
-	obj_stream.open(path);
-	ObjStreamDecoder decoder;
-	decoder.TryDecode(obj_stream, &this->_model, this->_graphics_factory);
-	obj_stream.close();
-
-	// Create Vertex Shader
-
 	const char* vertex_source = R"(
 	#version 410
 
@@ -52,12 +42,6 @@ void RootScene::Load()
 	}
 
 	)";
-
-	Shader* vertex_shader = this->_graphics_factory->CreateShader(ShaderType::Vertex);
-	vertex_shader->SetSource(&vertex_source);
-	vertex_shader->Compile();
-
-	// Create Fragment Shader
 
 	const char* fragment_source = R"(
 	#version 410
@@ -73,11 +57,9 @@ void RootScene::Load()
 
 	)";
 
-	Shader* fragment_shader = this->_graphics_factory->CreateShader(ShaderType::Fragment);
-	fragment_shader->SetSource(&fragment_source);
-	fragment_shader->Compile();
+	Shader* vertex_shader = this->_graphics_factory->CreateShader(&vertex_source, ShaderType::Vertex);
+	Shader* fragment_shader = this->_graphics_factory->CreateShader(&fragment_source, ShaderType::Fragment);
 
-	// Create Shader Program
 	ShaderProgram* program = this->_graphics_factory->CreateShaderProgram();
 	program->Attach(vertex_shader);
 	program->Attach(fragment_shader);
@@ -85,22 +67,57 @@ void RootScene::Load()
 	program->Dettach(vertex_shader);
 	program->Dettach(fragment_shader);
 
-	// Clean Up
 	this->_graphics_factory->FreeShader(vertex_shader);
 	this->_graphics_factory->FreeShader(fragment_shader);
 	this->_model.SetShaderProgram(program);
+}
+
+void RootScene::BuildMesh()
+{
+	const char* path = "Models\\Parking Lot\\parking lot.obj";
+	std::ifstream obj_stream;
+	obj_stream.open(path);
+	ObjStreamDecoder decoder;
+	decoder.TryDecode(obj_stream, &this->_model, this->_graphics_factory);
+	obj_stream.close();
+}
+
+void RootScene::CreateKeyboardBindings()
+{
+	this->_keyboard.Add(KeyBinding(KeyCode::Escape, KeyBindingState::Pressed, [] { printf("Escape key pressed\n"); }));
+	this->_keyboard.Add(KeyBinding(KeyCode::W, KeyBindingState::Held, [&] { this->_camera.TranslatePosition(Vector3F(0.0f, 0.0f, -20.0f * this->GetDeltaTime())); }));
+	this->_keyboard.Add(KeyBinding(KeyCode::S, KeyBindingState::Held, [&] { this->_camera.TranslatePosition(Vector3F(0.0f, 0.0f, 20.0f * this->GetDeltaTime())); }));
+	this->_keyboard.Add(KeyBinding(KeyCode::A, KeyBindingState::Held, [&] { this->_camera.TranslatePosition(Vector3F(-20.0f * this->GetDeltaTime(), 0.0f, 0.0f)); }));
+	this->_keyboard.Add(KeyBinding(KeyCode::D, KeyBindingState::Held, [&] { this->_camera.TranslatePosition(Vector3F(20.0f * this->GetDeltaTime(), 0.0f, 0.0f)); }));
+	this->_keyboard.Add(KeyBinding(KeyCode::LeftControl, KeyBindingState::Held, [&] { this->_camera.TranslatePosition(Vector3F(0.0f, -20.0f * this->GetDeltaTime(), 0.0f)); }));
+	this->_keyboard.Add(KeyBinding(KeyCode::Space, KeyBindingState::Held, [&] { this->_camera.TranslatePosition(Vector3F(0.0f, 20.0f * this->GetDeltaTime(), 0.0f)); }));
+}
+
+double RootScene::GetDeltaTime()
+{
+	return this->_delta_time;
+}
+
+void RootScene::Load()
+{
+	this->BuildMesh();
+	this->BuildShaderProgram();
+	this->CreateKeyboardBindings();
 
 	this->_camera.SetPosition(Vector3F(0.0f, 0.0f, 5.0f));
+
+	this->_o_time = clock();
 }
 
 void RootScene::Update()
 {
-	// Skip
+	this->_n_time = clock();
+	this->_delta_time = (double)(this->_n_time - this->_o_time) / CLOCKS_PER_SEC;
+	this->_o_time = this->_n_time;
 }
 
 void RootScene::Render()
 {
-	this->_app->GetWindow(0)->MakeCurrent();
 	// Setup Scene
 	unsigned int width, height;
 	this->_app->GetWindow(0)->GetSize(&width, &height);
@@ -123,7 +140,6 @@ void RootScene::Render()
 
 void RootScene::Dispose()
 {
-	Cube::Dispose(this->_graphics_factory);
 	this->_graphics_factory->FreeShaderProgram(this->_model.GetShaderProgram());
 	this->_graphics_factory->FreeIndexBuffer(this->_model.GetMesh()->GetIndexBuffer());
 	this->_graphics_factory->FreeVertexBuffers(this->_model.GetMesh()->GetVertexBuffers());

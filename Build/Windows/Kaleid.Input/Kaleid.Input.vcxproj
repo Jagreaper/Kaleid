@@ -90,7 +90,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\Input\;..\..\..\Src\Shared\;..\..\..\Src\Graphics\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\Input\;..\..\..\Src\Helpers\;..\..\..\Src\Shared\;..\..\..\Src\Graphics\</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
@@ -101,13 +101,16 @@
       <AdditionalDependencies>glfw3.lib;glfw3dll.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\..\..\Lib\GLFW\$(PlatformTarget)\lib-vc2015\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Command>copy "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\$(TargetFileName)" "..\..\..\Bin\Windows\Kaleid.Platform.Win32\$(Configuration)\$(PlatformTarget)\" /y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\Input\;..\..\..\Src\Shared\;..\..\..\Src\Graphics\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\Input\;..\..\..\Src\Helpers\;..\..\..\Src\Shared\;..\..\..\Src\Graphics\</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
@@ -118,6 +121,9 @@
       <AdditionalDependencies>glfw3.lib;glfw3dll.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\..\..\Lib\GLFW\$(PlatformTarget)\lib-vc2015\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Command>copy "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\$(TargetFileName)" "..\..\..\Bin\Windows\Kaleid.Platform.Win32\$(Configuration)\$(PlatformTarget)\" /y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -126,7 +132,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\Input\;..\..\..\Src\Shared\;..\..\..\Src\Graphics\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\Input\;..\..\..\Src\Helpers\;..\..\..\Src\Shared\;..\..\..\Src\Graphics\</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
@@ -139,6 +145,9 @@
       <AdditionalDependencies>glfw3.lib;glfw3dll.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\..\..\Lib\GLFW\$(PlatformTarget)\lib-vc2015\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Command>copy "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\$(TargetFileName)" "..\..\..\Bin\Windows\Kaleid.Platform.Win32\$(Configuration)\$(PlatformTarget)\" /y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -147,7 +156,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\Input\;..\..\..\Src\Shared\;..\..\..\Src\Graphics\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\Input\;..\..\..\Src\Helpers\;..\..\..\Src\Shared\;..\..\..\Src\Graphics\</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
@@ -160,9 +169,13 @@
       <AdditionalDependencies>glfw3.lib;glfw3dll.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\..\..\Lib\GLFW\$(PlatformTarget)\lib-vc2015\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Command>copy "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\$(TargetFileName)" "..\..\..\Bin\Windows\Kaleid.Platform.Win32\$(Configuration)\$(PlatformTarget)\" /y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Src\Input\KeyBinding.cpp" />
+    <ClCompile Include="..\..\..\Src\Input\Keyboard.cpp" />
     <ClCompile Include="..\..\..\Src\Shared\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -172,11 +185,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Src\Input\KeyBinding.hpp" />
+    <ClInclude Include="..\..\..\Src\Input\Keyboard.hpp" />
     <ClInclude Include="..\..\..\Src\Shared\stdafx.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Kaleid.Graphics\Kaleid.Graphics.vcxproj">
       <Project>{b0d1fc24-7ed7-4f0a-b51b-0864f52f4f77}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Kaleid.Helpers\Kaleid.Helpers.vcxproj">
+      <Project>{fa74e84f-8b9c-44fa-99be-b68865635073}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

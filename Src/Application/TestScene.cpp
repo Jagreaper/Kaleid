@@ -9,6 +9,8 @@
 #include "Mesh.hpp"
 #include "Window.hpp"
 #include "Matrix.hpp"
+#include "Keyboard.hpp"
+#include "KeyBinding.hpp"
 #include <iostream>
 #include <fstream>
 
@@ -16,6 +18,7 @@ using namespace Kaleid::Math;
 using namespace Kaleid::Game;
 using namespace Kaleid::Graphics;
 using namespace Kaleid::IO;
+using namespace Kaleid::Input;
 
 TestScene::TestScene(App* app)
 	: SceneBase(app)
@@ -78,12 +81,29 @@ void TestScene::BuildMesh()
 	Cube::Load(this->_graphics_factory);
 }
 
+void TestScene::CreateKeyboardBindings()
+{
+	this->_keyboard.Add(KeyBinding(KeyCode::Escape, KeyBindingState::Pressed, [] { printf("Escape key pressed\n"); }));
+	this->_keyboard.Add(KeyBinding(KeyCode::W, KeyBindingState::Held, [&] { this->_camera.TranslatePosition(Vector3F(0.0f, 0.0f, -20.0f * this->GetDeltaTime())); }));
+	this->_keyboard.Add(KeyBinding(KeyCode::S, KeyBindingState::Held, [&] { this->_camera.TranslatePosition(Vector3F(0.0f, 0.0f, 20.0f * this->GetDeltaTime())); }));
+	this->_keyboard.Add(KeyBinding(KeyCode::A, KeyBindingState::Held, [&] { this->_camera.TranslatePosition(Vector3F(-20.0f * this->GetDeltaTime(), 0.0f, 0.0f)); }));
+	this->_keyboard.Add(KeyBinding(KeyCode::D, KeyBindingState::Held, [&] { this->_camera.TranslatePosition(Vector3F(20.0f * this->GetDeltaTime(), 0.0f, 0.0f)); }));
+	this->_keyboard.Add(KeyBinding(KeyCode::LeftControl, KeyBindingState::Held, [&] { this->_camera.TranslatePosition(Vector3F(0.0f, -20.0f * this->GetDeltaTime(), 0.0f)); }));
+	this->_keyboard.Add(KeyBinding(KeyCode::Space, KeyBindingState::Held, [&] { this->_camera.TranslatePosition(Vector3F(0.0f, 20.0f * this->GetDeltaTime(), 0.0f)); }));
+}
+
+double TestScene::GetDeltaTime()
+{
+	return this->_delta_time;
+}
+
 void TestScene::Load()
 {
 	//this->_app->GetWindow(0)->MakeCurrent();
 
 	this->BuildShaderProgram();
 	this->BuildMesh();
+	this->CreateKeyboardBindings();
 	
 	this->_camera.SetPosition(Vector3F(0.0f, 0.0f, 5.0f));
 
@@ -102,8 +122,6 @@ void TestScene::Update()
 
 void TestScene::Render()
 {
-	this->_app->GetWindow(0)->MakeCurrent();
-	// Setup Scene
 	unsigned int width, height;
 	this->_app->GetWindow(0)->GetSize(&width, &height);
 	this->_camera.SetAspectRatio((float)width / height);
