@@ -20,6 +20,8 @@ namespace Kaleid::Graphics
 		bool Exists();
 		static void PollEvents();
 
+		char GetKeyState(int key_code);
+
 	private:
 		Window(int width, int height, const char* title);
 		void Dispose();

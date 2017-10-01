@@ -42,6 +42,9 @@
 	#endif
 
 	#ifdef KALEID_INPUT_DLL
+		#define GLFW_DLL
+		#include <GLFW/glfw3.h>
+
 		#define KALEID_INPUT_API __declspec(dllexport)
 	#else
 		#define KALEID_INPUT_API __declspec(dllimport)

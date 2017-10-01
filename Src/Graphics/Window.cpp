@@ -54,3 +54,9 @@ void Window::PollEvents()
 {
 	glfwPollEvents();
 }
+
+
+char Window::GetKeyState(int key_code)
+{
+	return glfwGetKey(this->_handle, key_code);
+}
