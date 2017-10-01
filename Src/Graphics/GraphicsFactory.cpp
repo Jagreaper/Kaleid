@@ -346,7 +346,7 @@ void GraphicsFactory::FreeVertexBuffer(VertexBuffer* vertex_buffer)
 
 void GraphicsFactory::FreeVertexBuffers(std::vector<VertexBuffer*>& vertex_buffers)
 {
-	for (int index = 0; index < vertex_buffers.size(); index++)
+	for (unsigned int index = 0; index < (unsigned int)vertex_buffers.size(); index++)
 	{
 		VertexBuffer* vbo = vertex_buffers[index];
 		this->FreeVertexBuffer(vbo);
@@ -362,7 +362,7 @@ void GraphicsFactory::FreeVertexBuffers(std::vector<VertexBuffer*>& vertex_buffe
 
 void GraphicsFactory::FreeVertexBuffers(const std::vector<VertexBuffer*>* vertex_buffers)
 {
-	for (int index = 0; index < vertex_buffers->size(); index++)
+	for (unsigned int index = 0; index < (unsigned int)vertex_buffers->size(); index++)
 	{
 		VertexBuffer* vbo = vertex_buffers->at(index);
 		this->FreeVertexBuffer(vbo);
@@ -390,7 +390,7 @@ void GraphicsFactory::FreeIndexBuffer(IndexBuffer* index_buffer)
 
 void GraphicsFactory::FreeIndexBuffers(std::vector<IndexBuffer*>& index_buffers)
 {
-	for (int index = 0; index < index_buffers.size(); index++)
+	for (unsigned int index = 0; index < (unsigned int)index_buffers.size(); index++)
 	{
 		IndexBuffer* ibo = index_buffers[index];
 		this->FreeIndexBuffer(ibo);
@@ -406,7 +406,7 @@ void GraphicsFactory::FreeIndexBuffers(std::vector<IndexBuffer*>& index_buffers)
 
 void GraphicsFactory::FreeIndexBuffers(const std::vector<IndexBuffer*>* index_buffers)
 {
-	for (int index = 0; index < index_buffers->size(); index++)
+	for (unsigned int index = 0; index < (unsigned int)index_buffers->size(); index++)
 	{
 		IndexBuffer* ibo = index_buffers->at(index);
 		this->FreeIndexBuffer(ibo);

@@ -13,14 +13,14 @@ namespace Kaleid::Graphics
 		void MakeCurrent();
 		void SwapBuffers();
 
-		void GetSize(unsigned int* width, unsigned int* height);
+		void GetSize(unsigned int* width, unsigned int* height) const;
 		void SetSize(const unsigned int width, const unsigned int height);
 
 		void SetTitle(const char* title);
-		bool Exists();
+		bool Exists() const;
 		static void PollEvents();
 
-		char GetKeyState(int key_code);
+		char GetKeyState(int key_code) const;
 
 	private:
 		Window(int width, int height, const char* title);

@@ -11,28 +11,28 @@ namespace Kaleid::Helpers
 		template<class Type>
 		static inline void AddRange(std::vector<Type>* vector, const std::vector<Type>* items)
 		{
-			for (int index = 0; index < items->size(); index++)
+			for (unsigned int index = 0; index < (unsigned int)items->size(); index++)
 				vector->push_back(items->at(index));
 		}
 
 		template<class Type>
 		static inline void AddRange(std::vector<Type>* vector, const std::vector<Type>& items)
 		{
-			for (int index = 0; index < items.size(); index++)
+			for (unsigned int index = 0; index < (unsigned int)items.size(); index++)
 				vector->push_back(items[index]);
 		}
 
 		template<class Type>
 		static inline void AddRange(std::vector<Type>& vector, const std::vector<Type>* items)
 		{
-			for (int index = 0; index < items->size(); index++)
+			for (unsigned int index = 0; index < (unsigned int)items->size(); index++)
 				vector.push_back(items->at(index));
 		}
 
 		template<class Type>
 		static inline void AddRange(std::vector<Type>& vector, const std::vector<Type>& items)
 		{
-			for (int index = 0; index < items.size(); index++)
+			for (unsigned int index = 0; index < (unsigned int)items.size(); index++)
 				vector.push_back(items[index]);
 		}
 

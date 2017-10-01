@@ -57,12 +57,12 @@ bool TryReadFace(std::string& line, ObjData& data)
 	std::vector<std::string> face_strings = StringHelper::Split(nline, ' ');
 
 	std::vector<std::vector<unsigned long>>	indexed_face;
-	for (int face_index = 0; face_index < face_strings.size(); face_index++)
+	for (unsigned int face_index = 0; face_index < (unsigned int)face_strings.size(); face_index++)
 	{
 		std::vector<unsigned long> vertex;
 		std::vector<std::string> vert_strings = StringHelper::Split(face_strings[face_index], '/');
 
-		for (int type_index = 0; type_index < vert_strings.size(); type_index++)
+		for (unsigned int type_index = 0; type_index < (unsigned int)vert_strings.size(); type_index++)
 			vertex.push_back(std::stoul(vert_strings[type_index]));
 
 		indexed_face.push_back(vertex);
@@ -91,13 +91,13 @@ bool TryReadLine(std::string& line, ObjData& data)
 
 bool BakeFaces(ObjData& data, std::vector<FaceF>* faces)
 {
-	for (int face_index = 0; face_index < data.IndexedFaces.size(); face_index++)
+	for (unsigned int face_index = 0; face_index < (unsigned int)data.IndexedFaces.size(); face_index++)
 	{
 		FaceF face;
-		for (int vert_index = 0; vert_index < data.IndexedFaces[face_index].size(); vert_index++)
+		for (unsigned int vert_index = 0; vert_index < (unsigned int)data.IndexedFaces[face_index].size(); vert_index++)
 		{
 			VertexF vertex;
-			for (int type_index = 0; type_index < data.IndexedFaces[face_index][vert_index].size(); type_index++)
+			for (unsigned int type_index = 0; type_index < (unsigned int)data.IndexedFaces[face_index][vert_index].size(); type_index++)
 			{
 				switch (type_index)
 				{
@@ -126,7 +126,7 @@ bool BakeFaces(ObjData& data, std::vector<FaceF>* faces)
 
 bool TesselateFaces(std::vector<FaceF>* baked_faces, std::vector<FaceF>* tess_faces)
 {
-	for (int face_index = 0; face_index < baked_faces->size(); face_index++)
+	for (unsigned int face_index = 0; face_index < (unsigned int)baked_faces->size(); face_index++)
 	{
 		FaceF face = baked_faces->at(face_index);
 
@@ -234,7 +234,7 @@ void AddVertexData(MeshData* data, FaceF& face)
 
 bool TryBuildMeshData(MeshData* data, std::vector<FaceF>* baked_faces)
 {
-	for (int index = 0; index < baked_faces->size(); index++)
+	for (unsigned int index = 0; index < (unsigned int)baked_faces->size(); index++)
 	{
 		AddVertexData(data, baked_faces->at(index));
 

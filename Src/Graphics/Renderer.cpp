@@ -49,7 +49,7 @@ void Renderer::Clear(float red, float green, float blue, float alpha)
 
 void Renderer::SetViewport(float x, float y, float width, float height)
 {
-	glViewport(x, y, width, height);
+	glViewport((int)x, (int)y, (int)width, (int)height);
 
 #ifdef DEBUG
 	this->ErrorCheck();

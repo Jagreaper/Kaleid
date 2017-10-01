@@ -34,7 +34,7 @@ namespace Kaleid::Game
 		void SetScene(SceneBase* current_scene, std::function<void()> disposal);
 		SceneBase* GetScene();
 
-		std::vector<Kaleid::Graphics::Window*>* GetWindows();
+		const std::vector<Kaleid::Graphics::Window*>* GetWindows();
 		Kaleid::Graphics::Window* GetWindow(int index);
 		bool IsRunning();
 	private:

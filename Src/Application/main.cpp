@@ -5,11 +5,12 @@
 #include "Renderer.hpp"
 #include "RootScene.hpp"
 #include "SceneManager.hpp"
+#include <windows.h>
 
 using namespace Kaleid::Game;
 using namespace Kaleid::Graphics;
 
-int main()
+int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, char*, int nShowCmd)
 {
 	App app;
 

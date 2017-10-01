@@ -29,7 +29,7 @@ void Transform::MarkPositionDirty()
 	this->_is_position_dirty = true;
 	this->_is_model_matrix_dirty = true;
 
-	for (int index = 0; index < this->_children.size(); index++)
+	for (unsigned int index = 0; index < (unsigned int)this->_children.size(); index++)
 	{
 		this->_children[index]->_is_position_dirty = true;
 		this->_children[index]->_is_model_matrix_dirty = true;
@@ -42,7 +42,7 @@ void Transform::MarkRotationDirty()
 	this->_is_rotation_dirty = true;
 	this->_is_model_matrix_dirty = true;
 
-	for (int index = 0; index < this->_children.size(); index++)
+	for (unsigned int index = 0; index < (unsigned int)this->_children.size(); index++)
 	{
 		this->_children[index]->_is_rotation_dirty = true;
 		this->_children[index]->_is_model_matrix_dirty = true;
@@ -55,7 +55,7 @@ void Transform::MarkScaleDirty()
 	this->_is_scale_dirty = true;
 	this->_is_model_matrix_dirty = true;
 
-	for (int index = 0; index < this->_children.size(); index++)
+	for (unsigned int index = 0; index < (unsigned int)this->_children.size(); index++)
 	{
 		this->_children[index]->_is_scale_dirty = true;
 		this->_children[index]->_is_model_matrix_dirty = true;
@@ -250,7 +250,7 @@ void Transform::DettachParent(Transform*& parent)
 {
 	if (parent != NULL)
 	{
-		for (int index = 0; index < parent->_children.size(); index++)
+		for (unsigned int index = 0; index < (unsigned int)parent->_children.size(); index++)
 		{
 			if (parent->_children[index] == this)
 				parent->_children.erase(parent->_children.begin() + index);
@@ -264,7 +264,7 @@ void Transform::DettachChild(Transform*& child)
 {
 	if (child != NULL)
 	{
-		for (int index = 0; index < this->_children.size(); index++)
+		for (unsigned int index = 0; index < (unsigned int)this->_children.size(); index++)
 		{
 			if (this->_children[index] == child)
 				this->_children.erase(this->_children.begin() + index);

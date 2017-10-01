@@ -27,7 +27,7 @@ void Window::SwapBuffers()
 	glfwSwapBuffers(this->_handle);
 }
 
-void Window::GetSize(unsigned int* width, unsigned int* height)
+void Window::GetSize(unsigned int* width, unsigned int* height) const
 {
 	int i_width, i_height;
 	glfwGetWindowSize(this->_handle, &i_width, &i_height);
@@ -45,7 +45,7 @@ void Window::SetTitle(const char* title)
 	glfwSetWindowTitle(this->_handle, title);
 }
 
-bool Window::Exists()
+bool Window::Exists() const
 {
 	return !glfwWindowShouldClose(this->_handle);
 }
@@ -55,8 +55,7 @@ void Window::PollEvents()
 	glfwPollEvents();
 }
 
-
-char Window::GetKeyState(int key_code)
+char Window::GetKeyState(int key_code) const
 {
 	return glfwGetKey(this->_handle, key_code);
 }

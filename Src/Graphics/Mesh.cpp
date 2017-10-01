@@ -33,7 +33,7 @@ void Mesh::Compose()
 	this->_b_vbo_length = 0;
 
 	glBindVertexArray(this->_vao_id);
-	for (int index = 0; index < this->_vbos.size(); index++)
+	for (unsigned int index = 0; index < (unsigned int)this->_vbos.size(); index++)
 	{
 		VertexBuffer* vbo = this->_vbos[index];
 		glBindBuffer(GL_ARRAY_BUFFER, vbo->_id);
@@ -54,7 +54,7 @@ void Mesh::SetIndexBuffer(IndexBuffer* buffer)
 void Mesh::SetVertexBuffers(std::vector<VertexBuffer*>* buffers)
 {
 	this->_vbos.clear();
-	for (int index = 0; index < buffers->size(); index++)
+	for (unsigned int index = 0; (unsigned int)index < buffers->size(); index++)
 		this->_vbos.push_back(buffers->at(index));
 }
 

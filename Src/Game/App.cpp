@@ -31,7 +31,7 @@ void App::Dispose()
 		delete this->_current_scene;
 	}
 
-	for (int index = 0; index < this->_windows.size(); index++)
+	for (unsigned int index = 0; index < (unsigned int)this->_windows.size(); index++)
 	{
 		Window* window = this->GetWindow(index);
 		this->_graphics_factory->FreeWindow(window);
@@ -114,7 +114,7 @@ SceneBase* App::GetScene()
 	return this->_current_scene;
 }
 
-std::vector<Kaleid::Graphics::Window*>* App::GetWindows()
+const std::vector<Kaleid::Graphics::Window*>* App::GetWindows()
 {
 	return &this->_windows;
 }
