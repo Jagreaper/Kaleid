@@ -31,9 +31,11 @@ void TestScene::BuildShaderProgram()
 	layout(location = 0) in vec3 vp;
 
 	uniform mat4 mvp;
+	varying vec3 col;
 
 	void main()
 	{
+	    col = (vp + 1.0) / 2.0;
 		gl_Position = mvp * vec4(vp.x, vp.y, vp.z, 1.0);
 	}
 
@@ -45,10 +47,11 @@ void TestScene::BuildShaderProgram()
 	out vec4 frag_colour;
 
 	uniform mat4 mvp;
+	varying vec3 col;
 
 	void main()
 	{
-		frag_colour = vec4(1.0, 0.0, 0.0, 1.0);
+		frag_colour = vec4(col.x, col.y, col.z, 1.0);
 	}
 
 	)";
@@ -83,11 +86,18 @@ void TestScene::Load()
 	this->BuildMesh();
 	
 	this->_camera.SetPosition(Vector3F(0.0f, 0.0f, 5.0f));
+
+	this->_o_time = clock();
 }
 
 void TestScene::Update()
 {
-	// Skip
+	this->_n_time = clock();
+	this->_delta_time = (double)(this->_n_time - this->_o_time) / CLOCKS_PER_SEC;
+	this->_o_time = this->_n_time;
+
+	float rotation = (float)(60.0f * this->_delta_time);
+	this->_cube.GetTransform()->RotateRelative(glm::vec3(rotation, rotation, rotation));
 }
 
 void TestScene::Render()
@@ -96,6 +106,7 @@ void TestScene::Render()
 	// Setup Scene
 	unsigned int width, height;
 	this->_app->GetWindow(0)->GetSize(&width, &height);
+	this->_camera.SetAspectRatio((float)width / height);
 	this->_renderer->Clear(0.0f, 0.0f, 0.0f, 1.0f);
 	this->_renderer->SetViewport(0.0f, 0.0f, width, height);
 

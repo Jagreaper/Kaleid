@@ -5,6 +5,7 @@
 #include "Model.hpp"
 #include "Cube.hpp"
 #include "PerspectiveCamera.hpp"
+#include <time.h>
 
 class TestScene : public Kaleid::Game::SceneBase
 {
@@ -20,4 +21,8 @@ private:
 
 	Kaleid::Math::PerspectiveCamera _camera;
 	Cube _cube;
+
+	clock_t _o_time;
+	clock_t _n_time;
+	double _delta_time;
 };
