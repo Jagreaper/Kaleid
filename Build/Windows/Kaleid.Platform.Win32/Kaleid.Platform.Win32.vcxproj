@@ -170,6 +170,7 @@ copy "..\..\..\Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "..\..\..\Bin\Wi
     <ClCompile Include="..\..\..\Src\Application\main.cpp" />
     <ClCompile Include="..\..\..\Src\Application\RootScene.cpp" />
     <ClCompile Include="..\..\..\Src\Application\SceneManager.cpp" />
+    <ClCompile Include="..\..\..\Src\Application\TestScene.cpp" />
     <ClCompile Include="..\..\..\Src\Shared\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -198,6 +199,7 @@ copy "..\..\..\Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "..\..\..\Bin\Wi
     <ClInclude Include="..\..\..\Src\Application\Cube.hpp" />
     <ClInclude Include="..\..\..\Src\Application\RootScene.hpp" />
     <ClInclude Include="..\..\..\Src\Application\SceneManager.hpp" />
+    <ClInclude Include="..\..\..\Src\Application\TestScene.hpp" />
     <ClInclude Include="..\..\..\Src\Shared\stdafx.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

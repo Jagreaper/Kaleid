@@ -10,6 +10,9 @@
       <Filter>Scenes</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\Src\Application\Cube.cpp" />
+    <ClCompile Include="..\..\..\Src\Application\TestScene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scenes">
@@ -25,5 +28,8 @@
       <Filter>Scenes</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Src\Application\Cube.hpp" />
+    <ClInclude Include="..\..\..\Src\Application\TestScene.hpp">
+      <Filter>Scenes</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

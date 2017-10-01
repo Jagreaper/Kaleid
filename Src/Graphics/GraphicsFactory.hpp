@@ -54,6 +54,9 @@ namespace Kaleid::Graphics
 		void FreeIndexBuffers(const std::vector<IndexBuffer*>* index_buffers);
 		void FreeMesh(Mesh*& mesh);
 	private:
+#if DEBUG
+		void ErrorCheck();
+#endif
 		static void Dispose();
 		static void Validate();
 		static void InitGLFW();

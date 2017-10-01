@@ -107,6 +107,10 @@ Window* GraphicsFactory::CreateWindow(const unsigned int width, const unsigned i
 	window->SetTitle(title);
 	GraphicsFactory::_windows.push_back(window);
 	return window;
+
+#if DEBUG
+	this->ErrorCheck();
+#endif
 }
 
 Shader* GraphicsFactory::CreateShader(const ShaderType type)
@@ -116,6 +120,10 @@ Shader* GraphicsFactory::CreateShader(const ShaderType type)
 	Shader* shader = new Shader(type);
 	GraphicsFactory::_shaders.push_back(shader);
 	return shader;
+
+#if DEBUG
+	this->ErrorCheck();
+#endif
 }
 
 Shader* GraphicsFactory::CreateShader(const char** source, const ShaderType type)
@@ -124,6 +132,10 @@ Shader* GraphicsFactory::CreateShader(const char** source, const ShaderType type
 	shader->SetSource(source);
 	shader->Compile();
 	return shader;
+
+#if DEBUG
+	this->ErrorCheck();
+#endif
 }
 
 ShaderProgram* GraphicsFactory::CreateShaderProgram()
@@ -133,6 +145,10 @@ ShaderProgram* GraphicsFactory::CreateShaderProgram()
 	ShaderProgram* program = new ShaderProgram();
 	GraphicsFactory::_shader_programs.push_back(program);
 	return program;
+
+#if DEBUG
+	this->ErrorCheck();
+#endif
 }
 
 ShaderProgram* GraphicsFactory::CreateShaderProgram(const std::vector<Shader*>& shaders, const std::vector<ShaderType>& types)
@@ -142,6 +158,10 @@ ShaderProgram* GraphicsFactory::CreateShaderProgram(const std::vector<Shader*>& 
 	program->Link();
 	program->Dettach(shaders);
 	return program;
+
+#if DEBUG
+	this->ErrorCheck();
+#endif
 }
 
 ShaderProgram* GraphicsFactory::CreateShaderProgram(Shader** shaders, const unsigned short count)
@@ -151,6 +171,10 @@ ShaderProgram* GraphicsFactory::CreateShaderProgram(Shader** shaders, const unsi
 	program->Link();
 	program->Dettach(shaders, count);
 	return program;
+
+#if DEBUG
+	this->ErrorCheck();
+#endif
 }
 
 VertexBuffer* GraphicsFactory::CreateVertexBuffer()
@@ -160,6 +184,10 @@ VertexBuffer* GraphicsFactory::CreateVertexBuffer()
 	VertexBuffer* buffer = new VertexBuffer();
 	GraphicsFactory::_vertex_buffers.push_back(buffer);
 	return buffer;
+
+#if DEBUG
+	this->ErrorCheck();
+#endif
 }
 
 VertexBuffer* GraphicsFactory::CreateVertexBuffer(const float* data, size_t count, unsigned int point_size)
@@ -172,6 +200,10 @@ VertexBuffer* GraphicsFactory::CreateVertexBuffer(const float* data, size_t coun
 	VertexBuffer* buffer = this->CreateVertexBuffer();
 	buffer->BufferData(data, count, point_size, usage);
 	return buffer;
+
+#if DEBUG
+	this->ErrorCheck();
+#endif
 }
 
 IndexBuffer* GraphicsFactory::CreateIndexBuffer()
@@ -181,6 +213,10 @@ IndexBuffer* GraphicsFactory::CreateIndexBuffer()
 	IndexBuffer* buffer = new IndexBuffer();
 	GraphicsFactory::_index_buffers.push_back(buffer);
 	return buffer;
+
+#if DEBUG
+	this->ErrorCheck();
+#endif
 }
 
 IndexBuffer* GraphicsFactory::CreateIndexBuffer(const unsigned int* data, size_t count)
@@ -193,6 +229,10 @@ IndexBuffer* GraphicsFactory::CreateIndexBuffer(const unsigned int* data, size_t
 	IndexBuffer* buffer = this->CreateIndexBuffer();
 	buffer->BufferData(data, count, usage);
 	return buffer;
+
+#if DEBUG
+	this->ErrorCheck();
+#endif
 }
 
 Mesh* GraphicsFactory::CreateMesh()
@@ -202,6 +242,10 @@ Mesh* GraphicsFactory::CreateMesh()
 	Mesh* mesh = new Mesh();
 	GraphicsFactory::_meshes.push_back(mesh);
 	return mesh;
+
+#if DEBUG
+	this->ErrorCheck();
+#endif
 }
 
 Mesh* GraphicsFactory::CreateMesh(IndexBuffer*& index_buffer, VertexBuffer*& vertex_buffer)
@@ -209,6 +253,10 @@ Mesh* GraphicsFactory::CreateMesh(IndexBuffer*& index_buffer, VertexBuffer*& ver
 	std::vector<VertexBuffer*> vertex_buffers;
 	vertex_buffers.push_back(vertex_buffer);
 	return this->CreateMesh(index_buffer, &vertex_buffers);
+
+#if DEBUG
+	this->ErrorCheck();
+#endif
 }
 
 Mesh* GraphicsFactory::CreateMesh(IndexBuffer*& index_buffer, std::vector<VertexBuffer*>* vertex_buffers)
@@ -217,6 +265,10 @@ Mesh* GraphicsFactory::CreateMesh(IndexBuffer*& index_buffer, std::vector<Vertex
 	mesh->SetIndexBuffer(index_buffer);
 	mesh->SetVertexBuffers(vertex_buffers);
 	return mesh;
+
+#if DEBUG
+	this->ErrorCheck();
+#endif
 }
 
 void GraphicsFactory::FreeWindow(Window*& window)
@@ -225,6 +277,10 @@ void GraphicsFactory::FreeWindow(Window*& window)
 
 	window->Dispose();
 	delete window;
+
+#if DEBUG
+	this->ErrorCheck();
+#endif
 }
 
 void GraphicsFactory::FreeShader(Shader*& shader)
@@ -233,6 +289,10 @@ void GraphicsFactory::FreeShader(Shader*& shader)
 
 	shader->Dispose();
 	delete shader;
+
+#if DEBUG
+	this->ErrorCheck();
+#endif
 }
 
 void GraphicsFactory::FreeShaderProgram(ShaderProgram*& shader_program)
@@ -241,6 +301,10 @@ void GraphicsFactory::FreeShaderProgram(ShaderProgram*& shader_program)
 
 	shader_program->Dispose();
 	delete shader_program;
+
+#if DEBUG
+	this->ErrorCheck();
+#endif
 }
 
 void GraphicsFactory::FreeVertexBuffer(VertexBuffer* vertex_buffer)
@@ -249,6 +313,10 @@ void GraphicsFactory::FreeVertexBuffer(VertexBuffer* vertex_buffer)
 
 	vertex_buffer->Dispose();
 	delete vertex_buffer;
+
+#if DEBUG
+	this->ErrorCheck();
+#endif
 }
 
 void GraphicsFactory::FreeVertexBuffers(std::vector<VertexBuffer*>& vertex_buffers)
@@ -260,6 +328,10 @@ void GraphicsFactory::FreeVertexBuffers(std::vector<VertexBuffer*>& vertex_buffe
 
 		VectorHelper::RemoveItem(&GraphicsFactory::_vertex_buffers, vbo);
 		delete vbo;
+
+#if DEBUG
+		this->ErrorCheck();
+#endif
 	}
 }
 
@@ -272,6 +344,10 @@ void GraphicsFactory::FreeVertexBuffers(const std::vector<VertexBuffer*>* vertex
 
 		VectorHelper::RemoveItem(&GraphicsFactory::_vertex_buffers, vbo);
 		delete vbo;
+
+#if DEBUG
+		this->ErrorCheck();
+#endif
 	}
 }
 
@@ -281,6 +357,10 @@ void GraphicsFactory::FreeIndexBuffer(IndexBuffer* index_buffer)
 
 	index_buffer->Dispose();
 	delete index_buffer;
+
+#if DEBUG
+	this->ErrorCheck();
+#endif
 }
 
 void GraphicsFactory::FreeIndexBuffers(std::vector<IndexBuffer*>& index_buffers)
@@ -292,6 +372,10 @@ void GraphicsFactory::FreeIndexBuffers(std::vector<IndexBuffer*>& index_buffers)
 
 		VectorHelper::RemoveItem(&GraphicsFactory::_index_buffers, ibo);
 		delete ibo;
+
+#if DEBUG
+		this->ErrorCheck();
+#endif
 	}
 }
 
@@ -304,6 +388,10 @@ void GraphicsFactory::FreeIndexBuffers(const std::vector<IndexBuffer*>* index_bu
 
 		VectorHelper::RemoveItem(&GraphicsFactory::_index_buffers, ibo);
 		delete ibo;
+
+#if DEBUG
+		this->ErrorCheck();
+#endif
 	}
 }
 
@@ -313,4 +401,19 @@ void GraphicsFactory::FreeMesh(Mesh*& mesh)
 
 	mesh->Dispose();
 	delete mesh;
+
+#if DEBUG
+	this->ErrorCheck();
+#endif
 }
+
+#if DEBUG
+
+void GraphicsFactory::ErrorCheck()
+{
+	GLenum error = glGetError();
+	if (error == GL_NO_ERROR)
+		throw std::runtime_error("OpenGL Runtime Error");
+}
+
+#endif

@@ -26,6 +26,10 @@ void Renderer::Load()
 
 		this->_is_loaded = true;
 	}
+
+#if DEBUG
+	this->ErrorCheck();
+#endif
 }
 
 bool Renderer::IsLoaded()
@@ -37,11 +41,19 @@ void Renderer::Clear(float red, float green, float blue, float alpha)
 {
 	glClearColor(red, green, blue, alpha);
 	glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+
+#if DEBUG
+	this->ErrorCheck();
+#endif
 }
 
 void Renderer::SetViewport(float x, float y, float width, float height)
 {
 	glViewport(x, y, width, height);
+
+#if DEBUG
+	this->ErrorCheck();
+#endif
 }
 
 void Renderer::BindTextures(std::vector<TextureBase*>& textures)
@@ -54,6 +66,10 @@ void Renderer::BindTextures(std::vector<TextureBase*>& textures)
 			glBindTexture(textures[index]->_type_info, textures[index]->_id);
 		}
 	}
+
+#if DEBUG
+	this->ErrorCheck();
+#endif
 }
 
 void Renderer::BindTextures(std::vector<TextureBase*>* textures)
@@ -66,6 +82,10 @@ void Renderer::BindTextures(std::vector<TextureBase*>* textures)
 			glBindTexture(textures->at(index)->_type_info, textures->at(index)->_id);
 		}
 	}
+
+#if DEBUG
+	this->ErrorCheck();
+#endif
 }
 
 void Renderer::RenderMesh(Mesh*& mesh, ShaderProgram*& shader_program, std::vector<TextureBase*>& textures, std::function<void()> arguments)
@@ -88,6 +108,10 @@ void Renderer::RenderMesh(Mesh*& mesh, ShaderProgram*& shader_program, std::vect
 	}
 	else
 		glDrawArrays(mesh->_primitive_type, 0, (GLsizei)mesh->_b_vbo_length);
+
+#if DEBUG
+	this->ErrorCheck();
+#endif
 }
 
 void Renderer::RenderMesh(Mesh*& mesh, ShaderProgram*& shader_program, std::vector<TextureBase*>* textures, std::function<void()> arguments)
@@ -110,4 +134,20 @@ void Renderer::RenderMesh(Mesh*& mesh, ShaderProgram*& shader_program, std::vect
 	}
 	else
 		glDrawArrays(mesh->_primitive_type, 0, (GLsizei)mesh->_b_vbo_length);
+
+#if DEBUG
+	this->ErrorCheck();
+#endif
 }
+
+
+#if DEBUG
+
+void Renderer::ErrorCheck()
+{
+	GLenum error = glGetError();
+	if (error != GL_NO_ERROR)
+		throw std::runtime_error("OpenGL Runtime Error");
+}
+
+#endif
