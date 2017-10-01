@@ -30,9 +30,11 @@ void TestScene::BuildShaderProgram()
 
 	layout(location = 0) in vec3 vp;
 
+	uniform mat4 mvp;
+
 	void main()
 	{
-		gl_Position = vec4(vp.x, vp.y, vp.z, 1.0);
+		gl_Position = mvp * vec4(vp.x, vp.y, vp.z, 1.0);
 	}
 
 	)";
@@ -41,6 +43,8 @@ void TestScene::BuildShaderProgram()
 	#version 410
 
 	out vec4 frag_colour;
+
+	uniform mat4 mvp;
 
 	void main()
 	{
@@ -70,9 +74,9 @@ void TestScene::BuildMesh()
 {
 	float verticies[] =
 	{
-		-0.5f, 0.5f, 0.0f,
+		0.5f, -0.5f, 0.0f,
 		-0.5f, -0.5f, 0.0f,
-		0.5f, 0.5f, 0.0f,
+		0.0f, 0.5f, 0.0f,
 	};
 
 	unsigned int indicies[] =
@@ -93,8 +97,7 @@ void TestScene::Load()
 	this->BuildShaderProgram();
 	this->BuildMesh();
 	
-
-	this->_camera.SetPosition(Vector3F(0.0f, 0.0f, -5.0f));
+	this->_camera.SetPosition(Vector3F(0.0f, 0.0f, 5.0f));
 }
 
 void TestScene::Update()
@@ -114,7 +117,11 @@ void TestScene::Render()
 	// Render Scene
 	ShaderProgram* shader_program = this->_shader_program;
 
-	this->_renderer->RenderMesh(this->_mesh, this->_shader_program, NULL, NULL);
+	Matrix4F mvp = this->_camera.GetProjectionMatrix() * this->_camera.GetViewMatrix() * this->_transform.GetModelMatrix();
+	this->_renderer->RenderMesh(this->_mesh, this->_shader_program, NULL, [&]
+	{
+		shader_program->SetUniform("mvp", mvp);
+	});
 
 	// Cleanup Scene
 	this->_app->GetWindow(0)->SwapBuffers();

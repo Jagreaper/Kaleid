@@ -17,7 +17,7 @@ int main()
 	Renderer renderer;
 	app.SetGraphicsFactory(&graphicsFactory);
 	app.SetRenderer(&renderer);
-	app.SetScene(SceneManager::CreateRootScene(&app), std::bind(SceneManager::FreeScene, app.GetScene()));
+	app.SetScene(SceneManager::CreateTestScene(&app), std::bind(SceneManager::FreeScene, app.GetScene()));
 
 	app.Load();
 	app.Run();

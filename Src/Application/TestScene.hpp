@@ -21,4 +21,5 @@ private:
 	Kaleid::Graphics::ShaderProgram* _shader_program;
 	Kaleid::Graphics::Mesh* _mesh;
 	Kaleid::Math::PerspectiveCamera _camera;
+	Kaleid::Math::Transform _transform;
 };

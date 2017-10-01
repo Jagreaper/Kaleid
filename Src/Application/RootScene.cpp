@@ -114,7 +114,7 @@ void RootScene::Render()
 
 	this->_cube.Render(this->_renderer, [&, shader_program, mvp]
 	{
-		shader_program->SetUniformMatrix4("mvp", &mvp[0][0]);
+		shader_program->SetUniform("mvp", mvp);
 	});
 
 	// Cleanup Scene

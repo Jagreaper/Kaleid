@@ -22,6 +22,8 @@ void PerspectiveCamera::SetFov(float fov)
 	if (fov <= 0.0f || fov >= 180.0f)
 		return;
 
+	this->_fov = fov;
+
 	this->_is_projection_matrix_dirty = true;
 }
 
