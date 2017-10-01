@@ -92,7 +92,7 @@ void RootScene::Load()
 	this->_model.SetShaderProgram(program);
 	this->_cube.SetShaderProgram(program);
 
-	this->_camera.SetPosition(Vector3F(0.0f, 0.0f, -5.0f));
+	this->_camera.SetPosition(Vector3F(0.0f, 0.0f, 5.0f));
 }
 
 void RootScene::Update()
@@ -114,7 +114,7 @@ void RootScene::Render()
 
 	this->_cube.Render(this->_renderer, [&, shader_program, mvp]
 	{
-		shader_program->SetUniform("mvp", mvp);
+		shader_program->SetUniformMatrix4("mvp", &mvp[0][0]);
 	});
 
 	// Cleanup Scene

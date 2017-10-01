@@ -19,8 +19,9 @@ float PerspectiveCamera::GetFov() const
 
 void PerspectiveCamera::SetFov(float fov)
 {
-	assert(fov > 0.0f && fov < 180.0f);
-	this->_fov = fov;
+	if (fov <= 0.0f || fov >= 180.0f)
+		return;
+
 	this->_is_projection_matrix_dirty = true;
 }
 
@@ -31,7 +32,9 @@ float PerspectiveCamera::GetNearZ() const
 
 void PerspectiveCamera::SetNearZ(float z_near)
 {
-	assert(z_near > 0.0f);
+	if (z_near <= 0.0f)
+		return;
+
 	this->_z_near = z_near;
 	this->_is_projection_matrix_dirty = true;
 }
@@ -43,7 +46,9 @@ float PerspectiveCamera::GetFarZ() const
 
 void PerspectiveCamera::SetFarZ(float z_far)
 {
-	assert(z_far > this->_z_near);
+	if (z_far <= this->_z_near)
+		return;
+
 	this->_z_far = z_far;
 	this->_is_projection_matrix_dirty = true;
 }

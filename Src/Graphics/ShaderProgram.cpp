@@ -119,40 +119,40 @@ bool ShaderProgram::InUse() const
 #define PROGRAM_ATTRIB_N_UNIFORM_SETTERS(TYPE, TYPE_PREFIX, TYPE_SUFFIX) \
 \
 void ShaderProgram::SetAttrib(const char* name, TYPE v0) \
-    { assert(this->InUse()); glVertexAttrib ## TYPE_PREFIX ## 1 ## TYPE_SUFFIX (this->GetAttribLocation(name), v0); } \
+    { glVertexAttrib ## TYPE_PREFIX ## 1 ## TYPE_SUFFIX (this->GetAttribLocation(name), v0); } \
 void ShaderProgram::SetAttrib(const char* name, TYPE v0, TYPE v1) \
-    { assert(this->InUse()); glVertexAttrib ## TYPE_PREFIX ## 2 ## TYPE_SUFFIX (this->GetAttribLocation(name), v0, v1); } \
+    { glVertexAttrib ## TYPE_PREFIX ## 2 ## TYPE_SUFFIX (this->GetAttribLocation(name), v0, v1); } \
 void ShaderProgram::SetAttrib(const char* name, TYPE v0, TYPE v1, TYPE v2) \
-    { assert(this->InUse()); glVertexAttrib ## TYPE_PREFIX ## 3 ## TYPE_SUFFIX (this->GetAttribLocation(name), v0, v1, v2); } \
+    { glVertexAttrib ## TYPE_PREFIX ## 3 ## TYPE_SUFFIX (this->GetAttribLocation(name), v0, v1, v2); } \
 void ShaderProgram::SetAttrib(const char* name, TYPE v0, TYPE v1, TYPE v2, TYPE v3) \
-    { assert(this->InUse()); glVertexAttrib ## TYPE_PREFIX ## 4 ## TYPE_SUFFIX (this->GetAttribLocation(name), v0, v1, v2, v3); } \
+    { glVertexAttrib ## TYPE_PREFIX ## 4 ## TYPE_SUFFIX (this->GetAttribLocation(name), v0, v1, v2, v3); } \
 \
 void ShaderProgram::SetAttrib1v(const char* name, const TYPE* v) \
-    { assert(this->InUse()); glVertexAttrib ## TYPE_PREFIX ## 1 ## TYPE_SUFFIX ## v (this->GetAttribLocation(name), v); } \
+    { glVertexAttrib ## TYPE_PREFIX ## 1 ## TYPE_SUFFIX ## v (this->GetAttribLocation(name), v); } \
 void ShaderProgram::SetAttrib2v(const char* name, const TYPE* v) \
-    { assert(this->InUse()); glVertexAttrib ## TYPE_PREFIX ## 2 ## TYPE_SUFFIX ## v (this->GetAttribLocation(name), v); } \
+    { glVertexAttrib ## TYPE_PREFIX ## 2 ## TYPE_SUFFIX ## v (this->GetAttribLocation(name), v); } \
 void ShaderProgram::SetAttrib3v(const char* name, const TYPE* v) \
-    { assert(this->InUse()); glVertexAttrib ## TYPE_PREFIX ## 3 ## TYPE_SUFFIX ## v (this->GetAttribLocation(name), v); } \
+    { glVertexAttrib ## TYPE_PREFIX ## 3 ## TYPE_SUFFIX ## v (this->GetAttribLocation(name), v); } \
 void ShaderProgram::SetAttrib4v(const char* name, const TYPE* v) \
-    { assert(this->InUse()); glVertexAttrib ## TYPE_PREFIX ## 4 ## TYPE_SUFFIX ## v (this->GetAttribLocation(name), v); } \
+    { glVertexAttrib ## TYPE_PREFIX ## 4 ## TYPE_SUFFIX ## v (this->GetAttribLocation(name), v); } \
 \
 void ShaderProgram::SetUniform(const char* name, TYPE v0) \
-    { assert(this->InUse()); glUniform1 ## TYPE_SUFFIX (this->GetUniformLocation(name), v0); } \
+    { glUniform1 ## TYPE_SUFFIX (this->GetUniformLocation(name), v0); } \
 void ShaderProgram::SetUniform(const char* name, TYPE v0, TYPE v1) \
-    { assert(this->InUse()); glUniform2 ## TYPE_SUFFIX (this->GetUniformLocation(name), v0, v1); } \
+    { glUniform2 ## TYPE_SUFFIX (this->GetUniformLocation(name), v0, v1); } \
 void ShaderProgram::SetUniform(const char* name, TYPE v0, TYPE v1, TYPE v2) \
-    { assert(this->InUse()); glUniform3 ## TYPE_SUFFIX (this->GetUniformLocation(name), v0, v1, v2); } \
+    { glUniform3 ## TYPE_SUFFIX (this->GetUniformLocation(name), v0, v1, v2); } \
 void ShaderProgram::SetUniform(const char* name, TYPE v0, TYPE v1, TYPE v2, TYPE v3) \
-    { assert(this->InUse()); glUniform4 ## TYPE_SUFFIX (this->GetUniformLocation(name), v0, v1, v2, v3); } \
+    { glUniform4 ## TYPE_SUFFIX (this->GetUniformLocation(name), v0, v1, v2, v3); } \
 \
 void ShaderProgram::SetUniform1v(const char* name, const TYPE* v, int count) \
-    { assert(this->InUse()); glUniform1 ## TYPE_SUFFIX ## v (this->GetUniformLocation(name), count, v); } \
+    { glUniform1 ## TYPE_SUFFIX ## v (this->GetUniformLocation(name), count, v); } \
 void ShaderProgram::SetUniform2v(const char* name, const TYPE* v, int count) \
-    { assert(this->InUse()); glUniform2 ## TYPE_SUFFIX ## v (this->GetUniformLocation(name), count, v); } \
+    { glUniform2 ## TYPE_SUFFIX ## v (this->GetUniformLocation(name), count, v); } \
 void ShaderProgram::SetUniform3v(const char* name, const TYPE* v, int count) \
-    { assert(this->InUse()); glUniform3 ## TYPE_SUFFIX ## v (this->GetUniformLocation(name), count, v); } \
+    { glUniform3 ## TYPE_SUFFIX ## v (this->GetUniformLocation(name), count, v); } \
 void ShaderProgram::SetUniform4v(const char* name, const TYPE* v, int count) \
-    { assert(this->InUse()); glUniform4 ## TYPE_SUFFIX ## v (this->GetUniformLocation(name), count, v); } \
+    { glUniform4 ## TYPE_SUFFIX ## v (this->GetUniformLocation(name), count, v); } \
 
 PROGRAM_ATTRIB_N_UNIFORM_SETTERS(float, , f);
 PROGRAM_ATTRIB_N_UNIFORM_SETTERS(double, , d);
@@ -162,37 +162,31 @@ PROGRAM_ATTRIB_N_UNIFORM_SETTERS(unsigned int, I, ui);
 
 void ShaderProgram::SetUniformMatrix2(const char* name, const float* v, int count, bool transpose)
 {
-	assert(this->InUse());
 	glUniformMatrix2fv(this->GetUniformLocation(name), count, transpose, v);
 }
 
 void ShaderProgram::SetUniformMatrix3(const char* name, const float* v, int count, bool transpose)
 {
-	assert(this->InUse());
 	glUniformMatrix3fv(this->GetUniformLocation(name), count, transpose, v);
 }
 
 void ShaderProgram::SetUniformMatrix4(const char* name, const float* v, int count, bool transpose)
 {
-	assert(this->InUse());
 	glUniformMatrix4fv(this->GetUniformLocation(name), count, transpose, v);
 }
 
 void ShaderProgram::SetUniform(const char* name, const Matrix2F& m, bool transpose)
 {
-	assert(this->InUse());
 	glUniformMatrix2fv(this->GetUniformLocation(name), 1, transpose, glm::value_ptr(m));
 }
 
 void ShaderProgram::SetUniform(const char* name, const Matrix3F& m, bool transpose)
 {
-	assert(this->InUse());
 	glUniformMatrix3fv(this->GetUniformLocation(name), 1, transpose, glm::value_ptr(m));
 }
 
 void ShaderProgram::SetUniform(const char* name, const Matrix4F& m, bool transpose)
 {
-	assert(this->InUse());
 	glUniformMatrix4fv(this->GetUniformLocation(name), 1, transpose, glm::value_ptr(m));
 }
 

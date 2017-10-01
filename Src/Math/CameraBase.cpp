@@ -55,7 +55,9 @@ float CameraBase::GetAspectRatio() const
 
 void CameraBase::SetAspectRatio(float aspect_ratio)
 {
-	assert(aspect_ratio > 0.0);
+	if (aspect_ratio <= 0.0)
+		return;
+
 	this->_aspect_ratio = aspect_ratio;
 	this->_is_projection_matrix_dirty = true;
 }
