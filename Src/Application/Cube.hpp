@@ -21,7 +21,7 @@ public:
 	void Render(Kaleid::Graphics::Renderer*& renderer, std::function<void()> arguments);
 
 	void SetShaderProgram(Kaleid::Graphics::ShaderProgram*& shader_program);
-	Kaleid::Graphics::ShaderProgram* GetShaderProgram() const;
+	Kaleid::Graphics::ShaderProgram* GetShaderProgram();
 	Kaleid::Math::Transform* GetTransform();
 
 	static void Load(Kaleid::Graphics::GraphicsFactory*& graphics_factory);

@@ -67,27 +67,12 @@ void TestScene::BuildShaderProgram()
 	// Clean Up
 	this->_graphics_factory->FreeShader(vertex_shader);
 	this->_graphics_factory->FreeShader(fragment_shader);
-	this->_shader_program = program;
+	this->_cube.SetShaderProgram(program);
 }
 
 void TestScene::BuildMesh()
 {
-	float verticies[] =
-	{
-		1.0f, -1.0f, 0.0f,
-		-1.0f, -1.0f, 0.0f,
-		0.0f, 1.0f, 0.0f,
-	};
-
-	unsigned int indicies[] =
-	{
-		0, 1, 2,
-	};
-
-	VertexBuffer* vertex_buffer = this->_graphics_factory->CreateVertexBuffer(verticies, 9, 3);
-	IndexBuffer* index_buffer = this->_graphics_factory->CreateIndexBuffer(indicies, 3);
-	this->_mesh = this->_graphics_factory->CreateMesh(index_buffer, vertex_buffer);
-	this->_mesh->Compose();
+	Cube::Load(this->_graphics_factory);
 }
 
 void TestScene::Load()
@@ -115,10 +100,10 @@ void TestScene::Render()
 	this->_renderer->SetViewport(0.0f, 0.0f, width, height);
 
 	// Render Scene
-	ShaderProgram* shader_program = this->_shader_program;
+	ShaderProgram* shader_program = this->_cube.GetShaderProgram();
 
-	Matrix4F mvp = this->_camera.GetProjectionMatrix() * this->_camera.GetViewMatrix() * this->_transform.GetModelMatrix();
-	this->_renderer->RenderMesh(this->_mesh, this->_shader_program, NULL, [&]
+	Matrix4F mvp = this->_camera.GetProjectionMatrix() * this->_camera.GetViewMatrix() * this->_cube.GetTransform()->GetModelMatrix();
+	this->_cube.Render(this->_renderer, [&]
 	{
 		shader_program->SetUniform("mvp", mvp);
 	});
@@ -129,8 +114,6 @@ void TestScene::Render()
 
 void TestScene::Dispose()
 {
-	this->_graphics_factory->FreeShaderProgram(this->_shader_program);
-	this->_graphics_factory->FreeIndexBuffer(this->_mesh->GetIndexBuffer());
-	this->_graphics_factory->FreeVertexBuffers(this->_mesh->GetVertexBuffers());
-	this->_graphics_factory->FreeMesh(this->_mesh);
+	Cube::Dispose(this->_graphics_factory);
+	this->_graphics_factory->FreeShaderProgram(this->_cube.GetShaderProgram());
 }

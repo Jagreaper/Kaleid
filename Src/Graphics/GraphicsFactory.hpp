@@ -43,9 +43,9 @@ namespace Kaleid::Graphics
 		Mesh* CreateMesh(IndexBuffer*& index_buffer, VertexBuffer*& vertex_buffer);
 		Mesh* CreateMesh(IndexBuffer*& index_buffer, std::vector<VertexBuffer*>* vertex_buffers);
 
-		void FreeWindow(Window*& window);
-		void FreeShader(Shader*& shader);
-		void FreeShaderProgram(ShaderProgram*& shader_program);
+		void FreeWindow(Window* window);
+		void FreeShader(Shader* shader);
+		void FreeShaderProgram(ShaderProgram* shader_program);
 		void FreeVertexBuffer(VertexBuffer* vertex_buffer);
 		void FreeVertexBuffers(std::vector<VertexBuffer*>& vertex_buffers);
 		void FreeVertexBuffers(const std::vector<VertexBuffer*>* vertex_buffers);

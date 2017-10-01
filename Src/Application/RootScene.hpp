@@ -15,8 +15,6 @@ public:
 	void Render();
 	void Dispose();
 private:
-	Kaleid::Graphics::ShaderProgram* _shader_program;
 	Kaleid::Game::Model _model;
 	Kaleid::Math::PerspectiveCamera _camera;
-	Cube _cube;
 };

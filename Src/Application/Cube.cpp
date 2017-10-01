@@ -24,7 +24,7 @@ void Cube::SetShaderProgram(ShaderProgram*& shader_program)
 	this->_shader_program = shader_program;
 }
 
-ShaderProgram* Cube::GetShaderProgram() const
+ShaderProgram* Cube::GetShaderProgram()
 {
 	return this->_shader_program;
 }

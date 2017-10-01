@@ -88,9 +88,7 @@ void RootScene::Load()
 	// Clean Up
 	this->_graphics_factory->FreeShader(vertex_shader);
 	this->_graphics_factory->FreeShader(fragment_shader);
-	this->_shader_program = program;
 	this->_model.SetShaderProgram(program);
-	this->_cube.SetShaderProgram(program);
 
 	this->_camera.SetPosition(Vector3F(0.0f, 0.0f, 5.0f));
 }
@@ -111,7 +109,7 @@ void RootScene::Render()
 
 	this->_renderer->SetWireframeMode(true);
 	// Render Scene
-	ShaderProgram* shader_program = this->_shader_program;
+	ShaderProgram* shader_program = this->_model.GetShaderProgram();
 	Matrix4F mvp = (&this->_camera)->GetProjectionMatrix() * (&this->_camera)->GetViewMatrix() * this->_model.GetTransform()->GetModelMatrix();
 
 	this->_model.Render(this->_renderer, [&]

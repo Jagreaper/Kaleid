@@ -296,7 +296,7 @@ Mesh* GraphicsFactory::CreateMesh(IndexBuffer*& index_buffer, std::vector<Vertex
 	return mesh;
 }
 
-void GraphicsFactory::FreeWindow(Window*& window)
+void GraphicsFactory::FreeWindow(Window* window)
 {
 	VectorHelper::RemoveItem(&GraphicsFactory::_windows, window);
 
@@ -308,7 +308,7 @@ void GraphicsFactory::FreeWindow(Window*& window)
 #endif
 }
 
-void GraphicsFactory::FreeShader(Shader*& shader)
+void GraphicsFactory::FreeShader(Shader* shader)
 {
 	VectorHelper::RemoveItem(&GraphicsFactory::_shaders, shader);
 
@@ -320,7 +320,7 @@ void GraphicsFactory::FreeShader(Shader*& shader)
 #endif
 }
 
-void GraphicsFactory::FreeShaderProgram(ShaderProgram*& shader_program)
+void GraphicsFactory::FreeShaderProgram(ShaderProgram* shader_program)
 {
 	VectorHelper::RemoveItem(&GraphicsFactory::_shader_programs, shader_program);
 
