@@ -82,6 +82,7 @@ void Cube::Load(GraphicsFactory*& graphics_factory)
 		VertexBuffer* vertex_buffer = graphics_factory->CreateVertexBuffer(verticies, 24, 3);
 		IndexBuffer* index_buffer = graphics_factory->CreateIndexBuffer(indicies, 36);
 		Cube::_mesh = graphics_factory->CreateMesh(index_buffer, vertex_buffer);
+		Cube::_mesh->Compose();
 	}
 }
 

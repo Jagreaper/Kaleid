@@ -102,6 +102,7 @@ void RootScene::Update()
 
 void RootScene::Render()
 {
+	this->_app->GetWindow(0)->MakeCurrent();
 	// Setup Scene
 	unsigned int width, height;
 	this->_app->GetWindow(0)->GetSize(&width, &height);
@@ -110,9 +111,9 @@ void RootScene::Render()
 
 	// Render Scene
 	ShaderProgram* shader_program = this->_shader_program;
-	Matrix4F mvp = this->_camera.GetProjectionMatrix() * this->_camera.GetViewMatrix() * this->_cube.GetTransform()->GetModelMatrix();
+	Matrix4F mvp = (&this->_camera)->GetProjectionMatrix() * (&this->_camera)->GetViewMatrix() * this->_cube.GetTransform()->GetModelMatrix();
 
-	this->_cube.Render(this->_renderer, [&, shader_program, mvp]
+	this->_cube.Render(this->_renderer, [&]
 	{
 		shader_program->SetUniform("mvp", mvp);
 	});
