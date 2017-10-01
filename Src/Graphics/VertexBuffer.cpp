@@ -9,14 +9,14 @@ VertexBuffer::VertexBuffer()
 	this->_point_size = 0;
 }
 
-#define VERTEX_BUFFER_DATA_SETTER(TYPE, GL_TYPE) \
+#define VERTEX_BUFFER_DATA_SETTER(TYPE, OGL_TYPE) \
 void VertexBuffer::BufferData(const TYPE* data, size_t count, unsigned int point_size, BufferUsage usage) \
 { \
 	this->Bind(); \
 	glBufferData(GL_ARRAY_BUFFER, count * sizeof(TYPE), data, usage); \
 	this->_point_size = point_size; \
 	this->_length = count / point_size; \
-	int _type_info = GL_TYPE;\
+	this->_type_info = OGL_TYPE;\
 } \
 \
 void VertexBuffer::BufferData(const std::vector<TYPE>* data, unsigned int point_size, BufferUsage usage) \
@@ -25,7 +25,7 @@ void VertexBuffer::BufferData(const std::vector<TYPE>* data, unsigned int point_
 	glBufferData(GL_ARRAY_BUFFER, data->size() * sizeof(TYPE), data, usage); \
 	this->_point_size = point_size; \
 	this->_length = data->size() / point_size; \
-	int _type_info = GL_TYPE; \
+	this->_type_info = OGL_TYPE; \
 } \
 
 VERTEX_BUFFER_DATA_SETTER(char, GL_BYTE)

@@ -104,6 +104,7 @@ void TestScene::Update()
 
 void TestScene::Render()
 {
+	this->_app->GetWindow(0)->MakeCurrent();
 	// Setup Scene
 	unsigned int width, height;
 	this->_app->GetWindow(0)->GetSize(&width, &height);

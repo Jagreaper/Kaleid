@@ -24,6 +24,12 @@ void Mesh::Dispose()
 
 void Mesh::Compose()
 {
+#ifdef DEBUG
+	GLenum error = glGetError();
+	if (error != GL_NO_ERROR)
+		throw std::runtime_error("OpenGL Runtime Error");
+#endif
+
 	this->_b_vbo_length = 0;
 
 	glBindVertexArray(this->_vao_id);
@@ -31,7 +37,6 @@ void Mesh::Compose()
 	{
 		VertexBuffer* vbo = this->_vbos[index];
 		glBindBuffer(GL_ARRAY_BUFFER, vbo->_id);
-
 		if (vbo->GetLength() > this->_b_vbo_length)
 			this->_b_vbo_length = vbo->GetLength();
 

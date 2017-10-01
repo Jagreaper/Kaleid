@@ -87,15 +87,10 @@ void GraphicsFactory::InitGLEW()
 #ifdef RELEASE
 	glewInit();
 #endif
-#ifdef DEBUG
-	const GLenum error = glewInit();
-	if (error != GLEW_OK)
-		throw std::runtime_error("OpenGL Initilization Error");
 
-	const GLubyte* renderer = glGetString(GL_RENDERER);
-	const GLubyte* version = glGetString(GL_VERSION);
-	printf("Renderer: %s\n", renderer);
-	printf("OpenGL version supported %s\n", version);
+#ifdef DEBUG
+	if (glewInit() != GLEW_OK)
+		throw std::runtime_error("OpenGL Initilization Error");
 #endif
 
 	GraphicsFactory::_glew_created = true;
@@ -121,8 +116,7 @@ Window* GraphicsFactory::CreateWindow(const unsigned int width, const unsigned i
 	window->MakeCurrent();
 	GraphicsFactory::_windows.push_back(window);
 
-	if (GraphicsFactory::_glew_created == false)
-		GraphicsFactory::InitGLEW();
+	this->Validate();
 
 #ifdef DEBUG
 	this->ErrorCheck();
@@ -442,8 +436,7 @@ void GraphicsFactory::FreeMesh(Mesh*& mesh)
 
 void GraphicsFactory::ErrorCheck()
 {
-	GLenum error = glGetError();
-	if (error != GL_NO_ERROR)
+	if (glGetError() != GL_NO_ERROR)
 		throw std::runtime_error("OpenGL Runtime Error");
 }
 
