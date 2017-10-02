@@ -1,7 +1,6 @@
 #pragma once
 
 #include "stdafx.hpp"
-#include "Pixel.hpp"
 
 API_BEGIN
 namespace Kaleid::Imaging

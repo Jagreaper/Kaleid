@@ -3,6 +3,11 @@
 
 using namespace Kaleid::Imaging;
 
+Image::Image()
+{
+	// Skip
+}
+
 Image::Image(unsigned int width, unsigned int height)
 {
 	this->_width = width;

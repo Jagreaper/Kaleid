@@ -11,6 +11,8 @@
 #include "Matrix.hpp"
 #include "Keyboard.hpp"
 #include "KeyBinding.hpp"
+#include "Image.hpp"
+#include "PngStreamDecoder.hpp"
 #include <iostream>
 #include <fstream>
 
@@ -19,6 +21,7 @@ using namespace Kaleid::Game;
 using namespace Kaleid::Graphics;
 using namespace Kaleid::IO;
 using namespace Kaleid::Input;
+using namespace Kaleid::Imaging;
 
 RootScene::RootScene(App* app)
 	: SceneBase(app)
@@ -74,7 +77,7 @@ void RootScene::BuildShaderProgram()
 
 void RootScene::BuildMesh()
 {
-	const char* path = "Models\\Parking Lot\\parking lot.obj";
+	const char* path = "Models\\Stormtrooper\\Stormtrooper.obj";
 	std::ifstream obj_stream;
 	obj_stream.open(path);
 	ObjStreamDecoder decoder;
@@ -107,6 +110,14 @@ void RootScene::Load()
 	this->BuildMesh();
 	this->BuildShaderProgram();
 	this->CreateKeyboardBindings();
+
+	Image image;
+
+	const char* path = "D:\\Users\\James\\Pictures\\Misc\\Fate zero Saber by tidusafx on DeviantArt.png";
+	std::ifstream obj_stream(path, std::ios_base::in | std::ios_base::binary);
+	PngStreamDecoder decoder;
+	decoder.TryDecode(obj_stream, &image);
+	obj_stream.close();
 
 	this->_camera.SetPosition(Vector3F(0.0f, 0.0f, 5.0f));
 

@@ -11,6 +11,7 @@ namespace Kaleid::Imaging
 	class KALEID_IMAGING_API Image
 	{
 	public:
+		Image();
 		Image(char* data, unsigned int data_length, ChannelInfo* channels, unsigned int num_channels, unsigned int width, unsigned int height);
 		Image(char* data, unsigned int data_length, std::vector<ChannelInfo> channels, unsigned int width, unsigned int height);
 		Image(std::vector<char> data, ChannelInfo* channels, unsigned int num_channels, unsigned int width, unsigned int height);
