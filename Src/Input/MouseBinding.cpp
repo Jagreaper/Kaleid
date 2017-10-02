@@ -9,6 +9,9 @@ MouseBinding::MouseBinding(const MouseCode mouse_code, const MouseBindingState s
 	this->_mouse_code = mouse_code;
 	this->_state = state;
 	this->_action = action;
+
+	this->_old_xpos = 0.0;
+	this->_old_ypos = 0.0;
 }
 
 void MouseBinding::Poll(Kaleid::Graphics::Window*& window)

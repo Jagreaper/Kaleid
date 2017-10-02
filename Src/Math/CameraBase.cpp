@@ -1,6 +1,7 @@
 #include "stdafx.hpp"
 #include "CameraBase.hpp"
 #include <glm/gtc/matrix_transform.hpp>
+#include <math.h>
 
 using namespace Kaleid::Math;
 
@@ -103,14 +104,20 @@ Matrix4F CameraBase::GetViewMatrix()
 void CameraBase::NormalizeRotation()
 {
 	this->_rotation.x = fmodf(this->_rotation.x, 360.0f);
+	if (isnan(this->_rotation.x))
+		this->_rotation.x = 0.0f;
 	if (this->_rotation.x < 0.0f)
 		this->_rotation.x += 360.0f;
 
 	this->_rotation.y = fmodf(this->_rotation.y, 360.0f);
+	if (isnan(this->_rotation.y))
+		this->_rotation.y = 0.0f;
 	if (this->_rotation.y < 0.0f)
 		this->_rotation.y += 360.0f;
 
 	this->_rotation.z = fmodf(this->_rotation.z, 360.0f);
+	if (isnan(this->_rotation.z))
+		this->_rotation.z = 0.0f;
 	if (this->_rotation.z < 0.0f)
 		this->_rotation.z += 360.0f;
 }
