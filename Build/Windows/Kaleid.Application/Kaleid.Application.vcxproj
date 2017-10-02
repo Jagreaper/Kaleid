@@ -103,7 +103,8 @@
 copy "..\..\..\Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y</Command>
     </PostBuildEvent>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>
+      </SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -123,7 +124,8 @@ copy "..\..\..\Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "..\..\..\Bin\Wi
 copy "..\..\..\Lib\GLFW\$(PlatformTarget)\lib-vc2015\glfw3.dll" "..\..\..\Bin\Windows\$(ProjectName)\$(Configuration)\$(PlatformTarget)\" /y</Command>
     </PostBuildEvent>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>
+      </SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

@@ -10,7 +10,12 @@
 using namespace Kaleid::Game;
 using namespace Kaleid::Graphics;
 
+#ifdef DEBUG
+int main()
+#endif
+#ifdef RELEASE
 int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, char*, int nShowCmd)
+#endif
 {
 	App app;
 

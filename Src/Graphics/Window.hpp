@@ -41,6 +41,9 @@ namespace Kaleid::Graphics
 		void SetBorder(bool mode);
 		void SetMaximized(bool mode);
 
+		void ClampCursor();
+		void CenterCursor();
+
 		void SetCursorMode(CursorMode mode);
 		CursorMode GetCursorMode();
 

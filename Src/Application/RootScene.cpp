@@ -95,7 +95,7 @@ void RootScene::CreateKeyboardBindings()
 	this->_mouse.Add(MouseBinding(MouseCode::MovedDelta, MouseBindingState::MouseMoved, [&, window](double x, double y)
 	{
 		if (window->IsFocused())
-			this->_camera.TranslateRotation(Vector3F(-90.0f * this->GetDeltaTime() * y, -360.0f * this->GetDeltaTime() * x, 0.0f));
+			this->_camera.TranslateRotation(Vector3F(-360.0f * this->GetDeltaTime() * y, -360.0f * this->GetDeltaTime() * x, 0.0f));
 	}));
 }
 
@@ -117,6 +117,8 @@ void RootScene::Load()
 
 void RootScene::Update()
 {
+	this->_app->GetWindow(0)->CenterCursor();
+
 	this->_n_time = clock();
 	this->_delta_time = (double)(this->_n_time - this->_o_time) / CLOCKS_PER_SEC;
 	this->_o_time = this->_n_time;

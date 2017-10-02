@@ -57,6 +57,31 @@ void Window::SetTitle(const char* title)
 	glfwSetWindowTitle(this->_handle, title);
 }
 
+void Window::ClampCursor()
+{
+	unsigned int width, height;
+	this->GetSize(&width, &height);
+
+	double mouse_x, mouse_y;
+	this->GetMousePosition(&mouse_x, &mouse_y);
+
+	if (mouse_x < 0)
+		glfwSetCursorPos(this->_handle, 0, mouse_y);
+	if (mouse_x > width)
+		glfwSetCursorPos(this->_handle, width, mouse_y);
+	if (mouse_y < 0)
+		glfwSetCursorPos(this->_handle, mouse_x, 0);
+	if (mouse_y > height)
+		glfwSetCursorPos(this->_handle, mouse_x, height);
+}
+
+void Window::CenterCursor()
+{
+	unsigned int width, height;
+	this->GetSize(&width, &height);
+	glfwSetCursorPos(this->_handle, width / 2, height / 2);
+}
+
 void Window::SetCursorMode(CursorMode mode)
 {
 	glfwSetInputMode(this->_handle, GLFW_CURSOR, (this->_cursor_mode = mode));
