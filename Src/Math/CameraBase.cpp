@@ -43,7 +43,10 @@ void CameraBase::SetRotation(const Vector3F& rotation)
 
 void CameraBase::TranslateRotation(const Vector3F& offset)
 {
-	this->_rotation += offset;
+	if (this->_rotation.x >= 90.0f && this->_rotation.x <= 270.0f)
+		this->_rotation += Vector3F(offset.x, -offset.y, offset.z);
+	else
+		this->_rotation += offset;
 	this->NormalizeRotation();
 	this->_is_view_matrix_dirty = true;
 }
