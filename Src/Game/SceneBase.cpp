@@ -15,4 +15,5 @@ SceneBase::SceneBase(App*& app)
 void SceneBase::Poll(Window*& window)
 {
 	this->_keyboard.Poll(window);
+	this->_mouse.Poll(window);
 }

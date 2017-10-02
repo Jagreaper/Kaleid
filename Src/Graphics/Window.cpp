@@ -6,6 +6,7 @@ using namespace Kaleid::Graphics;
 Window::Window(int width, int height, const char* title)
 {
 	this->_handle = glfwCreateWindow(width, height, title, NULL, NULL);
+	this->_cursor_mode = CursorMode::Normal;
 	this->SetVSyncMode(VSyncMode::Off);
 }
 
@@ -44,6 +45,16 @@ void Window::SetSize(const unsigned int width, const unsigned int height)
 void Window::SetTitle(const char* title)
 {
 	glfwSetWindowTitle(this->_handle, title);
+}
+
+void Window::SetCursorMode(CursorMode mode)
+{
+	glfwSetInputMode(this->_handle, GLFW_CURSOR, (this->_cursor_mode = mode));
+}
+
+CursorMode Window::GetCursorMode()
+{
+	return this->_cursor_mode;
 }
 
 void Window::Hide()
@@ -129,4 +140,14 @@ void Window::PollEvents()
 char Window::GetKeyState(int key_code) const
 {
 	return glfwGetKey(this->_handle, key_code);
+}
+
+char Window::GetMouseState(int mouse_code) const
+{
+	return glfwGetMouseButton(this->_handle, mouse_code);
+}
+
+void Window::GetMousePosition(double* xpos, double* ypos) const
+{
+	glfwGetCursorPos(this->_handle, xpos, ypos);
 }

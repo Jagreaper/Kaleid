@@ -2,6 +2,7 @@
 
 #include "stdafx.hpp"
 #include "Keyboard.hpp"
+#include "Mouse.hpp"
 
 API_BEGIN
 namespace Kaleid::Graphics
@@ -28,6 +29,7 @@ namespace Kaleid::Game
 		Kaleid::Graphics::Renderer* _renderer;
 		Kaleid::Graphics::GraphicsFactory* _graphics_factory;
 		Kaleid::Input::Keyboard _keyboard;
+		Kaleid::Input::Mouse _mouse;
 	};
 }
 API_END
