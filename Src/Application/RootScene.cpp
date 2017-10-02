@@ -12,7 +12,6 @@
 #include "Keyboard.hpp"
 #include "KeyBinding.hpp"
 #include "Image.hpp"
-#include "PngStreamDecoder.hpp"
 #include <iostream>
 #include <fstream>
 
@@ -110,14 +109,6 @@ void RootScene::Load()
 	this->BuildMesh();
 	this->BuildShaderProgram();
 	this->CreateKeyboardBindings();
-
-	Image image;
-
-	const char* path = "D:\\Users\\James\\Pictures\\Misc\\Fate zero Saber by tidusafx on DeviantArt.png";
-	std::ifstream obj_stream(path, std::ios_base::in | std::ios_base::binary);
-	PngStreamDecoder decoder;
-	decoder.TryDecode(obj_stream, &image);
-	obj_stream.close();
 
 	this->_camera.SetPosition(Vector3F(0.0f, 0.0f, 5.0f));
 

@@ -4,7 +4,7 @@
 
 using namespace Kaleid::Imaging;
 
-Channel::Channel(char* data, unsigned char data_length, ChannelInfo channel_info)
+Channel::Channel(unsigned char* data, unsigned char data_length, ChannelInfo channel_info)
 {
 	this->_data = data;
 	this->_data_length = data_length > 8 ? 8 : data_length;

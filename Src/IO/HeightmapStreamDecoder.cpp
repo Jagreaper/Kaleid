@@ -1,6 +1,7 @@
 #include "stdafx.hpp"
 #include "HeightmapStreamDecoder.hpp"
 #include "GraphicsFactory.hpp"
+#include <Windows.h>
 #include <string>
 #include <stdexcept>
 

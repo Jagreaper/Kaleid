@@ -3,7 +3,7 @@
 
 using namespace Kaleid::Imaging;
 
-Pixel::Pixel(char* data, unsigned int data_length, ChannelInfo* channels, unsigned int num_channels)
+Pixel::Pixel(unsigned char* data, unsigned int data_length, ChannelInfo* channels, unsigned int num_channels)
 {
 	this->_data = data;
 	this->_data_length = data_length;

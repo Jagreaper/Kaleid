@@ -23,13 +23,13 @@ namespace Kaleid::Imaging
 	class Channel
 	{
 	public:
-		Channel(char* data, unsigned char data_length, ChannelInfo channel_info);
+		Channel(unsigned char* data, unsigned char data_length, ChannelInfo channel_info);
 
 		unsigned long long GetRealValue();
 		double GetDecimalValue();
 		unsigned char GetCodeValue();
 	private:
-		char* _data;
+		unsigned char* _data;
 		unsigned char _data_length;
 		ChannelInfo _channel_info;
 	};

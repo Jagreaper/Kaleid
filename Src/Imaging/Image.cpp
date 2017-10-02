@@ -8,51 +8,38 @@ Image::Image()
 	// Skip
 }
 
-Image::Image(unsigned int width, unsigned int height)
+Image::Image(unsigned char* data, unsigned int data_length, ChannelInfo* channels, unsigned int num_channels, unsigned int width, unsigned int height)
 {
-	this->_width = width;
-	this->_height = height;
-}
-
-Image::Image(char* data, unsigned int data_length, ChannelInfo* channels, unsigned int num_channels, unsigned int width, unsigned int height)
-	: Image(width, height)
-{
-	for (int index = 0; index < data_length; index++)
-		this->_data.push_back(*data++);
-
-	for (int index = 0; index < num_channels; index++)
-		this->_channels.push_back(*channels++);
+	this->SetSize(width, height);
+	this->SetData(data, data_length);
+	this->SetChannels(channels, num_channels);
 
 	this->CreateDefaults();
 }
 
-Image::Image(char* data, unsigned int data_length, std::vector<ChannelInfo> channels, unsigned int width, unsigned int height)
-	: Image(width, height)
+Image::Image(unsigned char* data, unsigned int data_length, std::vector<ChannelInfo> channels, unsigned int width, unsigned int height)
 {
-	for (int index = 0; index < data_length; index++)
-		this->_data.push_back(*data++);
-
-	this->_channels = channels;
+	this->SetSize(width, height);
+	this->SetData(data, data_length);
+	this->SetChannels(channels);
 
 	this->CreateDefaults();
 }
 
-Image::Image(std::vector<char> data, ChannelInfo* channels, unsigned int num_channels, unsigned int width, unsigned int height)
-	: Image(width, height)
+Image::Image(std::vector<unsigned char> data, ChannelInfo* channels, unsigned int num_channels, unsigned int width, unsigned int height)
 {
-	this->_data = data;
-
-	for (int index = 0; index < num_channels; index++)
-		this->_channels.push_back(*channels++);
+	this->SetSize(width, height);
+	this->SetData(data);
+	this->SetChannels(channels, num_channels);;
 
 	this->CreateDefaults();
 }
 
-Image::Image(std::vector<char> data, std::vector<ChannelInfo> channels, unsigned int width, unsigned int height)
-	: Image(width, height)
+Image::Image(std::vector<unsigned char> data, std::vector<ChannelInfo> channels, unsigned int width, unsigned int height)
 {
-	this->_data = data;
-	this->_channels = channels;
+	this->SetSize(width, height);
+	this->SetData(data);
+	this->SetChannels(channels);
 
 	this->CreateDefaults();
 }
@@ -69,7 +56,47 @@ Pixel Image::GetPixel(unsigned int x, unsigned int y)
 		throw std::runtime_error("Arguement out of bounds");
 
 	unsigned int pos = x + (y * this->_stride);
-	char* pixel_data = this->_data.data() + pos;
+	unsigned char* pixel_data = this->_data.data() + pos;
 
 	return Pixel(pixel_data, this->_pixel_length, this->_channels.data(), this->_channels.size());
+}
+
+void Image::SetData(unsigned char* data, unsigned int data_length)
+{
+	for (int index = 0; index < data_length; index++)
+		this->_data.push_back(*data++);
+}
+
+void Image::SetData(std::vector<unsigned char> data)
+{
+	for (int index = 0; index < data.size(); index++)
+		this->_data.push_back(data[index]);
+}
+
+void Image::SetChannels(ChannelInfo* channels, unsigned int num_channels)
+{
+	for (int index = 0; index < num_channels; index++)
+		this->_channels.push_back(*channels++);
+}
+
+void Image::SetChannels(std::vector<ChannelInfo> channels)
+{
+	for (int index = 0; index < channels.size(); index++)
+		this->_channels.push_back(channels[index]);
+}
+
+void Image::SetWidth(unsigned int width)
+{
+	this->_width = width;
+}
+
+void Image::SetHeight(unsigned int height)
+{
+	this->_height = height;
+}
+
+void Image::SetSize(unsigned int width, unsigned int height)
+{
+	this->_width = width;
+	this->_height = height;
 }

@@ -10,12 +10,12 @@ namespace Kaleid::Imaging
 	class Pixel
 	{
 	public:
-		Pixel(char* data, unsigned int data_length, ChannelInfo* channels, unsigned int num_channels);
+		Pixel(unsigned char* data, unsigned int data_length, ChannelInfo* channels, unsigned int num_channels);
 
 		Channel GetChannel(unsigned int channel);
 	private:
 		ChannelInfo* _channels;
-		char* _data;
+		unsigned char* _data;
 
 		unsigned int _num_channels;
 		unsigned int _data_length;
