@@ -26,6 +26,14 @@ namespace Kaleid::Graphics
 		void SetVSyncMode(VSyncMode mode);
 		VSyncMode GetVSyncMode();
 
+		void SetResizable(bool mode);
+		void SetVisible(bool mode);
+		void SetDecorated(bool mode);
+		void SetMaximized(bool mode);
+
+		void Hide();
+		void Restore();
+
 		bool IsFocused() const;
 		bool IsVisible() const;
 		bool IsResizable() const;

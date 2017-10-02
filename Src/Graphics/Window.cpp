@@ -46,6 +46,16 @@ void Window::SetTitle(const char* title)
 	glfwSetWindowTitle(this->_handle, title);
 }
 
+void Window::Hide()
+{
+	glfwHideWindow(this->_handle);
+}
+
+void Window::Restore()
+{
+	glfwRestoreWindow(this->_handle);
+}
+
 void Window::SetVSyncMode(VSyncMode mode)
 {
 	this->MakeCurrent();
@@ -55,6 +65,30 @@ void Window::SetVSyncMode(VSyncMode mode)
 VSyncMode Window::GetVSyncMode()
 {
 	return this->_vsync_mode;
+}
+
+void Window::SetResizable(bool mode)
+{
+	this->MakeCurrent();
+	glfwWindowHint(GLFW_RESIZABLE, mode);
+}
+
+void Window::SetVisible(bool mode)
+{
+	this->MakeCurrent();
+	glfwWindowHint(GLFW_VISIBLE, mode);
+}
+
+void Window::SetDecorated(bool mode)
+{
+	this->MakeCurrent();
+	glfwWindowHint(GLFW_DECORATED, mode);
+}
+
+void Window::SetMaximized(bool mode)
+{
+	this->MakeCurrent();
+	glfwWindowHint(GLFW_MAXIMIZED, mode);
 }
 
 bool Window::IsFocused() const
