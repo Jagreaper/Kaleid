@@ -6,6 +6,7 @@ using namespace Kaleid::Graphics;
 Window::Window(int width, int height, const char* title)
 {
 	this->_handle = glfwCreateWindow(width, height, title, NULL, NULL);
+	this->SetVSyncMode(VSyncMode::Off);
 }
 
 void Window::Dispose()
@@ -43,6 +44,37 @@ void Window::SetSize(const unsigned int width, const unsigned int height)
 void Window::SetTitle(const char* title)
 {
 	glfwSetWindowTitle(this->_handle, title);
+}
+
+void Window::SetVSyncMode(VSyncMode mode)
+{
+	this->MakeCurrent();
+	glfwSwapInterval((this->_vsync_mode = mode));
+}
+
+VSyncMode Window::GetVSyncMode()
+{
+	return this->_vsync_mode;
+}
+
+bool Window::IsFocused() const
+{
+	return glfwGetWindowAttrib(this->_handle, GLFW_FOCUSED);
+}
+
+bool Window::IsVisible() const
+{
+	return glfwGetWindowAttrib(this->_handle, GLFW_VISIBLE);
+}
+
+bool Window::IsResizable() const
+{
+	return glfwGetWindowAttrib(this->_handle, GLFW_RESIZABLE);
+}
+
+bool Window::HasBorder() const
+{
+	return glfwGetWindowAttrib(this->_handle, GLFW_DECORATED);
 }
 
 bool Window::Exists() const

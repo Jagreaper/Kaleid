@@ -111,9 +111,6 @@ void GraphicsFactory::Validate()
 Window* GraphicsFactory::CreateWindow(const unsigned int width, const unsigned int height, const char* title)
 {
 	Window* window = new Window(width, height, title);
-	window->SetSize(width, height);
-	window->SetTitle(title);
-	window->MakeCurrent();
 	GraphicsFactory::_windows.push_back(window);
 
 	this->Validate();
