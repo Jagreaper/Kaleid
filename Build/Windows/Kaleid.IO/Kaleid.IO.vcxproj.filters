@@ -11,6 +11,9 @@
     <ClCompile Include="..\..\..\Src\IO\ObjStreamDecoder.cpp">
       <Filter>Decoders\Models</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\Src\IO\HeightmapStreamDecoder.cpp">
+      <Filter>Decoders\Models</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Src\Shared\stdafx.hpp" />
@@ -29,6 +32,9 @@
     <ClInclude Include="..\..\..\Src\IO\ObjStreamDecoder.hpp">
       <Filter>Decoders\Models</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Src\IO\HeightmapStreamDecoder.hpp">
+      <Filter>Decoders\Models</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Encoders">
@@ -39,6 +45,9 @@
     </Filter>
     <Filter Include="Decoders\Models">
       <UniqueIdentifier>{28d86a6d-d277-4a84-bb2a-86bc8c8a1b76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Encoders\Models">
+      <UniqueIdentifier>{6541f1ae-d1f4-40c4-b908-0294c91a4cad}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

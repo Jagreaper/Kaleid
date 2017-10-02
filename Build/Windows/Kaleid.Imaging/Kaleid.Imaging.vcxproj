@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{5E0F4E87-9AE9-4401-A95D-7C23E44F2579}</ProjectGuid>
-    <RootNamespace>KaleidIO</RootNamespace>
+    <ProjectGuid>{DCC688BB-CC70-4D9E-BB0E-1222CCF9BEF0}</ProjectGuid>
+    <RootNamespace>KaleidImaging</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -90,8 +90,8 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\Math\;..\..\..\Src\Game\;..\..\..\Src\Geometry\;..\..\..\Src\Graphics\;..\..\..\Src\IO\;..\..\..\Src\Shared\;..\..\..\Src\Helpers\</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_WINDLL;KALEID_IO_DLL;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\Imaging\;..\..\..\Src\Shared\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_WINDLL;KALEID_IMAGING_DLL;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
@@ -106,8 +106,8 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\Math\;..\..\..\Src\Game\;..\..\..\Src\Geometry\;..\..\..\Src\Graphics\;..\..\..\Src\IO\;..\..\..\Src\Shared\;..\..\..\Src\Helpers\</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_WINDLL;KALEID_IO_DLL;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\Imaging\;..\..\..\Src\Shared\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_WINDLL;KALEID_IMAGING_DLL;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
@@ -124,8 +124,8 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\Math\;..\..\..\Src\Game\;..\..\..\Src\Geometry\;..\..\..\Src\Graphics\;..\..\..\Src\IO\;..\..\..\Src\Shared\;..\..\..\Src\Helpers\</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_WINDLL;KALEID_IO_DLL;RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\Imaging\;..\..\..\Src\Shared\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_WINDLL;KALEID_IMAGING_DLL;RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
@@ -146,8 +146,8 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\Math\;..\..\..\Src\Game\;..\..\..\Src\Geometry\;..\..\..\Src\Graphics\;..\..\..\Src\IO\;..\..\..\Src\Shared\;..\..\..\Src\Helpers\</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_WINDLL;KALEID_IO_DLL;RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\Imaging\;..\..\..\Src\Shared\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_WINDLL;KALEID_IMAGING_DLL;RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.hpp</PrecompiledHeaderFile>
@@ -162,10 +162,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\Src\IO\DecoderFactory.cpp" />
-    <ClCompile Include="..\..\..\Src\IO\EncoderFactory.cpp" />
-    <ClCompile Include="..\..\..\Src\IO\HeightmapStreamDecoder.cpp" />
-    <ClCompile Include="..\..\..\Src\IO\ObjStreamDecoder.cpp" />
+    <ClCompile Include="..\..\..\Src\Imaging\Image.cpp" />
     <ClCompile Include="..\..\..\Src\Shared\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -174,33 +171,8 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Src\IO\DecoderBase.hpp" />
-    <ClInclude Include="..\..\..\Src\IO\DecoderFactory.hpp" />
-    <ClInclude Include="..\..\..\Src\IO\EncoderBase.hpp" />
-    <ClInclude Include="..\..\..\Src\IO\EncoderFactory.hpp" />
-    <ClInclude Include="..\..\..\Src\IO\HeightmapStreamDecoder.hpp" />
-    <ClInclude Include="..\..\..\Src\IO\ObjStreamDecoder.hpp" />
+    <ClInclude Include="..\..\..\Src\Imaging\Image.hpp" />
     <ClInclude Include="..\..\..\Src\Shared\stdafx.hpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Kaleid.Game\Kaleid.Game.vcxproj">
-      <Project>{29dc283f-b80e-4650-a60e-a294947fdbcd}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Kaleid.Geometry\Kaleid.Geometry.vcxproj">
-      <Project>{f5e121a6-0652-4fe0-8d93-4c05a473ffce}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Kaleid.Graphics\Kaleid.Graphics.vcxproj">
-      <Project>{b0d1fc24-7ed7-4f0a-b51b-0864f52f4f77}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Kaleid.Helpers\Kaleid.Helpers.vcxproj">
-      <Project>{fa74e84f-8b9c-44fa-99be-b68865635073}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Kaleid.Imaging\Kaleid.Imaging.vcxproj">
-      <Project>{dcc688bb-cc70-4d9e-bb0e-1222ccf9bef0}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Kaleid.Math\Kaleid.Math.vcxproj">
-      <Project>{d7ea2988-db27-4004-ab6b-c81a923164df}</Project>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
