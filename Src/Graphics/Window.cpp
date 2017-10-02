@@ -29,6 +29,16 @@ void Window::SwapBuffers()
 	glfwSwapBuffers(this->_handle);
 }
 
+void Window::GetPosition(int* x, int* y) const
+{
+	glfwGetWindowPos(this->_handle, x, y);
+}
+
+void Window::SetPosition(const int x, const int y)
+{
+	glfwSetWindowPos(this->_handle, (int)x, (int)y);
+}
+
 void Window::GetSize(unsigned int* width, unsigned int* height) const
 {
 	int i_width, i_height;

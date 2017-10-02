@@ -26,6 +26,9 @@ namespace Kaleid::Graphics
 		void MakeCurrent();
 		void SwapBuffers();
 
+		void GetPosition(int* x, int* y) const;
+		void SetPosition(const int x, const int y);
+
 		void GetSize(unsigned int* width, unsigned int* height) const;
 		void SetSize(const unsigned int width, const unsigned int height);
 

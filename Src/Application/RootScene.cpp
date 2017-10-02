@@ -91,9 +91,11 @@ void RootScene::CreateKeyboardBindings()
 	this->_keyboard.Add(KeyBinding(KeyCode::Space, KeyBindingState::Held, [&] { this->_camera.TranslatePosition(this->_camera.GetUp() * 20.0f * (float)this->GetDeltaTime()); }));
 	this->_keyboard.Add(KeyBinding(KeyCode::LeftControl, KeyBindingState::Held, [&] { this->_camera.TranslatePosition(-this->_camera.GetUp() * 20.0f * (float)this->GetDeltaTime()); }));
 
-	this->_mouse.Add(MouseBinding(MouseCode::MovedDelta, MouseBindingState::MouseMoved, [&](double x, double y)
+	Window* window = this->_app->GetWindow(0);
+	this->_mouse.Add(MouseBinding(MouseCode::MovedDelta, MouseBindingState::MouseMoved, [&, window](double x, double y)
 	{
-		this->_camera.TranslateRotation(Vector3F(-90.0f * this->GetDeltaTime() * y, -360.0f * this->GetDeltaTime() * x, 0.0f));
+		if (window->IsFocused())
+			this->_camera.TranslateRotation(Vector3F(-90.0f * this->GetDeltaTime() * y, -360.0f * this->GetDeltaTime() * x, 0.0f));
 	}));
 }
 
