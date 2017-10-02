@@ -26,3 +26,8 @@ double Channel::GetDecimalValue()
 	double max_value = pow(2, this->_data_length);
 	return real_value / max_value;
 }
+
+unsigned char Channel::GetCodeValue()
+{
+	return 255 * this->GetDecimalValue();
+}

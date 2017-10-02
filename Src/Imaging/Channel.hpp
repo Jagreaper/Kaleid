@@ -28,6 +28,7 @@ namespace Kaleid::Imaging
 
 		unsigned long long GetRealValue();
 		double GetDecimalValue();
+		unsigned char GetCodeValue();
 	private:
 		char* _data;
 		unsigned char _data_length;
