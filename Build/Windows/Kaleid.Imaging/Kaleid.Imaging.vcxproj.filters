@@ -3,9 +3,13 @@
   <ItemGroup>
     <ClCompile Include="..\..\..\Src\Shared\stdafx.cpp" />
     <ClCompile Include="..\..\..\Src\Imaging\Image.cpp" />
+    <ClCompile Include="..\..\..\Src\Imaging\Pixel.cpp" />
+    <ClCompile Include="..\..\..\Src\Imaging\Channel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Src\Shared\stdafx.hpp" />
     <ClInclude Include="..\..\..\Src\Imaging\Image.hpp" />
+    <ClInclude Include="..\..\..\Src\Imaging\Channel.hpp" />
+    <ClInclude Include="..\..\..\Src\Imaging\Pixel.hpp" />
   </ItemGroup>
 </Project>

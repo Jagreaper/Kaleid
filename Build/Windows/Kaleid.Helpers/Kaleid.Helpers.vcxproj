@@ -163,6 +163,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Src\Helpers\Nullable.hpp" />
+    <ClInclude Include="..\..\..\Src\Helpers\PrimitiveTypes.hpp" />
     <ClInclude Include="..\..\..\Src\Helpers\StringHelper.hpp" />
     <ClInclude Include="..\..\..\Src\Helpers\VectorHelper.hpp" />
     <ClInclude Include="..\..\..\Src\Shared\stdafx.hpp" />
