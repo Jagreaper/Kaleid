@@ -28,7 +28,7 @@ namespace Kaleid::Graphics
 
 		void SetResizable(bool mode);
 		void SetVisible(bool mode);
-		void SetDecorated(bool mode);
+		void SetBorder(bool mode);
 		void SetMaximized(bool mode);
 
 		void Hide();
@@ -37,6 +37,7 @@ namespace Kaleid::Graphics
 		bool IsFocused() const;
 		bool IsVisible() const;
 		bool IsResizable() const;
+		bool IsMaximised() const;
 		bool HasBorder() const;
 		bool Exists() const;
 		static void PollEvents();

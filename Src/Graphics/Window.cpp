@@ -79,7 +79,7 @@ void Window::SetVisible(bool mode)
 	glfwWindowHint(GLFW_VISIBLE, mode);
 }
 
-void Window::SetDecorated(bool mode)
+void Window::SetBorder(bool mode)
 {
 	this->MakeCurrent();
 	glfwWindowHint(GLFW_DECORATED, mode);
@@ -104,6 +104,11 @@ bool Window::IsVisible() const
 bool Window::IsResizable() const
 {
 	return glfwGetWindowAttrib(this->_handle, GLFW_RESIZABLE);
+}
+
+bool Window::IsMaximised() const
+{
+	return glfwGetWindowAttrib(this->_handle, GLFW_MAXIMIZED);
 }
 
 bool Window::HasBorder() const
