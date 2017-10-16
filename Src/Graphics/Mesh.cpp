@@ -41,7 +41,7 @@ void Mesh::Compose()
 			this->_b_vbo_length = vbo->GetLength();
 
 		glEnableVertexAttribArray(index);
-		glVertexAttribPointer(index, vbo->GetPointSize(), vbo->_type_info, GL_FALSE, 0, NULL);
+		glVertexAttribPointer(index, vbo->GetStride(), vbo->_type_info, GL_FALSE, 0, NULL);
 	}
 	glBindVertexArray(0);
 }

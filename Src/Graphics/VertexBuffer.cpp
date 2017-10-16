@@ -6,25 +6,25 @@ using namespace Kaleid::Graphics;
 VertexBuffer::VertexBuffer()
 	: BufferBase()
 {
-	this->_point_size = 0;
+	this->_stride = 0;
 }
 
 #define VERTEX_BUFFER_DATA_SETTER(TYPE, OGL_TYPE) \
-void VertexBuffer::BufferData(const TYPE* data, size_t count, unsigned int point_size, BufferUsage usage) \
+void VertexBuffer::BufferData(const TYPE* data, size_t count, unsigned int stride, BufferUsage usage) \
 { \
 	this->Bind(); \
 	glBufferData(GL_ARRAY_BUFFER, count * sizeof(TYPE), data, usage); \
-	this->_point_size = point_size; \
-	this->_length = count / point_size; \
+	this->_stride = stride; \
+	this->_length = count / stride; \
 	this->_type_info = OGL_TYPE;\
 } \
 \
-void VertexBuffer::BufferData(const std::vector<TYPE>* data, unsigned int point_size, BufferUsage usage) \
+void VertexBuffer::BufferData(const std::vector<TYPE>* data, unsigned int stride, BufferUsage usage) \
 { \
 	this->Bind(); \
 	glBufferData(GL_ARRAY_BUFFER, data->size() * sizeof(TYPE), data, usage); \
-	this->_point_size = point_size; \
-	this->_length = data->size() / point_size; \
+	this->_stride = stride; \
+	this->_length = data->size() / stride; \
 	this->_type_info = OGL_TYPE; \
 } \
 
@@ -38,9 +38,9 @@ VERTEX_BUFFER_DATA_SETTER(float, GL_FLOAT)
 VERTEX_BUFFER_DATA_SETTER(double, GL_DOUBLE)
 #undef VERTEX_BUFFER_DATA_SETTER
 
-const unsigned int VertexBuffer::GetPointSize() const
+const unsigned int VertexBuffer::GetStride() const
 {
-	return this->_point_size;
+	return this->_stride;
 }
 
 void VertexBuffer::Bind()

@@ -32,12 +32,14 @@ namespace Kaleid::Graphics
 		ShaderProgram* CreateShaderProgram(Shader** shaders, const unsigned short count);
 
 		VertexBuffer* CreateVertexBuffer();
-		VertexBuffer* CreateVertexBuffer(const float* data, size_t count, unsigned int point_size);
-		VertexBuffer* CreateVertexBuffer(const float* data, size_t count, unsigned int point_size, BufferUsage usage);
+		VertexBuffer* CreateVertexBuffer(const float* data, size_t count, unsigned int stride);
+		VertexBuffer* CreateVertexBuffer(const float* data, size_t count, unsigned int stride, BufferUsage usage);
+		void CreateVertexBuffers(VertexBuffer*& buffer, const unsigned int count);
 
 		IndexBuffer* CreateIndexBuffer();
 		IndexBuffer* CreateIndexBuffer(const unsigned int* data, size_t count);
 		IndexBuffer* CreateIndexBuffer(const unsigned int* data, size_t count, BufferUsage usage);
+		void CreateIndexBuffers(IndexBuffer*& buffer, const unsigned int count);
 
 		Mesh* CreateMesh();
 		Mesh* CreateMesh(IndexBuffer*& index_buffer, VertexBuffer*& vertex_buffer);
@@ -49,9 +51,11 @@ namespace Kaleid::Graphics
 		void FreeVertexBuffer(VertexBuffer* vertex_buffer);
 		void FreeVertexBuffers(std::vector<VertexBuffer*>& vertex_buffers);
 		void FreeVertexBuffers(const std::vector<VertexBuffer*>* vertex_buffers);
+		void FreeVertexBuffers(VertexBuffer*& vertex_buffers, const unsigned int count);
 		void FreeIndexBuffer(IndexBuffer* index_buffer);
 		void FreeIndexBuffers(std::vector<IndexBuffer*>& index_buffers);
 		void FreeIndexBuffers(const std::vector<IndexBuffer*>* index_buffers);
+		void FreeIndexBuffers(IndexBuffer*& index_buffers, const unsigned int count);
 		void FreeMesh(Mesh*& mesh);
 	private:
 #ifdef DEBUG

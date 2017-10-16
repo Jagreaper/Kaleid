@@ -206,21 +206,34 @@ VertexBuffer* GraphicsFactory::CreateVertexBuffer()
 	return buffer;
 }
 
-VertexBuffer* GraphicsFactory::CreateVertexBuffer(const float* data, size_t count, unsigned int point_size)
+VertexBuffer* GraphicsFactory::CreateVertexBuffer(const float* data, size_t count, unsigned int stride)
 {
-	return this->CreateVertexBuffer(data, count, point_size, BufferUsage::StaticDraw);
+	return this->CreateVertexBuffer(data, count, stride, BufferUsage::StaticDraw);
 }
 
-VertexBuffer* GraphicsFactory::CreateVertexBuffer(const float* data, size_t count, unsigned int point_size, BufferUsage usage)
+VertexBuffer* GraphicsFactory::CreateVertexBuffer(const float* data, size_t count, unsigned int stride, BufferUsage usage)
 {
 	VertexBuffer* buffer = this->CreateVertexBuffer();
-	buffer->BufferData(data, count, point_size, usage);
+	buffer->BufferData(data, count, stride, usage);
 
 #ifdef DEBUG
 	this->ErrorCheck();
 #endif
 
 	return buffer;
+}
+
+void GraphicsFactory::CreateVertexBuffers(VertexBuffer*& buffer, const unsigned int count)
+{
+	this->Validate();
+
+	VertexBuffer* vbo = buffer = new VertexBuffer[count];
+	for (unsigned int index = 0; index < count; index++)
+		GraphicsFactory::_vertex_buffers.push_back(vbo++);
+
+#ifdef DEBUG
+	this->ErrorCheck();
+#endif
 }
 
 IndexBuffer* GraphicsFactory::CreateIndexBuffer()
@@ -252,6 +265,19 @@ IndexBuffer* GraphicsFactory::CreateIndexBuffer(const unsigned int* data, size_t
 #endif
 
 	return buffer;
+}
+
+void GraphicsFactory::CreateIndexBuffers(IndexBuffer*& buffer, const unsigned int count)
+{
+	this->Validate();
+
+	IndexBuffer* ibo = buffer = new IndexBuffer[count];
+	for (unsigned int index = 0; index < count; index++)
+		GraphicsFactory::_index_buffers.push_back(ibo++);
+
+#ifdef DEBUG
+	this->ErrorCheck();
+#endif
 }
 
 Mesh* GraphicsFactory::CreateMesh()
@@ -373,6 +399,23 @@ void GraphicsFactory::FreeVertexBuffers(const std::vector<VertexBuffer*>* vertex
 	}
 }
 
+void GraphicsFactory::FreeVertexBuffers(VertexBuffer*& vertex_buffers, const unsigned int count)
+{
+	VertexBuffer* buffer = vertex_buffers;
+
+	for (unsigned int index = 0; index < count; index++)
+	{
+		VectorHelper::RemoveItem(&GraphicsFactory::_vertex_buffers, buffer);
+		buffer++;
+	}
+
+	delete[] vertex_buffers;
+
+#ifdef DEBUG
+	this->ErrorCheck();
+#endif
+}
+
 void GraphicsFactory::FreeIndexBuffer(IndexBuffer* index_buffer)
 {
 	VectorHelper::RemoveItem(&GraphicsFactory::_index_buffers, index_buffer);
@@ -415,6 +458,23 @@ void GraphicsFactory::FreeIndexBuffers(const std::vector<IndexBuffer*>* index_bu
 		this->ErrorCheck();
 #endif
 	}
+}
+
+void GraphicsFactory::FreeIndexBuffers(IndexBuffer*& index_buffers, const unsigned int count)
+{
+	IndexBuffer* buffer = index_buffers;
+
+	for (unsigned int index = 0; index < count; index++)
+	{
+		VectorHelper::RemoveItem(&GraphicsFactory::_index_buffers, buffer);
+		buffer++;
+	}
+
+	delete[] index_buffers;
+
+#ifdef DEBUG
+	this->ErrorCheck();
+#endif
 }
 
 void GraphicsFactory::FreeMesh(Mesh*& mesh)
