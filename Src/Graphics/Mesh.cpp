@@ -51,11 +51,26 @@ void Mesh::SetIndexBuffer(IndexBuffer* buffer)
 	this->_ibo = buffer;
 }
 
-void Mesh::SetVertexBuffers(std::vector<VertexBuffer*>* buffers)
+void Mesh::SetVertexBuffers(const std::vector<VertexBuffer*>& buffers)
 {
 	this->_vbos.clear();
-	for (unsigned int index = 0; (unsigned int)index < buffers->size(); index++)
+	for (unsigned int index = 0; index < (unsigned int)buffers.size(); index++)
+		this->_vbos.push_back(buffers.at(index));
+}
+
+void Mesh::SetVertexBuffers(const std::vector<VertexBuffer*>* buffers)
+{
+	this->_vbos.clear();
+	for (unsigned int index = 0; index < (unsigned int)buffers->size(); index++)
 		this->_vbos.push_back(buffers->at(index));
+}
+
+void Mesh::SetVertexBuffers(VertexBuffer*& buffers, const unsigned int count)
+{
+	VertexBuffer* vbo = buffers;
+	this->_vbos.clear();
+	for (unsigned int index = 0; index < count; index++)
+		this->_vbos.push_back(vbo++);
 }
 
 IndexBuffer* Mesh::GetIndexBuffer() const
@@ -63,17 +78,17 @@ IndexBuffer* Mesh::GetIndexBuffer() const
 	return this->_ibo;
 }
 
-std::vector<VertexBuffer*>* Mesh::GetVertexBuffers()
+const std::vector<VertexBuffer*>* Mesh::GetVertexBuffers() const
 {
 	return &this->_vbos;
 }
 
-bool Mesh::HasIndexBuffer() const
+const bool Mesh::HasIndexBuffer() const
 {
 	return this->_ibo != NULL;
 }
 
-bool Mesh::HasVertexBuffers() const
+const bool Mesh::HasVertexBuffers() const
 {
 	return this->_vbos.size() > 0;
 }
@@ -83,7 +98,7 @@ void Mesh::SetPrimitiveType(const PrimitiveType type)
 	this->_primitive_type = type;
 }
 
-PrimitiveType Mesh::GetPrimitiveType()
+const PrimitiveType Mesh::GetPrimitiveType() const
 {
 	return this->_primitive_type;
 }

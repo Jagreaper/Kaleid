@@ -34,13 +34,15 @@ namespace Kaleid::Graphics
 	public:
 		void Compose();
 		void SetIndexBuffer(IndexBuffer* buffer);
-		void SetVertexBuffers(std::vector<VertexBuffer*>* buffers);
+		void SetVertexBuffers(const std::vector<VertexBuffer*>& buffers);
+		void SetVertexBuffers(const std::vector<VertexBuffer*>* buffers);
+		void SetVertexBuffers(VertexBuffer*& buffers, const unsigned int count);
 		void SetPrimitiveType(const PrimitiveType type);
 		IndexBuffer* GetIndexBuffer() const;
-		std::vector<VertexBuffer*>* GetVertexBuffers();
-		PrimitiveType GetPrimitiveType();
-		bool HasIndexBuffer() const;
-		bool HasVertexBuffers() const;
+		const std::vector<VertexBuffer*>* GetVertexBuffers() const;
+		const PrimitiveType GetPrimitiveType() const;
+		const bool HasIndexBuffer() const;
+		const bool HasVertexBuffers() const;
 	private:
 		Mesh();
 		void Dispose();
