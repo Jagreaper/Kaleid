@@ -26,16 +26,16 @@ namespace Kaleid::Game
 		void Close();
 
 		void SetRenderer(Kaleid::Graphics::Renderer* renderer);
-		Kaleid::Graphics::Renderer* GetRenderer();
+		Kaleid::Graphics::Renderer* GetRenderer() const;
 
 		void SetGraphicsFactory(Kaleid::Graphics::GraphicsFactory* graphics_factory);
-		Kaleid::Graphics::GraphicsFactory* GetGraphicsFactory();
+		Kaleid::Graphics::GraphicsFactory* GetGraphicsFactory() const;
 
 		void SetScene(SceneBase* current_scene, std::function<void()> disposal);
-		SceneBase* GetScene();
+		SceneBase* GetScene() const;
 
 		const std::vector<Kaleid::Graphics::Window*>* GetWindows();
-		Kaleid::Graphics::Window* GetWindow(int index);
+		Kaleid::Graphics::Window* GetWindow(int index) const;
 		bool IsRunning();
 	private:
 		SceneBase* _current_scene;

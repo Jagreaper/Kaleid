@@ -74,7 +74,7 @@ void App::SetRenderer(Kaleid::Graphics::Renderer* renderer)
 	this->_renderer = renderer;
 }
 
-Renderer* App::GetRenderer()
+Renderer* App::GetRenderer() const
 {
 	return this->_renderer;
 }
@@ -84,7 +84,7 @@ void App::SetGraphicsFactory(Kaleid::Graphics::GraphicsFactory* graphics_factory
 	this->_graphics_factory = graphics_factory;
 }
 
-GraphicsFactory* App::GetGraphicsFactory()
+GraphicsFactory* App::GetGraphicsFactory() const
 {
 	return this->_graphics_factory;
 }
@@ -109,7 +109,7 @@ void App::SetScene(SceneBase* current_scene, std::function<void()> disposal)
 		this->_current_scene->Load();
 }
 
-SceneBase* App::GetScene()
+SceneBase* App::GetScene() const
 {
 	return this->_current_scene;
 }
@@ -119,7 +119,7 @@ const std::vector<Kaleid::Graphics::Window*>* App::GetWindows()
 	return &this->_windows;
 }
 
-Kaleid::Graphics::Window* App::GetWindow(int index)
+Kaleid::Graphics::Window* App::GetWindow(int index) const
 {
 	return this->_windows[index];
 }

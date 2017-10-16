@@ -37,7 +37,7 @@ namespace Kaleid::Helpers
 		}
 
 		template<class Type>
-		static inline void RemoveItem(std::vector<Type>* vector, Type& item)
+		static inline void RemoveItem(std::vector<Type>* vector, const Type& item)
 		{
 			auto index = std::find(vector->begin(), vector->end(), item);
 			if (index != vector->end())
