@@ -44,6 +44,7 @@ namespace Kaleid::Graphics
 		Mesh* CreateMesh();
 		Mesh* CreateMesh(IndexBuffer*& index_buffer, VertexBuffer*& vertex_buffer);
 		Mesh* CreateMesh(IndexBuffer*& index_buffer, std::vector<VertexBuffer*>* vertex_buffers);
+		void CreateMeshes(Mesh*& meshes, const unsigned int count);
 
 		void FreeWindow(Window* window);
 		void FreeShader(Shader* shader);
@@ -57,6 +58,7 @@ namespace Kaleid::Graphics
 		void FreeIndexBuffers(const std::vector<IndexBuffer*>* index_buffers);
 		void FreeIndexBuffers(IndexBuffer*& index_buffers, const unsigned int count);
 		void FreeMesh(Mesh*& mesh);
+		void FreeMeshes(Mesh*& meshes, const unsigned int count);
 	private:
 #ifdef DEBUG
 		void ErrorCheck();
