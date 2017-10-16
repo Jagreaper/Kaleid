@@ -330,9 +330,6 @@ void GraphicsFactory::FreeWindow(Window* window)
 
 	window->Dispose();
 	delete window;
-#ifdef DEBUG
-	this->ErrorCheck();
-#endif
 }
 
 void GraphicsFactory::FreeShader(Shader* shader)
@@ -376,7 +373,6 @@ void GraphicsFactory::FreeVertexBuffers(std::vector<VertexBuffer*>& vertex_buffe
 		this->FreeVertexBuffer(vbo);
 
 		VectorHelper::RemoveItem(&GraphicsFactory::_vertex_buffers, vbo);
-		delete vbo;
 #ifdef DEBUG
 		this->ErrorCheck();
 #endif
@@ -391,7 +387,6 @@ void GraphicsFactory::FreeVertexBuffers(const std::vector<VertexBuffer*>* vertex
 		this->FreeVertexBuffer(vbo);
 
 		VectorHelper::RemoveItem(&GraphicsFactory::_vertex_buffers, vbo);
-		delete vbo;
 #ifdef DEBUG
 		this->ErrorCheck();
 #endif
@@ -433,7 +428,6 @@ void GraphicsFactory::FreeIndexBuffers(std::vector<IndexBuffer*>& index_buffers)
 		this->FreeIndexBuffer(ibo);
 
 		VectorHelper::RemoveItem(&GraphicsFactory::_index_buffers, ibo);
-		delete ibo;
 #ifdef DEBUG
 		this->ErrorCheck();
 #endif
@@ -448,7 +442,6 @@ void GraphicsFactory::FreeIndexBuffers(const std::vector<IndexBuffer*>* index_bu
 		this->FreeIndexBuffer(ibo);
 
 		VectorHelper::RemoveItem(&GraphicsFactory::_index_buffers, ibo);
-		delete ibo;
 #ifdef DEBUG
 		this->ErrorCheck();
 #endif
