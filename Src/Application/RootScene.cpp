@@ -80,7 +80,9 @@ void RootScene::BuildMesh()
 	std::ifstream obj_stream;
 	obj_stream.open(path);
 	ObjStreamDecoder decoder;
-	decoder.TryDecode(obj_stream, &this->_model, this->_graphics_factory);
+	ModelDecoderParams params;
+	params.GraphicsFactory = this->_graphics_factory;
+	decoder.TryDecode(obj_stream, &this->_model, params);
 	obj_stream.close();
 }
 

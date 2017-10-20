@@ -181,6 +181,7 @@
     <ClInclude Include="..\..\..\Src\IO\EncoderFactory.hpp" />
     <ClInclude Include="..\..\..\Src\IO\HeightmapStreamDecoder.hpp" />
     <ClInclude Include="..\..\..\Src\IO\ImageLoader.hpp" />
+    <ClInclude Include="..\..\..\Src\IO\ModelStreamDecoder.hpp" />
     <ClInclude Include="..\..\..\Src\IO\ObjStreamDecoder.hpp" />
     <ClInclude Include="..\..\..\Src\Shared\stdafx.hpp" />
   </ItemGroup>

@@ -8,6 +8,6 @@ namespace Kaleid::IO
 	class KALEID_IO_API DecoderBase abstract
 	{
 	public:
-		virtual bool TryDecode(SourceType source, OutputType* output, ArgumentType* arg = NULL) = 0;
+		virtual bool TryDecode(SourceType source, OutputType output, ArgumentType arg = NULL) = 0;
 	};
 }

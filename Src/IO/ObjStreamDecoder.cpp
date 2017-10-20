@@ -10,6 +10,7 @@
 #include "Mesh.hpp"
 #include <string>
 #include <stdexcept>
+#include <limits>
 
 using namespace Kaleid::IO;
 using namespace Kaleid::Math;
@@ -24,6 +25,9 @@ struct ObjData
 	std::vector<Vector3F> Normals;
 	std::vector<Vector2F> Texels;
 
+	Vector3F Max = Vector3F(std::numeric_limits<float>::min(), std::numeric_limits<float>::min(), std::numeric_limits<float>::min());
+	Vector3F Min = Vector3F(std::numeric_limits<float>::max(), std::numeric_limits<float>::max(), std::numeric_limits<float>::max());
+
 	std::vector<std::vector<std::vector<unsigned long>>> IndexedFaces;
 };
 
@@ -31,7 +35,17 @@ bool TryReadVertex(std::string& line, ObjData& data)
 {
 	std::string nline = line.substr(2, line.size() - 2);
 	std::vector<std::string> strings = StringHelper::Split(nline, ' ');
-	data.Verticies.push_back(Vector3F(std::stof(strings[0]), std::stof(strings[1]), std::stof(strings[2])));
+	Vector3F vec = Vector3F(std::stof(strings[0]), std::stof(strings[1]), std::stof(strings[2]));
+
+	data.Max.x = vec.x > data.Max.x ? vec.x : data.Max.x;
+	data.Max.y = vec.y > data.Max.y ? vec.y : data.Max.y;
+	data.Max.z = vec.z > data.Max.z ? vec.z : data.Max.z;
+
+	data.Min.x = vec.x < data.Min.x ? vec.x : data.Min.x;
+	data.Min.y = vec.y < data.Min.y ? vec.y : data.Min.y;
+	data.Min.z = vec.z < data.Min.z ? vec.z : data.Min.z;
+
+	data.Verticies.push_back(vec);
 	return true;
 }
 
@@ -89,7 +103,18 @@ bool TryReadLine(std::string& line, ObjData& data)
 	return true;
 }
 
-bool BakeFaces(ObjData& data, std::vector<FaceF>* faces)
+bool NormalizeVerticies(ObjData& data)
+{
+	Vector3F diff = (data.Max - data.Min) / 2.0f;
+	Vector3F offset = -data.Min - diff;
+
+	for (int index = 0; index < data.Verticies.size(); index++)
+		data.Verticies[index] = (data.Verticies[index] + offset) / diff;
+
+	return true;
+}
+
+bool BakeFaces(ObjData& data, std::vector<FaceF>& faces)
 {
 	for (unsigned int face_index = 0; face_index < (unsigned int)data.IndexedFaces.size(); face_index++)
 	{
@@ -118,17 +143,17 @@ bool BakeFaces(ObjData& data, std::vector<FaceF>* faces)
 			face.AddVerticies(vertex);
 		}
 
-		faces->push_back(face);
+		faces.push_back(face);
 	}
 
 	return true;
 }
 
-bool TesselateFaces(std::vector<FaceF>* baked_faces, std::vector<FaceF>* tess_faces)
+bool TesselateFaces(std::vector<FaceF>& baked_faces, std::vector<FaceF>& tess_faces)
 {
-	for (unsigned int face_index = 0; face_index < (unsigned int)baked_faces->size(); face_index++)
+	for (unsigned int face_index = 0; face_index < (unsigned int)baked_faces.size(); face_index++)
 	{
-		FaceF face = baked_faces->at(face_index);
+		FaceF face = baked_faces[face_index];
 
 		int length = face.GetVerticies().size() - 2;
 		VertexF origin = face.GetVerticies()[0];
@@ -137,7 +162,7 @@ bool TesselateFaces(std::vector<FaceF>* baked_faces, std::vector<FaceF>* tess_fa
 		{
 			VertexF v1 = face.GetVerticies()[1 + index];
 			VertexF v2 = face.GetVerticies()[2 + index];
-			tess_faces->push_back(Triangle(origin, v1, v2));
+			tess_faces.push_back(Triangle(origin, v1, v2));
 		}
 	}
 
@@ -152,76 +177,76 @@ struct MeshData
 	std::vector<unsigned int> Indicies;
 };
 
-void AddVerticies(MeshData* data, VertexF& v1, VertexF& v2, VertexF& v3)
+void AddVerticies(MeshData& data, VertexF& v1, VertexF& v2, VertexF& v3)
 {
 	if (!v1.VectorGeometry.IsNull())
 	{
-		data->Verticies.push_back(v1.VectorGeometry.GetValue().x);
-		data->Verticies.push_back(v1.VectorGeometry.GetValue().y);
-		data->Verticies.push_back(v1.VectorGeometry.GetValue().z);
+		data.Verticies.push_back(v1.VectorGeometry.GetValue().x);
+		data.Verticies.push_back(v1.VectorGeometry.GetValue().y);
+		data.Verticies.push_back(v1.VectorGeometry.GetValue().z);
 	}
 
 	if (!v2.VectorGeometry.IsNull())
 	{
-		data->Verticies.push_back(v2.VectorGeometry.GetValue().x);
-		data->Verticies.push_back(v2.VectorGeometry.GetValue().y);
-		data->Verticies.push_back(v2.VectorGeometry.GetValue().z);
+		data.Verticies.push_back(v2.VectorGeometry.GetValue().x);
+		data.Verticies.push_back(v2.VectorGeometry.GetValue().y);
+		data.Verticies.push_back(v2.VectorGeometry.GetValue().z);
 	}
 
 	if (!v3.VectorGeometry.IsNull())
 	{
-		data->Verticies.push_back(v3.VectorGeometry.GetValue().x);
-		data->Verticies.push_back(v3.VectorGeometry.GetValue().y);
-		data->Verticies.push_back(v3.VectorGeometry.GetValue().z);
+		data.Verticies.push_back(v3.VectorGeometry.GetValue().x);
+		data.Verticies.push_back(v3.VectorGeometry.GetValue().y);
+		data.Verticies.push_back(v3.VectorGeometry.GetValue().z);
 	}
 }
 
-void AddNormals(MeshData* data, VertexF& v1, VertexF& v2, VertexF& v3)
+void AddNormals(MeshData& data, VertexF& v1, VertexF& v2, VertexF& v3)
 {
 	if (!v1.VectorNormal.IsNull())
 	{
-		data->Normals.push_back(v1.VectorNormal.GetValue().x);
-		data->Normals.push_back(v1.VectorNormal.GetValue().y);
-		data->Normals.push_back(v1.VectorNormal.GetValue().z);
+		data.Normals.push_back(v1.VectorNormal.GetValue().x);
+		data.Normals.push_back(v1.VectorNormal.GetValue().y);
+		data.Normals.push_back(v1.VectorNormal.GetValue().z);
 	}
 
 	if (!v2.VectorNormal.IsNull())
 	{
-		data->Normals.push_back(v2.VectorNormal.GetValue().x);
-		data->Normals.push_back(v2.VectorNormal.GetValue().y);
-		data->Normals.push_back(v2.VectorNormal.GetValue().z);
+		data.Normals.push_back(v2.VectorNormal.GetValue().x);
+		data.Normals.push_back(v2.VectorNormal.GetValue().y);
+		data.Normals.push_back(v2.VectorNormal.GetValue().z);
 	}
 
 	if (!v3.VectorNormal.IsNull())
 	{
-		data->Normals.push_back(v3.VectorNormal.GetValue().x);
-		data->Normals.push_back(v3.VectorNormal.GetValue().y);
-		data->Normals.push_back(v3.VectorNormal.GetValue().z);
+		data.Normals.push_back(v3.VectorNormal.GetValue().x);
+		data.Normals.push_back(v3.VectorNormal.GetValue().y);
+		data.Normals.push_back(v3.VectorNormal.GetValue().z);
 	}
 }
 
-void AddTexels(MeshData* data, VertexF& v1, VertexF& v2, VertexF& v3)
+void AddTexels(MeshData& data, VertexF& v1, VertexF& v2, VertexF& v3)
 {
 	if (!v1.VectorTexture.IsNull())
 	{
-		data->Texels.push_back(v1.VectorTexture.GetValue().x);
-		data->Texels.push_back(v1.VectorTexture.GetValue().y);
+		data.Texels.push_back(v1.VectorTexture.GetValue().x);
+		data.Texels.push_back(v1.VectorTexture.GetValue().y);
 	}
 
 	if (!v2.VectorTexture.IsNull())
 	{
-		data->Texels.push_back(v2.VectorTexture.GetValue().x);
-		data->Texels.push_back(v2.VectorTexture.GetValue().y);
+		data.Texels.push_back(v2.VectorTexture.GetValue().x);
+		data.Texels.push_back(v2.VectorTexture.GetValue().y);
 	}
 
 	if (!v3.VectorTexture.IsNull())
 	{
-		data->Texels.push_back(v3.VectorTexture.GetValue().x);
-		data->Texels.push_back(v3.VectorTexture.GetValue().y);
+		data.Texels.push_back(v3.VectorTexture.GetValue().x);
+		data.Texels.push_back(v3.VectorTexture.GetValue().y);
 	}
 }
 
-void AddVertexData(MeshData* data, FaceF& face)
+void AddVertexData(MeshData& data, FaceF& face)
 {
 	VertexF v1 = face.GetVerticies()[0];
 	VertexF v2 = face.GetVerticies()[1];
@@ -232,27 +257,27 @@ void AddVertexData(MeshData* data, FaceF& face)
 	AddTexels(data, v1, v2, v3);
 }
 
-bool TryBuildMeshData(MeshData* data, std::vector<FaceF>* baked_faces)
+bool TryBuildMeshData(MeshData& data, std::vector<FaceF>& baked_faces)
 {
-	for (unsigned int index = 0; index < (unsigned int)baked_faces->size(); index++)
+	for (unsigned int index = 0; index < (unsigned int)baked_faces.size(); index++)
 	{
-		AddVertexData(data, baked_faces->at(index));
+		AddVertexData(data, baked_faces[index]);
 
 		unsigned int offset = index * 3;
-		data->Indicies.push_back(offset);
-		data->Indicies.push_back(offset + 1);
-		data->Indicies.push_back(offset + 2);
+		data.Indicies.push_back(offset);
+		data.Indicies.push_back(offset + 1);
+		data.Indicies.push_back(offset + 2);
 	}
 
 	return true;
 }
 
-bool TryBuildMesh(MeshData* data, Mesh* mesh, GraphicsFactory* arg)
+bool TryBuildMesh(MeshData& data, Mesh*& mesh, GraphicsFactory*& arg)
 {
-	VertexBuffer* vbo = arg->CreateVertexBuffer(&data->Verticies[0], data->Verticies.size(), 3);
-	VertexBuffer* nbo = arg->CreateVertexBuffer(&data->Normals[0], data->Normals.size(), 3);
-	VertexBuffer* tbo = arg->CreateVertexBuffer(&data->Texels[0], data->Texels.size(), 2);
-	IndexBuffer* ibo = arg->CreateIndexBuffer(&data->Indicies[0], data->Indicies.size());
+	VertexBuffer* vbo = arg->CreateVertexBuffer(&data.Verticies[0], data.Verticies.size(), 3);
+	VertexBuffer* nbo = arg->CreateVertexBuffer(&data.Normals[0], data.Normals.size(), 3);
+	VertexBuffer* tbo = arg->CreateVertexBuffer(&data.Texels[0], data.Texels.size(), 2);
+	IndexBuffer* ibo = arg->CreateIndexBuffer(&data.Indicies[0], data.Indicies.size());
 
 	std::vector<VertexBuffer*> buffers;
 	buffers.push_back(vbo);
@@ -267,7 +292,7 @@ bool TryBuildMesh(MeshData* data, Mesh* mesh, GraphicsFactory* arg)
 	return true;
 }
 
-bool ObjStreamDecoder::TryDecode(std::istream& source, Model* output, GraphicsFactory* arg)
+bool ObjStreamDecoder::TryDecode(std::istream& source, Model* output, ModelDecoderParams& arg)
 {
 	ObjData data;
 	{
@@ -283,25 +308,31 @@ bool ObjStreamDecoder::TryDecode(std::istream& source, Model* output, GraphicsFa
 		}
 	}
 
-	Mesh* mesh = arg->CreateMesh();
+	if (arg.Normalize)
+	{
+		if (!NormalizeVerticies(data))
+			throw std::runtime_error("Could not normalize verticies");
+	}
+
+	Mesh* mesh = arg.GraphicsFactory->CreateMesh();
 	{
 		MeshData mesh_data;
 		{
 			std::vector<FaceF> tess_faces;
 			{
 				std::vector<FaceF> baked_faces;
-				if (!BakeFaces(data, &baked_faces))
+				if (!BakeFaces(data, baked_faces))
 					throw std::runtime_error("Could not bake faces");
 
-				if (!TesselateFaces(&baked_faces, &tess_faces))
+				if (!TesselateFaces(baked_faces, tess_faces))
 					throw std::runtime_error("Could not tesselate faces");
 			}
 
-			if (!TryBuildMeshData(&mesh_data, &tess_faces))
+			if (!TryBuildMeshData(mesh_data, tess_faces))
 				throw std::runtime_error("Could not build mesh");
 		}
 
-		if (!TryBuildMesh(&mesh_data, mesh, arg))
+		if (!TryBuildMesh(mesh_data, mesh, arg.GraphicsFactory))
 			throw std::runtime_error("Could build mesh");
 	}
 

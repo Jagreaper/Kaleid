@@ -9,7 +9,7 @@ using namespace Kaleid::IO;
 using namespace Kaleid::Game;
 using namespace Kaleid::Graphics;
 
-bool HeightmapStreamDecoder::TryDecode(std::istream& source, Model* output, GraphicsFactory* arg)
+bool HeightmapStreamDecoder::TryDecode(std::istream& source, Model* output, GraphicsFactory*& arg)
 {
 	throw std::runtime_error("Not yet implemented");
 }
