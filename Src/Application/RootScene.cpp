@@ -1,6 +1,6 @@
 #include "stdafx.hpp"
 #include "RootScene.hpp"
-#include "ObjStreamDecoder.hpp"
+#include "ObjModelStreamDecoder.hpp"
 #include "GraphicsFactory.hpp"
 #include "Shader.hpp"
 #include "ShaderProgram.hpp"
@@ -79,7 +79,7 @@ void RootScene::BuildMesh()
 	const char* path = "Assets\\Models\\Stormtrooper\\Stormtrooper.obj";
 	std::ifstream obj_stream;
 	obj_stream.open(path);
-	ObjStreamDecoder decoder;
+	ObjModelStreamDecoder decoder;
 	ModelDecoderParams params;
 	params.GraphicsFactory = this->_graphics_factory;
 	decoder.TryDecode(obj_stream, &this->_model, params);

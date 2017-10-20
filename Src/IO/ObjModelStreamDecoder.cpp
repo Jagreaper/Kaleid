@@ -1,5 +1,5 @@
 #include "stdafx.hpp"
-#include "ObjStreamDecoder.hpp"
+#include "ObjModelStreamDecoder.hpp"
 #include "GraphicsFactory.hpp"
 #include "Model.hpp"
 #include "StringHelper.hpp"
@@ -292,7 +292,7 @@ bool TryBuildMesh(MeshData& data, Mesh*& mesh, GraphicsFactory*& arg)
 	return true;
 }
 
-bool ObjStreamDecoder::TryDecode(std::istream& source, Model* output, ModelDecoderParams& arg)
+bool ObjModelStreamDecoder::TryDecode(std::istream& source, Model* output, ModelDecoderParams& arg)
 {
 	ObjData data;
 	{

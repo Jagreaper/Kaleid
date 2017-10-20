@@ -13,7 +13,7 @@ namespace Kaleid::Game
 
 namespace Kaleid::IO
 {
-	class KALEID_IO_API ObjStreamDecoder : public ModelStreamDecoder
+	class KALEID_IO_API ObjModelStreamDecoder : public ModelStreamDecoder
 	{
 	public:
 		bool TryDecode(std::istream& source, Kaleid::Game::Model* output, ModelDecoderParams& arg);
