@@ -1,5 +1,6 @@
 #include "stdafx.hpp"
 #include "TextureBase.hpp"
+#include <iostream>
 
 using namespace Kaleid::Graphics;
 
