@@ -21,7 +21,7 @@ namespace Kaleid::Helpers
 
 		inline void Unsubscribe(Event<T>& event)
 		{
-			VectorHelper::RemoveItem(&this->_events, event);
+			VectorHelper::RemoveItem(this->_events, event);
 		}
 
 		inline void UnsubscribeAll()
