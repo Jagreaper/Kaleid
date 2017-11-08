@@ -6,6 +6,7 @@
     <ClInclude Include="..\..\..\Src\Helpers\StringHelper.hpp" />
     <ClInclude Include="..\..\..\Src\Helpers\Nullable.hpp" />
     <ClInclude Include="..\..\..\Src\Helpers\PrimitiveTypes.hpp" />
+    <ClInclude Include="..\..\..\Src\Helpers\EventHandler.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Src\Shared\stdafx.cpp" />

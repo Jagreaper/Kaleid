@@ -162,6 +162,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\Src\Helpers\EventHandler.hpp" />
     <ClInclude Include="..\..\..\Src\Helpers\Nullable.hpp" />
     <ClInclude Include="..\..\..\Src\Helpers\PrimitiveTypes.hpp" />
     <ClInclude Include="..\..\..\Src\Helpers\StringHelper.hpp" />
