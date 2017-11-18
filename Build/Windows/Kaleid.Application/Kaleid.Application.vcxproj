@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{1C805FD6-885C-4307-9EDA-18F072986F5B}</ProjectGuid>
-    <RootNamespace>KaleidPlatformWin32</RootNamespace>
+    <RootNamespace>Kaleid::Application</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
     <ProjectName>Kaleid.Application</ProjectName>
   </PropertyGroup>

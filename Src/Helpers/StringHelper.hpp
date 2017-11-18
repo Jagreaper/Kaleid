@@ -13,8 +13,8 @@ namespace Kaleid::Helpers
 		static bool EndsWith(const std::string& input, const std::string& match);
 		static std::vector<std::string> Split(const std::string &s, char delim);
 	private:
-		template<typename Out>
-		static inline void Split(const std::string &s, char delim, Out result)
+		template<typename T>
+		static inline void Split(const std::string &s, char delim, T result)
 		{
 			std::stringstream ss;
 			ss.str(s);

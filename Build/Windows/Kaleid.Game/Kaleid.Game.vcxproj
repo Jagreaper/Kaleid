@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{29DC283F-B80E-4650-A60E-A294947FDBCD}</ProjectGuid>
-    <RootNamespace>KaleidGame</RootNamespace>
+    <RootNamespace>Kaleid::Game</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

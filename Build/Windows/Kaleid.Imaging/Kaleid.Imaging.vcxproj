@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{DCC688BB-CC70-4D9E-BB0E-1222CCF9BEF0}</ProjectGuid>
-    <RootNamespace>KaleidImaging</RootNamespace>
+    <RootNamespace>Kaleid::Imaging</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
