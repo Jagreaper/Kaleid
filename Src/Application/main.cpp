@@ -9,6 +9,7 @@
 
 using namespace Kaleid::Game;
 using namespace Kaleid::Graphics;
+using namespace Kaleid::Application;
 
 #ifdef DEBUG
 int main()

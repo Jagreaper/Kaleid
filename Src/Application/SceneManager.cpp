@@ -2,6 +2,7 @@
 #include "SceneManager.hpp"
 
 using namespace Kaleid::Game;
+using namespace Kaleid::Application;
 
 RootScene* SceneManager::CreateRootScene(App* app)
 {

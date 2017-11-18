@@ -21,6 +21,7 @@ using namespace Kaleid::Graphics;
 using namespace Kaleid::IO;
 using namespace Kaleid::Input;
 using namespace Kaleid::Imaging;
+using namespace Kaleid::Application;
 
 RootScene::RootScene(App* app)
 	: SceneBase(app)

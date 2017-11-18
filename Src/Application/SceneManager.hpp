@@ -5,10 +5,13 @@
 #include "RootScene.hpp"
 #include "TestScene.hpp"
 
-class SceneManager sealed
+namespace Kaleid::Application
 {
-public:
-	static TestScene* CreateTestScene(Kaleid::Game::App* app);
-	static RootScene* CreateRootScene(Kaleid::Game::App* app);
-	static void FreeScene(Kaleid::Game::SceneBase* scenebase);
-};
+	class SceneManager sealed
+	{
+	public:
+		static TestScene* CreateTestScene(Kaleid::Game::App* app);
+		static RootScene* CreateRootScene(Kaleid::Game::App* app);
+		static void FreeScene(Kaleid::Game::SceneBase* scenebase);
+	};
+}

@@ -6,6 +6,7 @@
 
 using namespace Kaleid::Math;
 using namespace Kaleid::Graphics;
+using namespace Kaleid::Application;
 
 Mesh* Cube::_mesh = NULL;
 

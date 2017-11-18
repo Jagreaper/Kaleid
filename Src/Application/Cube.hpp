@@ -13,22 +13,25 @@ namespace Kaleid::Graphics
 	class GraphicsFactory;
 }
 
-class Cube
+namespace Kaleid::Application
 {
-public:
-	Cube();
+	class Cube
+	{
+	public:
+		Cube();
 
-	void Render(Kaleid::Graphics::Renderer*& renderer, std::function<void()> arguments);
+		void Render(Kaleid::Graphics::Renderer*& renderer, std::function<void()> arguments);
 
-	void SetShaderProgram(Kaleid::Graphics::ShaderProgram*& shader_program);
-	Kaleid::Graphics::ShaderProgram* GetShaderProgram();
-	Kaleid::Math::Transform* GetTransform();
+		void SetShaderProgram(Kaleid::Graphics::ShaderProgram*& shader_program);
+		Kaleid::Graphics::ShaderProgram* GetShaderProgram();
+		Kaleid::Math::Transform* GetTransform();
 
-	static void Load(Kaleid::Graphics::GraphicsFactory*& graphics_factory);
-	static void Dispose(Kaleid::Graphics::GraphicsFactory*& graphics_factory);
-private:
-	Kaleid::Graphics::ShaderProgram* _shader_program;
-	Kaleid::Math::Transform _transform;
+		static void Load(Kaleid::Graphics::GraphicsFactory*& graphics_factory);
+		static void Dispose(Kaleid::Graphics::GraphicsFactory*& graphics_factory);
+	private:
+		Kaleid::Graphics::ShaderProgram* _shader_program;
+		Kaleid::Math::Transform _transform;
 
-	static Kaleid::Graphics::Mesh* _mesh;
-};
+		static Kaleid::Graphics::Mesh* _mesh;
+	};
+}

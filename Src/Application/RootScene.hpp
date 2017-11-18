@@ -7,24 +7,27 @@
 #include "PerspectiveCamera.hpp"
 #include <time.h>
 
-class RootScene : public Kaleid::Game::SceneBase
+namespace Kaleid::Application
 {
-public:
-	RootScene(Kaleid::Game::App* app);
-	void Load();
-	void Update();
-	void Render();
-	void Dispose();
-	double GetDeltaTime();
-private:
-	void BuildShaderProgram();
-	void BuildMesh();
-	void CreateKeyboardBindings();
+	class RootScene : public Kaleid::Game::SceneBase
+	{
+	public:
+		RootScene(Kaleid::Game::App* app);
+		void Load();
+		void Update();
+		void Render();
+		void Dispose();
+		double GetDeltaTime();
+	private:
+		void BuildShaderProgram();
+		void BuildMesh();
+		void CreateKeyboardBindings();
 
-	Kaleid::Game::Model _model;
-	Kaleid::Math::PerspectiveCamera _camera;
+		Kaleid::Game::Model _model;
+		Kaleid::Math::PerspectiveCamera _camera;
 
-	clock_t _o_time;
-	clock_t _n_time;
-	double _delta_time;
-};
+		clock_t _o_time;
+		clock_t _n_time;
+		double _delta_time;
+	};
+}

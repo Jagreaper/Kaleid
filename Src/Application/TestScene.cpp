@@ -19,6 +19,7 @@ using namespace Kaleid::Game;
 using namespace Kaleid::Graphics;
 using namespace Kaleid::IO;
 using namespace Kaleid::Input;
+using namespace Kaleid::Application;
 
 TestScene::TestScene(App* app)
 	: SceneBase(app)
