@@ -37,19 +37,19 @@ namespace Kaleid::Input
 		ButtonNotHeld,
 	};
 
+	class Mouse;
+
 	API_BEGIN
-		class KALEID_INPUT_API MouseBinding
+	class KALEID_INPUT_API MouseBinding
 	{
 	public:
 		MouseBinding(const MouseCode mouse_code, const MouseBindingState state, const std::function<void(double, double)> action);
-		void Poll(Kaleid::Graphics::Window*& window);
+		void Poll(Kaleid::Graphics::Window*& window, Mouse* mouse);
 	private:
 		MouseCode _mouse_code;
 		MouseBindingState _state;
 		std::function<void(double, double)> _action;
 		char _old_glfw_state;
-		double _old_xpos;
-		double _old_ypos;
 	};
 	API_END
 }
