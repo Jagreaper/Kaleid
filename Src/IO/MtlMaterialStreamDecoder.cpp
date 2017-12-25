@@ -12,77 +12,72 @@ using namespace Kaleid::Game;
 using namespace Kaleid::Helpers;
 using namespace Kaleid::Math;
 
-bool TryReadSpecularExponent(const std::string& line, Material& output)
+bool TryReadSpecularExponent(const std::string& line, MaterialInfo& output)
 {
-	std::vector<std::string> strings = VectorHelper::Where(StringHelper::Split(line, ' '), [&](std::string s) -> bool { return s.length() != 0; });
-	output.SpecularExponent = std::stof(strings[1]);
+	output.SpecularExponent = std::stof(StringHelper::Split(line, ' ')[1]);
 	return true;
 }
 
-bool TryReadOpticalDensity(const std::string& line, Material& output)
+bool TryReadOpticalDensity(const std::string& line, MaterialInfo& output)
 {
-	std::vector<std::string> strings = VectorHelper::Where(StringHelper::Split(line, ' '), [&](std::string s) -> bool { return s.length() != 0; });
-	output.OpticalDensity = std::stof(strings[1]);
+	output.OpticalDensity = std::stof(StringHelper::Split(line, ' ')[1]);
 	return true;
 }
 
-bool TryReadTransparency(const std::string& line, Material& output)
+bool TryReadTransparency(const std::string& line, MaterialInfo& output)
 {
-	std::vector<std::string> strings = VectorHelper::Where(StringHelper::Split(line, ' '), [&](std::string s) -> bool { return s.length() != 0; });
-	output.Transparency = std::stof(strings[1]);
+	output.Transparency = std::stof(StringHelper::Split(line, ' ')[1]);
 	return true;
 }
 
-bool TryReadTransparencyInverted(const std::string& line, Material& output)
+bool TryReadTransparencyInverted(const std::string& line, MaterialInfo& output)
 {
-	std::vector<std::string> strings = VectorHelper::Where(StringHelper::Split(line, ' '), [&](std::string s) -> bool { return s.length() != 0; });
-	output.Transparency = 1.0f - std::stof(strings[1]);
+	output.Transparency = 1.0f - std::stof(StringHelper::Split(line, ' ')[1]);
 	return true;
 }
 
-bool TryReadTransmissionFilter(const std::string& line, Material& output)
+bool TryReadTransmissionFilter(const std::string& line, MaterialInfo& output)
 {
-	std::vector<std::string> strings = VectorHelper::Where(StringHelper::Split(line, ' '), [&](std::string s) -> bool { return s.length() != 0; });
+	std::vector<std::string> strings = StringHelper::Split(line, ' ');
 	output.TransmissionFilter = Vector3F(std::stof(strings[1]), std::stof(strings[2]), std::stof(strings[3]));
 	return true;
 }
 
-bool TryReadIlluminationModel(const std::string& line, Material& output)
+bool TryReadIlluminationModel(const std::string& line, MaterialInfo& output)
 {
-	std::vector<std::string> strings = VectorHelper::Where(StringHelper::Split(line, ' '), [&](std::string s) -> bool { return s.length() != 0; });
-	output.IlluminationModel = (unsigned char)std::stoi(strings[1]);
+	output.IlluminationModel = (unsigned char)std::stoi(StringHelper::Split(line, ' ')[1]);
 	return true;
 }
 
-bool TryReadAmbientColor(const std::string& line, Material& output)
+bool TryReadAmbientColor(const std::string& line, MaterialInfo& output)
 {
-	std::vector<std::string> strings = VectorHelper::Where(StringHelper::Split(line, ' '), [&](std::string s) -> bool { return s.length() != 0; });
+	std::vector<std::string> strings = StringHelper::Split(line, ' ');
 	output.AmbientColor = Vector3F(std::stof(strings[1]), std::stof(strings[2]), std::stof(strings[3]));
 	return true;
 }
 
-bool TryReadDiffuseColor(const std::string& line, Material& output)
+bool TryReadDiffuseColor(const std::string& line, MaterialInfo& output)
 {
-	std::vector<std::string> strings = VectorHelper::Where(StringHelper::Split(line, ' '), [&](std::string s) -> bool { return s.length() != 0; });
+	std::vector<std::string> strings = StringHelper::Split(line, ' ');
 	output.DiffuseColor = Vector3F(std::stof(strings[1]), std::stof(strings[2]), std::stof(strings[3]));
 	return true;
 }
 
-bool TryReadSpecularColor(const std::string& line, Material& output)
+bool TryReadSpecularColor(const std::string& line, MaterialInfo& output)
 {
-	std::vector<std::string> strings = VectorHelper::Where(StringHelper::Split(line, ' '), [&](std::string s) -> bool { return s.length() != 0; });
+	std::vector<std::string> strings = StringHelper::Split(line, ' ');
 	output.SpecularColor = Vector3F(std::stof(strings[1]), std::stof(strings[2]), std::stof(strings[3]));
 	return true;
 }
 
-bool TryReadEmmisiveColor(const std::string& line, Material& output)
+bool TryReadEmmisiveColor(const std::string& line, MaterialInfo& output)
 {
-	std::vector<std::string> strings = VectorHelper::Where(StringHelper::Split(line, ' '), [&](std::string s) -> bool { return s.length() != 0; });
+	std::vector<std::string> strings = StringHelper::Split(line, ' ');
 	output.EmissiveColor = Vector3F(std::stof(strings[1]), std::stof(strings[2]), std::stof(strings[3]));
 	return true;
 }
 
-bool TryReadLine(const std::string& line, Kaleid::Game::Material& output)
+bool TryReadLine(const std::string& line, MaterialInfo& output)
 {
 	if (StringHelper::BeginsWith(line, std::string("newmtl ")))
 		return TryReadSpecularExponent(line, output);
@@ -117,10 +112,58 @@ bool TryReadLine(const std::string& line, Kaleid::Game::Material& output)
 	if (StringHelper::BeginsWith(line, std::string("Ke ")))
 		return TryReadEmmisiveColor(line, output);
 
+	if (StringHelper::BeginsWith(line, std::string("map_Ka ")))
+	{
+		output.AmbientTexture = StringHelper::Split(line, ' ')[1];
+		return true;
+	}
+
+	if (StringHelper::BeginsWith(line, std::string("map_Kd ")))
+	{
+		output.DiffuseTexture = StringHelper::Split(line, ' ')[1];
+		return true;
+	}
+
+	if (StringHelper::BeginsWith(line, std::string("map_Ks ")))
+	{
+		output.SpecularTexture = StringHelper::Split(line, ' ')[1];
+		return true;
+	}
+
+	if (StringHelper::BeginsWith(line, std::string("map_Ke ")))
+	{
+		output.EmissiveTexture = StringHelper::Split(line, ' ')[1];
+		return true;
+	}
+
+	if (StringHelper::BeginsWith(line, std::string("map_d ")))
+	{
+		output.AlphaTexture = StringHelper::Split(line, ' ')[1];
+		return true;
+	}
+
+	if (StringHelper::BeginsWith(line, std::string("map_bump ")) || StringHelper::BeginsWith(line, std::string("bump ")))
+	{
+		output.BumpMapTexture = StringHelper::Split(line, ' ')[1];
+		return true;
+	}
+
+	if (StringHelper::BeginsWith(line, std::string("disp ")))
+	{
+		output.DisplacementTexture = StringHelper::Split(line, ' ')[1];
+		return true;
+	}
+
+	if (StringHelper::BeginsWith(line, std::string("decal ")))
+	{
+		output.StencilDecalTexture = StringHelper::Split(line, ' ')[1];
+		return true;
+	}
+
 	return true;
 }
 
-bool MtlMaterialStreamDecoder::TryDecode(std::istream& source, std::vector<Kaleid::Game::Material>* output, void* arg)
+bool MtlMaterialStreamDecoder::TryDecode(std::istream& source, std::vector<Kaleid::Game::MaterialInfo>* output, void* arg)
 {
 	std::string line;
 	bool mtl_exists = false;
@@ -134,7 +177,7 @@ bool MtlMaterialStreamDecoder::TryDecode(std::istream& source, std::vector<Kalei
 			else
 				mtl_exists = true;
 
-			this->_cMaterial = Material();
+			this->_cMaterial = MaterialInfo();
 			this->_cMaterial.Name = VectorHelper::Where(StringHelper::Split(line, ' '), [&](std::string s) -> bool { return s.length() != 0; })[1];
 		}
 		else if (!TryReadLine(line, this->_cMaterial))

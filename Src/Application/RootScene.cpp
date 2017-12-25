@@ -78,7 +78,7 @@ void RootScene::BuildShaderProgram()
 
 void RootScene::BuildMesh()
 {
-	std::vector<Material> materials;
+	std::vector<MaterialInfo> materials;
 	const char* mtl_path = "Assets\\Models\\USA Power Plant\\PowerPlant_Base_Normal.mtl";
 	std::ifstream mtl_stream;
 	mtl_stream.open(mtl_path);

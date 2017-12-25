@@ -6,6 +6,12 @@
 
 namespace Kaleid::Helpers
 {
+	enum class SplitArg
+	{
+		NoWhitespace,
+		Whitespace
+	};
+
 	class KALEID_HELPERS_API StringHelper sealed
 	{
 	public:
@@ -15,14 +21,17 @@ namespace Kaleid::Helpers
 		static std::string TrimLeading(const std::string& s);
 	private:
 		template<typename T>
-		static inline void Split(const std::string &s, char delim, T result)
+		static inline void Split(const std::string &s, char delim, T result, SplitArg arg = SplitArg::NoWhitespace)
 		{
 			std::stringstream ss;
 			ss.str(s);
 			std::string item;
 
 			while (std::getline(ss, item, delim))
-				*(result++) = item;
+			{
+				if (arg == SplitArg::Whitespace || (arg == SplitArg::NoWhitespace && item.length() != 0))
+					*(result++) = item;
+			}
 		}
 	};
 }

@@ -12,9 +12,9 @@ namespace Kaleid::IO
 	class KALEID_IO_API MtlMaterialStreamDecoder : public MaterialStreamDecoder
 	{
 	public:
-		bool TryDecode(std::istream& source, std::vector<Kaleid::Game::Material>* output, void* arg);
+		bool TryDecode(std::istream& source, std::vector<Kaleid::Game::MaterialInfo>* output, void* arg);
 	private:
-		Kaleid::Game::Material _cMaterial;
+		Kaleid::Game::MaterialInfo _cMaterial;
 	};
 }
 API_END

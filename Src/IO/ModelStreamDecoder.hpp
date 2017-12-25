@@ -21,7 +21,7 @@ namespace Kaleid::IO
 	struct ModelDecoderParams
 	{
 		Kaleid::Graphics::GraphicsFactory* GraphicsFactory = NULL;
-		std::vector<Kaleid::Game::Material>* Materials = NULL; // TODO
+		std::vector<Kaleid::Game::MaterialInfo>* Materials = NULL; // TODO
 		bool Normalize = false;
 		bool Center = true; // TODO
 	};

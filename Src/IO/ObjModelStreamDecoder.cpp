@@ -34,9 +34,8 @@ struct ObjData
 
 bool TryReadVertex(std::string& line, ObjData& data)
 {
-	std::string nline = line.substr(2, line.size() - 2);
-	std::vector<std::string> strings = VectorHelper::Where(StringHelper::Split(nline, ' '), [&](std::string s) -> bool { return s.length() != 0; });
-	Vector3F vec = Vector3F(std::stof(strings[0]), std::stof(strings[1]), std::stof(strings[2]));
+	std::vector<std::string> strings = StringHelper::Split(line, ' ');
+	Vector3F vec = Vector3F(std::stof(strings[1]), std::stof(strings[2]), std::stof(strings[3]));
 
 	data.VertexMax.x = vec.x > data.VertexMax.x ? vec.x : data.VertexMax.x;
 	data.VertexMax.y = vec.y > data.VertexMax.y ? vec.y : data.VertexMax.y;
@@ -52,31 +51,27 @@ bool TryReadVertex(std::string& line, ObjData& data)
 
 bool TryReadNormal(std::string& line, ObjData& data)
 {
-	std::string nline = line.substr(3, line.size() - 3);
-	std::vector<std::string> strings = VectorHelper::Where(StringHelper::Split(nline, ' '), [&](std::string s) -> bool { return s.length() != 0; });
-	data.Normals.push_back(Vector3F(std::stof(strings[0]), std::stof(strings[1]), std::stof(strings[2])));
+	std::vector<std::string> strings = StringHelper::Split(line, ' ');
+	data.Normals.push_back(Vector3F(std::stof(strings[1]), std::stof(strings[2]), std::stof(strings[3])));
 	return true;
 }
 
 bool TryReadTexel(std::string& line, ObjData& data)
 {
-	std::string nline = line.substr(3, line.size() - 3);
-	std::vector<std::string> strings = VectorHelper::Where(StringHelper::Split(nline, ' '), [&](std::string s) -> bool { return s.length() != 0; });
-	data.Texels.push_back(Vector2F(std::stof(strings[0]), std::stof(strings[1])));
+	std::vector<std::string> strings = StringHelper::Split(line, ' ');
+	data.Texels.push_back(Vector2F(std::stof(strings[1]), std::stof(strings[2])));
 	return true;
 }
 
 bool TryReadFace(std::string& line, ObjData& data)
 {
-	std::string nline = line.substr(2, line.size() - 2);
-	std::vector<std::string> face_strings = VectorHelper::Where(StringHelper::Split(nline, ' '), [&](std::string s) -> bool { return s.length() != 0; });
+	std::vector<std::string> face_strings = StringHelper::Split(line, ' ');
 
 	std::vector<std::vector<unsigned long>>	indexed_face;
-	for (unsigned int face_index = 0; face_index < (unsigned int)face_strings.size(); face_index++)
+	for (unsigned int face_index = 1; face_index < (unsigned int)face_strings.size(); face_index++)
 	{
 		std::vector<unsigned long> vertex;
-		std::vector<std::string> vert_strings = VectorHelper::Where(StringHelper::Split(face_strings[face_index], '/'), [&](std::string s) -> bool { return s.length() != 0; });
-
+		std::vector<std::string> vert_strings = StringHelper::Split(face_strings[face_index], '/');
 		for (unsigned int type_index = 0; type_index < (unsigned int)vert_strings.size(); type_index++)
 			vertex.push_back(std::stoul(vert_strings[type_index]));
 
