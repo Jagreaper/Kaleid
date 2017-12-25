@@ -164,6 +164,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\..\Src\IO\HeightmapStreamDecoder.cpp" />
     <ClCompile Include="..\..\..\Src\IO\ImageLoader.cpp" />
+    <ClCompile Include="..\..\..\Src\IO\MtlMaterialStreamDecoder.cpp" />
     <ClCompile Include="..\..\..\Src\IO\ObjModelStreamDecoder.cpp" />
     <ClCompile Include="..\..\..\Src\Shared\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -177,7 +178,9 @@
     <ClInclude Include="..\..\..\Src\IO\EncoderBase.hpp" />
     <ClInclude Include="..\..\..\Src\IO\HeightmapStreamDecoder.hpp" />
     <ClInclude Include="..\..\..\Src\IO\ImageLoader.hpp" />
+    <ClInclude Include="..\..\..\Src\IO\MaterialStreamDecoder.hpp" />
     <ClInclude Include="..\..\..\Src\IO\ModelStreamDecoder.hpp" />
+    <ClInclude Include="..\..\..\Src\IO\MtlMaterialStreamDecoder.hpp" />
     <ClInclude Include="..\..\..\Src\IO\ObjModelStreamDecoder.hpp" />
     <ClInclude Include="..\..\..\Src\Shared\stdafx.hpp" />
   </ItemGroup>

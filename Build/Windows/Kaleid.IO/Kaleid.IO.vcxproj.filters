@@ -9,6 +9,9 @@
     <ClCompile Include="..\..\..\Src\IO\ObjModelStreamDecoder.cpp">
       <Filter>Decoders\Models</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\Src\IO\MtlMaterialStreamDecoder.cpp">
+      <Filter>Decoders\Materials</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Src\Shared\stdafx.hpp" />
@@ -28,6 +31,12 @@
     <ClInclude Include="..\..\..\Src\IO\ObjModelStreamDecoder.hpp">
       <Filter>Decoders\Models</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Src\IO\MaterialStreamDecoder.hpp">
+      <Filter>Decoders\Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\IO\MtlMaterialStreamDecoder.hpp">
+      <Filter>Decoders\Materials</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Encoders">
@@ -41,6 +50,9 @@
     </Filter>
     <Filter Include="Decoders\Terrain">
       <UniqueIdentifier>{c7d2290a-bf58-4eb1-95fc-25177605c245}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Decoders\Materials">
+      <UniqueIdentifier>{436d49d3-c529-44f3-8e4c-c8be33076388}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

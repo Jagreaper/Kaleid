@@ -1,5 +1,6 @@
 #include "stdafx.hpp"
 #include "RootScene.hpp"
+#include "MtlMaterialStreamDecoder.hpp"
 #include "ObjModelStreamDecoder.hpp"
 #include "GraphicsFactory.hpp"
 #include "Shader.hpp"
@@ -77,13 +78,22 @@ void RootScene::BuildShaderProgram()
 
 void RootScene::BuildMesh()
 {
-	const char* path = "Assets\\Models\\Stormtrooper\\Stormtrooper.obj";
+	std::vector<Material> materials;
+	const char* mtl_path = "Assets\\Models\\USA Power Plant\\PowerPlant_Base_Normal.mtl";
+	std::ifstream mtl_stream;
+	mtl_stream.open(mtl_path);
+	MtlMaterialStreamDecoder mtl_decoder;
+	mtl_decoder.TryDecode(mtl_stream, &materials, NULL);
+	mtl_stream.close();
+
+	const char* obj_path = "Assets\\Models\\USA Power Plant\\PowerPlant_Base_Normal.obj";
 	std::ifstream obj_stream;
-	obj_stream.open(path);
-	ObjModelStreamDecoder decoder;
-	ModelDecoderParams params;
-	params.GraphicsFactory = this->_graphics_factory;
-	decoder.TryDecode(obj_stream, &this->_model, params);
+	obj_stream.open(obj_path);
+	ObjModelStreamDecoder obj_decoder;
+	ModelDecoderParams obj_params;
+	obj_params.GraphicsFactory = this->_graphics_factory;
+	obj_params.Materials = &materials;
+	obj_decoder.TryDecode(obj_stream, &this->_model, obj_params);
 	obj_stream.close();
 }
 

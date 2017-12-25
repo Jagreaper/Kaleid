@@ -3,6 +3,7 @@
 #include "GraphicsFactory.hpp"
 #include "Model.hpp"
 #include "StringHelper.hpp"
+#include "VectorHelper.hpp"
 #include "Vector.hpp"
 #include "Vertex.hpp"
 #include "Triangle.hpp"
@@ -25,8 +26,8 @@ struct ObjData
 	std::vector<Vector3F> Normals;
 	std::vector<Vector2F> Texels;
 
-	Vector3F Max = Vector3F(std::numeric_limits<float>::min(), std::numeric_limits<float>::min(), std::numeric_limits<float>::min());
-	Vector3F Min = Vector3F(std::numeric_limits<float>::max(), std::numeric_limits<float>::max(), std::numeric_limits<float>::max());
+	Vector3F VertexMax = Vector3F(std::numeric_limits<float>::min(), std::numeric_limits<float>::min(), std::numeric_limits<float>::min());
+	Vector3F VertexMin = Vector3F(std::numeric_limits<float>::max(), std::numeric_limits<float>::max(), std::numeric_limits<float>::max());
 
 	std::vector<std::vector<std::vector<unsigned long>>> IndexedFaces;
 };
@@ -34,16 +35,16 @@ struct ObjData
 bool TryReadVertex(std::string& line, ObjData& data)
 {
 	std::string nline = line.substr(2, line.size() - 2);
-	std::vector<std::string> strings = StringHelper::Split(nline, ' ');
+	std::vector<std::string> strings = VectorHelper::Where(StringHelper::Split(nline, ' '), [&](std::string s) -> bool { return s.length() != 0; });
 	Vector3F vec = Vector3F(std::stof(strings[0]), std::stof(strings[1]), std::stof(strings[2]));
 
-	data.Max.x = vec.x > data.Max.x ? vec.x : data.Max.x;
-	data.Max.y = vec.y > data.Max.y ? vec.y : data.Max.y;
-	data.Max.z = vec.z > data.Max.z ? vec.z : data.Max.z;
+	data.VertexMax.x = vec.x > data.VertexMax.x ? vec.x : data.VertexMax.x;
+	data.VertexMax.y = vec.y > data.VertexMax.y ? vec.y : data.VertexMax.y;
+	data.VertexMax.z = vec.z > data.VertexMax.z ? vec.z : data.VertexMax.z;
 
-	data.Min.x = vec.x < data.Min.x ? vec.x : data.Min.x;
-	data.Min.y = vec.y < data.Min.y ? vec.y : data.Min.y;
-	data.Min.z = vec.z < data.Min.z ? vec.z : data.Min.z;
+	data.VertexMin.x = vec.x < data.VertexMin.x ? vec.x : data.VertexMin.x;
+	data.VertexMin.y = vec.y < data.VertexMin.y ? vec.y : data.VertexMin.y;
+	data.VertexMin.z = vec.z < data.VertexMin.z ? vec.z : data.VertexMin.z;
 
 	data.Verticies.push_back(vec);
 	return true;
@@ -52,7 +53,7 @@ bool TryReadVertex(std::string& line, ObjData& data)
 bool TryReadNormal(std::string& line, ObjData& data)
 {
 	std::string nline = line.substr(3, line.size() - 3);
-	std::vector<std::string> strings = StringHelper::Split(nline, ' ');
+	std::vector<std::string> strings = VectorHelper::Where(StringHelper::Split(nline, ' '), [&](std::string s) -> bool { return s.length() != 0; });
 	data.Normals.push_back(Vector3F(std::stof(strings[0]), std::stof(strings[1]), std::stof(strings[2])));
 	return true;
 }
@@ -60,7 +61,7 @@ bool TryReadNormal(std::string& line, ObjData& data)
 bool TryReadTexel(std::string& line, ObjData& data)
 {
 	std::string nline = line.substr(3, line.size() - 3);
-	std::vector<std::string> strings = StringHelper::Split(nline, ' ');
+	std::vector<std::string> strings = VectorHelper::Where(StringHelper::Split(nline, ' '), [&](std::string s) -> bool { return s.length() != 0; });
 	data.Texels.push_back(Vector2F(std::stof(strings[0]), std::stof(strings[1])));
 	return true;
 }
@@ -68,13 +69,13 @@ bool TryReadTexel(std::string& line, ObjData& data)
 bool TryReadFace(std::string& line, ObjData& data)
 {
 	std::string nline = line.substr(2, line.size() - 2);
-	std::vector<std::string> face_strings = StringHelper::Split(nline, ' ');
+	std::vector<std::string> face_strings = VectorHelper::Where(StringHelper::Split(nline, ' '), [&](std::string s) -> bool { return s.length() != 0; });
 
 	std::vector<std::vector<unsigned long>>	indexed_face;
 	for (unsigned int face_index = 0; face_index < (unsigned int)face_strings.size(); face_index++)
 	{
 		std::vector<unsigned long> vertex;
-		std::vector<std::string> vert_strings = StringHelper::Split(face_strings[face_index], '/');
+		std::vector<std::string> vert_strings = VectorHelper::Where(StringHelper::Split(face_strings[face_index], '/'), [&](std::string s) -> bool { return s.length() != 0; });
 
 		for (unsigned int type_index = 0; type_index < (unsigned int)vert_strings.size(); type_index++)
 			vertex.push_back(std::stoul(vert_strings[type_index]));
@@ -105,8 +106,8 @@ bool TryReadLine(std::string& line, ObjData& data)
 
 bool NormalizeVerticies(ObjData& data)
 {
-	Vector3F diff = (data.Max - data.Min) / 2.0f;
-	Vector3F offset = -data.Min - diff;
+	Vector3F diff = (data.VertexMax - data.VertexMin) / 2.0f;
+	Vector3F offset = -data.VertexMin - diff;
 
 	for (int index = 0; index < data.Verticies.size(); index++)
 		data.Verticies[index] = (data.Verticies[index] + offset) / diff;
@@ -299,6 +300,7 @@ bool ObjModelStreamDecoder::TryDecode(std::istream& source, Model* output, Model
 		std::string line;
 		while (std::getline(source, line))
 		{
+			line = StringHelper::TrimLeading(line);
 			if (!TryReadLine(line, data))
 			{
 				std::string msg("Could not read line:\n");

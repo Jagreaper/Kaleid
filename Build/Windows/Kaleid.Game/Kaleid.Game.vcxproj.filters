@@ -13,5 +13,6 @@
     <ClInclude Include="..\..\..\Src\Shared\stdafx.hpp" />
     <ClInclude Include="..\..\..\Src\Game\Model.hpp" />
     <ClInclude Include="..\..\..\Src\Game\Actor.hpp" />
+    <ClInclude Include="..\..\..\Src\Game\Material.hpp" />
   </ItemGroup>
 </Project>
