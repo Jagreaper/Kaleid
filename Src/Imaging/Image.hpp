@@ -18,6 +18,9 @@ namespace Kaleid::Imaging
 		Image(std::vector<unsigned char> data, std::vector<ChannelInfo> channels, unsigned int width, unsigned int height);
 
 		Pixel GetPixel(unsigned int x, unsigned int y);
+		unsigned int& GetWidth();
+		unsigned int& GetHeight();
+		void GetSize(unsigned int* width, unsigned int* height);
 
 		void SetData(unsigned char* data, unsigned int data_length);
 		void SetData(std::vector<unsigned char> data);
@@ -28,8 +31,9 @@ namespace Kaleid::Imaging
 		void SetWidth(unsigned int width);
 		void SetHeight(unsigned int height);
 		void SetSize(unsigned int width, unsigned int height);
-	private:
+
 		void CreateDefaults();
+	private:
 
 		std::vector<ChannelInfo> _channels;
 		std::vector<unsigned char> _data;

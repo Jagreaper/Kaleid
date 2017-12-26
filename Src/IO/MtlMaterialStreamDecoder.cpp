@@ -166,6 +166,7 @@ bool TryReadLine(const std::string& line, MaterialInfo& output)
 bool MtlMaterialStreamDecoder::TryDecode(std::istream& source, std::vector<Kaleid::Graphics::MaterialInfo>* output, void* arg)
 {
 	std::string line;
+	MaterialInfo material;
 	bool mtl_exists = false;
 	while (std::getline(source, line))
 	{
@@ -173,14 +174,14 @@ bool MtlMaterialStreamDecoder::TryDecode(std::istream& source, std::vector<Kalei
 		if (StringHelper::BeginsWith(line, std::string("newmtl ")))
 		{
 			if (mtl_exists)
-				output->push_back(this->_cMaterial);
+				output->push_back(material);
 			else
 				mtl_exists = true;
 
-			this->_cMaterial = MaterialInfo();
-			this->_cMaterial.Name = VectorHelper::Where(StringHelper::Split(line, ' '), [&](std::string s) -> bool { return s.length() != 0; })[1];
+			material = MaterialInfo();
+			material.Name = VectorHelper::Where(StringHelper::Split(line, ' '), [&](std::string s) -> bool { return s.length() != 0; })[1];
 		}
-		else if (!TryReadLine(line, this->_cMaterial))
+		else if (!TryReadLine(line, material))
 		{
 			std::string msg("Could not read line:\n");
 			msg += line;
@@ -188,6 +189,6 @@ bool MtlMaterialStreamDecoder::TryDecode(std::istream& source, std::vector<Kalei
 		}
 	}
 
-	output->push_back(this->_cMaterial);
+	output->push_back(material);
 	return true;
 }

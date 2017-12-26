@@ -3,14 +3,20 @@
   <ItemGroup>
     <ClCompile Include="..\..\..\Src\Shared\stdafx.cpp" />
     <ClCompile Include="..\..\..\Src\IO\ImageLoader.cpp" />
-    <ClCompile Include="..\..\..\Src\IO\HeightmapStreamDecoder.cpp">
-      <Filter>Decoders\Terrain</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\Src\IO\ObjModelStreamDecoder.cpp">
       <Filter>Decoders\Models</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\Src\IO\MtlMaterialStreamDecoder.cpp">
       <Filter>Decoders\Materials</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\IO\HeightmapPathDecoder.cpp">
+      <Filter>Decoders\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\IO\ImagePathDecoder.cpp">
+      <Filter>Decoders\Images</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\IO\TexturePathDecoder.cpp">
+      <Filter>Decoders\Textures</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -25,9 +31,6 @@
     <ClInclude Include="..\..\..\Src\IO\ModelStreamDecoder.hpp">
       <Filter>Decoders\Models</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Src\IO\HeightmapStreamDecoder.hpp">
-      <Filter>Decoders\Terrain</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Src\IO\ObjModelStreamDecoder.hpp">
       <Filter>Decoders\Models</Filter>
     </ClInclude>
@@ -36,6 +39,15 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Src\IO\MtlMaterialStreamDecoder.hpp">
       <Filter>Decoders\Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\IO\HeightmapPathDecoder.hpp">
+      <Filter>Decoders\Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\IO\ImagePathDecoder.hpp">
+      <Filter>Decoders\Images</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\IO\TexturePathDecoder.hpp">
+      <Filter>Decoders\Textures</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -53,6 +65,15 @@
     </Filter>
     <Filter Include="Decoders\Materials">
       <UniqueIdentifier>{436d49d3-c529-44f3-8e4c-c8be33076388}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Types">
+      <UniqueIdentifier>{b1637d0c-debc-4d9f-a75f-1460b4be8ab1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Decoders\Images">
+      <UniqueIdentifier>{bfc7155b-78a5-4e7a-8438-d9e1c89bbd44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Decoders\Textures">
+      <UniqueIdentifier>{723ff00a-1854-481d-8f54-f78b93c6c4ab}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -13,8 +13,6 @@ namespace Kaleid::IO
 	{
 	public:
 		bool TryDecode(std::istream& source, std::vector<Kaleid::Graphics::MaterialInfo>* output, void* arg);
-	private:
-		Kaleid::Graphics::MaterialInfo _cMaterial;
 	};
 }
 API_END

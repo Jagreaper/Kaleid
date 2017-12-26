@@ -46,7 +46,7 @@ Image::Image(std::vector<unsigned char> data, std::vector<ChannelInfo> channels,
 
 void Image::CreateDefaults()
 {
-	this->_pixel_length = ((this->_width * this->_height) / this->_data.size());
+	this->_pixel_length = (unsigned int)((float)this->_data.size() / (float)(this->_width * this->_height));
 	this->_stride = this->_pixel_length * this->_width;
 }
 
@@ -59,6 +59,21 @@ Pixel Image::GetPixel(unsigned int x, unsigned int y)
 	unsigned char* pixel_data = this->_data.data() + pos;
 
 	return Pixel(pixel_data, this->_pixel_length, this->_channels.data(), this->_channels.size());
+}
+unsigned int& Image::GetWidth()
+{
+	return this->_width;
+}
+
+unsigned int& Image::GetHeight()
+{
+	return this->_height;
+}
+
+void Image::GetSize(unsigned int* width, unsigned int* height)
+{
+	*width = this->_width;
+	*height = this->_height;
 }
 
 void Image::SetData(unsigned char* data, unsigned int data_length)

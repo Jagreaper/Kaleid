@@ -172,7 +172,6 @@ void Renderer::RenderMesh(Mesh*& mesh, ShaderProgram*& shader_program, Material*
 #endif
 }
 
-
 #ifdef DEBUG
 
 void Renderer::ErrorCheck()

@@ -13,10 +13,10 @@ namespace Kaleid::Game
 
 namespace Kaleid::IO
 {
-	class KALEID_IO_API HeightmapStreamDecoder : public ModelStreamDecoder
+	class KALEID_IO_API HeightmapPathDecoder : public ModelPathDecoder
 	{
 	public:
-		bool TryDecode(std::istream& source, Kaleid::Game::Model* output, ModelDecoderParams& arg);
+		bool TryDecode(const char* source, Kaleid::Game::Model* output, ModelDecoderParams& arg);
 	};
 }
 API_END

@@ -33,4 +33,6 @@ namespace Kaleid::IO
 	};
 
 	using ModelStreamDecoder = DecoderBase<std::istream&, Kaleid::Game::Model*, ModelDecoderParams&>;
+
+	using ModelPathDecoder = DecoderBase<const char*, Kaleid::Game::Model*, ModelDecoderParams&>;
 }

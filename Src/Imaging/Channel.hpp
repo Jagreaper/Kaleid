@@ -16,21 +16,18 @@ namespace Kaleid::Imaging
 
 	struct ChannelInfo
 	{
-		unsigned int Length;
 		ChannelType Type;
 	};
 
-	class Channel
+	class KALEID_IMAGING_API Channel
 	{
 	public:
-		Channel(unsigned char* data, unsigned char data_length, ChannelInfo channel_info);
+		Channel(unsigned char* data, ChannelInfo channel_info);
 
-		unsigned long long GetRealValue();
-		double GetDecimalValue();
 		unsigned char GetCodeValue();
+		double GetDecimalValue();
 	private:
 		unsigned char* _data;
-		unsigned char _data_length;
 		ChannelInfo _channel_info;
 	};
 }

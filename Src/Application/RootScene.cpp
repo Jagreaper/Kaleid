@@ -2,6 +2,7 @@
 #include "RootScene.hpp"
 #include "MtlMaterialStreamDecoder.hpp"
 #include "ObjModelStreamDecoder.hpp"
+#include "ImagePathDecoder.hpp"
 #include "GraphicsFactory.hpp"
 #include "Shader.hpp"
 #include "ShaderProgram.hpp"
@@ -82,6 +83,16 @@ void RootScene::BuildShaderProgram()
 
 void RootScene::BuildMesh()
 {
+	ModelDecoderParams obj_params;
+	obj_params.GraphicsFactory = this->_graphics_factory;
+	obj_params.ModelDecoderParamsArg = ModelDecoderParamsArg::Center;
+
+	Image image;
+	const char* map_path = "Assets\\Models\\USA Power Plant\\PowerPlant_Base_Normal.tga";
+	//const char* map_path = "Assets\\Height Maps\\arrowhead_isle.png";
+	ImagePathDecoder map_decoder;
+	map_decoder.TryDecode(map_path, &image, NULL);
+
 	std::vector<MaterialInfo> materials;
 	const char* mtl_path = "Assets\\Models\\USA Power Plant\\PowerPlant_Base_Normal.mtl";
 	std::ifstream mtl_stream;
@@ -94,8 +105,6 @@ void RootScene::BuildMesh()
 	std::ifstream obj_stream;
 	obj_stream.open(obj_path);
 	ObjModelStreamDecoder obj_decoder;
-	ModelDecoderParams obj_params;
-	obj_params.GraphicsFactory = this->_graphics_factory;
 	obj_params.Materials = &materials;
 	obj_params.ModelDecoderParamsArg = ModelDecoderParamsArg::Center;
 	obj_decoder.TryDecode(obj_stream, &this->_model, obj_params);
@@ -149,7 +158,7 @@ void RootScene::Render()
 	this->_renderer->Clear(0.0f, 0.0f, 0.0f, 1.0f);
 	this->_renderer->SetViewport(0.0f, 0.0f, width, height);
 
-	this->_renderer->SetWireframeMode(true);
+	//this->_renderer->SetWireframeMode(true);
 	// Render Scene
 	Matrix4F mvp = (&this->_camera)->GetProjectionMatrix() * (&this->_camera)->GetViewMatrix() * this->_model.GetTransform()->GetModelMatrix();
 

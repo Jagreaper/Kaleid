@@ -13,11 +13,16 @@ Pixel::Pixel(unsigned char* data, unsigned int data_length, ChannelInfo* channel
 
 Channel Pixel::GetChannel(unsigned int channel)
 {
-	unsigned int offset = 0;
-	for (int index = 0; index < channel; index++)
-		offset += this->_channels[index].Length;
+	return Channel(this->_data + channel, this->_channels[channel]);
+}
 
-	unsigned int length = this->_channels[channel].Length;
+Channel Pixel::GetChannel(ChannelType channel)
+{
+	for (int index = 0; index < this->_num_channels; index++)
+	{
+		if (this->_channels[index].Type == channel)
+			return Channel(this->_data + index, this->_channels[channel]);
+	}
 
-	return Channel(this->_data + offset, length, this->_channels[channel]);
+	throw std::exception("Channel not found exception");
 }
