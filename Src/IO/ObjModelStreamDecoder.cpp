@@ -119,6 +119,17 @@ bool NormalizeVerticies(ObjData& data)
 	return true;
 }
 
+bool CenterVerticies(ObjData& data)
+{
+	Vector3F diff = (data.VertexMax - data.VertexMin) / 2.0f;
+	Vector3F offset = -data.VertexMin - diff;
+
+	for (int index = 0; index < data.Verticies.size(); index++)
+		data.Verticies[index] = (data.Verticies[index] + offset);
+
+	return true;
+}
+
 bool BakeFaces(ObjData& data, ObjPieceData& piece, std::vector<FaceF>& faces)
 {
 	for (unsigned int face_index = 0; face_index < (unsigned int)piece.IndexedFaces.size(); face_index++)
@@ -385,35 +396,51 @@ bool TryCreateMesh(ObjData& data, ObjPieceData& piece, ModelDecoderParams& arg, 
 	}
 }
 
-bool ObjModelStreamDecoder::TryDecode(std::istream& source, Model* output, ModelDecoderParams& arg)
+bool TryCreateComponents(ObjData& data, std::vector<ObjPieceData>& pieces, ModelDecoderParams& arg, std::vector<ModelComponent>& components)
 {
-	std::vector<ObjPieceData> pieces;
-	ObjData data;
-	TryReadLines(source, data, pieces);
-
-	if (arg.Normalize)
-	{
-		if (!NormalizeVerticies(data))
-			throw std::runtime_error("Could not normalize verticies");
-	}
-
-	
-	std::vector<ModelComponent> components;
 	for (int p_index = 0; p_index < pieces.size(); p_index++)
 	{
 		ModelComponent component;
 		Mesh* mesh;
 		TryCreateMesh(data, pieces[p_index], arg, mesh);
 		component.SetMesh(mesh);
-		
+
 		for (int m_index = 0; m_index < arg.Materials->size(); m_index++)
 		{
 			if (pieces[p_index].MaterialName == (*arg.Materials)[m_index].Name)
 				component.SetMaterialInfo((*arg.Materials)[m_index]);
 		}
 
+		component.SetName(pieces[p_index].ObjectName.size() != 0 ? pieces[p_index].ObjectName : pieces[p_index].GroupName);
 		components.push_back(component);
 	}
+
+	return true;
+}
+
+bool ObjModelStreamDecoder::TryDecode(std::istream& source, Model* output, ModelDecoderParams& arg)
+{
+	std::vector<ObjPieceData> pieces;
+	ObjData data;
+	if (!TryReadLines(source, data, pieces))
+		throw std::runtime_error("Could not read stream");
+
+	if (arg.ModelDecoderParamsArg == ModelDecoderParamsArg::Normalize)
+	{
+		if (!NormalizeVerticies(data))
+			throw std::runtime_error("Could not normalize verticies");
+	}
+	else if (arg.ModelDecoderParamsArg == ModelDecoderParamsArg::Center)
+	{
+		if (!CenterVerticies(data))
+			throw std::runtime_error("Could not center verticies");
+	}
+
+	
+	std::vector<ModelComponent> components;
+	if (!TryCreateComponents(data, pieces, arg, components))
+		throw std::runtime_error("Could not create components");
+
 	output->AddComponents(components);
 	return true;
 }

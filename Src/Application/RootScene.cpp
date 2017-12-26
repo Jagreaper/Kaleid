@@ -96,6 +96,7 @@ void RootScene::BuildMesh()
 	ModelDecoderParams obj_params;
 	obj_params.GraphicsFactory = this->_graphics_factory;
 	obj_params.Materials = &materials;
+	obj_params.ModelDecoderParamsArg = ModelDecoderParamsArg::Center;
 	obj_decoder.TryDecode(obj_stream, &this->_model, obj_params);
 	obj_stream.close();
 }
