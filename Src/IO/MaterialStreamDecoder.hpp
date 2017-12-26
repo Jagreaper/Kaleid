@@ -2,16 +2,13 @@
 
 #include "stdafx.hpp"
 #include "DecoderBase.hpp"
+#include "Material.hpp"
 #include <vector>
 #include <istream>
 
 namespace Kaleid::Graphics
 {
 	class GraphicsFactory;
-}
-namespace Kaleid::Game
-{
-	class MaterialInfo;
 }
 
 namespace Kaleid::IO

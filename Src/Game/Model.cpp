@@ -6,47 +6,73 @@
 using namespace Kaleid::Math;
 using namespace Kaleid::Game;
 using namespace Kaleid::Graphics;
+using namespace Kaleid::Helpers;
 
 
-void Model::SetMesh(Mesh*& mesh)
+
+void Model::AddComponent(ModelComponent component)
 {
-	this->_mesh = mesh;
+	component.GetTransform()->AttachParent(&this->_transform);
+	this->_model_components.push_back(component);
 }
 
-const Mesh* Model::GetMesh() const
+void Model::AddComponents(const std::vector<ModelComponent>& components)
 {
-	return this->_mesh;
+	VectorHelper::Foreach(components, [&](ModelComponent c) { c.GetTransform()->AttachChild(&this->_transform); });
+	VectorHelper::AddRange(this->_model_components, components);
 }
 
-Mesh*& Model::GetMesh()
+void Model::RemoveComponent(const std::string name)
 {
-	return this->_mesh;
+	int pos = 0;
+	for (int index = 0; index < this->_model_components.size(); index++)
+	{
+		if (this->_model_components[index].GetName() == name)
+		{
+			pos = index;
+			break;
+		}
+
+		if (index == this->_model_components.size() - 1)
+			return;
+	}
+
+	this->RemoveComponent(pos);
 }
 
-void Model::SetTextures(std::vector<TextureBase*>& textures)
+void Model::RemoveComponent(int index)
 {
-	for each (TextureBase* const tex in textures)
-		this->_textures.push_back(tex);
+	if (index < this->_model_components.size())
+		VectorHelper::Remove(this->_model_components, index);
 }
 
-const std::vector<TextureBase*>* Model::GetTextures() const
+void Model::RemoveComponents()
 {
-	return &this->_textures;
+	this->_model_components.clear();
 }
 
-void Model::SetShaderProgram(ShaderProgram*& shader_program)
+const ModelComponent* Model::GetComponent(const std::string name)
 {
-	this->_shader_program = shader_program;
+	for (int index = 0; index < this->_model_components.size(); index++)
+	{
+		if (this->_model_components[index].GetName() == name)
+			return &this->_model_components[index];
+	}
+
+	return NULL;
 }
 
-const ShaderProgram* Model::GetShaderProgram() const
+const ModelComponent* Model::GetComponent(int index)
 {
-	return this->_shader_program;
+	if (index < this->_model_components.size())
+		return &this->_model_components[index];
+
+	return NULL;
 }
 
-ShaderProgram*& Model::GetShaderProgram()
+std::vector<ModelComponent>* Model::GetComponents()
 {
-	return this->_shader_program;
+	return &this->_model_components;
 }
 
 Transform* Model::GetTransform()
@@ -54,7 +80,7 @@ Transform* Model::GetTransform()
 	return &this->_transform;
 }
 
-void Model::Render(Kaleid::Graphics::Renderer*& renderer, std::function<void()> arguments)
+void Model::Render(Kaleid::Graphics::Renderer*& renderer, std::function<void(ShaderProgram*&)> arguments)
 {
-	renderer->RenderMesh(this->_mesh, this->_shader_program, this->_textures, arguments);
+	VectorHelper::Foreach(this->_model_components, [&](ModelComponent c) { c.Render(renderer, arguments); });
 }

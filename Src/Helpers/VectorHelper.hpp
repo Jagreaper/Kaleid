@@ -2,6 +2,7 @@
 
 #include "stdafx.hpp"
 #include <vector>
+#include <iterator>
 
 namespace Kaleid::Helpers
 {
@@ -352,6 +353,22 @@ namespace Kaleid::Helpers
 			}
 
 			return output;
+		}
+
+		template <typename T>
+		static void Remove(std::vector<T>* vec, size_t pos)
+		{
+			std::vector<T>::iterator it = vec->begin();
+			std::advance(it, pos);
+			vec.erase(it);
+		}
+
+		template <typename T>
+		static void Remove(std::vector<T>& vec, size_t pos)
+		{
+			std::vector<T>::iterator it = vec.begin();
+			std::advance(it, pos);
+			vec.erase(it);
 		}
 
 		template<class T>

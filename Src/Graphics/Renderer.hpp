@@ -23,8 +23,8 @@ namespace Kaleid::Graphics
 		void SetWireframeMode(bool enabled);
 		void BindTextures(std::vector<TextureBase*>& textures);
 		void BindTextures(std::vector<TextureBase*>* textures);
-		void RenderMesh(Mesh*& mesh, ShaderProgram*& shader_program, std::vector<TextureBase*>& textures, std::function<void()> arguments);
-		void RenderMesh(Mesh*& mesh, ShaderProgram*& shader_program, std::vector<TextureBase*>* textures, std::function<void()> arguments);
+		void RenderMesh(Mesh*& mesh, ShaderProgram*& shader_program, std::vector<TextureBase*>& textures, std::function<void(ShaderProgram*&)> arguments);
+		void RenderMesh(Mesh*& mesh, ShaderProgram*& shader_program, std::vector<TextureBase*>* textures, std::function<void(ShaderProgram*&)> arguments);
 	private:
 #ifdef DEBUG
 		void ErrorCheck();

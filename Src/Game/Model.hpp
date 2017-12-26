@@ -2,6 +2,7 @@
 
 #include "stdafx.hpp"
 #include "Transform.hpp"
+#include "ModelComponent.hpp"
 #include <functional>
 #include <vector>
 
@@ -19,20 +20,18 @@ namespace Kaleid::Game
 	class KALEID_GAME_API Model sealed
 	{
 	public:
-		void SetMesh(Kaleid::Graphics::Mesh*& mesh);
-		const Kaleid::Graphics::Mesh* GetMesh() const;
-		Kaleid::Graphics::Mesh*& GetMesh();
-		void SetTextures(std::vector<Kaleid::Graphics::TextureBase*>& textures);
-		const std::vector<Kaleid::Graphics::TextureBase*>* GetTextures() const;
-		void SetShaderProgram(Kaleid::Graphics::ShaderProgram*& shader_program);
-		const Kaleid::Graphics::ShaderProgram* GetShaderProgram() const;
-		Kaleid::Graphics::ShaderProgram*& GetShaderProgram();
+		void AddComponent(ModelComponent component);
+		void AddComponents(const std::vector<ModelComponent>& components);
+		void RemoveComponent(const std::string name);
+		void RemoveComponent(int index);
+		void RemoveComponents();
+		const ModelComponent* GetComponent(const std::string name);
+		const ModelComponent* GetComponent(int index);
+		std::vector<ModelComponent>* GetComponents();
 		Kaleid::Math::Transform* GetTransform();
-		void Render(Kaleid::Graphics::Renderer*& renderer, std::function<void()> arguments);
+		void Render(Kaleid::Graphics::Renderer*& renderer, std::function<void(Kaleid::Graphics::ShaderProgram*&)> arguments);
 	private:
-		Kaleid::Graphics::Mesh* _mesh;
-		std::vector<Kaleid::Graphics::TextureBase*> _textures;
-		Kaleid::Graphics::ShaderProgram* _shader_program;
+		std::vector<ModelComponent> _model_components;
 		Kaleid::Math::Transform _transform;
 	};
 }

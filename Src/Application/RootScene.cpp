@@ -12,6 +12,7 @@
 #include "Matrix.hpp"
 #include "Keyboard.hpp"
 #include "KeyBinding.hpp"
+#include "VectorHelper.hpp"
 #include "Image.hpp"
 #include <iostream>
 #include <fstream>
@@ -23,6 +24,7 @@ using namespace Kaleid::IO;
 using namespace Kaleid::Input;
 using namespace Kaleid::Imaging;
 using namespace Kaleid::Application;
+using namespace Kaleid::Helpers;
 
 RootScene::RootScene(App* app)
 	: SceneBase(app)
@@ -73,7 +75,8 @@ void RootScene::BuildShaderProgram()
 
 	this->_graphics_factory->FreeShader(vertex_shader);
 	this->_graphics_factory->FreeShader(fragment_shader);
-	this->_model.SetShaderProgram(program);
+	for (int index = 0; index < this->_model.GetComponents()->size(); index++)
+		(*(this->_model.GetComponents()))[index].SetShaderProgram(program);
 }
 
 void RootScene::BuildMesh()
@@ -146,10 +149,9 @@ void RootScene::Render()
 
 	this->_renderer->SetWireframeMode(true);
 	// Render Scene
-	ShaderProgram* shader_program = this->_model.GetShaderProgram();
 	Matrix4F mvp = (&this->_camera)->GetProjectionMatrix() * (&this->_camera)->GetViewMatrix() * this->_model.GetTransform()->GetModelMatrix();
 
-	this->_model.Render(this->_renderer, [&]
+	this->_model.Render(this->_renderer, [&] (ShaderProgram*& shader_program)
 	{
 		shader_program->SetUniform("mvp", mvp);
 	});
@@ -160,8 +162,8 @@ void RootScene::Render()
 
 void RootScene::Dispose()
 {
-	this->_graphics_factory->FreeShaderProgram(this->_model.GetShaderProgram());
-	this->_graphics_factory->FreeIndexBuffer(this->_model.GetMesh()->GetIndexBuffer());
-	this->_graphics_factory->FreeVertexBuffers(this->_model.GetMesh()->GetVertexBuffers());
-	this->_graphics_factory->FreeMesh(this->_model.GetMesh());
+	//this->_graphics_factory->FreeShaderProgram(this->_model.GetShaderProgram());
+	//this->_graphics_factory->FreeIndexBuffer(this->_model.GetMesh()->GetIndexBuffer());
+	//this->_graphics_factory->FreeVertexBuffers(this->_model.GetMesh()->GetVertexBuffers());
+	//this->_graphics_factory->FreeMesh(this->_model.GetMesh());
 }

@@ -333,6 +333,9 @@ bool ObjModelStreamDecoder::TryDecode(std::istream& source, Model* output, Model
 			throw std::runtime_error("Could build mesh");
 	}
 
-	output->SetMesh(mesh);
+	ModelComponent component = ModelComponent();
+	component.SetMesh(mesh);
+
+	output->AddComponent(component);
 	return true;
 }

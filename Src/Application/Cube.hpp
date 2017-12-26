@@ -20,7 +20,7 @@ namespace Kaleid::Application
 	public:
 		Cube();
 
-		void Render(Kaleid::Graphics::Renderer*& renderer, std::function<void()> arguments);
+		void Render(Kaleid::Graphics::Renderer*& renderer, std::function<void(Kaleid::Graphics::ShaderProgram*&)> arguments);
 
 		void SetShaderProgram(Kaleid::Graphics::ShaderProgram*& shader_program);
 		Kaleid::Graphics::ShaderProgram* GetShaderProgram();

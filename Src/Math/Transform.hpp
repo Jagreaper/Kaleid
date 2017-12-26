@@ -36,10 +36,10 @@ namespace Kaleid::Math
 
 		Matrix4F GetModelMatrix();
 
-		void AttachParent(Transform*& parent);
-		void AttachChild(Transform*& child);
-		void DettachParent(Transform*& parent);
-		void DettachChild(Transform*& child);
+		void AttachParent(Transform* parent);
+		void AttachChild(Transform* child);
+		void DettachParent(Transform* parent);
+		void DettachChild(Transform* child);
 	private:
 		Vector3F _r_position;
 		Vector3F _r_rotation;

@@ -6,6 +6,7 @@
     <ClCompile Include="..\..\..\Src\Shared\stdafx.cpp" />
     <ClCompile Include="..\..\..\Src\Game\Model.cpp" />
     <ClCompile Include="..\..\..\Src\Game\Actor.cpp" />
+    <ClCompile Include="..\..\..\Src\Game\ModelComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Src\Game\App.hpp" />
@@ -14,5 +15,6 @@
     <ClInclude Include="..\..\..\Src\Game\Model.hpp" />
     <ClInclude Include="..\..\..\Src\Game\Actor.hpp" />
     <ClInclude Include="..\..\..\Src\Game\Material.hpp" />
+    <ClInclude Include="..\..\..\Src\Game\ModelComponent.hpp" />
   </ItemGroup>
 </Project>

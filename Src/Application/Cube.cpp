@@ -15,7 +15,7 @@ Cube::Cube()
 	this->_shader_program = NULL;
 }
 
-void Cube::Render(Renderer*& renderer, std::function<void()> arguments)
+void Cube::Render(Renderer*& renderer, std::function<void(ShaderProgram*&)> arguments)
 {
 	renderer->RenderMesh(this->_mesh, this->_shader_program, NULL, arguments);
 }

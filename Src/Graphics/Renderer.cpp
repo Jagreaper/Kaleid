@@ -96,7 +96,7 @@ void Renderer::BindTextures(std::vector<TextureBase*>* textures)
 #endif
 }
 
-void Renderer::RenderMesh(Mesh*& mesh, ShaderProgram*& shader_program, std::vector<TextureBase*>& textures, std::function<void()> arguments)
+void Renderer::RenderMesh(Mesh*& mesh, ShaderProgram*& shader_program, std::vector<TextureBase*>& textures, std::function<void(ShaderProgram*&)> arguments)
 {
 	if (shader_program == NULL || !mesh->HasVertexBuffers())
 		throw std::runtime_error("Missing fields to render mesh");
@@ -107,7 +107,7 @@ void Renderer::RenderMesh(Mesh*& mesh, ShaderProgram*& shader_program, std::vect
 	glUseProgram(shader_program->_id);
 
 	if (arguments != NULL)
-		arguments();
+		arguments(shader_program);
 
 	if (mesh->HasIndexBuffer())
 	{
@@ -122,7 +122,7 @@ void Renderer::RenderMesh(Mesh*& mesh, ShaderProgram*& shader_program, std::vect
 #endif
 }
 
-void Renderer::RenderMesh(Mesh*& mesh, ShaderProgram*& shader_program, std::vector<TextureBase*>* textures, std::function<void()> arguments)
+void Renderer::RenderMesh(Mesh*& mesh, ShaderProgram*& shader_program, std::vector<TextureBase*>* textures, std::function<void(ShaderProgram*&)> arguments)
 {
 	if (shader_program == NULL || !mesh->HasVertexBuffers())
 		throw std::runtime_error("Missing fields to render mesh");
@@ -133,7 +133,7 @@ void Renderer::RenderMesh(Mesh*& mesh, ShaderProgram*& shader_program, std::vect
 	glUseProgram(shader_program->_id);
 
 	if (arguments != NULL)
-		arguments();
+		arguments(shader_program);
 
 	if (mesh->HasIndexBuffer())
 	{

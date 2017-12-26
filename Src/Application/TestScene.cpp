@@ -135,10 +135,8 @@ void TestScene::Render()
 	this->_renderer->SetViewport(0.0f, 0.0f, width, height);
 
 	// Render Scene
-	ShaderProgram* shader_program = this->_cube.GetShaderProgram();
-
 	Matrix4F mvp = this->_camera.GetProjectionMatrix() * this->_camera.GetViewMatrix() * this->_cube.GetTransform()->GetModelMatrix();
-	this->_cube.Render(this->_renderer, [&]
+	this->_cube.Render(this->_renderer, [&](ShaderProgram*& shader_program)
 	{
 		shader_program->SetUniform("mvp", mvp);
 	});

@@ -228,7 +228,7 @@ Matrix4F Transform::GetModelMatrix()
 	return this->_model_matrix;
 }
 
-void Transform::AttachParent(Transform*& parent)
+void Transform::AttachParent(Transform* parent)
 {
 	if (parent != NULL)
 	{
@@ -237,7 +237,7 @@ void Transform::AttachParent(Transform*& parent)
 	}
 }
 
-void Transform::AttachChild(Transform*& child)
+void Transform::AttachChild(Transform* child)
 {
 	if (child != NULL)
 	{
@@ -246,7 +246,7 @@ void Transform::AttachChild(Transform*& child)
 	}
 }
 
-void Transform::DettachParent(Transform*& parent)
+void Transform::DettachParent(Transform* parent)
 {
 	if (parent != NULL)
 	{
@@ -260,7 +260,7 @@ void Transform::DettachParent(Transform*& parent)
 	}
 }
 
-void Transform::DettachChild(Transform*& child)
+void Transform::DettachChild(Transform* child)
 {
 	if (child != NULL)
 	{
