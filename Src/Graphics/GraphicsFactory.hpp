@@ -12,6 +12,8 @@ namespace Kaleid::Graphics
 	class VertexBuffer;
 	class IndexBuffer;
 	class Mesh;
+	class Texture;
+	class TextureBase;
 
 	enum ShaderType;
 	enum BufferUsage;
@@ -46,6 +48,8 @@ namespace Kaleid::Graphics
 		Mesh* CreateMesh(IndexBuffer*& index_buffer, std::vector<VertexBuffer*>* vertex_buffers);
 		void CreateMeshes(Mesh*& meshes, const unsigned int count);
 
+		Texture* CreateTexture();
+
 		void FreeWindow(Window* window);
 		void FreeShader(Shader* shader);
 		void FreeShaderProgram(ShaderProgram* shader_program);
@@ -59,6 +63,8 @@ namespace Kaleid::Graphics
 		void FreeIndexBuffers(IndexBuffer*& index_buffers, const unsigned int count);
 		void FreeMesh(Mesh*& mesh);
 		void FreeMeshes(Mesh*& meshes, const unsigned int count);
+		void FreeTexture(TextureBase*& texture);
+		void FreeTextures(TextureBase*& textures, const unsigned int count);
 	private:
 #ifdef DEBUG
 		void ErrorCheck();
@@ -78,6 +84,7 @@ namespace Kaleid::Graphics
 		static std::vector<VertexBuffer*> _vertex_buffers;
 		static std::vector<IndexBuffer*> _index_buffers;
 		static std::vector<Mesh*> _meshes;
+		static std::vector<TextureBase*> _textures;
 	};
 }
 API_END

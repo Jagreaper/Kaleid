@@ -8,6 +8,7 @@
 #include "IndexBuffer.hpp"
 #include "Mesh.hpp"
 #include "VectorHelper.hpp"
+#include "Texture.hpp"
 
 using namespace Kaleid::Graphics;
 using namespace Kaleid::Helpers;
@@ -20,6 +21,7 @@ std::vector<ShaderProgram*> GraphicsFactory::_shader_programs;
 std::vector<VertexBuffer*> GraphicsFactory::_vertex_buffers;
 std::vector<IndexBuffer*> GraphicsFactory::_index_buffers;
 std::vector<Mesh*> GraphicsFactory::_meshes;
+std::vector<TextureBase*> GraphicsFactory::_textures;
 
 unsigned int GraphicsFactory::_count = 0;
 
@@ -324,6 +326,20 @@ void GraphicsFactory::CreateMeshes(Mesh*& meshes, const unsigned int count)
 #endif
 }
 
+Texture* GraphicsFactory::CreateTexture()
+{
+#ifdef DEBUG
+	this->Validate();
+#endif
+	Texture* texture = new Texture();
+	GraphicsFactory::_textures.push_back(texture);
+#ifdef DEBUG
+	this->ErrorCheck();
+#endif
+
+	return texture;
+}
+
 void GraphicsFactory::FreeWindow(Window* window)
 {
 	VectorHelper::RemoveItem(&GraphicsFactory::_windows, window);
@@ -371,8 +387,6 @@ void GraphicsFactory::FreeVertexBuffers(std::vector<VertexBuffer*>& vertex_buffe
 	{
 		VertexBuffer* vbo = vertex_buffers[index];
 		this->FreeVertexBuffer(vbo);
-
-		VectorHelper::RemoveItem(&GraphicsFactory::_vertex_buffers, vbo);
 #ifdef DEBUG
 		this->ErrorCheck();
 #endif
@@ -385,8 +399,6 @@ void GraphicsFactory::FreeVertexBuffers(const std::vector<VertexBuffer*>* vertex
 	{
 		VertexBuffer* vbo = vertex_buffers->at(index);
 		this->FreeVertexBuffer(vbo);
-
-		VectorHelper::RemoveItem(&GraphicsFactory::_vertex_buffers, vbo);
 #ifdef DEBUG
 		this->ErrorCheck();
 #endif
@@ -399,6 +411,7 @@ void GraphicsFactory::FreeVertexBuffers(VertexBuffer*& vertex_buffers, const uns
 
 	for (unsigned int index = 0; index < count; index++)
 	{
+		buffer->Dispose();
 		VectorHelper::RemoveItem(&GraphicsFactory::_vertex_buffers, buffer);
 		buffer++;
 	}
@@ -426,8 +439,6 @@ void GraphicsFactory::FreeIndexBuffers(std::vector<IndexBuffer*>& index_buffers)
 	{
 		IndexBuffer* ibo = index_buffers[index];
 		this->FreeIndexBuffer(ibo);
-
-		VectorHelper::RemoveItem(&GraphicsFactory::_index_buffers, ibo);
 #ifdef DEBUG
 		this->ErrorCheck();
 #endif
@@ -440,8 +451,6 @@ void GraphicsFactory::FreeIndexBuffers(const std::vector<IndexBuffer*>* index_bu
 	{
 		IndexBuffer* ibo = index_buffers->at(index);
 		this->FreeIndexBuffer(ibo);
-
-		VectorHelper::RemoveItem(&GraphicsFactory::_index_buffers, ibo);
 #ifdef DEBUG
 		this->ErrorCheck();
 #endif
@@ -454,6 +463,7 @@ void GraphicsFactory::FreeIndexBuffers(IndexBuffer*& index_buffers, const unsign
 
 	for (unsigned int index = 0; index < count; index++)
 	{
+		buffer->Dispose();
 		VectorHelper::RemoveItem(&GraphicsFactory::_index_buffers, buffer);
 		buffer++;
 	}
@@ -481,11 +491,40 @@ void GraphicsFactory::FreeMeshes(Mesh*& meshes, const unsigned int count)
 
 	for (unsigned int index = 0; index < count; index++)
 	{
+		i_meshes->Dispose();
 		VectorHelper::RemoveItem(&GraphicsFactory::_meshes, i_meshes);
 		i_meshes++;
 	}
 
 	delete[] meshes;
+#ifdef DEBUG
+	this->ErrorCheck();
+#endif
+}
+
+void GraphicsFactory::FreeTexture(TextureBase*& texture)
+{
+	VectorHelper::RemoveItem(&GraphicsFactory::_textures, texture);
+
+	texture->Dispose();
+	delete texture;
+#ifdef DEBUG
+	this->ErrorCheck();
+#endif
+}
+
+void GraphicsFactory::FreeTextures(TextureBase*& textures, const unsigned int count)
+{
+	TextureBase* i_textures = textures;
+
+	for (unsigned int index = 0; index < count; index++)
+	{
+		i_textures->Dispose();
+		VectorHelper::RemoveItem(&GraphicsFactory::_textures, i_textures);
+		i_textures++;
+	}
+
+	delete[] i_textures;
 #ifdef DEBUG
 	this->ErrorCheck();
 #endif

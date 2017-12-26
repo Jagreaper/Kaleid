@@ -2,7 +2,7 @@
 #include "RootScene.hpp"
 #include "MtlMaterialStreamDecoder.hpp"
 #include "ObjModelStreamDecoder.hpp"
-#include "ImagePathDecoder.hpp"
+#include "TexturePathDecoder.hpp"
 #include "GraphicsFactory.hpp"
 #include "Shader.hpp"
 #include "ShaderProgram.hpp"
@@ -87,11 +87,10 @@ void RootScene::BuildMesh()
 	obj_params.GraphicsFactory = this->_graphics_factory;
 	obj_params.ModelDecoderParamsArg = ModelDecoderParamsArg::Center;
 
-	Image image;
-	const char* map_path = "Assets\\Models\\USA Power Plant\\PowerPlant_Base_Normal.tga";
-	//const char* map_path = "Assets\\Height Maps\\arrowhead_isle.png";
-	ImagePathDecoder map_decoder;
-	map_decoder.TryDecode(map_path, &image, NULL);
+	Texture* tex = this->_graphics_factory->CreateTexture();
+	const char* tex_path = "Assets\\Models\\USA Power Plant\\PowerPlant_Base_Normal.tga";
+	TexturePathDecoder tex_decoder;
+	tex_decoder.TryDecode(tex_path, tex, NULL);
 
 	std::vector<MaterialInfo> materials;
 	const char* mtl_path = "Assets\\Models\\USA Power Plant\\PowerPlant_Base_Normal.mtl";
