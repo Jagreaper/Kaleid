@@ -23,6 +23,7 @@ namespace Kaleid::Application
 		void BuildMesh();
 		void CreateKeyboardBindings();
 
+		Kaleid::Graphics::Texture* _texture;
 		Kaleid::Game::Model _model;
 		Kaleid::Math::PerspectiveCamera _camera;
 

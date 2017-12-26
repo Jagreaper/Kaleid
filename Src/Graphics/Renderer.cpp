@@ -64,15 +64,19 @@ void Renderer::SetWireframeMode(bool enabled)
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 }
 
+void Renderer::BindTexture(TextureBase* tex, int level)
+{
+	glActiveTexture(GL_TEXTURE0 + level);
+	glBindTexture(tex->_type_info, tex->_id);
+}
+
+
 void Renderer::BindTextures(std::vector<TextureBase*>& textures)
 {
 	if (textures.size() > 0)
 	{
 		for (unsigned int index = 0; index < textures.size(); index++)
-		{
-			glActiveTexture(GL_TEXTURE0 + index);
-			glBindTexture(textures[index]->_type_info, textures[index]->_id);
-		}
+			this->BindTexture(textures[index], index);
 	}
 
 #ifdef DEBUG
@@ -85,10 +89,7 @@ void Renderer::BindTextures(std::vector<TextureBase*>* textures)
 	if (textures != NULL && textures->size() > 0)
 	{
 		for (unsigned int index = 0; index < textures->size(); index++)
-		{
-			glActiveTexture(GL_TEXTURE0 + index);
-			glBindTexture(textures->at(index)->_type_info, textures->at(index)->_id);
-		}
+			this->BindTexture(textures->at(index), index);
 	}
 
 #ifdef DEBUG

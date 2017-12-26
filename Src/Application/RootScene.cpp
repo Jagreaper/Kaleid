@@ -40,11 +40,16 @@ void RootScene::BuildShaderProgram()
 	#version 410
 
 	layout(location = 0) in vec3 vp;
+	layout(location = 1) in vec3 np;
+	layout(location = 2) in vec2 tc;
+
+	out vec2 texel;
 
 	uniform mat4 mvp;
 
 	void main()
 	{
+		texel = tc;
 		gl_Position = mvp * vec4(vp.x, vp.y, vp.z, 1.0);
 	}
 
@@ -52,15 +57,18 @@ void RootScene::BuildShaderProgram()
 
 	const char* fragment_source = R"(
 	#version 410
-
+	
+	in vec2 texel;
+	
 	out vec4 frag_colour;
 
 	uniform mat4 mvp;
 	uniform vec3 ka;
+	uniform sampler2D ka_tex;
 
 	void main()
 	{
-		frag_colour = vec4(ka.x, ka.y, ka.z, 1.0);
+		frag_colour = texture2D(ka_tex, texel) * vec4(ka.x, ka.y, ka.z, 1.0);
 	}
 
 	)";
@@ -87,10 +95,10 @@ void RootScene::BuildMesh()
 	obj_params.GraphicsFactory = this->_graphics_factory;
 	obj_params.ModelDecoderParamsArg = ModelDecoderParamsArg::Center;
 
-	Texture* tex = this->_graphics_factory->CreateTexture();
+	this->_texture = this->_graphics_factory->CreateTexture();
 	const char* tex_path = "Assets\\Models\\USA Power Plant\\PowerPlant_Base_Normal.tga";
 	TexturePathDecoder tex_decoder;
-	tex_decoder.TryDecode(tex_path, tex, NULL);
+	tex_decoder.TryDecode(tex_path, this->_texture, NULL);
 
 	std::vector<MaterialInfo> materials;
 	const char* mtl_path = "Assets\\Models\\USA Power Plant\\PowerPlant_Base_Normal.mtl";
@@ -160,11 +168,15 @@ void RootScene::Render()
 	//this->_renderer->SetWireframeMode(true);
 	// Render Scene
 	Matrix4F mvp = (&this->_camera)->GetProjectionMatrix() * (&this->_camera)->GetViewMatrix() * this->_model.GetTransform()->GetModelMatrix();
+	Renderer* renderer = this->_renderer;
+	Texture* texture = this->_texture;
 
 	this->_model.Render(this->_renderer, [&] (ShaderProgram*& shader_program, Material* material)
 	{
+		renderer->BindTexture((TextureBase*)texture);
 		shader_program->SetUniform("mvp", mvp);
 		shader_program->SetUniform("ka", material->AmbientColor);
+		shader_program->SetUniform("ka_tex", 0);
 	});
 
 	// Cleanup Scene
