@@ -3,6 +3,7 @@
 #include "stdafx.hpp"
 #include "Transform.hpp"
 #include "ModelComponent.hpp"
+#include "Material.hpp"
 #include <functional>
 #include <vector>
 
@@ -29,7 +30,7 @@ namespace Kaleid::Game
 		const ModelComponent* GetComponent(int index);
 		std::vector<ModelComponent>* GetComponents();
 		Kaleid::Math::Transform* GetTransform();
-		void Render(Kaleid::Graphics::Renderer*& renderer, std::function<void(Kaleid::Graphics::ShaderProgram*&)> arguments);
+		void Render(Kaleid::Graphics::Renderer*& renderer, std::function<void(Kaleid::Graphics::ShaderProgram*&, Kaleid::Graphics::Material* material)> arguments);
 	private:
 		std::vector<ModelComponent> _model_components;
 		Kaleid::Math::Transform _transform;

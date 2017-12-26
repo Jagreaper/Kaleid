@@ -8,8 +8,6 @@ using namespace Kaleid::Game;
 using namespace Kaleid::Graphics;
 using namespace Kaleid::Helpers;
 
-
-
 void Model::AddComponent(ModelComponent component)
 {
 	component.GetTransform()->AttachParent(&this->_transform);
@@ -82,7 +80,8 @@ Transform* Model::GetTransform()
 	return &this->_transform;
 }
 
-void Model::Render(Kaleid::Graphics::Renderer*& renderer, std::function<void(ShaderProgram*&)> arguments)
+void Model::Render(Kaleid::Graphics::Renderer*& renderer, std::function<void(ShaderProgram*&, Material*)> arguments)
 {
-	VectorHelper::Foreach(this->_model_components, [&](ModelComponent c) { c.Render(renderer, arguments); });
+	for (int index = 0; index < this->_model_components.size(); index++)
+		this->_model_components[index].Render(renderer, arguments);
 }

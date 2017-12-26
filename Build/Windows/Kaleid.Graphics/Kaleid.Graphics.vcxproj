@@ -41,6 +41,7 @@
     <ClInclude Include="..\..\..\Src\Graphics\BufferBase.hpp" />
     <ClInclude Include="..\..\..\Src\Graphics\GraphicsFactory.hpp" />
     <ClInclude Include="..\..\..\Src\Graphics\IndexBuffer.hpp" />
+    <ClInclude Include="..\..\..\Src\Graphics\Material.hpp" />
     <ClInclude Include="..\..\..\Src\Graphics\Mesh.hpp" />
     <ClInclude Include="..\..\..\Src\Graphics\Renderer.hpp" />
     <ClInclude Include="..\..\..\Src\Graphics\Shader.hpp" />

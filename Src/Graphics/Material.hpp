@@ -8,10 +8,7 @@ API_BEGIN
 namespace Kaleid::Graphics
 {
 	class Texture;
-}
 
-namespace Kaleid::Game
-{
 	struct Material
 	{
 		std::string Name;

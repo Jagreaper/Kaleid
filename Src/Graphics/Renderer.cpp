@@ -148,6 +148,30 @@ void Renderer::RenderMesh(Mesh*& mesh, ShaderProgram*& shader_program, std::vect
 #endif
 }
 
+void Renderer::RenderMesh(Mesh*& mesh, ShaderProgram*& shader_program, Material* material, std::function<void(ShaderProgram*&, Material*)> arguments)
+{
+	if (shader_program == NULL || !mesh->HasVertexBuffers())
+		throw std::runtime_error("Missing fields to render mesh");
+
+	glBindVertexArray(mesh->_vao_id);
+	glUseProgram(shader_program->_id);
+
+	if (arguments != NULL)
+		arguments(shader_program, material);
+
+	if (mesh->HasIndexBuffer())
+	{
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->GetIndexBuffer()->_id);
+		glDrawElements(mesh->_primitive_type, (GLsizei)mesh->GetIndexBuffer()->GetLength(), mesh->GetIndexBuffer()->_type_info, NULL);
+	}
+	else
+		glDrawArrays(mesh->_primitive_type, 0, (GLsizei)mesh->_b_vbo_length);
+
+#ifdef DEBUG
+	this->ErrorCheck();
+#endif
+}
+
 
 #ifdef DEBUG
 

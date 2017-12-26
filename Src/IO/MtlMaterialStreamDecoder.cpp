@@ -8,7 +8,7 @@
 #include <vector>
 
 using namespace Kaleid::IO;
-using namespace Kaleid::Game;
+using namespace Kaleid::Graphics;
 using namespace Kaleid::Helpers;
 using namespace Kaleid::Math;
 
@@ -163,7 +163,7 @@ bool TryReadLine(const std::string& line, MaterialInfo& output)
 	return true;
 }
 
-bool MtlMaterialStreamDecoder::TryDecode(std::istream& source, std::vector<Kaleid::Game::MaterialInfo>* output, void* arg)
+bool MtlMaterialStreamDecoder::TryDecode(std::istream& source, std::vector<Kaleid::Graphics::MaterialInfo>* output, void* arg)
 {
 	std::string line;
 	bool mtl_exists = false;

@@ -28,7 +28,7 @@ void ModelComponent::SetMaterial(const Material material)
 	this->_material = material;
 }
 
-const Kaleid::Game::Material& ModelComponent::GetMaterial() const
+const Material& ModelComponent::GetMaterial() const
 {
 	return this->_material;
 }
@@ -39,7 +39,7 @@ void ModelComponent::SetMaterialInfo(const MaterialInfo material_info)
 	this->_material = material_info.CreateMaterial();
 }
 
-const Kaleid::Game::MaterialInfo& ModelComponent::GetMaterialInfo() const
+const MaterialInfo& ModelComponent::GetMaterialInfo() const
 {
 	return this->_material_info;
 }
@@ -64,9 +64,9 @@ Transform* ModelComponent::GetTransform()
 	return &this->_transform;
 }
 
-void ModelComponent::Render(Renderer*& renderer, std::function<void(ShaderProgram*&)> arguments)
+void ModelComponent::Render(Renderer*& renderer, std::function<void(ShaderProgram*&, Material*)> arguments)
 {
-	renderer->RenderMesh(this->_mesh, this->_shader_program, NULL, arguments);
+	renderer->RenderMesh(this->_mesh, this->_shader_program, &this->_material, arguments);
 }
 
 void ModelComponent::SetName(const std::string name)

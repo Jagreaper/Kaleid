@@ -177,7 +177,6 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\Src\Game\Actor.hpp" />
     <ClInclude Include="..\..\..\Src\Game\App.hpp" />
-    <ClInclude Include="..\..\..\Src\Game\Material.hpp" />
     <ClInclude Include="..\..\..\Src\Game\Model.hpp" />
     <ClInclude Include="..\..\..\Src\Game\ModelComponent.hpp" />
     <ClInclude Include="..\..\..\Src\Game\SceneBase.hpp" />

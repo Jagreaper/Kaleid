@@ -13,5 +13,5 @@ namespace Kaleid::Graphics
 
 namespace Kaleid::IO
 {
-	using MaterialStreamDecoder = DecoderBase<std::istream&, std::vector<Kaleid::Game::MaterialInfo>*, void*>;
+	using MaterialStreamDecoder = DecoderBase<std::istream&, std::vector<Kaleid::Graphics::MaterialInfo>*, void*>;
 }

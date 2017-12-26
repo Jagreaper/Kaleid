@@ -1,6 +1,7 @@
 #pragma once
 
 #include "stdafx.hpp"
+#include "Material.hpp"
 #include <vector>
 #include <functional>
 
@@ -25,6 +26,7 @@ namespace Kaleid::Graphics
 		void BindTextures(std::vector<TextureBase*>* textures);
 		void RenderMesh(Mesh*& mesh, ShaderProgram*& shader_program, std::vector<TextureBase*>& textures, std::function<void(ShaderProgram*&)> arguments);
 		void RenderMesh(Mesh*& mesh, ShaderProgram*& shader_program, std::vector<TextureBase*>* textures, std::function<void(ShaderProgram*&)> arguments);
+		void RenderMesh(Mesh*& mesh, ShaderProgram*& shader_program, Material* material, std::function<void(ShaderProgram*&, Material*)> arguments);
 	private:
 #ifdef DEBUG
 		void ErrorCheck();

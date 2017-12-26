@@ -55,10 +55,11 @@ void RootScene::BuildShaderProgram()
 	out vec4 frag_colour;
 
 	uniform mat4 mvp;
+	uniform vec3 ka;
 
 	void main()
 	{
-		frag_colour = vec4(1.0, 0.0, 0.0, 1.0);
+		frag_colour = vec4(ka.x, ka.y, ka.z, 1.0);
 	}
 
 	)";
@@ -152,9 +153,10 @@ void RootScene::Render()
 	// Render Scene
 	Matrix4F mvp = (&this->_camera)->GetProjectionMatrix() * (&this->_camera)->GetViewMatrix() * this->_model.GetTransform()->GetModelMatrix();
 
-	this->_model.Render(this->_renderer, [&] (ShaderProgram*& shader_program)
+	this->_model.Render(this->_renderer, [&] (ShaderProgram*& shader_program, Material* material)
 	{
 		shader_program->SetUniform("mvp", mvp);
+		shader_program->SetUniform("ka", material->AmbientColor);
 	});
 
 	// Cleanup Scene

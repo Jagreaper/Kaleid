@@ -11,7 +11,6 @@ API_BEGIN
 namespace Kaleid::Graphics
 {
 	class Mesh;
-	class TextureBase;
 	class ShaderProgram;
 	class Renderer;
 }
@@ -24,23 +23,23 @@ namespace Kaleid::Game
 		void SetMesh(Kaleid::Graphics::Mesh*& mesh);
 		const Kaleid::Graphics::Mesh* GetMesh() const;
 		Kaleid::Graphics::Mesh*& GetMesh();
-		void SetMaterial(const Material material);
-		const Kaleid::Game::Material& GetMaterial() const;
-		void SetMaterialInfo(const MaterialInfo material);
-		const Kaleid::Game::MaterialInfo& GetMaterialInfo() const;
+		void SetMaterial(const Kaleid::Graphics::Material material);
+		const Kaleid::Graphics::Material& GetMaterial() const;
+		void SetMaterialInfo(const Kaleid::Graphics::MaterialInfo material);
+		const Kaleid::Graphics::MaterialInfo& GetMaterialInfo() const;
 		void SetShaderProgram(Kaleid::Graphics::ShaderProgram*& shader_program);
 		const Kaleid::Graphics::ShaderProgram* GetShaderProgram() const;
 		Kaleid::Graphics::ShaderProgram*& GetShaderProgram();
 		Kaleid::Math::Transform* GetTransform();
-		void Render(Kaleid::Graphics::Renderer*& renderer, std::function<void(Kaleid::Graphics::ShaderProgram*&)> arguments);
+		void Render(Kaleid::Graphics::Renderer*& renderer, std::function<void(Kaleid::Graphics::ShaderProgram*&, Kaleid::Graphics::Material*)> arguments);
 		void SetName(const std::string name);
 		void SetName(const char* name);
 		const std::string& GetName() const;
 	private:
 		std::string _name;
 		Kaleid::Graphics::Mesh* _mesh;
-		Material _material;
-		MaterialInfo _material_info;
+		Kaleid::Graphics::Material _material;
+		Kaleid::Graphics::MaterialInfo _material_info;
 		Kaleid::Graphics::ShaderProgram* _shader_program;
 		Kaleid::Math::Transform _transform;
 	};
