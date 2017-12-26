@@ -16,9 +16,11 @@ void Model::AddComponent(ModelComponent component)
 	this->_model_components.push_back(component);
 }
 
-void Model::AddComponents(const std::vector<ModelComponent>& components)
+void Model::AddComponents(std::vector<ModelComponent>& components)
 {
-	VectorHelper::Foreach(components, [&](ModelComponent c) { c.GetTransform()->AttachChild(&this->_transform); });
+	for (int index = 0; index < components.size(); index++)
+		components[index].GetTransform()->AttachParent(&this->_transform);
+
 	VectorHelper::AddRange(this->_model_components, components);
 }
 

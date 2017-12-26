@@ -9,6 +9,7 @@
 #include "Triangle.hpp"
 #include "Face.hpp"
 #include "Mesh.hpp"
+#include "Material.hpp"
 #include <string>
 #include <stdexcept>
 #include <limits>
@@ -20,6 +21,14 @@ using namespace Kaleid::Geometry;
 using namespace Kaleid::Graphics;
 using namespace Kaleid::Helpers;
 
+struct ObjPieceData
+{
+	std::string GroupName;
+	std::string ObjectName;
+	std::string MaterialName;
+	std::vector<std::vector<std::vector<unsigned long>>> IndexedFaces;
+};
+
 struct ObjData
 {
 	std::vector<Vector3F> Verticies;
@@ -29,7 +38,7 @@ struct ObjData
 	Vector3F VertexMax = Vector3F(std::numeric_limits<float>::min(), std::numeric_limits<float>::min(), std::numeric_limits<float>::min());
 	Vector3F VertexMin = Vector3F(std::numeric_limits<float>::max(), std::numeric_limits<float>::max(), std::numeric_limits<float>::max());
 
-	std::vector<std::vector<std::vector<unsigned long>>> IndexedFaces;
+	std::vector<ObjPieceData> pieces;
 };
 
 bool TryReadVertex(std::string& line, ObjData& data)
@@ -63,7 +72,7 @@ bool TryReadTexel(std::string& line, ObjData& data)
 	return true;
 }
 
-bool TryReadFace(std::string& line, ObjData& data)
+bool TryReadFace(std::string& line, ObjPieceData& piece)
 {
 	std::vector<std::string> face_strings = StringHelper::Split(line, ' ');
 
@@ -78,11 +87,11 @@ bool TryReadFace(std::string& line, ObjData& data)
 		indexed_face.push_back(vertex);
 	}
 
-	data.IndexedFaces.push_back(indexed_face);
+	piece.IndexedFaces.push_back(indexed_face);
 	return true;
 }
 
-bool TryReadLine(std::string& line, ObjData& data)
+bool TryReadLine(std::string& line, ObjData& data, ObjPieceData& piece)
 {
 	if (StringHelper::BeginsWith(line, std::string("v ")))
 		return TryReadVertex(line, data);
@@ -94,7 +103,7 @@ bool TryReadLine(std::string& line, ObjData& data)
 		return TryReadTexel(line, data);
 
 	if (StringHelper::BeginsWith(line, std::string("f ")))
-		return TryReadFace(line, data);
+		return TryReadFace(line, piece);
 
 	return true;
 }
@@ -110,26 +119,26 @@ bool NormalizeVerticies(ObjData& data)
 	return true;
 }
 
-bool BakeFaces(ObjData& data, std::vector<FaceF>& faces)
+bool BakeFaces(ObjData& data, ObjPieceData& piece, std::vector<FaceF>& faces)
 {
-	for (unsigned int face_index = 0; face_index < (unsigned int)data.IndexedFaces.size(); face_index++)
+	for (unsigned int face_index = 0; face_index < (unsigned int)piece.IndexedFaces.size(); face_index++)
 	{
 		FaceF face;
-		for (unsigned int vert_index = 0; vert_index < (unsigned int)data.IndexedFaces[face_index].size(); vert_index++)
+		for (unsigned int vert_index = 0; vert_index < (unsigned int)piece.IndexedFaces[face_index].size(); vert_index++)
 		{
 			VertexF vertex;
-			for (unsigned int type_index = 0; type_index < (unsigned int)data.IndexedFaces[face_index][vert_index].size(); type_index++)
+			for (unsigned int type_index = 0; type_index < (unsigned int)piece.IndexedFaces[face_index][vert_index].size(); type_index++)
 			{
 				switch (type_index)
 				{
 				case 0:
-					vertex.VectorGeometry = data.Verticies[data.IndexedFaces[face_index][vert_index][type_index] - 1];
+					vertex.VectorGeometry = data.Verticies[piece.IndexedFaces[face_index][vert_index][type_index] - 1];
 					break;
 				case 1:
-					vertex.VectorTexture = data.Texels[data.IndexedFaces[face_index][vert_index][type_index] - 1];
+					vertex.VectorTexture = data.Texels[piece.IndexedFaces[face_index][vert_index][type_index] - 1];
 					break;
 				case 2:
-					vertex.VectorNormal = data.Normals[data.IndexedFaces[face_index][vert_index][type_index] - 1];
+					vertex.VectorNormal = data.Normals[piece.IndexedFaces[face_index][vert_index][type_index] - 1];
 					break;
 				default:
 					return false;
@@ -270,10 +279,10 @@ bool TryBuildMeshData(MeshData& data, std::vector<FaceF>& baked_faces)
 
 bool TryBuildMesh(MeshData& data, Mesh*& mesh, GraphicsFactory*& arg)
 {
-	VertexBuffer* vbo = arg->CreateVertexBuffer(&data.Verticies[0], data.Verticies.size(), 3);
-	VertexBuffer* nbo = arg->CreateVertexBuffer(&data.Normals[0], data.Normals.size(), 3);
-	VertexBuffer* tbo = arg->CreateVertexBuffer(&data.Texels[0], data.Texels.size(), 2);
-	IndexBuffer* ibo = arg->CreateIndexBuffer(&data.Indicies[0], data.Indicies.size());
+	VertexBuffer* vbo = arg->CreateVertexBuffer(data.Verticies.size() != 0 ? &data.Verticies[0] : NULL, data.Verticies.size(), 3);
+	VertexBuffer* nbo = arg->CreateVertexBuffer(data.Normals.size() != 0 ? &data.Normals[0] : NULL, data.Normals.size(), 3);
+	VertexBuffer* tbo = arg->CreateVertexBuffer(data.Texels.size() != 0 ? &data.Texels[0] : NULL, data.Texels.size(), 2);
+	IndexBuffer* ibo = arg->CreateIndexBuffer(data.Indicies.size() != 0 ? &data.Indicies[0] : NULL, data.Indicies.size());
 
 	std::vector<VertexBuffer*> buffers;
 	buffers.push_back(vbo);
@@ -288,37 +297,79 @@ bool TryBuildMesh(MeshData& data, Mesh*& mesh, GraphicsFactory*& arg)
 	return true;
 }
 
-bool ObjModelStreamDecoder::TryDecode(std::istream& source, Model* output, ModelDecoderParams& arg)
+bool TryReadLines(std::istream& source, ObjData& data, std::vector<ObjPieceData>& pieces)
 {
-	ObjData data;
+	ObjPieceData piece;
+	bool found_piece = false;
+	std::string line;
+	while (std::getline(source, line))
 	{
-		std::string line;
-		while (std::getline(source, line))
+		line = StringHelper::TrimLeading(line);
+
+		if (StringHelper::BeginsWith(line, std::string("o ")))
 		{
-			line = StringHelper::TrimLeading(line);
-			if (!TryReadLine(line, data))
+			std::string name = StringHelper::Split(line, ' ')[1];
+
+			if (found_piece == false)
+				found_piece = true;
+			else if (piece.GroupName != name)
 			{
-				std::string msg("Could not read line:\n");
-				msg += line;
-				throw std::runtime_error(msg);
+				pieces.push_back(piece);
+				piece = ObjPieceData();
 			}
+
+			piece.ObjectName = name;
+		}
+		else if (StringHelper::BeginsWith(line, std::string("g ")))
+		{
+			std::string name = StringHelper::Split(line, ' ')[1];
+
+			if (found_piece == false)
+				found_piece = true;
+			else if (piece.ObjectName != name)
+			{
+				pieces.push_back(piece);
+				piece = ObjPieceData();
+			}
+
+			piece.GroupName = name;
+		}
+		else if (StringHelper::BeginsWith(line, std::string("usemtl ")))
+		{
+			std::string name = StringHelper::Split(line, ' ')[1];
+
+			if (found_piece == false)
+				found_piece = true;
+			else if (piece.MaterialName.length() != 0)
+			{
+				pieces.push_back(piece);
+				piece = ObjPieceData();
+			}
+
+			piece.MaterialName = name;
+		}
+		else if (!TryReadLine(line, data, piece))
+		{
+
+			std::string msg("Could not read line:\n");
+			msg += line;
+			throw std::runtime_error(msg);
 		}
 	}
 
-	if (arg.Normalize)
-	{
-		if (!NormalizeVerticies(data))
-			throw std::runtime_error("Could not normalize verticies");
-	}
+	return true;
+}
 
-	Mesh* mesh = arg.GraphicsFactory->CreateMesh();
+bool TryCreateMesh(ObjData& data, ObjPieceData& piece, ModelDecoderParams& arg, Mesh*& mesh_ptr)
+{
+	mesh_ptr = arg.GraphicsFactory->CreateMesh();
 	{
 		MeshData mesh_data;
 		{
 			std::vector<FaceF> tess_faces;
 			{
 				std::vector<FaceF> baked_faces;
-				if (!BakeFaces(data, baked_faces))
+				if (!BakeFaces(data, piece, baked_faces))
 					throw std::runtime_error("Could not bake faces");
 
 				if (!TesselateFaces(baked_faces, tess_faces))
@@ -329,13 +380,40 @@ bool ObjModelStreamDecoder::TryDecode(std::istream& source, Model* output, Model
 				throw std::runtime_error("Could not build mesh");
 		}
 
-		if (!TryBuildMesh(mesh_data, mesh, arg.GraphicsFactory))
+		if (!TryBuildMesh(mesh_data, mesh_ptr, arg.GraphicsFactory))
 			throw std::runtime_error("Could build mesh");
 	}
+}
 
-	ModelComponent component = ModelComponent();
-	component.SetMesh(mesh);
+bool ObjModelStreamDecoder::TryDecode(std::istream& source, Model* output, ModelDecoderParams& arg)
+{
+	std::vector<ObjPieceData> pieces;
+	ObjData data;
+	TryReadLines(source, data, pieces);
 
-	output->AddComponent(component);
+	if (arg.Normalize)
+	{
+		if (!NormalizeVerticies(data))
+			throw std::runtime_error("Could not normalize verticies");
+	}
+
+	
+	std::vector<ModelComponent> components;
+	for (int p_index = 0; p_index < pieces.size(); p_index++)
+	{
+		ModelComponent component;
+		Mesh* mesh;
+		TryCreateMesh(data, pieces[p_index], arg, mesh);
+		component.SetMesh(mesh);
+		
+		for (int m_index = 0; m_index < arg.Materials->size(); m_index++)
+		{
+			if (pieces[p_index].MaterialName == (*arg.Materials)[m_index].Name)
+				component.SetMaterialInfo((*arg.Materials)[m_index]);
+		}
+
+		components.push_back(component);
+	}
+	output->AddComponents(components);
 	return true;
 }

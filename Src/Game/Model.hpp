@@ -21,7 +21,7 @@ namespace Kaleid::Game
 	{
 	public:
 		void AddComponent(ModelComponent component);
-		void AddComponents(const std::vector<ModelComponent>& components);
+		void AddComponents(std::vector<ModelComponent>& components);
 		void RemoveComponent(const std::string name);
 		void RemoveComponent(int index);
 		void RemoveComponents();

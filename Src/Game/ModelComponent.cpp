@@ -33,6 +33,17 @@ const Kaleid::Game::Material& ModelComponent::GetMaterial() const
 	return this->_material;
 }
 
+void ModelComponent::SetMaterialInfo(const MaterialInfo material_info)
+{
+	this->_material_info = material_info;
+	this->_material = material_info.CreateMaterial();
+}
+
+const Kaleid::Game::MaterialInfo& ModelComponent::GetMaterialInfo() const
+{
+	return this->_material_info;
+}
+
 void ModelComponent::SetShaderProgram(ShaderProgram*& shader_program)
 {
 	this->_shader_program = shader_program;

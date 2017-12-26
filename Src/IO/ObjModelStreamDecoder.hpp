@@ -3,7 +3,6 @@
 #include "stdafx.hpp"
 #include "DecoderBase.hpp"
 #include "ModelStreamDecoder.hpp"
-#include "ModelComponent.hpp"
 #include <istream>
 
 API_BEGIN

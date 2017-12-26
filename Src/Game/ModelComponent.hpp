@@ -26,6 +26,8 @@ namespace Kaleid::Game
 		Kaleid::Graphics::Mesh*& GetMesh();
 		void SetMaterial(const Material material);
 		const Kaleid::Game::Material& GetMaterial() const;
+		void SetMaterialInfo(const MaterialInfo material);
+		const Kaleid::Game::MaterialInfo& GetMaterialInfo() const;
 		void SetShaderProgram(Kaleid::Graphics::ShaderProgram*& shader_program);
 		const Kaleid::Graphics::ShaderProgram* GetShaderProgram() const;
 		Kaleid::Graphics::ShaderProgram*& GetShaderProgram();
@@ -38,6 +40,7 @@ namespace Kaleid::Game
 		std::string _name;
 		Kaleid::Graphics::Mesh* _mesh;
 		Material _material;
+		MaterialInfo _material_info;
 		Kaleid::Graphics::ShaderProgram* _shader_program;
 		Kaleid::Math::Transform _transform;
 	};
