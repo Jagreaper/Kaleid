@@ -246,19 +246,19 @@ void AddTexels(MeshData& data, VertexF& v1, VertexF& v2, VertexF& v3)
 	if (!v1.VectorTexture.IsNull())
 	{
 		data.Texels.push_back(v1.VectorTexture.GetValue().x);
-		data.Texels.push_back(v1.VectorTexture.GetValue().y);
+		data.Texels.push_back(1.0f - v1.VectorTexture.GetValue().y);
 	}
 
 	if (!v2.VectorTexture.IsNull())
 	{
 		data.Texels.push_back(v2.VectorTexture.GetValue().x);
-		data.Texels.push_back(v2.VectorTexture.GetValue().y);
+		data.Texels.push_back(1.0f - v2.VectorTexture.GetValue().y);
 	}
 
 	if (!v3.VectorTexture.IsNull())
 	{
 		data.Texels.push_back(v3.VectorTexture.GetValue().x);
-		data.Texels.push_back(v3.VectorTexture.GetValue().y);
+		data.Texels.push_back(1.0f - v3.VectorTexture.GetValue().y);
 	}
 }
 

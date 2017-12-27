@@ -9,6 +9,7 @@
 #include "App.hpp"
 #include "Renderer.hpp"
 #include "Mesh.hpp"
+#include "Model.hpp"
 #include "Window.hpp"
 #include "Matrix.hpp"
 #include "Keyboard.hpp"
@@ -50,6 +51,7 @@ void RootScene::BuildShaderProgram()
 	void main()
 	{
 		texel = tc;
+		texel.y = texel.y;
 		gl_Position = mvp * vec4(vp.x, vp.y, vp.z, 1.0);
 	}
 
@@ -76,17 +78,15 @@ void RootScene::BuildShaderProgram()
 	Shader* vertex_shader = this->_graphics_factory->CreateShader(&vertex_source, ShaderType::Vertex);
 	Shader* fragment_shader = this->_graphics_factory->CreateShader(&fragment_source, ShaderType::Fragment);
 
-	ShaderProgram* program = this->_graphics_factory->CreateShaderProgram();
-	program->Attach(vertex_shader);
-	program->Attach(fragment_shader);
-	program->Link();
-	program->Dettach(vertex_shader);
-	program->Dettach(fragment_shader);
+	this->_program = this->_graphics_factory->CreateShaderProgram();
+	this->_program->Attach(vertex_shader);
+	this->_program->Attach(fragment_shader);
+	this->_program->Link();
+	this->_program->Dettach(vertex_shader);
+	this->_program->Dettach(fragment_shader);
 
 	this->_graphics_factory->FreeShader(vertex_shader);
 	this->_graphics_factory->FreeShader(fragment_shader);
-	for (int index = 0; index < this->_model.GetComponents()->size(); index++)
-		(*(this->_model.GetComponents()))[index].SetShaderProgram(program);
 }
 
 void RootScene::BuildMesh()
@@ -96,26 +96,32 @@ void RootScene::BuildMesh()
 	obj_params.ModelDecoderParamsArg = ModelDecoderParamsArg::Center;
 
 	this->_texture = this->_graphics_factory->CreateTexture();
-	const char* tex_path = "Assets\\Models\\USA Power Plant\\PowerPlant_Base_Normal.tga";
+	const char* tex_path = "Assets\\Models\\USA Power Plant\\USA_PowerPlant_Base.tga";
 	TexturePathDecoder tex_decoder;
 	tex_decoder.TryDecode(tex_path, this->_texture, NULL);
 
 	std::vector<MaterialInfo> materials;
-	const char* mtl_path = "Assets\\Models\\USA Power Plant\\PowerPlant_Base_Normal.mtl";
+	const char* mtl_path = "Assets\\Models\\USA Power Plant\\USA_PowerPlant_Base.mtl";
 	std::ifstream mtl_stream;
 	mtl_stream.open(mtl_path);
 	MtlMaterialStreamDecoder mtl_decoder;
 	mtl_decoder.TryDecode(mtl_stream, &materials, NULL);
 	mtl_stream.close();
 
-	const char* obj_path = "Assets\\Models\\USA Power Plant\\PowerPlant_Base_Normal.obj";
+	Model model;
+	const char* obj_path = "Assets\\Models\\USA Power Plant\\USA_PowerPlant_Base.obj";
 	std::ifstream obj_stream;
 	obj_stream.open(obj_path);
 	ObjModelStreamDecoder obj_decoder;
 	obj_params.Materials = &materials;
 	obj_params.ModelDecoderParamsArg = ModelDecoderParamsArg::Center;
-	obj_decoder.TryDecode(obj_stream, &this->_model, obj_params);
+	obj_decoder.TryDecode(obj_stream, &model, obj_params);
 	obj_stream.close();
+
+	for (int index = 0; index < model.GetComponents()->size(); index++)
+		(*(model.GetComponents()))[index].SetShaderProgram(this->_program);
+
+	this->_actor.AddModel("USA_PowerPlant_Base", model);
 }
 
 void RootScene::CreateKeyboardBindings()
@@ -141,8 +147,8 @@ double RootScene::GetDeltaTime()
 
 void RootScene::Load()
 {
-	this->BuildMesh();
 	this->BuildShaderProgram();
+	this->BuildMesh();
 	this->CreateKeyboardBindings();
 
 	this->_camera.SetPosition(Vector3F(0.0f, 0.0f, 5.0f));
@@ -162,16 +168,17 @@ void RootScene::Render()
 	// Setup Scene
 	unsigned int width, height;
 	this->_app->GetWindow(0)->GetSize(&width, &height);
+	this->_camera.SetAspectRatio((float)width / height);
 	this->_renderer->Clear(0.0f, 0.0f, 0.0f, 1.0f);
 	this->_renderer->SetViewport(0.0f, 0.0f, width, height);
 
 	//this->_renderer->SetWireframeMode(true);
 	// Render Scene
-	Matrix4F mvp = (&this->_camera)->GetProjectionMatrix() * (&this->_camera)->GetViewMatrix() * this->_model.GetTransform()->GetModelMatrix();
+	Matrix4F mvp = (&this->_camera)->GetProjectionMatrix() * (&this->_camera)->GetViewMatrix() * this->_actor.GetTransform()->GetModelMatrix();
 	Renderer* renderer = this->_renderer;
 	Texture* texture = this->_texture;
 
-	this->_model.Render(this->_renderer, [&] (ShaderProgram*& shader_program, Material* material)
+	this->_actor.Render(this->_renderer, [&] (ShaderProgram*& shader_program, Material* material)
 	{
 		renderer->BindTexture((TextureBase*)texture);
 		shader_program->SetUniform("mvp", mvp);

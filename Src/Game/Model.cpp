@@ -43,11 +43,17 @@ void Model::RemoveComponent(const std::string name)
 void Model::RemoveComponent(int index)
 {
 	if (index < this->_model_components.size())
+	{
+		this->_model_components[index].GetTransform()->DettachParent(this->GetTransform());
 		VectorHelper::Remove(this->_model_components, index);
+	}
 }
 
 void Model::RemoveComponents()
 {
+	for (int index = 0; index < this->_model_components.size(); index++)
+		this->_model_components[index].GetTransform()->DettachParent(this->GetTransform());
+
 	this->_model_components.clear();
 }
 

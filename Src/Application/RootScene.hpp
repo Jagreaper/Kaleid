@@ -2,8 +2,7 @@
 
 #include "stdafx.hpp"
 #include "SceneBase.hpp"
-#include "Model.hpp"
-#include "Cube.hpp"
+#include "Actor.hpp"
 #include "PerspectiveCamera.hpp"
 #include <time.h>
 
@@ -22,9 +21,10 @@ namespace Kaleid::Application
 		void BuildShaderProgram();
 		void BuildMesh();
 		void CreateKeyboardBindings();
-
+		
+		Kaleid::Graphics::ShaderProgram* _program;
 		Kaleid::Graphics::Texture* _texture;
-		Kaleid::Game::Model _model;
+		Kaleid::Game::Actor _actor;
 		Kaleid::Math::PerspectiveCamera _camera;
 
 		clock_t _o_time;

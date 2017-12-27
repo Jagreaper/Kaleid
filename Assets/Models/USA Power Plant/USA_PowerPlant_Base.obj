@@ -1,7 +1,7 @@
 # 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
-# File Created: 25.12.2017 10:06:06
+# File Created: 27.12.2017 18:56:08
 
-mtllib PowerPlant_Base_Normal.mtl
+mtllib USA_PowerPlant_Base.mtl
 
 #
 # object BUILDING
