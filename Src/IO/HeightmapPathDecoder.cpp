@@ -193,8 +193,8 @@ bool HeightmapPathDecoder::TryDecode(const char* source, Model* output, ModelDec
 	mesh->SetIndexBuffer(ibo);
 	mesh->SetPrimitiveType(PrimitiveType::Triangles);
 	mesh->Compose();
-	ModelComponent component;
-	component.SetMesh(mesh);
+	ModelComponent* component = ModelComponent::AllocateMemory();
+	component->SetMesh(mesh);
 	output->AddComponent(component);
 
 	return true;

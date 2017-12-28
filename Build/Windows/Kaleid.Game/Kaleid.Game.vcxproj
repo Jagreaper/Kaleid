@@ -167,6 +167,7 @@
     <ClCompile Include="..\..\..\Src\Game\Model.cpp" />
     <ClCompile Include="..\..\..\Src\Game\ModelComponent.cpp" />
     <ClCompile Include="..\..\..\Src\Game\SceneBase.cpp" />
+    <ClCompile Include="..\..\..\Src\Game\Terrian.cpp" />
     <ClCompile Include="..\..\..\Src\Shared\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -180,6 +181,7 @@
     <ClInclude Include="..\..\..\Src\Game\Model.hpp" />
     <ClInclude Include="..\..\..\Src\Game\ModelComponent.hpp" />
     <ClInclude Include="..\..\..\Src\Game\SceneBase.hpp" />
+    <ClInclude Include="..\..\..\Src\Game\Terrian.hpp" />
     <ClInclude Include="..\..\..\Src\Shared\stdafx.hpp" />
   </ItemGroup>
   <ItemGroup>

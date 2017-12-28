@@ -396,22 +396,22 @@ bool TryCreateMesh(ObjData& data, ObjPieceData& piece, ModelDecoderParams& arg, 
 	}
 }
 
-bool TryCreateComponents(ObjData& data, std::vector<ObjPieceData>& pieces, ModelDecoderParams& arg, std::vector<ModelComponent>& components)
+bool TryCreateComponents(ObjData& data, std::vector<ObjPieceData>& pieces, ModelDecoderParams& arg, std::vector<ModelComponent*>& components)
 {
 	for (int p_index = 0; p_index < pieces.size(); p_index++)
 	{
-		ModelComponent component;
+		ModelComponent* component = ModelComponent::AllocateMemory();
 		Mesh* mesh;
 		TryCreateMesh(data, pieces[p_index], arg, mesh);
-		component.SetMesh(mesh);
+		component->SetMesh(mesh);
 
 		for (int m_index = 0; m_index < arg.Materials->size(); m_index++)
 		{
 			if (pieces[p_index].MaterialName == (*arg.Materials)[m_index].Name)
-				component.SetMaterialInfo((*arg.Materials)[m_index]);
+				component->SetMaterialInfo((*arg.Materials)[m_index]);
 		}
 
-		component.SetName(pieces[p_index].ObjectName.size() != 0 ? pieces[p_index].ObjectName : pieces[p_index].GroupName);
+		component->SetName(pieces[p_index].ObjectName.size() != 0 ? pieces[p_index].ObjectName : pieces[p_index].GroupName);
 		components.push_back(component);
 	}
 
@@ -437,7 +437,7 @@ bool ObjModelStreamDecoder::TryDecode(std::istream& source, Model* output, Model
 	}
 
 	
-	std::vector<ModelComponent> components;
+	std::vector<ModelComponent*> components;
 	if (!TryCreateComponents(data, pieces, arg, components))
 		throw std::runtime_error("Could not create components");
 

@@ -6,7 +6,30 @@
 using namespace Kaleid::Math;
 using namespace Kaleid::Game;
 using namespace Kaleid::Graphics;
+using namespace Kaleid::Helpers;
 
+std::vector<ModelComponent*> ModelComponent::_model_components;
+
+ModelComponent* ModelComponent::AllocateMemory()
+{
+	ModelComponent* model_component = new ModelComponent();
+	ModelComponent::_model_components.push_back(model_component);
+	return model_component;
+}
+
+void ModelComponent::FreeMemory(ModelComponent*& model_component)
+{
+	VectorHelper::RemoveItem(ModelComponent::_model_components, model_component);
+	delete model_component;
+}
+
+void ModelComponent::FreeAllMemory()
+{
+	for (int index = 0; index < ModelComponent::_model_components.size(); index++)
+		delete ModelComponent::_model_components[index];
+
+	ModelComponent::_model_components.clear();
+}
 
 void ModelComponent::SetMesh(Mesh*& mesh)
 {
@@ -57,11 +80,6 @@ const ShaderProgram* ModelComponent::GetShaderProgram() const
 ShaderProgram*& ModelComponent::GetShaderProgram()
 {
 	return this->_shader_program;
-}
-
-Transform* ModelComponent::GetTransform()
-{
-	return &this->_transform;
 }
 
 void ModelComponent::Render(Renderer*& renderer, std::function<void(ShaderProgram*&, Material*)> arguments)

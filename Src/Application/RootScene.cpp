@@ -108,20 +108,22 @@ void RootScene::BuildMesh()
 	mtl_decoder.TryDecode(mtl_stream, &materials, NULL);
 	mtl_stream.close();
 
-	Model model;
+	Model* model = Model::AllocateMemory();
 	const char* obj_path = "Assets\\Models\\USA Power Plant\\USA_PowerPlant_Base.obj";
 	std::ifstream obj_stream;
 	obj_stream.open(obj_path);
 	ObjModelStreamDecoder obj_decoder;
 	obj_params.Materials = &materials;
 	obj_params.ModelDecoderParamsArg = ModelDecoderParamsArg::Center;
-	obj_decoder.TryDecode(obj_stream, &model, obj_params);
+	obj_decoder.TryDecode(obj_stream, model, obj_params);
 	obj_stream.close();
 
-	for (int index = 0; index < model.GetComponents()->size(); index++)
-		(*(model.GetComponents()))[index].SetShaderProgram(this->_program);
+	for (int index = 0; index < model->GetComponents()->size(); index++)
+		(*(model->GetComponents()))[index]->SetShaderProgram(this->_program);
 
 	this->_actor.AddModel("USA_PowerPlant_Base", model);
+
+	this->_actor.GetTransform()->SetRelativePosition(Vector3F(30.0f, 0.0f, 0.0f));
 }
 
 void RootScene::CreateKeyboardBindings()
@@ -152,6 +154,7 @@ void RootScene::Load()
 	this->CreateKeyboardBindings();
 
 	this->_camera.SetPosition(Vector3F(0.0f, 0.0f, 5.0f));
+	this->_camera.SetFarZ(2000.0f);
 
 	this->_o_time = clock();
 }

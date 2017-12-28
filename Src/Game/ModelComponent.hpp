@@ -17,9 +17,12 @@ namespace Kaleid::Graphics
 
 namespace Kaleid::Game
 {
-	class KALEID_GAME_API ModelComponent sealed
+	class KALEID_GAME_API ModelComponent sealed : public Kaleid::Math::TransformableObject
 	{
 	public:
+		static ModelComponent* AllocateMemory();
+		static void FreeMemory(ModelComponent*& model_component);
+		static void FreeAllMemory();
 		void SetMesh(Kaleid::Graphics::Mesh*& mesh);
 		const Kaleid::Graphics::Mesh* GetMesh() const;
 		Kaleid::Graphics::Mesh*& GetMesh();
@@ -30,18 +33,18 @@ namespace Kaleid::Game
 		void SetShaderProgram(Kaleid::Graphics::ShaderProgram*& shader_program);
 		const Kaleid::Graphics::ShaderProgram* GetShaderProgram() const;
 		Kaleid::Graphics::ShaderProgram*& GetShaderProgram();
-		Kaleid::Math::Transform* GetTransform();
 		void Render(Kaleid::Graphics::Renderer*& renderer, std::function<void(Kaleid::Graphics::ShaderProgram*&, Kaleid::Graphics::Material*)> arguments);
 		void SetName(const std::string name);
 		void SetName(const char* name);
 		const std::string& GetName() const;
 	private:
+		inline ModelComponent() { }
+		static std::vector<ModelComponent*> _model_components;
 		std::string _name;
 		Kaleid::Graphics::Mesh* _mesh;
 		Kaleid::Graphics::Material _material;
 		Kaleid::Graphics::MaterialInfo _material_info;
 		Kaleid::Graphics::ShaderProgram* _shader_program;
-		Kaleid::Math::Transform _transform;
 	};
 }
 API_END

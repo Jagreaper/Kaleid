@@ -63,5 +63,13 @@ namespace Kaleid::Math
 		void MarkRotationDirty();
 		void MarkScaleDirty();
 	};
+
+	class KALEID_GAME_API TransformableObject
+	{
+	public:
+		Kaleid::Math::Transform* GetTransform();
+	protected:
+		Kaleid::Math::Transform _transform;
+	};
 }
 API_END

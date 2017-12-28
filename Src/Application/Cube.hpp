@@ -15,7 +15,7 @@ namespace Kaleid::Graphics
 
 namespace Kaleid::Application
 {
-	class Cube
+	class Cube : public Kaleid::Math::TransformableObject
 	{
 	public:
 		Cube();
@@ -24,13 +24,11 @@ namespace Kaleid::Application
 
 		void SetShaderProgram(Kaleid::Graphics::ShaderProgram*& shader_program);
 		Kaleid::Graphics::ShaderProgram* GetShaderProgram();
-		Kaleid::Math::Transform* GetTransform();
 
 		static void Load(Kaleid::Graphics::GraphicsFactory*& graphics_factory);
 		static void Dispose(Kaleid::Graphics::GraphicsFactory*& graphics_factory);
 	private:
 		Kaleid::Graphics::ShaderProgram* _shader_program;
-		Kaleid::Math::Transform _transform;
 
 		static Kaleid::Graphics::Mesh* _mesh;
 	};

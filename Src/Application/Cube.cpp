@@ -30,11 +30,6 @@ ShaderProgram* Cube::GetShaderProgram()
 	return this->_shader_program;
 }
 
-Transform* Cube::GetTransform()
-{
-	return &this->_transform;
-}
-
 void Cube::Load(GraphicsFactory*& graphics_factory)
 {
 	if (Cube::_mesh == NULL)

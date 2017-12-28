@@ -7,6 +7,7 @@
     <ClCompile Include="..\..\..\Src\Game\Model.cpp" />
     <ClCompile Include="..\..\..\Src\Game\Actor.cpp" />
     <ClCompile Include="..\..\..\Src\Game\ModelComponent.cpp" />
+    <ClCompile Include="..\..\..\Src\Game\Terrian.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Src\Game\App.hpp" />
@@ -15,5 +16,6 @@
     <ClInclude Include="..\..\..\Src\Game\Model.hpp" />
     <ClInclude Include="..\..\..\Src\Game\Actor.hpp" />
     <ClInclude Include="..\..\..\Src\Game\ModelComponent.hpp" />
+    <ClInclude Include="..\..\..\Src\Game\Terrian.hpp" />
   </ItemGroup>
 </Project>

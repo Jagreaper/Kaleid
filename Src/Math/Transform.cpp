@@ -273,3 +273,8 @@ void Transform::DettachChild(Transform* child)
 		}
 	}
 }
+
+Kaleid::Math::Transform* TransformableObject::GetTransform()
+{
+	return &this->_transform;
+}
