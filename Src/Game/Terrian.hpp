@@ -5,6 +5,7 @@
 #include "Model.hpp"
 #include <vector>
 
+API_BEGIN
 namespace Kaleid::Game
 {
 	class KALEID_GAME_API Terrian : public ModelObject, public Kaleid::Graphics::RenderableObject
@@ -13,3 +14,4 @@ namespace Kaleid::Game
 		Terrian(float length, float width);
 	};
 }
+API_END

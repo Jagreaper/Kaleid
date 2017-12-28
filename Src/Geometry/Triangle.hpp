@@ -4,6 +4,7 @@
 #include "stdafx.hpp"
 #include "Face.hpp"
 
+API_BEGIN
 namespace Kaleid::Geometry
 {
 	class KALEID_GEOMETRY_API Triangle : public FaceF
@@ -24,3 +25,4 @@ namespace Kaleid::Geometry
 		VertexF GetP3() const;
 	};
 }
+API_END

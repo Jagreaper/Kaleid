@@ -16,6 +16,7 @@ namespace Kaleid::Game
 	class Model;
 }
 
+API_BEGIN
 namespace Kaleid::IO
 {
 	enum class ModelDecoderParamsArg
@@ -36,3 +37,4 @@ namespace Kaleid::IO
 
 	using ModelPathDecoder = DecoderBase<const char*, Kaleid::Game::Model*, ModelDecoderParams&>;
 }
+API_END
