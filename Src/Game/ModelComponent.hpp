@@ -3,6 +3,7 @@
 #include "stdafx.hpp"
 #include "Transform.hpp"
 #include "Material.hpp"
+#include "Renderer.hpp"
 #include <string>
 #include <functional>
 #include <vector>
@@ -12,12 +13,11 @@ namespace Kaleid::Graphics
 {
 	class Mesh;
 	class ShaderProgram;
-	class Renderer;
 }
 
 namespace Kaleid::Game
 {
-	class KALEID_GAME_API ModelComponent sealed : public Kaleid::Math::TransformableObject
+	class KALEID_GAME_API ModelComponent sealed : public Kaleid::Math::TransformableObject, public Kaleid::Graphics::RenderableObject
 	{
 	public:
 		static ModelComponent* AllocateMemory();
@@ -27,9 +27,9 @@ namespace Kaleid::Game
 		const Kaleid::Graphics::Mesh* GetMesh() const;
 		Kaleid::Graphics::Mesh*& GetMesh();
 		void SetMaterial(const Kaleid::Graphics::Material material);
-		const Kaleid::Graphics::Material& GetMaterial() const;
+		Kaleid::Graphics::Material& GetMaterial();
 		void SetMaterialInfo(const Kaleid::Graphics::MaterialInfo material);
-		const Kaleid::Graphics::MaterialInfo& GetMaterialInfo() const;
+		Kaleid::Graphics::MaterialInfo& GetMaterialInfo();
 		void SetShaderProgram(Kaleid::Graphics::ShaderProgram*& shader_program);
 		const Kaleid::Graphics::ShaderProgram* GetShaderProgram() const;
 		Kaleid::Graphics::ShaderProgram*& GetShaderProgram();

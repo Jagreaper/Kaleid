@@ -51,7 +51,7 @@ void ModelComponent::SetMaterial(const Material material)
 	this->_material = material;
 }
 
-const Material& ModelComponent::GetMaterial() const
+Material& ModelComponent::GetMaterial()
 {
 	return this->_material;
 }
@@ -62,7 +62,7 @@ void ModelComponent::SetMaterialInfo(const MaterialInfo material_info)
 	this->_material = material_info.CreateMaterial();
 }
 
-const MaterialInfo& ModelComponent::GetMaterialInfo() const
+MaterialInfo& ModelComponent::GetMaterialInfo()
 {
 	return this->_material_info;
 }

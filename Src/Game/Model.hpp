@@ -4,6 +4,7 @@
 #include "Transform.hpp"
 #include "ModelComponent.hpp"
 #include "Material.hpp"
+#include "Renderer.hpp"
 #include <functional>
 #include <vector>
 
@@ -13,12 +14,11 @@ namespace Kaleid::Graphics
 	class Mesh;
 	class TextureBase;
 	class ShaderProgram;
-	class Renderer;
 }
 
 namespace Kaleid::Game
 {
-	class KALEID_GAME_API Model sealed : public Kaleid::Math::TransformableObject
+	class KALEID_GAME_API Model sealed : public Kaleid::Math::TransformableObject, public Kaleid::Graphics::RenderableObject
 	{
 	public:
 		static Model* AllocateMemory();
@@ -39,12 +39,13 @@ namespace Kaleid::Game
 		std::vector<ModelComponent*> _model_components;
 	};
 
-	class KALEID_GAME_API ModelObject : public Kaleid::Math::TransformableObject
+	class KALEID_GAME_API ModelObject : public Kaleid::Math::TransformableObject, public Kaleid::Graphics::RenderableObject
 	{
 	public:
 		void AddModel(const char* name, Model*& model);
 		void RemoveModel(const char* name);
 		void RemoveModels();
+		virtual void Render(Kaleid::Graphics::Renderer*& renderer, std::function<void(Kaleid::Graphics::ShaderProgram*&, Kaleid::Graphics::Material* material)> arguments);
 	protected:
 		std::unordered_map<const char*, Model*> _models;
 	};

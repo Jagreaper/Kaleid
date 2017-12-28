@@ -7,11 +7,9 @@
 
 namespace Kaleid::Game
 {
-	class KALEID_GAME_API Terrian : public Kaleid::Math::TransformableObject
+	class KALEID_GAME_API Terrian : public ModelObject, public Kaleid::Graphics::RenderableObject
 	{
 	public:
 		Terrian(float length, float width);
-	private:
-		Model* _model;
 	};
 }

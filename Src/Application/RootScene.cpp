@@ -95,10 +95,10 @@ void RootScene::BuildMesh()
 	obj_params.GraphicsFactory = this->_graphics_factory;
 	obj_params.ModelDecoderParamsArg = ModelDecoderParamsArg::Center;
 
-	this->_texture = this->_graphics_factory->CreateTexture();
+	Texture* texture = this->_graphics_factory->CreateTexture();
 	const char* tex_path = "Assets\\Models\\USA Power Plant\\USA_PowerPlant_Base.tga";
 	TexturePathDecoder tex_decoder;
-	tex_decoder.TryDecode(tex_path, this->_texture, NULL);
+	tex_decoder.TryDecode(tex_path, texture, NULL);
 
 	std::vector<MaterialInfo> materials;
 	const char* mtl_path = "Assets\\Models\\USA Power Plant\\USA_PowerPlant_Base.mtl";
@@ -119,7 +119,11 @@ void RootScene::BuildMesh()
 	obj_stream.close();
 
 	for (int index = 0; index < model->GetComponents()->size(); index++)
-		(*(model->GetComponents()))[index]->SetShaderProgram(this->_program);
+	{
+		ModelComponent* component = model->GetComponents()->at(index);
+		component->SetShaderProgram(this->_program);
+		component->GetMaterial().AmbientTexture = component->GetMaterialInfo().AmbientTexture.length() > 0 ? (TextureBase*)texture : NULL;
+	}
 
 	this->_actor.AddModel("USA_PowerPlant_Base", model);
 
@@ -179,11 +183,12 @@ void RootScene::Render()
 	// Render Scene
 	Matrix4F mvp = (&this->_camera)->GetProjectionMatrix() * (&this->_camera)->GetViewMatrix() * this->_actor.GetTransform()->GetModelMatrix();
 	Renderer* renderer = this->_renderer;
-	Texture* texture = this->_texture;
 
 	this->_actor.Render(this->_renderer, [&] (ShaderProgram*& shader_program, Material* material)
 	{
-		renderer->BindTexture((TextureBase*)texture);
+		if (material->AmbientTexture != NULL)
+			renderer->BindTexture(material->AmbientTexture);
+
 		shader_program->SetUniform("mvp", mvp);
 		shader_program->SetUniform("ka", material->AmbientColor);
 		shader_program->SetUniform("ka_tex", 0);

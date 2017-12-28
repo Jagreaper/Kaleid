@@ -104,7 +104,7 @@ std::vector<ModelComponent*>* Model::GetComponents()
 	return &this->_model_components;
 }
 
-void Model::Render(Kaleid::Graphics::Renderer*& renderer, std::function<void(ShaderProgram*&, Material*)> arguments)
+void Model::Render(Renderer*& renderer, std::function<void(ShaderProgram*&, Material*)> arguments)
 {
 	for (int index = 0; index < this->_model_components.size(); index++)
 		this->_model_components[index]->Render(renderer, arguments);
@@ -128,4 +128,10 @@ void ModelObject::RemoveModels()
 		element.second->GetTransform()->DettachParent(this->GetTransform());
 
 	this->_models.clear();
+}
+
+void ModelObject::Render(Renderer*& renderer, std::function<void(ShaderProgram*&, Material* material)> arguments)
+{
+	for (std::pair<const char*, Model*> element : this->_models)
+		element.second->Render(renderer, arguments);
 }

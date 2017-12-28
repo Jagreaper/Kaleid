@@ -7,7 +7,7 @@
 API_BEGIN
 namespace Kaleid::Graphics
 {
-	class Texture;
+	class TextureBase;
 
 	struct Material
 	{
@@ -22,14 +22,14 @@ namespace Kaleid::Graphics
 		Kaleid::Math::Vector3F TransmissionFilter; // Tf
 		unsigned char IlluminationModel; // Illum
 
-		Kaleid::Graphics::Texture* AmbientTexture;
-		Kaleid::Graphics::Texture* DiffuseTexture;
-		Kaleid::Graphics::Texture* SpecularTexture;
-		Kaleid::Graphics::Texture* EmissiveTexture;
-		Kaleid::Graphics::Texture* AlphaTexture;
-		Kaleid::Graphics::Texture* BumpMapTexture;
-		Kaleid::Graphics::Texture* DisplacementTexture;
-		Kaleid::Graphics::Texture* StencilDecalTexture;
+		TextureBase* AmbientTexture;
+		TextureBase* DiffuseTexture;
+		TextureBase* SpecularTexture;
+		TextureBase* EmissiveTexture;
+		TextureBase* AlphaTexture;
+		TextureBase* BumpMapTexture;
+		TextureBase* DisplacementTexture;
+		TextureBase* StencilDecalTexture;
 	};
 
 	struct MaterialInfo

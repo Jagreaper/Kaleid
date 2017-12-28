@@ -34,5 +34,11 @@ namespace Kaleid::Graphics
 #endif
 		bool _use_defaults, _is_loaded;
 	};
+
+	class RenderableObject
+	{
+	public:
+		virtual void Render(Renderer*& renderer, std::function<void(ShaderProgram*&, Material* material)> arguments) = 0;
+	};
 }
 API_END
