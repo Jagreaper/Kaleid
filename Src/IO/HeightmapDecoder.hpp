@@ -2,7 +2,7 @@
 
 #include "stdafx.hpp"
 #include "DecoderBase.hpp"
-#include "ModelStreamDecoder.hpp"
+#include "ModelDecoder.hpp"
 #include <istream>
 
 namespace Kaleid::Game

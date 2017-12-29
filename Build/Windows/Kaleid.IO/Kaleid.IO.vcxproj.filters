@@ -3,19 +3,19 @@
   <ItemGroup>
     <ClCompile Include="..\..\..\Src\Shared\stdafx.cpp" />
     <ClCompile Include="..\..\..\Src\IO\ImageLoader.cpp" />
-    <ClCompile Include="..\..\..\Src\IO\ObjModelStreamDecoder.cpp">
+    <ClCompile Include="..\..\..\Src\IO\ObjModelDecoder.cpp">
       <Filter>Decoders\Models</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Src\IO\MtlMaterialStreamDecoder.cpp">
-      <Filter>Decoders\Materials</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Src\IO\HeightmapPathDecoder.cpp">
+    <ClCompile Include="..\..\..\Src\IO\HeightmapDecoder.cpp">
       <Filter>Decoders\Terrain</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Src\IO\ImagePathDecoder.cpp">
+    <ClCompile Include="..\..\..\Src\IO\MtlMaterialDecoder.cpp">
+      <Filter>Decoders\Materials</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\IO\ImageDecoder.cpp">
       <Filter>Decoders\Images</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Src\IO\TexturePathDecoder.cpp">
+    <ClCompile Include="..\..\..\Src\IO\TextureDecoder.cpp">
       <Filter>Decoders\Textures</Filter>
     </ClCompile>
   </ItemGroup>
@@ -28,25 +28,25 @@
       <Filter>Decoders</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Src\IO\ImageLoader.hpp" />
-    <ClInclude Include="..\..\..\Src\IO\ModelStreamDecoder.hpp">
+    <ClInclude Include="..\..\..\Src\IO\ModelDecoder.hpp">
       <Filter>Decoders\Models</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Src\IO\ObjModelStreamDecoder.hpp">
+    <ClInclude Include="..\..\..\Src\IO\ObjModelDecoder.hpp">
       <Filter>Decoders\Models</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Src\IO\MaterialStreamDecoder.hpp">
-      <Filter>Decoders\Materials</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Src\IO\MtlMaterialStreamDecoder.hpp">
-      <Filter>Decoders\Materials</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Src\IO\HeightmapPathDecoder.hpp">
+    <ClInclude Include="..\..\..\Src\IO\HeightmapDecoder.hpp">
       <Filter>Decoders\Terrain</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Src\IO\ImagePathDecoder.hpp">
+    <ClInclude Include="..\..\..\Src\IO\MtlMaterialDecoder.hpp">
+      <Filter>Decoders\Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\IO\MaterialDecoder.hpp">
+      <Filter>Decoders\Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\IO\ImageDecoder.hpp">
       <Filter>Decoders\Images</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Src\IO\TexturePathDecoder.hpp">
+    <ClInclude Include="..\..\..\Src\IO\TextureDecoder.hpp">
       <Filter>Decoders\Textures</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,11 +1,11 @@
 #include "stdafx.hpp"
-#include "HeightmapPathDecoder.hpp"
+#include "HeightmapDecoder.hpp"
 #include "GraphicsFactory.hpp"
 #include "Mesh.hpp"
 #include "ModelComponent.hpp"
 #include "Model.hpp"
 #include "Vector.hpp"
-#include "ImagePathDecoder.hpp"
+#include "ImageDecoder.hpp"
 #include "Image.hpp"
 #include <string>
 #include <stdexcept>

@@ -2,7 +2,7 @@
 
 #include "stdafx.hpp"
 #include "DecoderBase.hpp"
-#include "MaterialStreamDecoder.hpp"
+#include "MaterialDecoder.hpp"
 #include "Material.hpp"
 #include <istream>
 
@@ -12,5 +12,13 @@ namespace Kaleid::IO
 	{
 	public:
 		bool TryDecode(std::istream& source, std::vector<Kaleid::Graphics::MaterialInfo>* output, void* arg);
+	};
+
+	class KALEID_IO_API MtlMaterialPathDecoder : public MaterialPathDecoder
+	{
+	public:
+		bool TryDecode(const char* source, std::vector<Kaleid::Graphics::MaterialInfo>* output, void* arg);
+	private:
+		MtlMaterialStreamDecoder _stream_decoder;
 	};
 }

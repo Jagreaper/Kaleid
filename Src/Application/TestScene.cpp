@@ -1,6 +1,6 @@
 #include "stdafx.hpp"
 #include "TestScene.hpp"
-#include "ObjModelStreamDecoder.hpp"
+#include "ObjModelDecoder.hpp"
 #include "GraphicsFactory.hpp"
 #include "Shader.hpp"
 #include "ShaderProgram.hpp"

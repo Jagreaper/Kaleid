@@ -1,11 +1,13 @@
 #include "stdafx.hpp"
-#include "MtlMaterialStreamDecoder.hpp"
+#include "MtlMaterialDecoder.hpp"
 #include "StringHelper.hpp"
 #include "VectorHelper.hpp"
 #include "Material.hpp"
 #include "Vector.hpp"
 #include <string>
 #include <vector>
+#include <iostream>
+#include <fstream>
 
 using namespace Kaleid::IO;
 using namespace Kaleid::Graphics;
@@ -183,12 +185,25 @@ bool MtlMaterialStreamDecoder::TryDecode(std::istream& source, std::vector<Kalei
 		}
 		else if (!TryReadLine(line, material))
 		{
+#if DEBUG
 			std::string msg("Could not read line:\n");
 			msg += line;
 			throw std::runtime_error(msg);
+#elif RELEASE
+			return false;
+#endif
 		}
 	}
 
 	output->push_back(material);
 	return true;
+}
+
+bool MtlMaterialPathDecoder::TryDecode(const char* source, std::vector<Kaleid::Graphics::MaterialInfo>* output, void* arg)
+{
+	std::ifstream stream;
+	stream.open(source);
+	bool success = this->_stream_decoder.TryDecode(stream, output, NULL);
+	stream.close();
+	return success;
 }

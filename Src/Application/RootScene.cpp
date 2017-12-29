@@ -1,8 +1,8 @@
 #include "stdafx.hpp"
 #include "RootScene.hpp"
-#include "MtlMaterialStreamDecoder.hpp"
-#include "ObjModelStreamDecoder.hpp"
-#include "TexturePathDecoder.hpp"
+#include "MtlMaterialDecoder.hpp"
+#include "ObjModelDecoder.hpp"
+#include "TextureDecoder.hpp"
 #include "GraphicsFactory.hpp"
 #include "Shader.hpp"
 #include "ShaderProgram.hpp"
@@ -102,21 +102,15 @@ void RootScene::BuildMesh()
 
 	std::vector<MaterialInfo> materials;
 	const char* mtl_path = "Assets\\Models\\USA Power Plant\\USA_PowerPlant_Base.mtl";
-	std::ifstream mtl_stream;
-	mtl_stream.open(mtl_path);
-	MtlMaterialStreamDecoder mtl_decoder;
-	mtl_decoder.TryDecode(mtl_stream, &materials, NULL);
-	mtl_stream.close();
+	MtlMaterialPathDecoder mtl_decoder;
+	mtl_decoder.TryDecode(mtl_path, &materials, NULL);
 
 	Model* model = Model::AllocateMemory();
 	const char* obj_path = "Assets\\Models\\USA Power Plant\\USA_PowerPlant_Base.obj";
-	std::ifstream obj_stream;
-	obj_stream.open(obj_path);
-	ObjModelStreamDecoder obj_decoder;
+	ObjModelPathDecoder obj_decoder;
 	obj_params.Materials = &materials;
 	obj_params.ModelDecoderParamsArg = ModelDecoderParamsArg::Center;
-	obj_decoder.TryDecode(obj_stream, model, obj_params);
-	obj_stream.close();
+	obj_decoder.TryDecode(obj_path, model, obj_params);
 
 	for (int index = 0; index < model->GetComponents()->size(); index++)
 	{

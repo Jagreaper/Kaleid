@@ -1,5 +1,5 @@
 #include "stdafx.hpp"
-#include "ObjModelStreamDecoder.hpp"
+#include "ObjModelDecoder.hpp"
 #include "GraphicsFactory.hpp"
 #include "Model.hpp"
 #include "StringHelper.hpp"
@@ -13,6 +13,8 @@
 #include <string>
 #include <stdexcept>
 #include <limits>
+#include <iostream>
+#include <fstream>
 
 using namespace Kaleid::IO;
 using namespace Kaleid::Math;
@@ -443,4 +445,13 @@ bool ObjModelStreamDecoder::TryDecode(std::istream& source, Model* output, Model
 
 	output->AddComponents(components);
 	return true;
+}
+
+bool ObjModelPathDecoder::TryDecode(const char* source, Kaleid::Game::Model* output, ModelDecoderParams& arg)
+{
+	std::ifstream stream;
+	stream.open(source);
+	bool success = this->_stream_decoder.TryDecode(stream, output, arg);
+	stream.close();
+	return success;
 }

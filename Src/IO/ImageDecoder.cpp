@@ -1,5 +1,5 @@
 #include "stdafx.hpp"
-#include "ImagePathDecoder.hpp"
+#include "ImageDecoder.hpp"
 #include "ImageLoader.hpp"
 #include "Image.hpp"
 #include "STB\stb_image.h"

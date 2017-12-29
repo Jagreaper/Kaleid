@@ -1,5 +1,5 @@
 #include "stdafx.hpp"
-#include "TexturePathDecoder.hpp"
+#include "TextureDecoder.hpp"
 #include "Texture.hpp"
 #include "ImageLoader.hpp"
 #include "STB\stb_image.h"
