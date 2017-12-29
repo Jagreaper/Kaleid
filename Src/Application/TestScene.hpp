@@ -17,7 +17,6 @@ namespace Kaleid::Application
 		void Update();
 		void Render();
 		void Dispose();
-		double GetDeltaTime();
 	private:
 		void BuildShaderProgram();
 		void BuildMesh();
@@ -25,9 +24,5 @@ namespace Kaleid::Application
 
 		Kaleid::Math::PerspectiveCamera _camera;
 		Cube _cube;
-
-		clock_t _o_time;
-		clock_t _n_time;
-		double _delta_time;
 	};
 }

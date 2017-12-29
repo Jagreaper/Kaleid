@@ -146,11 +146,6 @@ void RootScene::CreateKeyboardBindings()
 	this->_keyboard.Add(KeyBinding(KeyCode::Escape, KeyBindingState::Pressed, [&] { this->_app->Close(); }));
 }
 
-double RootScene::GetDeltaTime()
-{
-	return this->_delta_time;
-}
-
 void RootScene::Load()
 {
 	this->BuildShaderProgram();
@@ -160,14 +155,12 @@ void RootScene::Load()
 	this->_camera.SetPosition(Vector3F(0.0f, 0.0f, 5.0f));
 	this->_camera.SetFarZ(2000.0f);
 
-	this->_o_time = clock();
+	this->SceneBase::Load();
 }
 
 void RootScene::Update()
 {
-	this->_n_time = clock();
-	this->_delta_time = (double)(this->_n_time - this->_o_time) / CLOCKS_PER_SEC;
-	this->_o_time = this->_n_time;
+	this->SceneBase::Update();
 }
 
 void RootScene::Render()
