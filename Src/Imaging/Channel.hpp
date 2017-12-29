@@ -2,7 +2,6 @@
 
 #include "stdafx.hpp"
 
-API_BEGIN
 namespace Kaleid::Imaging
 {
 	enum ChannelType
@@ -31,4 +30,3 @@ namespace Kaleid::Imaging
 		ChannelInfo _channel_info;
 	};
 }
-API_END

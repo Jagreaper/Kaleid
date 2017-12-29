@@ -8,7 +8,6 @@
 #include <functional>
 #include <vector>
 
-API_BEGIN
 namespace Kaleid::Graphics
 {
 	class Mesh;
@@ -47,4 +46,3 @@ namespace Kaleid::Game
 		Kaleid::Graphics::ShaderProgram* _shader_program;
 	};
 }
-API_END

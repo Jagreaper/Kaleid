@@ -4,7 +4,6 @@
 #include <vector>
 #include <functional>
 
-API_BEGIN
 namespace Kaleid::Graphics
 {
 	enum PrimitiveType
@@ -57,4 +56,3 @@ namespace Kaleid::Graphics
 		friend class Renderer;
 	};
 }
-API_END

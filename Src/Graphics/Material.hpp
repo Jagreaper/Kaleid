@@ -4,7 +4,6 @@
 #include "Vector.hpp"
 #include <string>
 
-API_BEGIN
 namespace Kaleid::Graphics
 {
 	class TextureBase;
@@ -71,4 +70,3 @@ namespace Kaleid::Graphics
 		}
 	};
 }
-API_END

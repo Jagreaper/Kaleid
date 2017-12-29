@@ -9,7 +9,6 @@ namespace Kaleid::Graphics
 	class Window;
 }
 
-API_BEGIN
 namespace Kaleid::Input
 {
 	class KALEID_INPUT_API Keyboard
@@ -28,4 +27,3 @@ namespace Kaleid::Input
 		std::vector<KeyBinding> _key_bindings;
 	};
 }
-API_END

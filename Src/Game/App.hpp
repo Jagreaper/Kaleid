@@ -4,7 +4,6 @@
 #include <vector>
 #include <functional>
 
-API_BEGIN
 namespace Kaleid::Graphics
 {
 	class Window;
@@ -48,4 +47,3 @@ namespace Kaleid::Game
 		bool _is_running;
 	};
 }
-API_END

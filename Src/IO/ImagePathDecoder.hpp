@@ -8,7 +8,6 @@ namespace Kaleid::Imaging
 	class Image;
 }
 
-API_BEGIN
 namespace Kaleid::IO
 {
 	class KALEID_IO_API ImagePathDecoder : public DecoderBase<const char*, Kaleid::Imaging::Image*, void*>
@@ -17,4 +16,3 @@ namespace Kaleid::IO
 		bool TryDecode(const char* source, Kaleid::Imaging::Image* output, void* arg);
 	};
 }
-API_END

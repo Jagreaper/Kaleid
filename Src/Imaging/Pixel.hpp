@@ -4,7 +4,6 @@
 #include "Channel.hpp"
 #include <vector>
 
-API_BEGIN
 namespace Kaleid::Imaging
 {
 	class KALEID_IMAGING_API Pixel
@@ -22,4 +21,3 @@ namespace Kaleid::Imaging
 		unsigned int _data_length;
 	};
 }
-API_END

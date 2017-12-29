@@ -2,7 +2,6 @@
 
 #include "stdafx.hpp"
 
-API_BEGIN
 namespace Kaleid::Graphics
 {
 	enum BufferUsage
@@ -36,4 +35,3 @@ namespace Kaleid::Graphics
 		friend class Mesh;
 	};
 }
-API_END

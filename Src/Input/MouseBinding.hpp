@@ -39,7 +39,6 @@ namespace Kaleid::Input
 
 	class Mouse;
 
-	API_BEGIN
 	class KALEID_INPUT_API MouseBinding
 	{
 	public:
@@ -51,5 +50,4 @@ namespace Kaleid::Input
 		std::function<void(double, double)> _action;
 		char _old_glfw_state;
 	};
-	API_END
 }

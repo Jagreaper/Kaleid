@@ -5,7 +5,6 @@
 #include "Mouse.hpp"
 #include <ctime>
 
-API_BEGIN
 namespace Kaleid::Graphics
 {
 	class Renderer;
@@ -38,4 +37,3 @@ namespace Kaleid::Game
 		double _delta_time;
 	};
 }
-API_END

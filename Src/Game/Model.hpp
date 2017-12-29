@@ -8,7 +8,6 @@
 #include <functional>
 #include <vector>
 
-API_BEGIN
 namespace Kaleid::Graphics
 {
 	class Mesh;
@@ -50,4 +49,3 @@ namespace Kaleid::Game
 		std::unordered_map<const char*, Model*> _models;
 	};
 }
-API_END

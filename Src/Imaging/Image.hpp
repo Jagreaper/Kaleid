@@ -5,7 +5,6 @@
 #include "Pixel.hpp"
 #include <vector>
 
-API_BEGIN
 namespace Kaleid::Imaging
 {
 	class KALEID_IMAGING_API Image
@@ -43,4 +42,3 @@ namespace Kaleid::Imaging
 		unsigned int _pixel_length;
 	};
 }
-API_END

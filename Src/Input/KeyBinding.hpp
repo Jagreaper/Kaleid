@@ -143,7 +143,6 @@ namespace Kaleid::Input
 		NotHeld,
 	};
 
-	API_BEGIN
 	class KALEID_INPUT_API KeyBinding
 	{
 	public:
@@ -155,5 +154,4 @@ namespace Kaleid::Input
 		std::function<void()> _action;
 		char _old_glfw_state;
 	};
-	API_END
 }

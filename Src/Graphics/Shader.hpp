@@ -2,7 +2,6 @@
 
 #include "stdafx.hpp"
 
-API_BEGIN
 namespace Kaleid::Graphics
 {
 	enum ShaderType
@@ -32,4 +31,3 @@ namespace Kaleid::Graphics
 		friend class ShaderProgram;
 	};
 }
-API_END

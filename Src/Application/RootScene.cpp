@@ -172,8 +172,6 @@ void RootScene::Render()
 	this->_renderer->Clear(0.0f, 0.0f, 0.0f, 1.0f);
 	this->_renderer->SetViewport(0.0f, 0.0f, width, height);
 
-	//this->_renderer->SetWireframeMode(true);
-	// Render Scene
 	Matrix4F mvp = (&this->_camera)->GetProjectionMatrix() * (&this->_camera)->GetViewMatrix() * this->_actor.GetTransform()->GetModelMatrix();
 	Renderer* renderer = this->_renderer;
 

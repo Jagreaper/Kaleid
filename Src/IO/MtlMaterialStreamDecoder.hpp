@@ -6,7 +6,6 @@
 #include "Material.hpp"
 #include <istream>
 
-API_BEGIN
 namespace Kaleid::IO
 {
 	class KALEID_IO_API MtlMaterialStreamDecoder : public MaterialStreamDecoder
@@ -15,4 +14,3 @@ namespace Kaleid::IO
 		bool TryDecode(std::istream& source, std::vector<Kaleid::Graphics::MaterialInfo>* output, void* arg);
 	};
 }
-API_END

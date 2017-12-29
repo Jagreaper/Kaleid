@@ -3,7 +3,6 @@
 #include "stdafx.hpp"
 #include <vector>
 
-API_BEGIN
 namespace Kaleid::Graphics
 {
 	class Window;
@@ -87,4 +86,3 @@ namespace Kaleid::Graphics
 		static std::vector<TextureBase*> _textures;
 	};
 }
-API_END

@@ -5,7 +5,6 @@
 #include "ModelStreamDecoder.hpp"
 #include <istream>
 
-API_BEGIN
 namespace Kaleid::Game
 {
 	class Model;
@@ -19,4 +18,3 @@ namespace Kaleid::IO
 		bool TryDecode(const char* source, Kaleid::Game::Model* output, ModelDecoderParams& arg);
 	};
 }
-API_END

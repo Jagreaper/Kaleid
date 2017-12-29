@@ -3,7 +3,6 @@
 #include "stdafx.hpp"
 #include "TextureBase.hpp"
 
-API_BEGIN
 namespace Kaleid::Graphics
 {
 	class GraphicsFactory;
@@ -18,4 +17,3 @@ namespace Kaleid::Graphics
 		friend class GraphicsFactory;
 	};
 }
-API_END

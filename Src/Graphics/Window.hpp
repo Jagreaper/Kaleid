@@ -2,7 +2,6 @@
 
 #include "stdafx.hpp"
 
-API_BEGIN
 namespace Kaleid::Graphics
 {
 	class GraphicsFactory;
@@ -73,4 +72,3 @@ namespace Kaleid::Graphics
 #endif
 	};
 }
-API_END

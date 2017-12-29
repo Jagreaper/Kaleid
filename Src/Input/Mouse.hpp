@@ -9,7 +9,6 @@ namespace Kaleid::Graphics
 	class Window;
 }
 
-API_BEGIN
 namespace Kaleid::Input
 {
 	class KALEID_INPUT_API Mouse
@@ -42,4 +41,3 @@ namespace Kaleid::Input
 		friend class MouseBinding;
 	};
 }
-API_END

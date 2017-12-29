@@ -65,3 +65,13 @@ Matrix4F PerspectiveCamera::GetProjectionMatrix()
 
 	return this->_projection_matrix;
 }
+
+bool PerspectiveCamera::IsPerspective()
+{
+	return true;
+}
+
+bool PerspectiveCamera::IsOrthographic()
+{
+	return false;
+}

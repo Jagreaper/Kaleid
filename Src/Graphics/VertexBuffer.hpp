@@ -4,7 +4,6 @@
 #include "BufferBase.hpp"
 #include <vector>
 
-API_BEGIN
 namespace Kaleid::Graphics
 {
 	class Renderer;
@@ -37,4 +36,3 @@ namespace Kaleid::Graphics
 		friend class Renderer;
 	};
 }
-API_END

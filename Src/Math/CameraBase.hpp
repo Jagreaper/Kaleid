@@ -4,10 +4,9 @@
 #include "Vector.hpp"
 #include "Matrix.hpp"
 
-API_BEGIN
 namespace Kaleid::Math
 {
-	class KALEID_MATH_API CameraBase abstract
+	class KALEID_MATH_API CameraBase
 	{
 	public:
 		CameraBase();
@@ -31,6 +30,8 @@ namespace Kaleid::Math
 
 		virtual Matrix4F GetProjectionMatrix() = 0;
 		Matrix4F GetViewMatrix();
+		virtual bool IsPerspective() = 0;
+		virtual bool IsOrthographic() = 0;
 	protected:
 		void NormalizeRotation();
 
@@ -46,4 +47,3 @@ namespace Kaleid::Math
 		float _aspect_ratio;
 	};
 }
-API_END

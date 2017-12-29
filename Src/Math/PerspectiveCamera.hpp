@@ -3,10 +3,9 @@
 #include "stdafx.hpp"
 #include "CameraBase.hpp"
 
-API_BEGIN
 namespace Kaleid::Math
 {
-	class KALEID_MATH_API PerspectiveCamera sealed : public CameraBase
+	class KALEID_MATH_API PerspectiveCamera : public CameraBase
 	{
 	public:
 		PerspectiveCamera();
@@ -21,10 +20,11 @@ namespace Kaleid::Math
 		void SetFarZ(float z_far);
 
 		Matrix4F GetProjectionMatrix();
+		bool IsPerspective();
+		bool IsOrthographic();
 	private:
 		float _z_near;
 		float _z_far;
 		float _fov;
 	};
 }
-API_END

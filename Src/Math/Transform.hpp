@@ -5,7 +5,6 @@
 #include "Vector.hpp"
 #include <vector>
 
-API_BEGIN
 namespace Kaleid::Math
 {
 	class KALEID_MATH_API Transform sealed
@@ -72,4 +71,3 @@ namespace Kaleid::Math
 		Kaleid::Math::Transform _transform;
 	};
 }
-API_END

@@ -5,7 +5,6 @@
 #include <vector>
 #include <functional>
 
-API_BEGIN
 namespace Kaleid::Graphics
 {
 	class Mesh;
@@ -41,4 +40,3 @@ namespace Kaleid::Graphics
 		virtual void Render(Renderer*& renderer, std::function<void(ShaderProgram*&, Material* material)> arguments) = 0;
 	};
 }
-API_END
