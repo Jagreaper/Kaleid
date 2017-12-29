@@ -68,9 +68,14 @@ void RootScene::BuildShaderProgram()
 	uniform vec3 ka;
 	uniform sampler2D ka_tex;
 
+	uniform bool has_ka_tex;
+
 	void main()
 	{
-		frag_colour = texture2D(ka_tex, texel) * vec4(ka.x, ka.y, ka.z, 1.0);
+		if (has_ka_tex == true)
+			frag_colour = texture2D(ka_tex, texel) * vec4(ka.x, ka.y, ka.z, 1.0);
+		else
+			frag_colour = vec4(ka.x, ka.y, ka.z, 1.0);
 	}
 
 	)";
@@ -172,11 +177,17 @@ void RootScene::Render()
 	this->_actor.Render(this->_renderer, [&] (ShaderProgram*& shader_program, Material* material)
 	{
 		if (material->AmbientTexture != NULL)
+		{
 			renderer->BindTexture(material->AmbientTexture);
+			shader_program->SetUniform("ka_tex", 0);
+			shader_program->SetUniform("has_ka_tex", true);
+		}
+		else
+			shader_program->SetUniform("has_ka_tex", false);
+
 
 		shader_program->SetUniform("mvp", mvp);
 		shader_program->SetUniform("ka", material->AmbientColor);
-		shader_program->SetUniform("ka_tex", 0);
 	});
 
 	// Cleanup Scene

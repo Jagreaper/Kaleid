@@ -66,10 +66,12 @@ void Renderer::SetWireframeMode(bool enabled)
 
 void Renderer::BindTexture(TextureBase* tex, int level)
 {
-	glActiveTexture(GL_TEXTURE0 + level);
-	glBindTexture(tex->_type_info, tex->_id);
+	if (tex != NULL)
+	{
+		glActiveTexture(GL_TEXTURE0 + level);
+		glBindTexture(tex->_type_info, tex->_id);
+	}
 }
-
 
 void Renderer::BindTextures(std::vector<TextureBase*>& textures)
 {
