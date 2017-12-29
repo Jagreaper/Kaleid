@@ -8,6 +8,8 @@
     <ClCompile Include="..\..\..\Src\Game\Actor.cpp" />
     <ClCompile Include="..\..\..\Src\Game\ModelComponent.cpp" />
     <ClCompile Include="..\..\..\Src\Game\Terrian.cpp" />
+    <ClCompile Include="..\..\..\Src\Game\Cube.cpp" />
+    <ClCompile Include="..\..\..\Src\Game\Quad.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Src\Game\App.hpp" />
@@ -17,5 +19,7 @@
     <ClInclude Include="..\..\..\Src\Game\Actor.hpp" />
     <ClInclude Include="..\..\..\Src\Game\ModelComponent.hpp" />
     <ClInclude Include="..\..\..\Src\Game\Terrian.hpp" />
+    <ClInclude Include="..\..\..\Src\Game\Cube.hpp" />
+    <ClInclude Include="..\..\..\Src\Game\Quad.hpp" />
   </ItemGroup>
 </Project>

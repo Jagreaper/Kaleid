@@ -23,6 +23,6 @@ namespace Kaleid::Application
 		void CreateKeyboardBindings();
 
 		Kaleid::Math::PerspectiveCamera _camera;
-		Cube _cube;
+		Kaleid::Game::Cube _cube;
 	};
 }

@@ -79,7 +79,7 @@ void TestScene::BuildShaderProgram()
 
 void TestScene::BuildMesh()
 {
-	Cube::Load(this->_graphics_factory);
+	Cube::CreateMesh(this->_graphics_factory);
 }
 
 void TestScene::CreateKeyboardBindings()
@@ -138,6 +138,6 @@ void TestScene::Render()
 
 void TestScene::Dispose()
 {
-	Cube::Dispose(this->_graphics_factory);
+	Cube::FreeMesh(this->_graphics_factory);
 	this->_graphics_factory->FreeShaderProgram(this->_cube.GetShaderProgram());
 }

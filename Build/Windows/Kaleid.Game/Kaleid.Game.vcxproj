@@ -164,8 +164,10 @@
   <ItemGroup>
     <ClCompile Include="..\..\..\Src\Game\Actor.cpp" />
     <ClCompile Include="..\..\..\Src\Game\App.cpp" />
+    <ClCompile Include="..\..\..\Src\Game\Cube.cpp" />
     <ClCompile Include="..\..\..\Src\Game\Model.cpp" />
     <ClCompile Include="..\..\..\Src\Game\ModelComponent.cpp" />
+    <ClCompile Include="..\..\..\Src\Game\Quad.cpp" />
     <ClCompile Include="..\..\..\Src\Game\SceneBase.cpp" />
     <ClCompile Include="..\..\..\Src\Game\Terrian.cpp" />
     <ClCompile Include="..\..\..\Src\Shared\stdafx.cpp">
@@ -178,8 +180,10 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\Src\Game\Actor.hpp" />
     <ClInclude Include="..\..\..\Src\Game\App.hpp" />
+    <ClInclude Include="..\..\..\Src\Game\Cube.hpp" />
     <ClInclude Include="..\..\..\Src\Game\Model.hpp" />
     <ClInclude Include="..\..\..\Src\Game\ModelComponent.hpp" />
+    <ClInclude Include="..\..\..\Src\Game\Quad.hpp" />
     <ClInclude Include="..\..\..\Src\Game\SceneBase.hpp" />
     <ClInclude Include="..\..\..\Src\Game\Terrian.hpp" />
     <ClInclude Include="..\..\..\Src\Shared\stdafx.hpp" />

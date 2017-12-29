@@ -13,9 +13,9 @@ namespace Kaleid::Graphics
 	class GraphicsFactory;
 }
 
-namespace Kaleid::Application
+namespace Kaleid::Game
 {
-	class Cube : public Kaleid::Math::TransformableObject
+	class KALEID_GAME_API Cube : public Kaleid::Math::TransformableObject
 	{
 	public:
 		Cube();
@@ -25,11 +25,14 @@ namespace Kaleid::Application
 		void SetShaderProgram(Kaleid::Graphics::ShaderProgram*& shader_program);
 		Kaleid::Graphics::ShaderProgram* GetShaderProgram();
 
-		static void Load(Kaleid::Graphics::GraphicsFactory*& graphics_factory);
-		static void Dispose(Kaleid::Graphics::GraphicsFactory*& graphics_factory);
+		static bool MeshExists();
+		static Kaleid::Graphics::Mesh* CreateMesh(Kaleid::Graphics::GraphicsFactory*& graphics_factory);
+		static Kaleid::Graphics::Mesh* GetMesh();
+		static void FreeMesh(Kaleid::Graphics::GraphicsFactory*& graphics_factory);
 	private:
 		Kaleid::Graphics::ShaderProgram* _shader_program;
 
+		static bool _mesh_exists;
 		static Kaleid::Graphics::Mesh* _mesh;
 	};
 }
