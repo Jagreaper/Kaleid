@@ -5,26 +5,34 @@
 
 using namespace Kaleid::Input;
 
-MouseMoveBinding::MouseMoveBinding(const MouseMoveType _type, const MouseMoveBindingState state, const std::function<void(double, double)> action)
+MouseMoveBinding::MouseMoveBinding(const MouseMoveType type, const std::function<void(double, double)> action)
 {
-	this->_state = state;
+	this->_type = type;
 	this->_action = action;
 }
 
 void MouseMoveBinding::Poll(Kaleid::Graphics::Window*& window, Mouse* mouse)
 {
-	double x = this->_type == MouseMoveType::Normal ? mouse->_xpos : mouse->_delta_xpos;
-	double y = this->_type == MouseMoveType::Normal ? mouse->_ypos : mouse->_delta_ypos;
-
-	switch (this->_state)
+	double x, y;
+	switch (this->_type)
 	{
-	case MouseMoveBindingState::Centered:
-		this->_action(x, y);
+	case MouseMoveType::Normal:
+		x = mouse->_xpos;
+		y = mouse->_ypos;
 		break;
-	case MouseMoveBindingState::Normal:
-		this->_action(x, y);
+	case MouseMoveType::Delta:
+		x = mouse->_delta_xpos;
+		y = mouse->_delta_ypos;
+		break;
+	case MouseMoveType::CenteredDelta:
+		unsigned int wx, wy;
+		window->GetSize(&wx, &wy);
+		x = mouse->_xpos - ((float)wx / 2.0f);
+		y = mouse->_ypos - ((float)wy / 2.0f);
 		break;
 	default:
 		break;
 	}
+
+	this->_action(x, y);
 }

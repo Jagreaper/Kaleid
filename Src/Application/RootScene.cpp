@@ -145,7 +145,7 @@ void RootScene::CreateKeyboardBindings()
 	this->_keyboard.Add(KeyBinding(KeyCode::Space, KeyBindingState::Held, [&] { this->_camera.TranslatePosition(this->_camera.GetUp() * 20.0f * (float)this->GetDeltaTime()); }));
 	this->_keyboard.Add(KeyBinding(KeyCode::LeftControl, KeyBindingState::Held, [&] { this->_camera.TranslatePosition(-this->_camera.GetUp() * 20.0f * (float)this->GetDeltaTime()); }));
 
-	this->_mouse.Add(MouseMoveBinding(MouseMoveType::Delta, MouseMoveBindingState::Normal, std::bind(&RootScene::CameraMouseMovement, this, std::placeholders::_1, std::placeholders::_2)));
+	this->_mouse.Add(MouseMoveBinding(MouseMoveType::CenteredDelta, std::bind(&RootScene::CameraMouseMovement, this, std::placeholders::_1, std::placeholders::_2)));
 	this->_keyboard.Add(KeyBinding(KeyCode::Left, KeyBindingState::Held, [&] { this->_camera.TranslateRotation(Vector3F(0.0f, -60.0f * this->GetDeltaTime(), 0.0f)); }));
 	this->_keyboard.Add(KeyBinding(KeyCode::Right, KeyBindingState::Held, [&] { this->_camera.TranslateRotation(Vector3F(0.0f, 60.0f * this->GetDeltaTime(), 0.0f)); }));
 	this->_keyboard.Add(KeyBinding(KeyCode::Up, KeyBindingState::Held, [&] { this->_camera.TranslateRotation(Vector3F(-60.0f * this->GetDeltaTime(), 0.0f, 0.0f)); }));
@@ -169,6 +169,7 @@ void RootScene::Load()
 
 void RootScene::Update()
 {
+	this->_app->GetWindow(0)->CenterCursor();
 	//this->CameraMouseMovement(this->_mouse.GetDeltaPositionX(), this->_mouse.GetDeltaPositionY());
 	this->SceneBase::Update();
 }

@@ -16,22 +16,16 @@ namespace Kaleid::Input
 	{
 		Normal,
 		Delta,
-	};
-
-	enum class MouseMoveBindingState
-	{
-		Normal,
-		Centered,
+		CenteredDelta,
 	};
 
 	class KALEID_INPUT_API MouseMoveBinding
 	{
 	public:
-		MouseMoveBinding(const MouseMoveType _type, const MouseMoveBindingState state, const std::function<void(double, double)> action);
+		MouseMoveBinding(const MouseMoveType type, const std::function<void(double, double)> action);
 		void Poll(Kaleid::Graphics::Window*& window, Mouse* mouse);
 	protected:
 		MouseMoveType _type;
-		MouseMoveBindingState _state;
 		std::function<void(double, double)> _action;
 		char _old_glfw_state;
 	};
