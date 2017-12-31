@@ -20,7 +20,13 @@ namespace Kaleid::Application
 		void BuildShaderProgram();
 		void BuildMesh();
 		void CreateKeyboardBindings();
-		
+		void CameraMouseMovement(const double& x_delta, const double& y_delta);
+
+		double _xpos_old;
+		double _ypos_old;
+		double _xpos_new;
+		double _ypos_new;
+
 		Kaleid::Graphics::ShaderProgram* _program;
 		Kaleid::Game::Actor _actor;
 		Kaleid::Math::PerspectiveCamera _camera;

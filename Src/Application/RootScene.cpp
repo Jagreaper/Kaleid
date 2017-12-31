@@ -14,6 +14,7 @@
 #include "Matrix.hpp"
 #include "Keyboard.hpp"
 #include "KeyBinding.hpp"
+#include "MouseMoveBinding.hpp"
 #include "VectorHelper.hpp"
 #include "Image.hpp"
 #include <iostream>
@@ -129,6 +130,12 @@ void RootScene::BuildMesh()
 	this->_actor.GetTransform()->SetRelativePosition(Vector3F(30.0f, 0.0f, 0.0f));
 }
 
+void RootScene::CameraMouseMovement(const double& x_delta, const double& y_delta)
+{
+	Vector3F vec(y_delta * 60.0 * this->GetDeltaTime(), x_delta * 60.0 * this->GetDeltaTime(), 0.0f);
+	this->_camera.TranslateRotation(vec);
+}
+
 void RootScene::CreateKeyboardBindings()
 {
 	this->_keyboard.Add(KeyBinding(KeyCode::W, KeyBindingState::Held, [&] { this->_camera.TranslatePosition(this->_camera.GetForward() * 20.0f * (float)this->GetDeltaTime()); }));
@@ -138,6 +145,7 @@ void RootScene::CreateKeyboardBindings()
 	this->_keyboard.Add(KeyBinding(KeyCode::Space, KeyBindingState::Held, [&] { this->_camera.TranslatePosition(this->_camera.GetUp() * 20.0f * (float)this->GetDeltaTime()); }));
 	this->_keyboard.Add(KeyBinding(KeyCode::LeftControl, KeyBindingState::Held, [&] { this->_camera.TranslatePosition(-this->_camera.GetUp() * 20.0f * (float)this->GetDeltaTime()); }));
 
+	this->_mouse.Add(MouseMoveBinding(MouseMoveType::Delta, MouseMoveBindingState::Normal, std::bind(&RootScene::CameraMouseMovement, this, std::placeholders::_1, std::placeholders::_2)));
 	this->_keyboard.Add(KeyBinding(KeyCode::Left, KeyBindingState::Held, [&] { this->_camera.TranslateRotation(Vector3F(0.0f, -60.0f * this->GetDeltaTime(), 0.0f)); }));
 	this->_keyboard.Add(KeyBinding(KeyCode::Right, KeyBindingState::Held, [&] { this->_camera.TranslateRotation(Vector3F(0.0f, 60.0f * this->GetDeltaTime(), 0.0f)); }));
 	this->_keyboard.Add(KeyBinding(KeyCode::Up, KeyBindingState::Held, [&] { this->_camera.TranslateRotation(Vector3F(-60.0f * this->GetDeltaTime(), 0.0f, 0.0f)); }));
@@ -154,11 +162,14 @@ void RootScene::Load()
 	this->_camera.SetPosition(Vector3F(0.0f, 0.0f, 5.0f));
 	this->_camera.SetFarZ(2000.0f);
 
+	this->_mouse.GetPosition(&this->_xpos_old, &this->_ypos_old);
+
 	this->SceneBase::Load();
 }
 
 void RootScene::Update()
 {
+	//this->CameraMouseMovement(this->_mouse.GetDeltaPositionX(), this->_mouse.GetDeltaPositionY());
 	this->SceneBase::Update();
 }
 

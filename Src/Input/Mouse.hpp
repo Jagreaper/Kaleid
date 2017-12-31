@@ -1,7 +1,8 @@
 #pragma once
 
 #include "stdafx.hpp"
-#include "MouseBinding.hpp"
+#include "MouseMoveBinding.hpp"
+#include "MouseClickBinding.hpp"
 #include <vector>
 
 namespace Kaleid::Graphics
@@ -15,11 +16,16 @@ namespace Kaleid::Input
 	{
 	public:
 		Mouse();
-		Mouse(const std::vector<MouseBinding>& mouse_bindings);
-		Mouse(const std::vector<MouseBinding>* mouse_bindings);
-		void Add(MouseBinding& mouse_binding);
-		void Add(const std::vector<MouseBinding>& mouse_bindings);
-		void Add(const std::vector<MouseBinding>* mouse_bindings);
+		Mouse(const std::vector<MouseMoveBinding>& mouse_bindings);
+		Mouse(const std::vector<MouseMoveBinding>* mouse_bindings);
+		Mouse(const std::vector<MouseClickBinding>& mouse_bindings);
+		Mouse(const std::vector<MouseClickBinding>* mouse_bindings);
+		void Add(MouseMoveBinding& mouse_binding);
+		void Add(MouseClickBinding& mouse_binding);
+		void Add(const std::vector<MouseMoveBinding>& mouse_bindings);
+		void Add(const std::vector<MouseMoveBinding>* mouse_bindings);
+		void Add(const std::vector<MouseClickBinding>& mouse_bindings);
+		void Add(const std::vector<MouseClickBinding>* mouse_bindings);
 		void Remove(const unsigned int index);
 		void Clear();
 		void Poll(Kaleid::Graphics::Window*& window);
@@ -30,7 +36,8 @@ namespace Kaleid::Input
 		const double& GetDeltaPositionX() const;
 		const double& GetDeltaPositionY() const;
 	private:
-		std::vector<MouseBinding> _mouse_bindings;
+		std::vector<MouseMoveBinding> _mouse_move_bindings;
+		std::vector<MouseClickBinding> _mouse_click_bindings;
 		double _xpos;
 		double _ypos;
 		double _old_xpos;
@@ -38,6 +45,6 @@ namespace Kaleid::Input
 		double _delta_xpos;
 		double _delta_ypos;
 
-		friend class MouseBinding;
+		friend class MouseMoveBinding;
 	};
 }

@@ -177,7 +177,8 @@
     <ClCompile Include="..\..\..\Src\Input\KeyBinding.cpp" />
     <ClCompile Include="..\..\..\Src\Input\Keyboard.cpp" />
     <ClCompile Include="..\..\..\Src\Input\Mouse.cpp" />
-    <ClCompile Include="..\..\..\Src\Input\MouseBinding.cpp" />
+    <ClCompile Include="..\..\..\Src\Input\MouseClickBinding.cpp" />
+    <ClCompile Include="..\..\..\Src\Input\MouseMoveBinding.cpp" />
     <ClCompile Include="..\..\..\Src\Shared\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -189,7 +190,8 @@
     <ClInclude Include="..\..\..\Src\Input\KeyBinding.hpp" />
     <ClInclude Include="..\..\..\Src\Input\Keyboard.hpp" />
     <ClInclude Include="..\..\..\Src\Input\Mouse.hpp" />
-    <ClInclude Include="..\..\..\Src\Input\MouseBinding.hpp" />
+    <ClInclude Include="..\..\..\Src\Input\MouseClickBinding.hpp" />
+    <ClInclude Include="..\..\..\Src\Input\MouseMoveBinding.hpp" />
     <ClInclude Include="..\..\..\Src\Shared\stdafx.hpp" />
   </ItemGroup>
   <ItemGroup>

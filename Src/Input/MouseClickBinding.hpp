@@ -10,7 +10,9 @@ namespace Kaleid::Graphics
 
 namespace Kaleid::Input
 {
-	enum MouseCode
+	class Mouse;
+
+	enum MouseClickCode
 	{
 		MouseButton1 = 0,
 		MouseButton2 = 1,
@@ -28,7 +30,7 @@ namespace Kaleid::Input
 		Moved = 9,
 	};
 
-	enum MouseBindingState
+	enum MouseClickBindingState
 	{
 		MouseMoved,
 		ButtonPressed,
@@ -37,17 +39,15 @@ namespace Kaleid::Input
 		ButtonNotHeld,
 	};
 
-	class Mouse;
-
-	class KALEID_INPUT_API MouseBinding
+	class KALEID_INPUT_API MouseClickBinding
 	{
 	public:
-		MouseBinding(const MouseCode mouse_code, const MouseBindingState state, const std::function<void(double, double)> action);
-		void Poll(Kaleid::Graphics::Window*& window, Mouse* mouse);
-	private:
-		MouseCode _mouse_code;
-		MouseBindingState _state;
-		std::function<void(double, double)> _action;
+		MouseClickBinding(const MouseClickCode mouse_code, const MouseClickBindingState state, const std::function<void()> action);
+	    void Poll(Kaleid::Graphics::Window*& window, Mouse* mouse);
+	protected:
+		MouseClickCode _mouse_code;
+		MouseClickBindingState _state;
+		std::function<void()> _action;
 		char _old_glfw_state;
 	};
 }
