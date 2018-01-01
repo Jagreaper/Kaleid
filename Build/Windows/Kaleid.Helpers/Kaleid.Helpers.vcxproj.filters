@@ -1,15 +1,45 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClInclude Include="..\..\..\Src\Helpers\VectorHelper.hpp" />
-    <ClInclude Include="..\..\..\Src\Shared\stdafx.hpp" />
-    <ClInclude Include="..\..\..\Src\Helpers\StringHelper.hpp" />
-    <ClInclude Include="..\..\..\Src\Helpers\Nullable.hpp" />
-    <ClInclude Include="..\..\..\Src\Helpers\PrimitiveTypes.hpp" />
-    <ClInclude Include="..\..\..\Src\Helpers\EventHandler.hpp" />
+    <ClInclude Include="..\..\..\Src\Helpers\VectorHelper.hpp">
+      <Filter>Extensions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Helpers\StringHelper.hpp">
+      <Filter>Extensions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Shared\stdafx.hpp">
+      <Filter>Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Helpers\EventHandler.hpp">
+      <Filter>Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Helpers\PrimitiveTypes.hpp">
+      <Filter>Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Helpers\Nullable.hpp">
+      <Filter>Types</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\Src\Shared\stdafx.cpp" />
-    <ClCompile Include="..\..\..\Src\Helpers\StringHelper.cpp" />
+    <ClCompile Include="..\..\..\Src\Helpers\StringHelper.cpp">
+      <Filter>Extensions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Shared\stdafx.cpp">
+      <Filter>Shared</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Shared">
+      <UniqueIdentifier>{657c1edc-9544-49c7-9357-b8a6e9f511ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Extensions">
+      <UniqueIdentifier>{d6d49ee7-1df0-4c2f-8046-2ff46c27bd8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Events">
+      <UniqueIdentifier>{88228a57-e75a-42b9-a44c-c32248c485c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Types">
+      <UniqueIdentifier>{944c80d4-2881-4756-9b6b-1f4b2985c175}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

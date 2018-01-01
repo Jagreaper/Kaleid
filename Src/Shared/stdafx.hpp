@@ -54,6 +54,12 @@
 	#define KALEID_INPUT_API __declspec(dllimport)
 #endif
 
+#ifdef KALEID_XML_DLL
+	#define KALEID_XML_API __declspec(dllexport)
+#else
+	#define KALEID_XML_API __declspec(dllimport)
+#endif
+
 #ifdef KALEID_INPUT_HEADERS
 	#define GLFW_DLL
 	#include <GLFW/glfw3.h>

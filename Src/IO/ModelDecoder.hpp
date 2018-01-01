@@ -4,7 +4,6 @@
 #include "DecoderBase.hpp"
 #include "Material.hpp"
 #include <vector>
-#include <istream>
 
 namespace Kaleid::Graphics
 {
@@ -32,7 +31,7 @@ namespace Kaleid::IO
 		ModelDecoderParamsArg ModelDecoderParamsArg = ModelDecoderParamsArg::None;
 	};
 
-	using ModelStreamDecoder = DecoderBase<std::istream&, Kaleid::Game::Model*, ModelDecoderParams&>;
+	using ModelStreamDecoder = StreamDecoderBase<Kaleid::Game::Model*, ModelDecoderParams&>;
 
-	using ModelPathDecoder = DecoderBase<const char*, Kaleid::Game::Model*, ModelDecoderParams&>;
+	using ModelPathDecoder = PathDecoderBase<Kaleid::Game::Model*, ModelDecoderParams&>;
 }

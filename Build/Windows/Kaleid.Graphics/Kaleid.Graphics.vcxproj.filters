@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="..\..\..\Src\Graphics\Window.cpp" />
     <ClCompile Include="..\..\..\Src\Graphics\VertexBuffer.cpp">
       <Filter>Buffers</Filter>
     </ClCompile>
@@ -23,17 +22,26 @@
     <ClCompile Include="..\..\..\Src\Graphics\BufferBase.cpp">
       <Filter>Buffers</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Src\Graphics\Mesh.cpp" />
     <ClCompile Include="..\..\..\Src\Graphics\Texture.cpp">
       <Filter>Textures</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\Src\Graphics\TextureBase.cpp">
       <Filter>Textures</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Src\Shared\stdafx.cpp" />
+    <ClCompile Include="..\..\..\Src\Shared\stdafx.cpp">
+      <Filter>Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Graphics\Font.cpp">
+      <Filter>Text</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Graphics\Mesh.cpp">
+      <Filter>Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Graphics\Window.cpp">
+      <Filter>Render Targets</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Src\Graphics\Window.hpp" />
     <ClInclude Include="..\..\..\Src\Graphics\VertexBuffer.hpp">
       <Filter>Buffers</Filter>
     </ClInclude>
@@ -52,7 +60,6 @@
     <ClInclude Include="..\..\..\Src\Graphics\BufferBase.hpp">
       <Filter>Buffers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Src\Graphics\Mesh.hpp" />
     <ClInclude Include="..\..\..\Src\Graphics\TextureBase.hpp">
       <Filter>Textures</Filter>
     </ClInclude>
@@ -62,8 +69,21 @@
     <ClInclude Include="..\..\..\Src\Graphics\ShaderProgram.hpp">
       <Filter>Shaders</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Src\Shared\stdafx.hpp" />
-    <ClInclude Include="..\..\..\Src\Graphics\Material.hpp" />
+    <ClInclude Include="..\..\..\Src\Shared\stdafx.hpp">
+      <Filter>Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Graphics\Font.hpp">
+      <Filter>Text</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Graphics\Material.hpp">
+      <Filter>Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Graphics\Mesh.hpp">
+      <Filter>Buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Graphics\Window.hpp">
+      <Filter>Render Targets</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Buffers">
@@ -77,6 +97,15 @@
     </Filter>
     <Filter Include="Textures">
       <UniqueIdentifier>{9a394d25-4be0-47e2-a0bb-a66e1168b3d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shared">
+      <UniqueIdentifier>{a1ddf627-e75e-4425-90ac-c817ac287960}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Text">
+      <UniqueIdentifier>{34ed3b81-2dbd-4d87-8aa5-9d7eaaf96db4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Render Targets">
+      <UniqueIdentifier>{8daf1ef2-6d8b-4d24-bbf0-a2e2d0873d30}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

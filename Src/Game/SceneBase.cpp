@@ -1,6 +1,7 @@
 #include "stdafx.hpp"
 #include "SceneBase.hpp"
 #include "App.hpp"
+#include "Window.hpp"
 
 using namespace Kaleid::Game;
 using namespace Kaleid::Graphics;
@@ -14,8 +15,11 @@ SceneBase::SceneBase(App*& app)
 
 void SceneBase::Poll(Window*& window)
 {
-	this->_keyboard.Poll(window);
-	this->_mouse.Poll(window);
+	if (window->IsFocused())
+	{
+		this->_keyboard.Poll(window);
+		this->_mouse.Poll(window);
+	}
 }
 
 void SceneBase::Load()

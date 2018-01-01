@@ -132,7 +132,7 @@ void RootScene::BuildMesh()
 
 void RootScene::CameraMouseMovement(const double& x_delta, const double& y_delta)
 {
-	Vector3F vec(y_delta * 60.0 * this->GetDeltaTime(), x_delta * 60.0 * this->GetDeltaTime(), 0.0f);
+	Vector3F vec(y_delta * 120.0 * this->GetDeltaTime(), x_delta * 120.0 * this->GetDeltaTime(), 0.0f);
 	this->_camera.TranslateRotation(vec);
 }
 
@@ -165,6 +165,7 @@ void RootScene::Load()
 	this->_mouse.GetPosition(&this->_xpos_old, &this->_ypos_old);
 
 	this->SceneBase::Load();
+	this->_app->GetWindow(0)->HideCursor();
 }
 
 void RootScene::Update()

@@ -1,30 +1,48 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="..\..\..\Src\Math\Transform.cpp" />
     <ClCompile Include="..\..\..\Src\Math\CameraBase.cpp">
       <Filter>Cameras</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\Src\Math\PerspectiveCamera.cpp">
       <Filter>Cameras</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Src\Shared\stdafx.cpp" />
+    <ClCompile Include="..\..\..\Src\Shared\stdafx.cpp">
+      <Filter>Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Math\Transform.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Src\Math\Transform.hpp" />
     <ClInclude Include="..\..\..\Src\Math\CameraBase.hpp">
       <Filter>Cameras</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Src\Math\PerspectiveCamera.hpp">
       <Filter>Cameras</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Src\Shared\stdafx.hpp" />
-    <ClInclude Include="..\..\..\Src\Math\Vector.hpp" />
-    <ClInclude Include="..\..\..\Src\Math\Matrix.hpp" />
+    <ClInclude Include="..\..\..\Src\Shared\stdafx.hpp">
+      <Filter>Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Math\Vector.hpp">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Math\Matrix.hpp">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Math\Transform.hpp">
+      <Filter>Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Cameras">
       <UniqueIdentifier>{5a4c6c6c-75ef-44a2-8a35-f0938c45b147}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shared">
+      <UniqueIdentifier>{454479d6-9ddc-4d75-8510-59f0af1ff625}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core">
+      <UniqueIdentifier>{6b38f5d5-86bc-477b-8154-8e9838270939}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

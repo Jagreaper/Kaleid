@@ -90,7 +90,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\Math\;..\..\..\Src\Game\;..\..\..\Src\Geometry\;..\..\..\Src\Graphics\;..\..\..\Src\Imaging\;..\..\..\Src\IO\;..\..\..\Src\Shared\;..\..\..\Src\Helpers\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\Math\;..\..\..\Src\Game\;..\..\..\Src\Geometry\;..\..\..\Src\Graphics\;..\..\..\Src\Imaging\;..\..\..\Src\Xml\;..\..\..\Src\IO\;..\..\..\Src\Shared\;..\..\..\Src\Helpers\</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_WINDLL;KALEID_IO_DLL;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -106,7 +106,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\Math\;..\..\..\Src\Game\;..\..\..\Src\Geometry\;..\..\..\Src\Graphics\;..\..\..\Src\Imaging\;..\..\..\Src\IO\;..\..\..\Src\Shared\;..\..\..\Src\Helpers\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\Math\;..\..\..\Src\Game\;..\..\..\Src\Geometry\;..\..\..\Src\Graphics\;..\..\..\Src\Imaging\;..\..\..\Src\Xml\;..\..\..\Src\IO\;..\..\..\Src\Shared\;..\..\..\Src\Helpers\</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_WINDLL;KALEID_IO_DLL;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -124,7 +124,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\Math\;..\..\..\Src\Game\;..\..\..\Src\Geometry\;..\..\..\Src\Graphics\;..\..\..\Src\Imaging\;..\..\..\Src\IO\;..\..\..\Src\Shared\;..\..\..\Src\Helpers\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\Math\;..\..\..\Src\Game\;..\..\..\Src\Geometry\;..\..\..\Src\Graphics\;..\..\..\Src\Imaging\;..\..\..\Src\Xml\;..\..\..\Src\IO\;..\..\..\Src\Shared\;..\..\..\Src\Helpers\</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_WINDLL;KALEID_IO_DLL;RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -146,7 +146,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\Math\;..\..\..\Src\Game\;..\..\..\Src\Geometry\;..\..\..\Src\Graphics\;..\..\..\Src\Imaging\;..\..\..\Src\IO\;..\..\..\Src\Shared\;..\..\..\Src\Helpers\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\Include\;..\..\..\Src\Math\;..\..\..\Src\Game\;..\..\..\Src\Geometry\;..\..\..\Src\Graphics\;..\..\..\Src\Imaging\;..\..\..\Src\Xml\;..\..\..\Src\IO\;..\..\..\Src\Shared\;..\..\..\Src\Helpers\</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_WINDLL;KALEID_IO_DLL;RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -168,6 +168,8 @@
     <ClCompile Include="..\..\..\Src\IO\MtlMaterialDecoder.cpp" />
     <ClCompile Include="..\..\..\Src\IO\ObjModelDecoder.cpp" />
     <ClCompile Include="..\..\..\Src\IO\TextureDecoder.cpp" />
+    <ClCompile Include="..\..\..\Src\IO\TrueFontDecoder.cpp" />
+    <ClCompile Include="..\..\..\Src\IO\XmlEncoder.cpp" />
     <ClCompile Include="..\..\..\Src\Shared\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -186,6 +188,8 @@
     <ClInclude Include="..\..\..\Src\IO\MtlMaterialDecoder.hpp" />
     <ClInclude Include="..\..\..\Src\IO\ObjModelDecoder.hpp" />
     <ClInclude Include="..\..\..\Src\IO\TextureDecoder.hpp" />
+    <ClInclude Include="..\..\..\Src\IO\TrueFontDecoder.hpp" />
+    <ClInclude Include="..\..\..\Src\IO\XmlEncoder.hpp" />
     <ClInclude Include="..\..\..\Src\Shared\stdafx.hpp" />
   </ItemGroup>
   <ItemGroup>
@@ -206,6 +210,9 @@
     </ProjectReference>
     <ProjectReference Include="..\Kaleid.Math\Kaleid.Math.vcxproj">
       <Project>{d7ea2988-db27-4004-ab6b-c81a923164df}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Kaleid.Xml\Kaleid.Xml.vcxproj">
+      <Project>{991f65b1-2082-4cc4-baa0-6c37d1148908}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
