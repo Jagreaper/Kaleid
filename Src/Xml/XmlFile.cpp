@@ -3,14 +3,57 @@
 
 using namespace Kaleid::Xml;
 
+XmlAttribute::XmlAttribute(const std::string name, const std::string value)
+{
+	this->Name = name;
+	this->Value = value;
+}
+
+XmlElement::XmlElement(const std::string name)
+{
+	this->_name = name;
+}
+
+XmlElement::XmlElement(const std::string name, const std::vector<XmlAttribute> attributes)
+{
+	this->_name = name;
+	this->_attributes = attributes;
+}
+
+XmlElement::XmlElement(const std::string name, const std::string value)
+{
+	this->_name = name;
+	this->_value = value;
+}
+
+XmlElement::XmlElement(const std::string name, const std::vector<XmlElement>& elements)
+{
+	this->_name = name;
+	this->_elements = elements;
+}
+
+XmlElement::XmlElement(const std::string name, const std::string value, const std::vector<XmlAttribute> attributes)
+{
+	this->_name = name;
+	this->_value = value;
+	this->_attributes = attributes;
+}
+
+XmlElement::XmlElement(const std::string name, const std::vector<XmlElement>& elements, const std::vector<XmlAttribute> attributes)
+{
+	this->_name = name;
+	this->_elements = elements;
+	this->_attributes = attributes;
+}
+
 const bool XmlElement::HasChildren() const
 {
-	return this->_elements.size() > 0;
+	return this->_value.size() > 0 || this->_elements.size() > 0;
 }
 
 const bool XmlElement::HasElementChildren() const
 {
-	return this->_value.size() > 0;
+	return this->_elements.size() > 0;
 }
 
 const bool XmlElement::HasAttributes() const
@@ -89,7 +132,7 @@ void XmlElement::AddAttribute(const XmlAttribute& attribute)
 void XmlElement::AddElement(const XmlElement& element)
 {
 	this->_elements.push_back(element);
-	this->_name = "";
+	this->_value = "";
 }
 
 void XmlElement::SetValue(const std::string& value)
@@ -147,8 +190,9 @@ void ParseElementClass(const XmlElement& element, std::string* const& output_str
 		{
 			*output_str += " ";
 			*output_str += attribute.Name;
-			*output_str += "=";
+			*output_str += "=\"";
 			*output_str += attribute.Value;
+			*output_str += "\"";
 		}
 	}
 
@@ -161,9 +205,9 @@ void ParseElementClass(const XmlElement& element, std::string* const& output_str
 		*output_str += ">";
 		if (element.HasElementChildren())
 		{
+			*output_str += "\n";
 			for (const XmlElement& element : *element.GetChildren())
 			{
-				*output_str += "\n";
 				ParseElementClass(element, output_str, indenting + 1);
 			}
 		}

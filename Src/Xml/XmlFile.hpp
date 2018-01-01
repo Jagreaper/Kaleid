@@ -6,8 +6,9 @@
 
 namespace Kaleid::Xml
 {
-	struct XmlAttribute
+	struct KALEID_XML_API XmlAttribute
 	{
+		XmlAttribute(const std::string name, const std::string value);
 		std::string Name;
 		std::string Value;
 	};
@@ -15,6 +16,13 @@ namespace Kaleid::Xml
 	class KALEID_XML_API XmlElement
 	{
 	public:
+		XmlElement(const std::string name);
+		XmlElement(const std::string name, const std::vector<XmlAttribute> attributes);
+		XmlElement(const std::string name, const std::string value);
+		XmlElement(const std::string name, const std::vector<XmlElement>& elements);
+		XmlElement(const std::string name, const std::string value, const std::vector<XmlAttribute> attributes);
+		XmlElement(const std::string name, const std::vector<XmlElement>& elements, const std::vector<XmlAttribute> attributes);
+
 		const bool HasChildren() const;
 		const bool HasElementChildren() const;
 		const bool HasAttributes() const;
