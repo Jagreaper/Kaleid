@@ -3,19 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Kaleid.Graphics", "Kaleid.Graphics\Kaleid.Graphics.vcxproj", "{B0D1FC24-7ED7-4F0A-B51B-0864F52F4F77}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Jagerts.Kaleid.Graphics", "Jagerts.Kaleid.Graphics\Jagerts.Kaleid.Graphics.vcxproj", "{B0D1FC24-7ED7-4F0A-B51B-0864F52F4F77}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Kaleid.Application", "Kaleid.Application\Kaleid.Application.vcxproj", "{1C805FD6-885C-4307-9EDA-18F072986F5B}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Jagerts.Kaleid.Application", "Jagerts.Kaleid.Application\Jagerts.Kaleid.Application.vcxproj", "{1C805FD6-885C-4307-9EDA-18F072986F5B}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Kaleid.Game", "Kaleid.Game\Kaleid.Game.vcxproj", "{29DC283F-B80E-4650-A60E-A294947FDBCD}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Jagerts.Kaleid.Game", "Jagerts.Kaleid.Game\Jagerts.Kaleid.Game.vcxproj", "{29DC283F-B80E-4650-A60E-A294947FDBCD}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Kaleid.Math", "Kaleid.Math\Kaleid.Math.vcxproj", "{D7EA2988-DB27-4004-AB6B-C81A923164DF}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Jagerts.Kaleid.Math", "Jagerts.Kaleid.Math\Jagerts.Kaleid.Math.vcxproj", "{D7EA2988-DB27-4004-AB6B-C81A923164DF}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Kaleid.IO", "Kaleid.IO\Kaleid.IO.vcxproj", "{5E0F4E87-9AE9-4401-A95D-7C23E44F2579}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Jagerts.Kaleid.IO", "Jagerts.Kaleid.IO\Jagerts.Kaleid.IO.vcxproj", "{5E0F4E87-9AE9-4401-A95D-7C23E44F2579}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Kaleid.Geometry", "Kaleid.Geometry\Kaleid.Geometry.vcxproj", "{F5E121A6-0652-4FE0-8D93-4C05A473FFCE}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Jagerts.Kaleid.Geometry", "Jagerts.Kaleid.Geometry\Jagerts.Kaleid.Geometry.vcxproj", "{F5E121A6-0652-4FE0-8D93-4C05A473FFCE}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Kaleid.Input", "Kaleid.Input\Kaleid.Input.vcxproj", "{EA568D2A-DE04-4EE7-B141-C6F66AFA0B84}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Jagerts.Kaleid.Input", "Jagerts.Kaleid.Input\Jagerts.Kaleid.Input.vcxproj", "{EA568D2A-DE04-4EE7-B141-C6F66AFA0B84}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{48C3AE6D-8A9C-4F5D-AB92-B44DD74CBDFF}"
 EndProject

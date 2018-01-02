@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="..\Jagerts.Kaleid.Shared\Common.hpp">
+      <Filter>Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="Triangle.hpp">
+      <Filter>Faces</Filter>
+    </ClInclude>
+    <ClInclude Include="Face.hpp">
+      <Filter>Faces</Filter>
+    </ClInclude>
+    <ClInclude Include="Vertex.hpp">
+      <Filter>Points</Filter>
+    </ClInclude>
+    <ClInclude Include="Shape.hpp">
+      <Filter>Shapes</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Faces">
+      <UniqueIdentifier>{db11de87-9828-4a1f-8926-4406895fd5cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shared">
+      <UniqueIdentifier>{248eb73e-a737-4572-a169-3d5da833ed28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shapes">
+      <UniqueIdentifier>{1bec1d00-bf91-4ab2-9ab6-9a92c7d999db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Points">
+      <UniqueIdentifier>{e3b22fa4-36b3-4267-8e7b-a7b42ab09182}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Triangle.cpp">
+      <Filter>Faces</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
