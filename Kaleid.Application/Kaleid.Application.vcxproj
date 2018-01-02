@@ -99,8 +99,8 @@
       <PreprocessorDefinitions>_MBCS;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <PostBuildEvent>
-      <Command>copy "$(SolutionDir)packages\GLEW\bin\$(PlatformTarget)\glew32.dll" "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
-copy "$(SolutionDir)packages\GLFW\bin\$(PlatformTarget)\glfw3.dll" "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y</Command>
+      <Command>copy "$(SolutionDir)packages\GLEW\bin\Windows\$(PlatformTarget)\glew32.dll" "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
+copy "$(SolutionDir)packages\GLFW\bin\Windows\$(PlatformTarget)\glfw3.dll" "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y</Command>
     </PostBuildEvent>
     <Link>
       <SubSystem>
@@ -120,8 +120,8 @@ copy "$(SolutionDir)packages\GLFW\bin\$(PlatformTarget)\glfw3.dll" "$(ProjectDir
       <PreprocessorDefinitions>_MBCS;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <PostBuildEvent>
-      <Command>copy "$(SolutionDir)packages\GLEW\bin\$(PlatformTarget)\glew32.dll" "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
-copy "$(SolutionDir)packages\GLFW\bin\$(PlatformTarget)\glfw3.dll" "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y</Command>
+      <Command>copy "$(SolutionDir)packages\GLEW\bin\Windows\$(PlatformTarget)\glew32.dll" "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
+copy "$(SolutionDir)packages\GLFW\bin\Windows\$(PlatformTarget)\glfw3.dll" "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y</Command>
     </PostBuildEvent>
     <Link>
       <SubSystem>
@@ -148,8 +148,8 @@ copy "$(SolutionDir)packages\GLFW\bin\$(PlatformTarget)\glfw3.dll" "$(ProjectDir
       <SubSystem>Windows</SubSystem>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(SolutionDir)packages\GLEW\bin\$(PlatformTarget)\glew32.dll" "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
-copy "$(SolutionDir)packages\GLFW\bin\$(PlatformTarget)\glfw3.dll" "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y</Command>
+      <Command>copy "$(SolutionDir)packages\GLEW\bin\Windows\$(PlatformTarget)\glew32.dll" "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
+copy "$(SolutionDir)packages\GLFW\bin\Windows\$(PlatformTarget)\glfw3.dll" "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -172,8 +172,8 @@ copy "$(SolutionDir)packages\GLFW\bin\$(PlatformTarget)\glfw3.dll" "$(ProjectDir
       <SubSystem>Windows</SubSystem>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(SolutionDir)packages\GLEW\bin\$(PlatformTarget)\glew32.dll" "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
-copy "$(SolutionDir)packages\GLFW\bin\$(PlatformTarget)\glfw3.dll" "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y</Command>
+      <Command>copy "$(SolutionDir)packages\GLEW\bin\Windows\$(PlatformTarget)\glew32.dll" "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
+copy "$(SolutionDir)packages\GLFW\bin\Windows\$(PlatformTarget)\glfw3.dll" "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
