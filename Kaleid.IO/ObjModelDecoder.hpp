@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Kaleid.Shared\Common.hpp"
-#include "DecoderBase.hpp"
 #include "ModelDecoder.hpp"
 #include <istream>
 

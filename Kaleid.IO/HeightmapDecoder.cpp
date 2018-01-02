@@ -4,8 +4,7 @@
 #include "Kaleid.Game\ModelComponent.hpp"
 #include "Kaleid.Game\Model.hpp"
 #include "Kaleid.Math\Vector.hpp"
-#include "ImageDecoder.hpp"
-#include "Kaleid.Imaging\Image.hpp"
+#include "Jagerts.Felcp.Imaging\Image.hpp"
 #include <string>
 #include <stdexcept>
 #include <vector>
@@ -14,7 +13,8 @@ using namespace Kaleid::IO;
 using namespace Kaleid::Game;
 using namespace Kaleid::Math;
 using namespace Kaleid::Graphics;
-using namespace Kaleid::Imaging;
+using namespace Jagerts::Felcp::Imaging;
+using namespace Jagerts::Felcp::IO::Imaging;
 
 void AppendVertex(std::vector<float>& verticies, Vector3F& vec)
 {
@@ -44,7 +44,7 @@ float GetHeight(Image& image, unsigned int x, unsigned int y)
 bool HeightmapPathDecoder::TryDecode(const char* source, Model* output, ModelDecoderParams& arg)
 {
 	Image image;
-	ImagePathDecoder decoder;
+	ImageDecoder decoder;
 	decoder.TryDecode(source, &image, NULL);
 
 	std::vector<float> verticies;

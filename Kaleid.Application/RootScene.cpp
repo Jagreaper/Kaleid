@@ -15,9 +15,8 @@
 #include "Kaleid.Input\KeyBinding.hpp"
 #include "Kaleid.Input\MouseMoveBinding.hpp"
 #include "Kaleid.Helpers\VectorHelper.hpp"
-#include "Kaleid.Imaging\Image.hpp"
+#include "Jagerts.Felcp.Imaging\Image.hpp"
 #include "Kaleid.Xml\XmlFile.hpp"
-#include "Kaleid.IO\XmlEncoder.hpp"
 #include <iostream>
 #include <fstream>
 
@@ -26,7 +25,7 @@ using namespace Kaleid::Game;
 using namespace Kaleid::Graphics;
 using namespace Kaleid::IO;
 using namespace Kaleid::Input;
-using namespace Kaleid::Imaging;
+using namespace Jagerts::Felcp::Imaging;
 using namespace Kaleid::Application;
 using namespace Kaleid::Helpers;
 using namespace Kaleid::Xml;
@@ -155,25 +154,8 @@ void RootScene::CreateKeyboardBindings()
 	this->_keyboard.Add(KeyBinding(KeyCode::Escape, KeyBindingState::Pressed, [&] { this->_app->Close(); }));
 }
 
-void XmlTest()
-{
-	XmlFile xml;
-	XmlElement element("GameObject", "Hello World!");
-	element.AddAttribute(XmlAttribute("armor", "5"));
-	element.AddAttribute(XmlAttribute("health", "10"));
-	element.AddElement(element);
-	element.AddElement(XmlElement("GameObject"));
-	xml.AddElement(element);
-
-	const char* xml_path = "D:\\Users\\James\\Desktop\\Xml Test.xml";
-	XmlPathEncoder xml_encoder;
-	xml_encoder.TryEncode(xml_path, &xml, NULL);
-}
-
 void RootScene::Load()
 {
-	XmlTest();
-
 	this->BuildShaderProgram();
 	this->BuildMesh();
 	this->CreateKeyboardBindings();

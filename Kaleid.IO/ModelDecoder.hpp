@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Kaleid.Shared\Common.hpp"
-#include "DecoderBase.hpp"
+#include "Jagerts.Felcp.IO\DecoderBase.hpp"
 #include "Kaleid.Graphics\Material.hpp"
 #include <vector>
 
@@ -31,7 +31,7 @@ namespace Kaleid::IO
 		ModelDecoderParamsArg ModelDecoderParamsArg = ModelDecoderParamsArg::None;
 	};
 
-	using ModelStreamDecoder = StreamDecoderBase<Kaleid::Game::Model*, ModelDecoderParams&>;
+	using ModelStreamDecoder = Jagerts::Felcp::IO::StreamDecoderBase<Kaleid::Game::Model*, ModelDecoderParams&>;
 
-	using ModelPathDecoder = PathDecoderBase<Kaleid::Game::Model*, ModelDecoderParams&>;
+	using ModelPathDecoder = Jagerts::Felcp::IO::PathDecoderBase<Kaleid::Game::Model*, ModelDecoderParams&>;
 }

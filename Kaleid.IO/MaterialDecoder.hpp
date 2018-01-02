@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Kaleid.Shared\Common.hpp"
-#include "DecoderBase.hpp"
+#include "Jagerts.Felcp.IO\DecoderBase.hpp"
 #include "Kaleid.Graphics\Material.hpp"
 #include <vector>
 
@@ -12,6 +12,6 @@ namespace Kaleid::Graphics
 
 namespace Kaleid::IO
 {
-	using MaterialStreamDecoder = StreamDecoderBase<std::vector<Kaleid::Graphics::MaterialInfo>*, void*>;
-	using MaterialPathDecoder = PathDecoderBase<std::vector<Kaleid::Graphics::MaterialInfo>*, void*>;
+	using MaterialStreamDecoder = Jagerts::Felcp::IO::StreamDecoderBase<std::vector<Kaleid::Graphics::MaterialInfo>*, void*>;
+	using MaterialPathDecoder = Jagerts::Felcp::IO::PathDecoderBase<std::vector<Kaleid::Graphics::MaterialInfo>*, void*>;
 }

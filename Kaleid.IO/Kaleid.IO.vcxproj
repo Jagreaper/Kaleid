@@ -101,6 +101,10 @@
       <Command>if not exist "$(SolutionDir)Kaleid.Application\bin\$(Configuration)\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)Kaleid.Application\bin\$(Configuration)\Windows\$(PlatformTarget)\"
 copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetFileName)" "$(SolutionDir)Kaleid.Application\bin\$(Configuration)\Windows\$(PlatformTarget)\" /y</Command>
     </PostBuildEvent>
+    <Link>
+      <AdditionalLibraryDirectories>$(SolutionDir)packages\Jagerts.Felcp.IO\lib\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.IO.Imaging\lib\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Imaging\lib\Windows\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Jagerts.Felcp.IO.lib;Jagerts.Felcp.IO.Imaging.lib;Jagerts.Felcp.Imaging.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -118,6 +122,10 @@ copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetFileNa
       <Command>if not exist "$(SolutionDir)Kaleid.Application\bin\$(Configuration)\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)Kaleid.Application\bin\$(Configuration)\Windows\$(PlatformTarget)\"
 copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetFileName)" "$(SolutionDir)Kaleid.Application\bin\$(Configuration)\Windows\$(PlatformTarget)\" /y</Command>
     </PostBuildEvent>
+    <Link>
+      <AdditionalLibraryDirectories>$(SolutionDir)packages\Jagerts.Felcp.IO\lib\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.IO.Imaging\lib\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Imaging\lib\Windows\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Jagerts.Felcp.IO.lib;Jagerts.Felcp.IO.Imaging.lib;Jagerts.Felcp.Imaging.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -136,6 +144,8 @@ copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetFileNa
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(SolutionDir)packages\Jagerts.Felcp.IO\lib\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.IO.Imaging\lib\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Imaging\lib\Windows\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Jagerts.Felcp.IO.lib;Jagerts.Felcp.IO.Imaging.lib;Jagerts.Felcp.Imaging.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>if not exist "$(SolutionDir)Kaleid.Application\bin\$(Configuration)\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)Kaleid.Application\bin\$(Configuration)\Windows\$(PlatformTarget)\"
@@ -167,6 +177,8 @@ xcopy "$(SolutionDir)Kaleid.Shared\*.hpp" "$(SolutionDir)dist\Kaleid.Shared\" /y
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(SolutionDir)packages\Jagerts.Felcp.IO\lib\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.IO.Imaging\lib\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Imaging\lib\Windows\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Jagerts.Felcp.IO.lib;Jagerts.Felcp.IO.Imaging.lib;Jagerts.Felcp.Imaging.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>if not exist "$(SolutionDir)Kaleid.Application\bin\$(Configuration)\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)Kaleid.Application\bin\$(Configuration)\Windows\$(PlatformTarget)\"
@@ -183,28 +195,20 @@ xcopy "$(SolutionDir)Kaleid.Shared\*.hpp" "$(SolutionDir)dist\Kaleid.Shared\" /y
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="HeightmapDecoder.cpp" />
-    <ClCompile Include="ImageDecoder.cpp" />
-    <ClCompile Include="ImageLoader.cpp" />
     <ClCompile Include="MtlMaterialDecoder.cpp" />
     <ClCompile Include="ObjModelDecoder.cpp" />
     <ClCompile Include="TextureDecoder.cpp" />
     <ClCompile Include="TrueFontDecoder.cpp" />
-    <ClCompile Include="XmlEncoder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Kaleid.Shared\Common.hpp" />
-    <ClInclude Include="DecoderBase.hpp" />
-    <ClInclude Include="EncoderBase.hpp" />
     <ClInclude Include="HeightmapDecoder.hpp" />
-    <ClInclude Include="ImageDecoder.hpp" />
-    <ClInclude Include="ImageLoader.hpp" />
     <ClInclude Include="MaterialDecoder.hpp" />
     <ClInclude Include="ModelDecoder.hpp" />
     <ClInclude Include="MtlMaterialDecoder.hpp" />
     <ClInclude Include="ObjModelDecoder.hpp" />
     <ClInclude Include="TextureDecoder.hpp" />
     <ClInclude Include="TrueFontDecoder.hpp" />
-    <ClInclude Include="XmlEncoder.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Kaleid.Game\Kaleid.Game.vcxproj">
@@ -218,9 +222,6 @@ xcopy "$(SolutionDir)Kaleid.Shared\*.hpp" "$(SolutionDir)dist\Kaleid.Shared\" /y
     </ProjectReference>
     <ProjectReference Include="..\Kaleid.Helpers\Kaleid.Helpers.vcxproj">
       <Project>{fa74e84f-8b9c-44fa-99be-b68865635073}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Kaleid.Imaging\Kaleid.Imaging.vcxproj">
-      <Project>{dcc688bb-cc70-4d9e-bb0e-1222ccf9bef0}</Project>
     </ProjectReference>
     <ProjectReference Include="..\Kaleid.Math\Kaleid.Math.vcxproj">
       <Project>{d7ea2988-db27-4004-ab6b-c81a923164df}</Project>

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Kaleid.Shared\Common.hpp"
-#include "DecoderBase.hpp"
+#include "Jagerts.Felcp.IO\DecoderBase.hpp"
 
 namespace Kaleid::Graphics
 {
@@ -10,7 +10,7 @@ namespace Kaleid::Graphics
 
 namespace Kaleid::IO
 {
-	class KALEID_IO_API TrueFontDecoder : public DecoderBase<const char*, Kaleid::Graphics::Font*, void*>
+	class KALEID_IO_API TrueFontDecoder : public Jagerts::Felcp::IO::DecoderBase<const char*, Kaleid::Graphics::Font*, void*>
 	{
 	public:
 		bool TryDecode(const char* source, Kaleid::Graphics::Font* output, void* arg);
