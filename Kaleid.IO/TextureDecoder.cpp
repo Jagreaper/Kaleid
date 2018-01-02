@@ -7,7 +7,7 @@ using namespace Kaleid::IO;
 using namespace Kaleid::Graphics;
 using namespace Jagerts::Felcp::IO::Imaging;
 
-bool TexturePathDecoder::TryDecode(const char* source, Texture* output, void* arg)
+bool TextureDecoder::TryDecode(const char* source, Texture* output, void* arg)
 {
 	RawImageData data;
 	this->_image_decoder.TryDecode(source, &data);

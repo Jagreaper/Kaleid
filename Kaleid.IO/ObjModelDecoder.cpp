@@ -419,7 +419,7 @@ bool TryCreateComponents(ObjData& data, std::vector<ObjPieceData>& pieces, Model
 	return true;
 }
 
-bool ObjModelStreamDecoder::TryDecode(std::istream& source, Model* output, ModelDecoderParams& arg)
+bool ObjModelDecoder::TryDecode(std::istream& source, Model* output, ModelDecoderParams& arg)
 {
 	std::vector<ObjPieceData> pieces;
 	ObjData data;
@@ -444,13 +444,4 @@ bool ObjModelStreamDecoder::TryDecode(std::istream& source, Model* output, Model
 
 	output->AddComponents(components);
 	return true;
-}
-
-bool ObjModelPathDecoder::TryDecode(const char* source, Kaleid::Game::Model* output, ModelDecoderParams& arg)
-{
-	std::ifstream stream;
-	stream.open(source);
-	bool success = this->_stream_decoder.TryDecode(stream, output, arg);
-	stream.close();
-	return success;
 }

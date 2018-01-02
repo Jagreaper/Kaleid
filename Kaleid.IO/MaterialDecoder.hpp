@@ -12,6 +12,7 @@ namespace Kaleid::Graphics
 
 namespace Kaleid::IO
 {
+	using MaterialDecoder = Jagerts::Felcp::IO::StreamPathDecoder<std::vector<Kaleid::Graphics::MaterialInfo>*, void*>;
 	using MaterialStreamDecoder = Jagerts::Felcp::IO::StreamDecoderBase<std::vector<Kaleid::Graphics::MaterialInfo>*, void*>;
 	using MaterialPathDecoder = Jagerts::Felcp::IO::PathDecoderBase<std::vector<Kaleid::Graphics::MaterialInfo>*, void*>;
 }

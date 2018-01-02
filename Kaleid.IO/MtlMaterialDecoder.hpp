@@ -6,17 +6,10 @@
 
 namespace Kaleid::IO
 {
-	class KALEID_IO_API MtlMaterialStreamDecoder : public MaterialStreamDecoder
+	class KALEID_IO_API MtlMaterialDecoder : public MaterialDecoder
 	{
 	public:
 		bool TryDecode(std::istream& source, std::vector<Kaleid::Graphics::MaterialInfo>* output, void* arg);
-	};
-
-	class KALEID_IO_API MtlMaterialPathDecoder : public MaterialPathDecoder
-	{
-	public:
-		bool TryDecode(const char* source, std::vector<Kaleid::Graphics::MaterialInfo>* output, void* arg);
-	private:
-		MtlMaterialStreamDecoder _stream_decoder;
+		using MaterialDecoder::TryDecode;
 	};
 }

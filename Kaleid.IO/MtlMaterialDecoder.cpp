@@ -164,7 +164,7 @@ bool TryReadLine(const std::string& line, MaterialInfo& output)
 	return true;
 }
 
-bool MtlMaterialStreamDecoder::TryDecode(std::istream& source, std::vector<Kaleid::Graphics::MaterialInfo>* output, void* arg)
+bool MtlMaterialDecoder::TryDecode(std::istream& source, std::vector<Kaleid::Graphics::MaterialInfo>* output, void* arg)
 {
 	std::string line;
 	MaterialInfo material;
@@ -196,13 +196,4 @@ bool MtlMaterialStreamDecoder::TryDecode(std::istream& source, std::vector<Kalei
 
 	output->push_back(material);
 	return true;
-}
-
-bool MtlMaterialPathDecoder::TryDecode(const char* source, std::vector<Kaleid::Graphics::MaterialInfo>* output, void* arg)
-{
-	std::ifstream stream;
-	stream.open(source);
-	bool success = this->_stream_decoder.TryDecode(stream, output, NULL);
-	stream.close();
-	return success;
 }

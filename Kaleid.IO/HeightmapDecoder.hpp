@@ -13,7 +13,7 @@ namespace Kaleid::Game
 
 namespace Kaleid::IO
 {
-	class KALEID_IO_API HeightmapPathDecoder : public ModelPathDecoder
+	class KALEID_IO_API HeightmapDecoder : public ModelPathDecoder
 	{
 	public:
 		bool TryDecode(const char* source, Kaleid::Game::Model* output, ModelDecoderParams& arg);

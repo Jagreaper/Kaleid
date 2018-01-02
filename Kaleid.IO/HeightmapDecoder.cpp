@@ -41,7 +41,7 @@ float GetHeight(Image& image, unsigned int x, unsigned int y)
 	return image.GetPixel(x, y).GetChannel(0).GetCodeValue();
 }
 
-bool HeightmapPathDecoder::TryDecode(const char* source, Model* output, ModelDecoderParams& arg)
+bool HeightmapDecoder::TryDecode(const char* source, Model* output, ModelDecoderParams& arg)
 {
 	Image image;
 	ImageDecoder decoder;

@@ -104,17 +104,17 @@ void RootScene::BuildMesh()
 
 	Texture* texture = this->_graphics_factory->CreateTexture();
 	const char* tex_path = "assets\\Models\\USA Power Plant\\USA_PowerPlant_Base.tga";
-	TexturePathDecoder tex_decoder;
+	TextureDecoder tex_decoder;
 	tex_decoder.TryDecode(tex_path, texture, NULL);
 
 	std::vector<MaterialInfo> materials;
 	const char* mtl_path = "assets\\Models\\USA Power Plant\\USA_PowerPlant_Base.mtl";
-	MtlMaterialPathDecoder mtl_decoder;
+	MtlMaterialDecoder mtl_decoder;
 	mtl_decoder.TryDecode(mtl_path, &materials, NULL);
 
 	Model* model = Model::AllocateMemory();
 	const char* obj_path = "assets\\Models\\USA Power Plant\\USA_PowerPlant_Base.obj";
-	ObjModelPathDecoder obj_decoder;
+	ObjModelDecoder obj_decoder;
 	obj_params.Materials = &materials;
 	obj_params.ModelDecoderParamsArg = ModelDecoderParamsArg::Center;
 	obj_decoder.TryDecode(obj_path, model, obj_params);

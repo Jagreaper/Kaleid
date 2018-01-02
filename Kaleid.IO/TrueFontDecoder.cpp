@@ -3,7 +3,7 @@
 using namespace Kaleid::IO;
 using namespace Kaleid::Graphics;
 
-bool TrueFontDecoder::TryDecode(const char* source, Font* output, void* arg)
+bool TrueFontDecoder::TryDecode(std::istream& source, Font* output, void* arg)
 {
 	return false;
 }

@@ -31,6 +31,8 @@ namespace Kaleid::IO
 		ModelDecoderParamsArg ModelDecoderParamsArg = ModelDecoderParamsArg::None;
 	};
 
+	using ModelDecoder = Jagerts::Felcp::IO::StreamPathDecoder<Kaleid::Game::Model*, ModelDecoderParams&>;
+
 	using ModelStreamDecoder = Jagerts::Felcp::IO::StreamDecoderBase<Kaleid::Game::Model*, ModelDecoderParams&>;
 
 	using ModelPathDecoder = Jagerts::Felcp::IO::PathDecoderBase<Kaleid::Game::Model*, ModelDecoderParams&>;
