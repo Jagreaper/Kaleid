@@ -99,10 +99,18 @@
     </ClCompile>
     <PostBuildEvent>
       <Command>if not exist "$(SolutionDir)Kaleid.Application\bin\$(Configuration)\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)Kaleid.Application\bin\$(Configuration)\Windows\$(PlatformTarget)\"
-copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetFileName)" "$(SolutionDir)Kaleid.Application\bin\$(Configuration)\Windows\$(PlatformTarget)\" /y</Command>
+copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetFileName)" "$(SolutionDir)Kaleid.Application\bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
+if not exist "$(SolutionDir)dist\$(ProjectName)\bin\$(Configuration)\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)dist\$(ProjectName)\bin\$(Configuration)\Windows\$(PlatformTarget)\"
+copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetFileName)" "$(SolutionDir)dist\$(ProjectName)\bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
+if not exist "$(SolutionDir)dist\$(ProjectName)\lib\$(Configuration)\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)dist\$(ProjectName)\lib\$(Configuration)\Windows\$(PlatformTarget)\"
+copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetName).lib" "$(SolutionDir)dist\$(ProjectName)\lib\$(Configuration)\Windows\$(PlatformTarget)\" /y
+if not exist "$(SolutionDir)dist\$(ProjectName)\" mkdir "$(SolutionDir)dist\$(ProjectName)\"
+xcopy "$(ProjectDir)*.hpp" "$(SolutionDir)dist\$(ProjectName)\" /y
+if not exist "$(SolutionDir)dist\Kaleid.Shared\" mkdir "$(SolutionDir)dist\Kaleid.Shared\"
+xcopy "$(SolutionDir)Kaleid.Shared\*.hpp" "$(SolutionDir)dist\Kaleid.Shared\" /y</Command>
     </PostBuildEvent>
     <Link>
-      <AdditionalLibraryDirectories>$(SolutionDir)packages\Jagerts.Felcp.IO\lib\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.IO.Imaging\lib\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Imaging\lib\Windows\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)packages\Jagerts.Felcp.IO\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.IO.Imaging\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Imaging\lib\$(Configuration)\Windows\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>Jagerts.Felcp.IO.lib;Jagerts.Felcp.IO.Imaging.lib;Jagerts.Felcp.Imaging.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -120,10 +128,18 @@ copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetFileNa
     </ClCompile>
     <PostBuildEvent>
       <Command>if not exist "$(SolutionDir)Kaleid.Application\bin\$(Configuration)\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)Kaleid.Application\bin\$(Configuration)\Windows\$(PlatformTarget)\"
-copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetFileName)" "$(SolutionDir)Kaleid.Application\bin\$(Configuration)\Windows\$(PlatformTarget)\" /y</Command>
+copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetFileName)" "$(SolutionDir)Kaleid.Application\bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
+if not exist "$(SolutionDir)dist\$(ProjectName)\bin\$(Configuration)\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)dist\$(ProjectName)\bin\$(Configuration)\Windows\$(PlatformTarget)\"
+copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetFileName)" "$(SolutionDir)dist\$(ProjectName)\bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
+if not exist "$(SolutionDir)dist\$(ProjectName)\lib\$(Configuration)\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)dist\$(ProjectName)\lib\$(Configuration)\Windows\$(PlatformTarget)\"
+copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetName).lib" "$(SolutionDir)dist\$(ProjectName)\lib\$(Configuration)\Windows\$(PlatformTarget)\" /y
+if not exist "$(SolutionDir)dist\$(ProjectName)\" mkdir "$(SolutionDir)dist\$(ProjectName)\"
+xcopy "$(ProjectDir)*.hpp" "$(SolutionDir)dist\$(ProjectName)\" /y
+if not exist "$(SolutionDir)dist\Kaleid.Shared\" mkdir "$(SolutionDir)dist\Kaleid.Shared\"
+xcopy "$(SolutionDir)Kaleid.Shared\*.hpp" "$(SolutionDir)dist\Kaleid.Shared\" /y</Command>
     </PostBuildEvent>
     <Link>
-      <AdditionalLibraryDirectories>$(SolutionDir)packages\Jagerts.Felcp.IO\lib\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.IO.Imaging\lib\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Imaging\lib\Windows\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)packages\Jagerts.Felcp.IO\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.IO.Imaging\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Imaging\lib\$(Configuration)\Windows\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>Jagerts.Felcp.IO.lib;Jagerts.Felcp.IO.Imaging.lib;Jagerts.Felcp.Imaging.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -144,16 +160,16 @@ copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetFileNa
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(SolutionDir)packages\Jagerts.Felcp.IO\lib\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.IO.Imaging\lib\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Imaging\lib\Windows\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)packages\Jagerts.Felcp.IO\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.IO.Imaging\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Imaging\lib\$(Configuration)\Windows\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>Jagerts.Felcp.IO.lib;Jagerts.Felcp.IO.Imaging.lib;Jagerts.Felcp.Imaging.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>if not exist "$(SolutionDir)Kaleid.Application\bin\$(Configuration)\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)Kaleid.Application\bin\$(Configuration)\Windows\$(PlatformTarget)\"
 copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetFileName)" "$(SolutionDir)Kaleid.Application\bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
-if not exist "$(SolutionDir)dist\$(ProjectName)\bin\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)dist\$(ProjectName)\bin\Windows\$(PlatformTarget)\"
-copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetFileName)" "$(SolutionDir)dist\$(ProjectName)\bin\Windows\$(PlatformTarget)\" /y
-if not exist "$(SolutionDir)dist\$(ProjectName)\lib\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)dist\$(ProjectName)\lib\Windows\$(PlatformTarget)\"
-copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetName).lib" "$(SolutionDir)dist\$(ProjectName)\lib\Windows\$(PlatformTarget)\" /y
+if not exist "$(SolutionDir)dist\$(ProjectName)\bin\$(Configuration)\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)dist\$(ProjectName)\bin\$(Configuration)\Windows\$(PlatformTarget)\"
+copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetFileName)" "$(SolutionDir)dist\$(ProjectName)\bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
+if not exist "$(SolutionDir)dist\$(ProjectName)\lib\$(Configuration)\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)dist\$(ProjectName)\lib\$(Configuration)\Windows\$(PlatformTarget)\"
+copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetName).lib" "$(SolutionDir)dist\$(ProjectName)\lib\$(Configuration)\Windows\$(PlatformTarget)\" /y
 if not exist "$(SolutionDir)dist\$(ProjectName)\" mkdir "$(SolutionDir)dist\$(ProjectName)\"
 xcopy "$(ProjectDir)*.hpp" "$(SolutionDir)dist\$(ProjectName)\" /y
 if not exist "$(SolutionDir)dist\Kaleid.Shared\" mkdir "$(SolutionDir)dist\Kaleid.Shared\"
@@ -177,16 +193,16 @@ xcopy "$(SolutionDir)Kaleid.Shared\*.hpp" "$(SolutionDir)dist\Kaleid.Shared\" /y
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(SolutionDir)packages\Jagerts.Felcp.IO\lib\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.IO.Imaging\lib\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Imaging\lib\Windows\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)packages\Jagerts.Felcp.IO\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.IO.Imaging\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Imaging\lib\$(Configuration)\Windows\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>Jagerts.Felcp.IO.lib;Jagerts.Felcp.IO.Imaging.lib;Jagerts.Felcp.Imaging.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>if not exist "$(SolutionDir)Kaleid.Application\bin\$(Configuration)\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)Kaleid.Application\bin\$(Configuration)\Windows\$(PlatformTarget)\"
 copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetFileName)" "$(SolutionDir)Kaleid.Application\bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
-if not exist "$(SolutionDir)dist\$(ProjectName)\bin\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)dist\$(ProjectName)\bin\Windows\$(PlatformTarget)\"
-copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetFileName)" "$(SolutionDir)dist\$(ProjectName)\bin\Windows\$(PlatformTarget)\" /y
-if not exist "$(SolutionDir)dist\$(ProjectName)\lib\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)dist\$(ProjectName)\lib\Windows\$(PlatformTarget)\"
-copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetName).lib" "$(SolutionDir)dist\$(ProjectName)\lib\Windows\$(PlatformTarget)\" /y
+if not exist "$(SolutionDir)dist\$(ProjectName)\bin\$(Configuration)\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)dist\$(ProjectName)\bin\$(Configuration)\Windows\$(PlatformTarget)\"
+copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetFileName)" "$(SolutionDir)dist\$(ProjectName)\bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
+if not exist "$(SolutionDir)dist\$(ProjectName)\lib\$(Configuration)\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)dist\$(ProjectName)\lib\$(Configuration)\Windows\$(PlatformTarget)\"
+copy "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\$(TargetName).lib" "$(SolutionDir)dist\$(ProjectName)\lib\$(Configuration)\Windows\$(PlatformTarget)\" /y
 if not exist "$(SolutionDir)dist\$(ProjectName)\" mkdir "$(SolutionDir)dist\$(ProjectName)\"
 xcopy "$(ProjectDir)*.hpp" "$(SolutionDir)dist\$(ProjectName)\" /y
 if not exist "$(SolutionDir)dist\Kaleid.Shared\" mkdir "$(SolutionDir)dist\Kaleid.Shared\"
