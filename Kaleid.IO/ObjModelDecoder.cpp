@@ -1,8 +1,8 @@
 #include "ObjModelDecoder.hpp"
 #include "Kaleid.Graphics\GraphicsFactory.hpp"
 #include "Kaleid.Game\Model.hpp"
-#include "Kaleid.Helpers\StringHelper.hpp"
-#include "Kaleid.Helpers\VectorHelper.hpp"
+#include "Jagerts.Felcp.Helpers\StringHelper.hpp"
+#include "Jagerts.Felcp.Helpers\VectorHelper.hpp"
 #include "Kaleid.Math\Vector.hpp"
 #include "Kaleid.Geometry\Vertex.hpp"
 #include "Kaleid.Geometry\Triangle.hpp"
@@ -20,7 +20,7 @@ using namespace Kaleid::Math;
 using namespace Kaleid::Game;
 using namespace Kaleid::Geometry;
 using namespace Kaleid::Graphics;
-using namespace Kaleid::Helpers;
+using namespace Jagerts::Felcp::Helpers;
 
 struct ObjPieceData
 {

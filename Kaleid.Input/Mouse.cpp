@@ -1,9 +1,9 @@
 #include "Mouse.hpp"
-#include "Kaleid.Helpers\VectorHelper.hpp"
+#include "Jagerts.Felcp.Helpers\VectorHelper.hpp"
 #include "Kaleid.Graphics\Window.hpp"
 
 using namespace Kaleid::Graphics;
-using namespace Kaleid::Helpers;
+using namespace Jagerts::Felcp::Helpers;
 using namespace Kaleid::Input;
 
 Mouse::Mouse()

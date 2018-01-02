@@ -105,13 +105,14 @@ copy "$(SolutionDir)packages\Jagerts.Felcp.IO\bin\$(Configuration)\Windows\$(Pla
 copy "$(SolutionDir)packages\Jagerts.Felcp.IO.Imaging\bin\$(Configuration)\Windows\$(PlatformTarget)\Jagerts.Felcp.IO.Imaging.dll" "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
 copy "$(SolutionDir)packages\Jagerts.Felcp.Imaging\bin\$(Configuration)\Windows\$(PlatformTarget)\Jagerts.Felcp.Imaging.dll" "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
 copy "$(SolutionDir)packages\Jagerts.Felcp.Xml\bin\$(Configuration)\Windows\$(PlatformTarget)\Jagerts.Felcp.Xml.dll" "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
-copy "$(SolutionDir)packages\Jagerts.Felcp.IO.Xml\bin\$(Configuration)\Windows\$(PlatformTarget)\Jagerts.Felcp.IO.Xml.dll" "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y</Command>
+copy "$(SolutionDir)packages\Jagerts.Felcp.IO.Xml\bin\$(Configuration)\Windows\$(PlatformTarget)\Jagerts.Felcp.IO.Xml.dll" "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
+copy "$(SolutionDir)packages\Jagerts.Felcp.Helpers\bin\$(Configuration)\Windows\$(PlatformTarget)\Jagerts.Felcp.Helpers.dll" "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y</Command>
     </PostBuildEvent>
     <Link>
       <SubSystem>
       </SubSystem>
-      <AdditionalLibraryDirectories>$(SolutionDir)packages\Jagerts.Felcp.IO\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.IO.Imaging\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Imaging\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Xml\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.IO.Xml\lib\$(Configuration)\Windows\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Jagerts.Felcp.IO.lib;Jagerts.Felcp.IO.Imaging.lib;Jagerts.Felcp.Imaging.lib;Jagerts.Felcp.IO.Xml.lib;Jagerts.Felcp.Xml.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)packages\Jagerts.Felcp.IO\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.IO.Imaging\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Imaging\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Xml\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.IO.Xml\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Helpers\lib\$(Configuration)\Windows\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Jagerts.Felcp.Helpers.lib;Jagerts.Felcp.IO.lib;Jagerts.Felcp.IO.Imaging.lib;Jagerts.Felcp.Imaging.lib;Jagerts.Felcp.IO.Xml.lib;Jagerts.Felcp.Xml.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -133,13 +134,14 @@ copy "$(SolutionDir)packages\Jagerts.Felcp.IO\bin\$(Configuration)\Windows\$(Pla
 copy "$(SolutionDir)packages\Jagerts.Felcp.IO.Imaging\bin\$(Configuration)\Windows\$(PlatformTarget)\Jagerts.Felcp.IO.Imaging.dll" "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
 copy "$(SolutionDir)packages\Jagerts.Felcp.Imaging\bin\$(Configuration)\Windows\$(PlatformTarget)\Jagerts.Felcp.Imaging.dll" "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
 copy "$(SolutionDir)packages\Jagerts.Felcp.Xml\bin\$(Configuration)\Windows\$(PlatformTarget)\Jagerts.Felcp.Xml.dll" "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
-copy "$(SolutionDir)packages\Jagerts.Felcp.IO.Xml\bin\$(Configuration)\Windows\$(PlatformTarget)\Jagerts.Felcp.IO.Xml.dll" "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y</Command>
+copy "$(SolutionDir)packages\Jagerts.Felcp.IO.Xml\bin\$(Configuration)\Windows\$(PlatformTarget)\Jagerts.Felcp.IO.Xml.dll" "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
+copy "$(SolutionDir)packages\Jagerts.Felcp.Helpers\bin\$(Configuration)\Windows\$(PlatformTarget)\Jagerts.Felcp.Helpers.dll" "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y</Command>
     </PostBuildEvent>
     <Link>
       <SubSystem>
       </SubSystem>
-      <AdditionalLibraryDirectories>$(SolutionDir)packages\Jagerts.Felcp.IO\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.IO.Imaging\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Imaging\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Xml\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.IO.Xml\lib\$(Configuration)\Windows\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Jagerts.Felcp.IO.lib;Jagerts.Felcp.IO.Imaging.lib;Jagerts.Felcp.Imaging.lib;Jagerts.Felcp.IO.Xml.lib;Jagerts.Felcp.Xml.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)packages\Jagerts.Felcp.IO\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.IO.Imaging\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Imaging\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Xml\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.IO.Xml\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Helpers\lib\$(Configuration)\Windows\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Jagerts.Felcp.Helpers.lib;Jagerts.Felcp.IO.lib;Jagerts.Felcp.IO.Imaging.lib;Jagerts.Felcp.Imaging.lib;Jagerts.Felcp.IO.Xml.lib;Jagerts.Felcp.Xml.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -160,8 +162,8 @@ copy "$(SolutionDir)packages\Jagerts.Felcp.IO.Xml\bin\$(Configuration)\Windows\$
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <SubSystem>Windows</SubSystem>
-      <AdditionalLibraryDirectories>$(SolutionDir)packages\Jagerts.Felcp.IO\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.IO.Imaging\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Imaging\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Xml\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.IO.Xml\lib\$(Configuration)\Windows\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Jagerts.Felcp.IO.lib;Jagerts.Felcp.IO.Imaging.lib;Jagerts.Felcp.Imaging.lib;Jagerts.Felcp.IO.Xml.lib;Jagerts.Felcp.Xml.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)packages\Jagerts.Felcp.IO\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.IO.Imaging\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Imaging\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Xml\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.IO.Xml\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Helpers\lib\$(Configuration)\Windows\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Jagerts.Felcp.Helpers.lib;Jagerts.Felcp.IO.lib;Jagerts.Felcp.IO.Imaging.lib;Jagerts.Felcp.Imaging.lib;Jagerts.Felcp.IO.Xml.lib;Jagerts.Felcp.Xml.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>copy "$(SolutionDir)packages\GLEW\bin\Windows\$(PlatformTarget)\glew32.dll" "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
@@ -170,7 +172,8 @@ copy "$(SolutionDir)packages\Jagerts.Felcp.IO\bin\$(Configuration)\Windows\$(Pla
 copy "$(SolutionDir)packages\Jagerts.Felcp.IO.Imaging\bin\$(Configuration)\Windows\$(PlatformTarget)\Jagerts.Felcp.IO.Imaging.dll" "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
 copy "$(SolutionDir)packages\Jagerts.Felcp.Imaging\bin\$(Configuration)\Windows\$(PlatformTarget)\Jagerts.Felcp.Imaging.dll" "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
 copy "$(SolutionDir)packages\Jagerts.Felcp.Xml\bin\$(Configuration)\Windows\$(PlatformTarget)\Jagerts.Felcp.Xml.dll" "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
-copy "$(SolutionDir)packages\Jagerts.Felcp.IO.Xml\bin\$(Configuration)\Windows\$(PlatformTarget)\Jagerts.Felcp.IO.Xml.dll" "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y</Command>
+copy "$(SolutionDir)packages\Jagerts.Felcp.IO.Xml\bin\$(Configuration)\Windows\$(PlatformTarget)\Jagerts.Felcp.IO.Xml.dll" "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
+copy "$(SolutionDir)packages\Jagerts.Felcp.Helpers\bin\$(Configuration)\Windows\$(PlatformTarget)\Jagerts.Felcp.Helpers.dll" "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -191,8 +194,8 @@ copy "$(SolutionDir)packages\Jagerts.Felcp.IO.Xml\bin\$(Configuration)\Windows\$
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <SubSystem>Windows</SubSystem>
-      <AdditionalLibraryDirectories>$(SolutionDir)packages\Jagerts.Felcp.IO\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.IO.Imaging\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Imaging\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Xml\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.IO.Xml\lib\$(Configuration)\Windows\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Jagerts.Felcp.IO.lib;Jagerts.Felcp.IO.Imaging.lib;Jagerts.Felcp.Imaging.lib;Jagerts.Felcp.IO.Xml.lib;Jagerts.Felcp.Xml.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)packages\Jagerts.Felcp.IO\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.IO.Imaging\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Imaging\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Xml\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.IO.Xml\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Helpers\lib\$(Configuration)\Windows\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Jagerts.Felcp.Helpers.lib;Jagerts.Felcp.IO.lib;Jagerts.Felcp.IO.Imaging.lib;Jagerts.Felcp.Imaging.lib;Jagerts.Felcp.IO.Xml.lib;Jagerts.Felcp.Xml.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>copy "$(SolutionDir)packages\GLEW\bin\Windows\$(PlatformTarget)\glew32.dll" "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
@@ -201,7 +204,8 @@ copy "$(SolutionDir)packages\Jagerts.Felcp.IO\bin\$(Configuration)\Windows\$(Pla
 copy "$(SolutionDir)packages\Jagerts.Felcp.IO.Imaging\bin\$(Configuration)\Windows\$(PlatformTarget)\Jagerts.Felcp.IO.Imaging.dll" "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
 copy "$(SolutionDir)packages\Jagerts.Felcp.Imaging\bin\$(Configuration)\Windows\$(PlatformTarget)\Jagerts.Felcp.Imaging.dll" "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
 copy "$(SolutionDir)packages\Jagerts.Felcp.Xml\bin\$(Configuration)\Windows\$(PlatformTarget)\Jagerts.Felcp.Xml.dll" "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
-copy "$(SolutionDir)packages\Jagerts.Felcp.IO.Xml\bin\$(Configuration)\Windows\$(PlatformTarget)\Jagerts.Felcp.IO.Xml.dll" "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y</Command>
+copy "$(SolutionDir)packages\Jagerts.Felcp.IO.Xml\bin\$(Configuration)\Windows\$(PlatformTarget)\Jagerts.Felcp.IO.Xml.dll" "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y
+copy "$(SolutionDir)packages\Jagerts.Felcp.Helpers\bin\$(Configuration)\Windows\$(PlatformTarget)\Jagerts.Felcp.Helpers.dll" "$(ProjectDir)bin\$(Configuration)\Windows\$(PlatformTarget)\" /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -213,9 +217,6 @@ copy "$(SolutionDir)packages\Jagerts.Felcp.IO.Xml\bin\$(Configuration)\Windows\$
     </ProjectReference>
     <ProjectReference Include="..\Kaleid.Graphics\Kaleid.Graphics.vcxproj">
       <Project>{b0d1fc24-7ed7-4f0a-b51b-0864f52f4f77}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Kaleid.Helpers\Kaleid.Helpers.vcxproj">
-      <Project>{fa74e84f-8b9c-44fa-99be-b68865635073}</Project>
     </ProjectReference>
     <ProjectReference Include="..\Kaleid.Input\Kaleid.Input.vcxproj">
       <Project>{ea568d2a-de04-4ee7-b141-c6f66afa0b84}</Project>

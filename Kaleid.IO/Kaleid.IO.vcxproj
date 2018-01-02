@@ -110,8 +110,8 @@ if not exist "$(SolutionDir)dist\Kaleid.Shared\" mkdir "$(SolutionDir)dist\Kalei
 xcopy "$(SolutionDir)Kaleid.Shared\*.hpp" "$(SolutionDir)dist\Kaleid.Shared\" /y</Command>
     </PostBuildEvent>
     <Link>
-      <AdditionalLibraryDirectories>$(SolutionDir)packages\Jagerts.Felcp.IO\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.IO.Imaging\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Imaging\lib\$(Configuration)\Windows\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Jagerts.Felcp.IO.lib;Jagerts.Felcp.IO.Imaging.lib;Jagerts.Felcp.Imaging.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)packages\Jagerts.Felcp.IO\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.IO.Imaging\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Imaging\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Helpers\lib\$(Configuration)\Windows\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Jagerts.Felcp.Helpers.lib;Jagerts.Felcp.IO.lib;Jagerts.Felcp.IO.Imaging.lib;Jagerts.Felcp.Imaging.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -139,8 +139,8 @@ if not exist "$(SolutionDir)dist\Kaleid.Shared\" mkdir "$(SolutionDir)dist\Kalei
 xcopy "$(SolutionDir)Kaleid.Shared\*.hpp" "$(SolutionDir)dist\Kaleid.Shared\" /y</Command>
     </PostBuildEvent>
     <Link>
-      <AdditionalLibraryDirectories>$(SolutionDir)packages\Jagerts.Felcp.IO\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.IO.Imaging\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Imaging\lib\$(Configuration)\Windows\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Jagerts.Felcp.IO.lib;Jagerts.Felcp.IO.Imaging.lib;Jagerts.Felcp.Imaging.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)packages\Jagerts.Felcp.IO\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.IO.Imaging\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Imaging\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Helpers\lib\$(Configuration)\Windows\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Jagerts.Felcp.Helpers.lib;Jagerts.Felcp.IO.lib;Jagerts.Felcp.IO.Imaging.lib;Jagerts.Felcp.Imaging.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -160,8 +160,8 @@ xcopy "$(SolutionDir)Kaleid.Shared\*.hpp" "$(SolutionDir)dist\Kaleid.Shared\" /y
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(SolutionDir)packages\Jagerts.Felcp.IO\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.IO.Imaging\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Imaging\lib\$(Configuration)\Windows\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Jagerts.Felcp.IO.lib;Jagerts.Felcp.IO.Imaging.lib;Jagerts.Felcp.Imaging.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)packages\Jagerts.Felcp.IO\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.IO.Imaging\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Imaging\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Helpers\lib\$(Configuration)\Windows\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Jagerts.Felcp.Helpers.lib;Jagerts.Felcp.IO.lib;Jagerts.Felcp.IO.Imaging.lib;Jagerts.Felcp.Imaging.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>if not exist "$(SolutionDir)Kaleid.Application\bin\$(Configuration)\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)Kaleid.Application\bin\$(Configuration)\Windows\$(PlatformTarget)\"
@@ -193,8 +193,8 @@ xcopy "$(SolutionDir)Kaleid.Shared\*.hpp" "$(SolutionDir)dist\Kaleid.Shared\" /y
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(SolutionDir)packages\Jagerts.Felcp.IO\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.IO.Imaging\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Imaging\lib\$(Configuration)\Windows\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Jagerts.Felcp.IO.lib;Jagerts.Felcp.IO.Imaging.lib;Jagerts.Felcp.Imaging.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)packages\Jagerts.Felcp.IO\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.IO.Imaging\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Imaging\lib\$(Configuration)\Windows\$(PlatformTarget)\;$(SolutionDir)packages\Jagerts.Felcp.Helpers\lib\$(Configuration)\Windows\$(PlatformTarget)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Jagerts.Felcp.Helpers.lib;Jagerts.Felcp.IO.lib;Jagerts.Felcp.IO.Imaging.lib;Jagerts.Felcp.Imaging.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>if not exist "$(SolutionDir)Kaleid.Application\bin\$(Configuration)\Windows\$(PlatformTarget)\" mkdir "$(SolutionDir)Kaleid.Application\bin\$(Configuration)\Windows\$(PlatformTarget)\"

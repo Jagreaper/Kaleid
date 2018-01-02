@@ -14,7 +14,7 @@
 #include "Kaleid.Input\Keyboard.hpp"
 #include "Kaleid.Input\KeyBinding.hpp"
 #include "Kaleid.Input\MouseMoveBinding.hpp"
-#include "Kaleid.Helpers\VectorHelper.hpp"
+#include "Jagerts.Felcp.Helpers\VectorHelper.hpp"
 #include "Jagerts.Felcp.Imaging\Image.hpp"
 #include "Jagerts.Felcp.Xml\XmlFile.hpp"
 #include "Jagerts.Felcp.IO.Xml\XmlDecoder.hpp"
@@ -27,7 +27,7 @@ using namespace Kaleid::Graphics;
 using namespace Kaleid::IO;
 using namespace Kaleid::Input;
 using namespace Kaleid::Application;
-using namespace Kaleid::Helpers;
+using namespace Jagerts::Felcp::Helpers;
 using namespace Jagerts::Felcp::Xml;
 using namespace Jagerts::Felcp::IO::Xml;
 using namespace Jagerts::Felcp::Imaging;

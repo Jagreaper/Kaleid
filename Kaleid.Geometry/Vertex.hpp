@@ -1,12 +1,12 @@
 #pragma once
 
 #include "Kaleid.Math\Vector.hpp"
-#include "Kaleid.Helpers\Nullable.hpp"
+#include "Jagerts.Felcp.Helpers\Nullable.hpp"
 
 namespace Kaleid::Geometry
 {
 	template<class T>
-	using VectorGeometry = Kaleid::Helpers::Nullable<Kaleid::Math::Vector3<T>>;
+	using VectorGeometry = Jagerts::Felcp::Helpers::Nullable<Kaleid::Math::Vector3<T>>;
 
 	using VectorGeometryF = VectorGeometry<float>;
 	using VectorGeometryD = VectorGeometry<double>;
@@ -15,7 +15,7 @@ namespace Kaleid::Geometry
 	using VectorGeometryL = VectorGeometry<int64_t>;
 
 	template<class T>
-	using VectorNormal = Kaleid::Helpers::Nullable<Kaleid::Math::Vector3<T>>;
+	using VectorNormal = Jagerts::Felcp::Helpers::Nullable<Kaleid::Math::Vector3<T>>;
 
 	using VectorNormalF = VectorNormal<float>;
 	using VectorNormalD = VectorNormal<double>;
@@ -24,7 +24,7 @@ namespace Kaleid::Geometry
 	using VectorNormalL = VectorNormal<int64_t>;
 
 	template<class T>
-	using VectorTexture = Kaleid::Helpers::Nullable<Kaleid::Math::Vector2<T>>;
+	using VectorTexture = Jagerts::Felcp::Helpers::Nullable<Kaleid::Math::Vector2<T>>;
 
 	using VectorTextureF = VectorTexture<float>;
 	using VectorTextureD = VectorTexture<double>;

@@ -1,7 +1,7 @@
 #include "Actor.hpp"
-#include "Kaleid.Helpers\VectorHelper.hpp"
+#include "Jagerts.Felcp.Helpers\VectorHelper.hpp"
 
 using namespace Kaleid::Game;
 using namespace Kaleid::Math;
-using namespace Kaleid::Helpers;
+using namespace Jagerts::Felcp::Helpers;
 using namespace Kaleid::Graphics;

@@ -7,11 +7,11 @@
 #include "VertexBuffer.hpp"
 #include "IndexBuffer.hpp"
 #include "Mesh.hpp"
-#include "Kaleid.Helpers\VectorHelper.hpp"
+#include "Jagerts.Felcp.Helpers\VectorHelper.hpp"
 #include "Texture.hpp"
 
 using namespace Kaleid::Graphics;
-using namespace Kaleid::Helpers;
+using namespace Jagerts::Felcp::Helpers;
 
 bool GraphicsFactory::_glfw_created = false;
 bool GraphicsFactory::_glew_created = false;

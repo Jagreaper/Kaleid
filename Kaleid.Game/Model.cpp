@@ -1,11 +1,11 @@
 #include "Model.hpp"
-#include "Kaleid.Helpers\VectorHelper.hpp"
+#include "Jagerts.Felcp.Helpers\VectorHelper.hpp"
 #include "Kaleid.Graphics\Renderer.hpp"
 
 using namespace Kaleid::Math;
 using namespace Kaleid::Game;
 using namespace Kaleid::Graphics;
-using namespace Kaleid::Helpers;
+using namespace Jagerts::Felcp::Helpers;
 
 std::vector<Model*> Model::_models;
 

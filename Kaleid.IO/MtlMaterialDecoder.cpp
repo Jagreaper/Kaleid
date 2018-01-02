@@ -1,6 +1,6 @@
 #include "MtlMaterialDecoder.hpp"
-#include "Kaleid.Helpers\StringHelper.hpp"
-#include "Kaleid.Helpers\VectorHelper.hpp"
+#include "Jagerts.Felcp.Helpers\StringHelper.hpp"
+#include "Jagerts.Felcp.Helpers\VectorHelper.hpp"
 #include "Kaleid.Graphics\Material.hpp"
 #include "Kaleid.Math\Vector.hpp"
 #include <string>
@@ -10,7 +10,7 @@
 
 using namespace Kaleid::IO;
 using namespace Kaleid::Graphics;
-using namespace Kaleid::Helpers;
+using namespace Jagerts::Felcp::Helpers;
 using namespace Kaleid::Math;
 
 bool TryReadSpecularExponent(const std::string& line, MaterialInfo& output)
