@@ -16,7 +16,6 @@
 #include "Kaleid.Input\MouseMoveBinding.hpp"
 #include "Kaleid.Helpers\VectorHelper.hpp"
 #include "Jagerts.Felcp.Imaging\Image.hpp"
-#include "Kaleid.Xml\XmlFile.hpp"
 #include <iostream>
 #include <fstream>
 
@@ -28,7 +27,6 @@ using namespace Kaleid::Input;
 using namespace Jagerts::Felcp::Imaging;
 using namespace Kaleid::Application;
 using namespace Kaleid::Helpers;
-using namespace Kaleid::Xml;
 
 RootScene::RootScene(App* app)
 	: SceneBase(app)

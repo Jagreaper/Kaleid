@@ -226,9 +226,6 @@ xcopy "$(SolutionDir)Kaleid.Shared\*.hpp" "$(SolutionDir)dist\Kaleid.Shared\" /y
     <ProjectReference Include="..\Kaleid.Math\Kaleid.Math.vcxproj">
       <Project>{d7ea2988-db27-4004-ab6b-c81a923164df}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\Kaleid.Xml\Kaleid.Xml.vcxproj">
-      <Project>{991f65b1-2082-4cc4-baa0-6c37d1148908}</Project>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
