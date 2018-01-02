@@ -59,6 +59,8 @@ Jagerts::Kaleid::Graphics::Mesh* Quad::CreateMesh(GraphicsFactory*& graphics_fac
 		Quad::_mesh->Compose();
 		return Quad::GetMesh();
 	}
+
+	return NULL;
 }
 
 Jagerts::Kaleid::Graphics::Mesh* Quad::GetMesh()

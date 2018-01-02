@@ -172,10 +172,10 @@ bool TesselateFaces(std::vector<FaceF>& baked_faces, std::vector<FaceF>& tess_fa
 	{
 		FaceF face = baked_faces[face_index];
 
-		int length = face.GetVerticies().size() - 2;
+		unsigned int length = (unsigned int)face.GetVerticies().size() - 2;
 		VertexF origin = face.GetVerticies()[0];
 
-		for (int index = 0; index < length; index++)
+		for (unsigned int index = 0; index < length; index++)
 		{
 			VertexF v1 = face.GetVerticies()[1 + index];
 			VertexF v2 = face.GetVerticies()[2 + index];
@@ -395,6 +395,8 @@ bool TryCreateMesh(ObjData& data, ObjPieceData& piece, ModelDecoderParams& arg, 
 		if (!TryBuildMesh(mesh_data, mesh_ptr, arg.GraphicsFactory))
 			throw std::runtime_error("Could build mesh");
 	}
+
+	return true;
 }
 
 bool TryCreateComponents(ObjData& data, std::vector<ObjPieceData>& pieces, ModelDecoderParams& arg, std::vector<ModelComponent*>& components)

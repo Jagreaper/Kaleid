@@ -54,8 +54,8 @@ bool HeightmapDecoder::TryDecode(const char* source, Model* output, ModelDecoder
 
 	unsigned int index = 0;
 
-	float width = image.GetWidth() - 1;
-	float height = image.GetHeight() - 1;
+	float width = (float)image.GetWidth() - 1;
+	float height = (float)image.GetHeight() - 1;
 
 	float x_offset = width / 2.0f;
 	float y_offset = height / 2.0f;

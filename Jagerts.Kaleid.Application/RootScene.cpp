@@ -196,7 +196,7 @@ void RootScene::Render()
 	this->_app->GetWindow(0)->GetSize(&width, &height);
 	this->_camera.SetAspectRatio((float)width / height);
 	this->_renderer->Clear(0.0f, 0.0f, 0.0f, 1.0f);
-	this->_renderer->SetViewport(0.0f, 0.0f, width, height);
+	this->_renderer->SetViewport(0.0f, 0.0f, (float)width, (float)height);
 
 	Matrix4F mvp = (&this->_camera)->GetProjectionMatrix() * (&this->_camera)->GetViewMatrix() * this->_actor.GetTransform()->GetModelMatrix();
 	Renderer* renderer = this->_renderer;

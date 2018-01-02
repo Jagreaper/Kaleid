@@ -57,7 +57,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{B0D1FC24-7ED7-4F0A-B51B-0864F52F4F77}</ProjectGuid>
     <RootNamespace>Jagerts::Kaleid::Graphics</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
     <ProjectName>Jagerts.Kaleid.Graphics</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
