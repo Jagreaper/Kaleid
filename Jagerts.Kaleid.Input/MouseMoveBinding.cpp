@@ -24,10 +24,8 @@ void MouseMoveBinding::Poll(Jagerts::Kaleid::Graphics::Window*& window, Mouse* m
 		y = mouse->_delta_ypos;
 		break;
 	case MouseMoveType::CenteredDelta:
-		unsigned int wx, wy;
-		window->GetSize(&wx, &wy);
-		x = mouse->_xpos - ((float)wx / 2.0f);
-		y = mouse->_ypos - ((float)wy / 2.0f);
+		x = mouse->_center_delta_xpos;
+		y = mouse->_center_delta_ypos;
 		break;
 	default:
 		break;

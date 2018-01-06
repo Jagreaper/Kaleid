@@ -73,8 +73,12 @@ void Mouse::Poll(Jagerts::Kaleid::Graphics::Window*& window)
 	unsigned int width, height;
 	window->GetSize(&width, &height);
 	window->GetMousePosition(&this->_xpos, &this->_ypos);
+
 	this->_delta_xpos = this->_xpos - this->_old_xpos;
 	this->_delta_ypos = this->_ypos - this->_old_ypos;
+
+	this->_center_delta_xpos = this->_xpos - ((float)width / 2.0f);
+	this->_center_delta_ypos = this->_ypos - ((float)height / 2.0f);
 
 	for (unsigned int index = 0; index < this->_mouse_click_bindings.size(); index++)
 		this->_mouse_click_bindings[index].Poll(window, this);

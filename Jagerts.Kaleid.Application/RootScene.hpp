@@ -22,11 +22,6 @@ namespace Jagerts::Kaleid::Application
 		void CreateKeyboardBindings();
 		void CameraMouseMovement(const double& x_delta, const double& y_delta);
 
-		double _xpos_old;
-		double _ypos_old;
-		double _xpos_new;
-		double _ypos_new;
-
 		Jagerts::Kaleid::Graphics::ShaderProgram* _program;
 		Jagerts::Kaleid::Game::Actor _actor;
 		Jagerts::Kaleid::Math::PerspectiveCamera _camera;

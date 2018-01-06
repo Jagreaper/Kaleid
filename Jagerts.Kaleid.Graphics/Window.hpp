@@ -48,9 +48,6 @@ namespace Jagerts::Kaleid::Graphics
 
 		void Hide();
 		void Restore();
-		void HideCursor();
-		void RestoreCursor();
-		void DisableCursor();
 
 		bool IsFocused() const;
 		bool IsVisible() const;

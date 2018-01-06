@@ -176,16 +176,13 @@ void RootScene::Load()
 	this->_camera.SetPosition(Vector3F(0.0f, 0.0f, 5.0f));
 	this->_camera.SetFarZ(2000.0f);
 
-	this->_mouse.GetPosition(&this->_xpos_old, &this->_ypos_old);
-
 	this->SceneBase::Load();
-	this->_app->GetWindow(0)->HideCursor();
+	this->_app->GetWindow(0)->SetCursorMode(CursorMode::Hidden);
 }
 
 void RootScene::Update()
 {
 	this->_app->GetWindow(0)->CenterCursor();
-	//this->CameraMouseMovement(this->_mouse.GetDeltaPositionX(), this->_mouse.GetDeltaPositionY());
 	this->SceneBase::Update();
 }
 

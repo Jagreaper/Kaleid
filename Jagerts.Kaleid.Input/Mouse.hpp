@@ -44,6 +44,8 @@ namespace Jagerts::Kaleid::Input
 		double _old_ypos;
 		double _delta_xpos;
 		double _delta_ypos;
+		double _center_delta_xpos;
+		double _center_delta_ypos;
 
 		friend class MouseMoveBinding;
 	};

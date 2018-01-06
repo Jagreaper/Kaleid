@@ -101,21 +101,6 @@ void Window::Restore()
 	glfwRestoreWindow(this->_handle);
 }
 
-void Window::HideCursor()
-{
-	glfwSetInputMode(this->_handle, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
-}
-
-void Window::DisableCursor()
-{
-	glfwSetInputMode(this->_handle, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-}
-
-void Window::RestoreCursor()
-{
-	glfwSetInputMode(this->_handle, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
-}
-
 void Window::SetVSyncMode(VSyncMode mode)
 {
 	this->MakeCurrent();
