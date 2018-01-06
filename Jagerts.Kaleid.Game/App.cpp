@@ -18,7 +18,7 @@ App::App()
 
 void App::Load()
 {
-	Window* window = this->_graphics_factory->CreateWindow(800, 600, "OpenGL Window");
+	Window* window = this->_graphics_factory->CreateWindow(1280, 720, "OpenGL Window");
 	this->_windows.push_back(window);
 }
 

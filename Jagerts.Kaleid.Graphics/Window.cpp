@@ -4,6 +4,7 @@ using namespace Jagerts::Kaleid::Graphics;
 
 Window::Window(int width, int height, const char* title)
 {
+	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 	this->_handle = glfwCreateWindow(width, height, title, NULL, NULL);
 	this->_cursor_mode = CursorMode::Normal;
 	this->SetVSyncMode(VSyncMode::Off);
