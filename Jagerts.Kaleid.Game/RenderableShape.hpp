@@ -39,6 +39,7 @@ protected: \
 	static Jagerts::Kaleid::Graphics::Mesh* _s_mesh; \
 	static std::vector<RenderableShape*> _shapes \
 
+#ifdef JAGERTS_KALEID_GAME_DLL
 #define jkgRenderableShapeStaticSource(CLASS, DATA) \
 \
 using namespace Jagerts::Kaleid::Math; \
@@ -95,3 +96,5 @@ void CLASS::FreeMesh(GraphicsFactory*& graphics_factory) \
 	for (RenderableShape*& shape : CLASS::_shapes) \
 		shape->_mesh = NULL; \
 } \
+
+#endif
