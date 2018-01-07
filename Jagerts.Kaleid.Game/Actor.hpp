@@ -10,5 +10,7 @@ namespace Jagerts::Kaleid::Game
 {
 	class JAGERTS_KALEID_GAME_API Actor : public Jagerts::Kaleid::Game::ModelObject
 	{
+	public:
+		jkgUsingModelObject;
 	};
 }

@@ -36,6 +36,7 @@ namespace Jagerts::Kaleid::Game
 		void SetName(const std::string name);
 		void SetName(const char* name);
 		const std::string& GetName() const;
+		jkmUsingTransformableObject;
 	private:
 		inline ModelComponent() { }
 		static std::vector<ModelComponent*> _model_components;

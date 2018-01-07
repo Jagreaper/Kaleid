@@ -129,7 +129,7 @@ void ModelObject::RemoveModels()
 	this->_models.clear();
 }
 
-void ModelObject::Render(Renderer*& renderer, std::function<void(ShaderProgram*&, Material* material)> arguments)
+jkgRenderableObjectSource(ModelObject)
 {
 	for (std::pair<const char*, Model*> element : this->_models)
 		element.second->Render(renderer, arguments);

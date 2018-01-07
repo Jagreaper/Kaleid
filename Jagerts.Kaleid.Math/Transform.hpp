@@ -5,6 +5,8 @@
 #include "Vector.hpp"
 #include <vector>
 
+#define jkmUsingTransformableObject using Jagerts::Kaleid::Math::TransformableObject::GetTransform
+
 namespace Jagerts::Kaleid::Math
 {
 	class JAGERTS_KALEID_MATH_API Transform sealed
@@ -63,7 +65,7 @@ namespace Jagerts::Kaleid::Math
 		void MarkScaleDirty();
 	};
 
-	class JAGERTS_KALEID_GAME_API TransformableObject
+	class JAGERTS_KALEID_MATH_API TransformableObject
 	{
 	public:
 		Jagerts::Kaleid::Math::Transform* GetTransform();

@@ -8,6 +8,11 @@
 #include <functional>
 #include <vector>
 
+#define jkgUsingModelObject \
+using Jagerts::Kaleid::Game::ModelObject::AddModel; \
+using Jagerts::Kaleid::Game::ModelObject::RemoveModel; \
+using Jagerts::Kaleid::Game::ModelObject::RemoveModels \
+
 namespace Jagerts::Kaleid::Graphics
 {
 	class Mesh;
@@ -32,6 +37,7 @@ namespace Jagerts::Kaleid::Game
 		const ModelComponent* GetComponent(int index);
 		std::vector<ModelComponent*>* GetComponents();
 		void Render(Jagerts::Kaleid::Graphics::Renderer*& renderer, std::function<void(Jagerts::Kaleid::Graphics::ShaderProgram*&, Jagerts::Kaleid::Graphics::Material* material)> arguments);
+		jkmUsingTransformableObject;
 	protected:
 		inline Model() { }
 		static std::vector<Model*> _models;
@@ -44,7 +50,8 @@ namespace Jagerts::Kaleid::Game
 		void AddModel(const char* name, Model*& model);
 		void RemoveModel(const char* name);
 		void RemoveModels();
-		virtual void Render(Jagerts::Kaleid::Graphics::Renderer*& renderer, std::function<void(Jagerts::Kaleid::Graphics::ShaderProgram*&, Jagerts::Kaleid::Graphics::Material* material)> arguments);
+		jkgRenderableObjectVirtual;
+		jkmUsingTransformableObject;
 	protected:
 		std::unordered_map<const char*, Model*> _models;
 	};

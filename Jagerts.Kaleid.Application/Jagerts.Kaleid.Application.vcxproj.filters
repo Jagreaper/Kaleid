@@ -10,6 +10,9 @@
     <Filter Include="Entry Point">
       <UniqueIdentifier>{79575c1f-cdeb-4a04-82b3-c033fb6bfc8a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Xml">
+      <UniqueIdentifier>{1cf7fdf2-4067-4089-a30a-b15194098491}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="RootScene.cpp">

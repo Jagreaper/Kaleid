@@ -12,5 +12,6 @@ namespace Jagerts::Kaleid::Game
 	{
 	public:
 		Terrian(float length, float width);
+		jkgUsingModelObject;
 	};
 }
