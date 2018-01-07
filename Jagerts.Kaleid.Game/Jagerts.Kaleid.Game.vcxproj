@@ -217,6 +217,7 @@ xcopy "$(SolutionDir)Jagerts.Kaleid.Shared\*.hpp" "$(SolutionDir)dist\Jagerts.Ka
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="ModelComponent.cpp" />
     <ClCompile Include="Quad.cpp" />
+    <ClCompile Include="RenderableShape.cpp" />
     <ClCompile Include="SceneBase.cpp" />
     <ClCompile Include="Terrian.cpp" />
   </ItemGroup>
@@ -228,6 +229,7 @@ xcopy "$(SolutionDir)Jagerts.Kaleid.Shared\*.hpp" "$(SolutionDir)dist\Jagerts.Ka
     <ClInclude Include="Model.hpp" />
     <ClInclude Include="ModelComponent.hpp" />
     <ClInclude Include="Quad.hpp" />
+    <ClInclude Include="RenderableShape.hpp" />
     <ClInclude Include="SceneBase.hpp" />
     <ClInclude Include="Terrian.hpp" />
   </ItemGroup>

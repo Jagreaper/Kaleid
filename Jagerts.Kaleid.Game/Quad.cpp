@@ -1,76 +1,29 @@
 #include "Quad.hpp"
+
 #include "Jagerts.Kaleid.Graphics\Renderer.hpp"
 #include "Jagerts.Kaleid.Graphics\Mesh.hpp"
 #include "Jagerts.Kaleid.Graphics\GraphicsFactory.hpp"
+#include "Jagerts.Felcp.Helpers\VectorHelper.hpp"
 
-using namespace Jagerts::Kaleid::Math;
-using namespace Jagerts::Kaleid::Graphics;
-using namespace Jagerts::Kaleid::Game;
+#define _QuadShapeMeshData \
+const float verticies[] = \
+{ \
+	-1.0f, -1.0f,  0.0f, \
+	 1.0f, -1.0f,  0.0f, \
+	 1.0f,  1.0f,  0.0f, \
+	-1.0f,  1.0f,  0.0f, \
+}; \
+\
+const unsigned int indicies[] = \
+{ \
+	0, 1, 2, \
+	2, 3, 0, \
+}; \
+\
+VertexBuffer* vertex_buffer = graphics_factory->CreateVertexBuffer(verticies, 12, 3); \
+IndexBuffer* index_buffer = graphics_factory->CreateIndexBuffer(indicies, 6); \
+Mesh* mesh = graphics_factory->CreateMesh(index_buffer, vertex_buffer) \
 
-Mesh* Quad::_mesh = NULL;
+jkgRenderableShapeStaticSource(Quad, _QuadShapeMeshData)
 
-Quad::Quad()
-{
-	this->_shader_program = NULL;
-}
-
-void Quad::Render(Renderer*& renderer, std::function<void(ShaderProgram*&)> arguments)
-{
-	renderer->RenderMesh(this->_mesh, this->_shader_program, NULL, arguments);
-}
-
-void Quad::SetShaderProgram(ShaderProgram*& shader_program)
-{
-	this->_shader_program = shader_program;
-}
-
-ShaderProgram* Quad::GetShaderProgram()
-{
-	return this->_shader_program;
-}
-
-
-bool Quad::MeshExists()
-{
-	return Quad::_mesh != NULL;
-}
-
-Jagerts::Kaleid::Graphics::Mesh* Quad::CreateMesh(GraphicsFactory*& graphics_factory)
-{
-	if (Quad::_mesh == NULL)
-	{
-		const float verticies[] =
-		{
-			-1.0f, -1.0f,  0.0f,
-			 1.0f, -1.0f,  0.0f,
-			 1.0f,  1.0f,  0.0f,
-			-1.0f,  1.0f,  0.0f,
-		};
-
-		const unsigned int indicies[] =
-		{
-			0, 1, 2,
-			2, 3, 0,
-		};
-
-		VertexBuffer* vertex_buffer = graphics_factory->CreateVertexBuffer(verticies, 24, 3);
-		IndexBuffer* index_buffer = graphics_factory->CreateIndexBuffer(indicies, 36);
-		Quad::_mesh = graphics_factory->CreateMesh(index_buffer, vertex_buffer);
-		Quad::_mesh->Compose();
-		return Quad::GetMesh();
-	}
-
-	return NULL;
-}
-
-Jagerts::Kaleid::Graphics::Mesh* Quad::GetMesh()
-{
-	return Quad::_mesh;
-}
-
-void Quad::FreeMesh(GraphicsFactory*& graphics_factory)
-{
-	graphics_factory->FreeIndexBuffer(Quad::_mesh->GetIndexBuffer());
-	graphics_factory->FreeVertexBuffers(Quad::_mesh->GetVertexBuffers());
-	graphics_factory->FreeMesh(Quad::_mesh);
-}
+#undef _QuadShapeMeshData

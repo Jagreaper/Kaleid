@@ -25,6 +25,9 @@
     <ClCompile Include="Terrian.cpp">
       <Filter>Terrian</Filter>
     </ClCompile>
+    <ClCompile Include="RenderableShape.cpp">
+      <Filter>Graphics\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.hpp">
@@ -53,6 +56,9 @@
     </ClInclude>
     <ClInclude Include="..\Jagerts.Kaleid.Shared\Common.hpp">
       <Filter>Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderableShape.hpp">
+      <Filter>Graphics\Objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
