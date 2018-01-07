@@ -10,12 +10,6 @@
     <ClCompile Include="SceneBase.cpp">
       <Filter>Core</Filter>
     </ClCompile>
-    <ClCompile Include="Cube.cpp">
-      <Filter>Graphics\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="Quad.cpp">
-      <Filter>Graphics\Objects</Filter>
-    </ClCompile>
     <ClCompile Include="Model.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
@@ -24,12 +18,6 @@
     </ClCompile>
     <ClCompile Include="Terrian.cpp">
       <Filter>Terrian</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderableShape.cpp">
-      <Filter>Graphics\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="Point.cpp">
-      <Filter>Graphics\Objects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -42,12 +30,6 @@
     <ClInclude Include="SceneBase.hpp">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="Cube.hpp">
-      <Filter>Graphics\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="Quad.hpp">
-      <Filter>Graphics\Objects</Filter>
-    </ClInclude>
     <ClInclude Include="Model.hpp">
       <Filter>Graphics</Filter>
     </ClInclude>
@@ -59,12 +41,6 @@
     </ClInclude>
     <ClInclude Include="..\Jagerts.Kaleid.Shared\Common.hpp">
       <Filter>Shared</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderableShape.hpp">
-      <Filter>Graphics\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="Point.hpp">
-      <Filter>Graphics\Objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -82,6 +58,9 @@
     </Filter>
     <Filter Include="Terrian">
       <UniqueIdentifier>{6362d1a3-43f0-4b31-8be9-f32e9506f209}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Particles">
+      <UniqueIdentifier>{094ac242-3d38-4890-b938-c47c16ecc12a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

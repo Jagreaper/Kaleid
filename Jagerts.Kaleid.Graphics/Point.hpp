@@ -4,15 +4,7 @@
 
 namespace Jagerts::Kaleid::Graphics
 {
-	class Mesh;
-	class ShaderProgram;
-	class Renderer;
-	class GraphicsFactory;
-}
-
-namespace Jagerts::Kaleid::Game
-{
-	class JAGERTS_KALEID_GAME_API Point : public Jagerts::Kaleid::Game::RenderableShape
+	class JAGERTS_KALEID_GRAPHICS_API Point : public RenderableShape
 	{
 	public:
 		Point();

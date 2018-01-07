@@ -3,11 +3,15 @@
 #include "Jagerts.Kaleid.Shared\Common.hpp"
 #include "Jagerts.Kaleid.Math\Transform.hpp"
 #include <functional>
-#include "Model.hpp"
 
-namespace Jagerts::Kaleid::Game
+namespace Jagerts::Kaleid::Graphics
 {
-	class JAGERTS_KALEID_GAME_API RenderableShape : public Jagerts::Kaleid::Math::TransformableObject
+	class Mesh;
+	class ShaderProgram;
+	class Renderer;
+	class GraphicsFactory;
+
+	class JAGERTS_KALEID_GRAPHICS_API RenderableShape : public Jagerts::Kaleid::Math::TransformableObject
 	{
 	public:
 		void Render(Jagerts::Kaleid::Graphics::Renderer*& renderer, std::function<void(Jagerts::Kaleid::Graphics::ShaderProgram*&)> arguments);
@@ -25,9 +29,9 @@ namespace Jagerts::Kaleid::Game
 }
 
 #define jkgUsingRenderableShape \
-using Jagerts::Kaleid::Game::RenderableShape::Render; \
-using Jagerts::Kaleid::Game::RenderableShape::SetShaderProgram; \
-using Jagerts::Kaleid::Game::RenderableShape::GetShaderProgram \
+using Jagerts::Kaleid::Graphics::RenderableShape::Render; \
+using Jagerts::Kaleid::Graphics::RenderableShape::SetShaderProgram; \
+using Jagerts::Kaleid::Graphics::RenderableShape::GetShaderProgram \
 
 #define jkgRenderableShapeStaticHeader \
 public: \
@@ -39,12 +43,11 @@ protected: \
 	static Jagerts::Kaleid::Graphics::Mesh* _s_mesh; \
 	static std::vector<RenderableShape*> _shapes \
 
-#ifdef JAGERTS_KALEID_GAME_DLL
+#ifdef JAGERTS_KALEID_GRAPHICS_DLL
 #define jkgRenderableShapeStaticSource(CLASS, DATA) \
 \
 using namespace Jagerts::Kaleid::Math; \
 using namespace Jagerts::Kaleid::Graphics; \
-using namespace Jagerts::Kaleid::Game; \
 using namespace Jagerts::Felcp::Helpers; \
 \
 Mesh* CLASS::_s_mesh = NULL; \

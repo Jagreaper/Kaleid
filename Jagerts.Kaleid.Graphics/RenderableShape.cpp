@@ -1,7 +1,7 @@
-#include "Jagerts.Kaleid.Game\RenderableShape.hpp"
+#include "RenderableShape.hpp"
+#include "Renderer.hpp"
 
 using namespace Jagerts::Kaleid::Graphics;
-using namespace Jagerts::Kaleid::Game;
 
 void RenderableShape::Render(Renderer*& renderer, std::function<void(ShaderProgram*&)> arguments)
 {

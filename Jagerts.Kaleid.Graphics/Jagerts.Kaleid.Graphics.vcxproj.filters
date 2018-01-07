@@ -37,6 +37,18 @@
     <ClCompile Include="TextureBase.cpp">
       <Filter>Textures</Filter>
     </ClCompile>
+    <ClCompile Include="Cube.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Point.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Quad.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderableShape.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Jagerts.Kaleid.Shared\Common.hpp">
@@ -81,6 +93,18 @@
     <ClInclude Include="Texture.hpp">
       <Filter>Textures</Filter>
     </ClInclude>
+    <ClInclude Include="Cube.hpp">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Point.hpp">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Quad.hpp">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderableShape.hpp">
+      <Filter>Objects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Buffers">
@@ -103,6 +127,9 @@
     </Filter>
     <Filter Include="Render Targets">
       <UniqueIdentifier>{8daf1ef2-6d8b-4d24-bbf0-a2e2d0873d30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects">
+      <UniqueIdentifier>{6f45bd82-f4a7-4438-a406-32a8fdcc8cf0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

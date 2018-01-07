@@ -20,10 +20,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BufferBase.cpp" />
+    <ClCompile Include="Cube.cpp" />
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="GraphicsFactory.cpp" />
     <ClCompile Include="IndexBuffer.cpp" />
     <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="Point.cpp" />
+    <ClCompile Include="Quad.cpp" />
+    <ClCompile Include="RenderableShape.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
@@ -35,11 +39,15 @@
   <ItemGroup>
     <ClInclude Include="..\Jagerts.Kaleid.Shared\Common.hpp" />
     <ClInclude Include="BufferBase.hpp" />
+    <ClInclude Include="Cube.hpp" />
     <ClInclude Include="Font.hpp" />
     <ClInclude Include="GraphicsFactory.hpp" />
     <ClInclude Include="IndexBuffer.hpp" />
     <ClInclude Include="Material.hpp" />
     <ClInclude Include="Mesh.hpp" />
+    <ClInclude Include="Point.hpp" />
+    <ClInclude Include="Quad.hpp" />
+    <ClInclude Include="RenderableShape.hpp" />
     <ClInclude Include="Renderer.hpp" />
     <ClInclude Include="Shader.hpp" />
     <ClInclude Include="ShaderProgram.hpp" />
