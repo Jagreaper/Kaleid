@@ -20,6 +20,7 @@ namespace Jagerts::Kaleid::Game
 
 		friend class Quad;
 		friend class Cube;
+		friend class Point;
 	};
 }
 

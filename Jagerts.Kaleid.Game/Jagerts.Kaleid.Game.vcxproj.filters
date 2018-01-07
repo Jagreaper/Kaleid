@@ -28,6 +28,9 @@
     <ClCompile Include="RenderableShape.cpp">
       <Filter>Graphics\Objects</Filter>
     </ClCompile>
+    <ClCompile Include="Point.cpp">
+      <Filter>Graphics\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.hpp">
@@ -58,6 +61,9 @@
       <Filter>Shared</Filter>
     </ClInclude>
     <ClInclude Include="RenderableShape.hpp">
+      <Filter>Graphics\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Point.hpp">
       <Filter>Graphics\Objects</Filter>
     </ClInclude>
   </ItemGroup>

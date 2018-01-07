@@ -43,7 +43,6 @@ VertexBuffer* vertex_buffer = graphics_factory->CreateVertexBuffer(verticies, 24
 IndexBuffer* index_buffer = graphics_factory->CreateIndexBuffer(indicies, 36); \
 Mesh* mesh = graphics_factory->CreateMesh(index_buffer, vertex_buffer) \
 
-
 jkgRenderableShapeStaticSource(Cube, _CubeShapeMeshData)
 
 #undef _CubeShapeMeshData
