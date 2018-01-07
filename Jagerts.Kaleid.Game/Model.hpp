@@ -50,7 +50,7 @@ namespace Jagerts::Kaleid::Game
 		void AddModel(const char* name, Model*& model);
 		void RemoveModel(const char* name);
 		void RemoveModels();
-		jkgRenderableObjectVirtual;
+		virtual jkgRenderableObject;
 		jkmUsingTransformableObject;
 	protected:
 		std::unordered_map<const char*, Model*> _models;

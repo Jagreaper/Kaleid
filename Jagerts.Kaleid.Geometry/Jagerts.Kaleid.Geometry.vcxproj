@@ -213,6 +213,7 @@ xcopy "$(SolutionDir)Jagerts.Kaleid.Shared\*.hpp" "$(SolutionDir)dist\Jagerts.Ka
   <ItemGroup>
     <ClInclude Include="..\Jagerts.Kaleid.Shared\Common.hpp" />
     <ClInclude Include="Face.hpp" />
+    <ClInclude Include="Line.hpp" />
     <ClInclude Include="Shape.hpp" />
     <ClInclude Include="Triangle.hpp" />
     <ClInclude Include="Vertex.hpp" />

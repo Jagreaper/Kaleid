@@ -200,6 +200,14 @@ xcopy "$(SolutionDir)Jagerts.Kaleid.Shared\*.hpp" "$(SolutionDir)dist\Jagerts.Ka
   <ItemGroup>
     <ClCompile Include="Collider.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Jagerts.Kaleid.Geometry\Jagerts.Kaleid.Geometry.vcxproj">
+      <Project>{f5e121a6-0652-4fe0-8d93-4c05a473ffce}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Jagerts.Kaleid.Math\Jagerts.Kaleid.Math.vcxproj">
+      <Project>{d7ea2988-db27-4004-ab6b-c81a923164df}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

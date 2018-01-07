@@ -8,9 +8,6 @@
 #define jkgRenderableObject \
 void Render(Jagerts::Kaleid::Graphics::Renderer*& renderer, std::function<void(Jagerts::Kaleid::Graphics::ShaderProgram*&, Jagerts::Kaleid::Graphics::Material* material)> arguments) \
 
-#define jkgRenderableObjectVirtual \
-virtual void Render(Jagerts::Kaleid::Graphics::Renderer*& renderer, std::function<void(Jagerts::Kaleid::Graphics::ShaderProgram*&, Jagerts::Kaleid::Graphics::Material* material)> arguments) \
-
 #define jkgRenderableObjectSource(CLASS) \
 void CLASS::Render(Jagerts::Kaleid::Graphics::Renderer*& renderer, std::function<void(Jagerts::Kaleid::Graphics::ShaderProgram*&, Jagerts::Kaleid::Graphics::Material* material)> arguments) \
 
@@ -46,6 +43,6 @@ namespace Jagerts::Kaleid::Graphics
 	class RenderableObject
 	{
 	public:
-		jkgRenderableObjectVirtual = 0;
+		virtual jkgRenderableObject = 0;
 	};
 }

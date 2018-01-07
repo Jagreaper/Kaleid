@@ -2,6 +2,15 @@
 
 #include "Jagerts.Kaleid.Shared\Common.hpp"
 
+#define jkgUsingTextureBase \
+using Jagerts::Kaleid::Graphics::TextureBase::GetWidth; \
+using Jagerts::Kaleid::Graphics::TextureBase::GetHeight; \
+using Jagerts::Kaleid::Graphics::TextureBase::GetSize; \
+using Jagerts::Kaleid::Graphics::TextureBase::Exists; \
+using Jagerts::Kaleid::Graphics::TextureBase::SetDefaultParameters; \
+using Jagerts::Kaleid::Graphics::TextureBase::GenerateMipmap; \
+using Jagerts::Kaleid::Graphics::TextureBase::SetParameter \
+
 namespace Jagerts::Kaleid::Graphics
 {
 	class Renderer;
@@ -228,7 +237,7 @@ namespace Jagerts::Kaleid::Graphics
 	class GraphicsFactory;
 	class Mesh;
 
-	class JAGERTS_KALEID_GRAPHICS_API TextureBase abstract
+	class JAGERTS_KALEID_GRAPHICS_API TextureBase
 	{
 		friend class GraphicsFactory;
 		friend class Mesh;

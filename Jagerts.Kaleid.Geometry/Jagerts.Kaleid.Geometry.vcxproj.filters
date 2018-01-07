@@ -16,6 +16,9 @@
     <ClInclude Include="Shape.hpp">
       <Filter>Shapes</Filter>
     </ClInclude>
+    <ClInclude Include="Line.hpp">
+      <Filter>Shapes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Faces">
