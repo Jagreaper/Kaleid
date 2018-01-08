@@ -113,14 +113,19 @@ SceneBase* App::GetScene() const
 	return this->_current_scene;
 }
 
-const std::vector<Jagerts::Kaleid::Graphics::Window*>* App::GetWindows()
+const std::vector<Window*>* App::GetWindows()
 {
 	return &this->_windows;
 }
 
-Jagerts::Kaleid::Graphics::Window* App::GetWindow(int index) const
+Window* App::GetWindow(int index) const
 {
 	return this->_windows[index];
+}
+
+Window* App::GetMainWindow() const
+{
+	return this->_windows[0];
 }
 
 bool App::IsRunning()

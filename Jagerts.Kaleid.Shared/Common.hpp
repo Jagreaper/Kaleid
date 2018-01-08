@@ -73,5 +73,5 @@
 #define jkGetterSetterHeaderDefinition(NAME, TYPE, VALUE) \
 jkSetterHeaderDefinition(NAME, const TYPE, VALUE); \
 jkSetterHeaderDefinition(NAME, const TYPE&, VALUE); \
-jkGetterHeaderDefinition(NAME, const TYPE&, VALUE); \
+jkGetterHeaderDefinition(NAME, const TYPE&, VALUE) \
 

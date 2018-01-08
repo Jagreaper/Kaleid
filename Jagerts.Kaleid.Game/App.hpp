@@ -35,6 +35,7 @@ namespace Jagerts::Kaleid::Game
 
 		const std::vector<Jagerts::Kaleid::Graphics::Window*>* GetWindows();
 		Jagerts::Kaleid::Graphics::Window* GetWindow(int index) const;
+		Jagerts::Kaleid::Graphics::Window* GetMainWindow() const;
 		bool IsRunning();
 	private:
 		SceneBase* _current_scene;

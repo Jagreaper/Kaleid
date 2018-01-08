@@ -5,30 +5,6 @@
 #include "Jagerts.Kaleid.Input\Mouse.hpp"
 #include <ctime>
 
-
-#define jkgUsingSceneBase \
-using Jagerts::Kaleid::Game::SceneBase::Load; \
-using Jagerts::Kaleid::Game::SceneBase::Update; \
-using Jagerts::Kaleid::Game::SceneBase::Poll
-
-#define jkgImplementAbstractSceneBase \
-void Dispose(); \
-void Render() \
-
-#define jkgImplementSceneBase \
-jkgImplementAbstractSceneBase; \
-void Load(); \
-void Update(); \
-
-#define jkgImplementAbstractSceneBaseVirtual \
-virtual void Dispose(); \
-virtual void Render() \
-
-#define jkgImplementSceneBaseVirtual \
-jkgImplementAbstractSceneBaseVirtual; \
-virtual void Load(); \
-virtual void Update(); \
-
 namespace Jagerts::Kaleid::Graphics
 {
 	class Renderer;
@@ -61,3 +37,26 @@ namespace Jagerts::Kaleid::Game
 		double _delta_time;
 	};
 }
+
+#define jkgUsingSceneBase \
+using Jagerts::Kaleid::Game::SceneBase::Load; \
+using Jagerts::Kaleid::Game::SceneBase::Update; \
+using Jagerts::Kaleid::Game::SceneBase::Poll
+
+#define jkgSceneBaseHeaderAbstract \
+void Dispose(); \
+void Render() \
+
+#define jkgSceneBaseHeader \
+jkgSceneBaseHeaderAbstract; \
+void Load(); \
+void Update() \
+
+#define jkgSceneBaseHeaderAbstractVirtual \
+virtual void Dispose(); \
+virtual void Render() \
+
+#define jkgSceneBaseHeaderVirtual \
+jkgSceneBaseHeaderAbstractVirtual; \
+virtual void Load(); \
+virtual void Update() \

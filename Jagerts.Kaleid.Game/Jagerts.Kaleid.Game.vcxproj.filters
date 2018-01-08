@@ -47,9 +47,6 @@
     <Filter Include="Graphics">
       <UniqueIdentifier>{a48f45b6-42eb-4411-8ae6-be6688023939}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Graphics\Objects">
-      <UniqueIdentifier>{80843e06-57f8-4047-8d34-2c63abf01bc5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Core">
       <UniqueIdentifier>{9ed0a3a6-63aa-46ef-aeaa-80f9975eb116}</UniqueIdentifier>
     </Filter>
@@ -58,9 +55,6 @@
     </Filter>
     <Filter Include="Terrian">
       <UniqueIdentifier>{6362d1a3-43f0-4b31-8be9-f32e9506f209}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Graphics\Particles">
-      <UniqueIdentifier>{094ac242-3d38-4890-b938-c47c16ecc12a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

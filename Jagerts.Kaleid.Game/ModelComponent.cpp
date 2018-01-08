@@ -25,7 +25,7 @@ void ModelComponent::FreeAllMemory()
 {
 	for (int index = 0; index < ModelComponent::_model_components.size(); index++)
 		delete ModelComponent::_model_components[index];
-
+	 
 	ModelComponent::_model_components.clear();
 }
 

@@ -12,7 +12,7 @@ namespace Jagerts::Kaleid::Application
 	{
 	public:
 		RootScene(Jagerts::Kaleid::Game::App* app);
-		jkgImplementSceneBase;
+		jkgSceneBaseHeader;
 	private:
 		void BuildShaderProgram();
 		void BuildMesh();
