@@ -7,6 +7,20 @@
 
 using namespace Jagerts::Kaleid::Graphics;
 
+#if DEBUG
+
+void Renderer::ErrorCheck()
+{
+	GLenum error = glGetError();
+	if (error != GL_NO_ERROR)
+		throw std::runtime_error("OpenGL Runtime Error");
+}
+
+#define _ERROR_CHECK this->ErrorCheck();
+#else
+#define _ERROR_CHECK
+#endif
+
 Renderer::Renderer(bool use_defaults)
 {
 	this->_use_defaults = use_defaults;
@@ -25,10 +39,8 @@ void Renderer::Load()
 
 		this->_is_loaded = true;
 	}
-
-#ifdef DEBUG
-	this->ErrorCheck();
-#endif
+	
+	_ERROR_CHECK
 }
 
 bool Renderer::IsLoaded()
@@ -40,19 +52,13 @@ void Renderer::Clear(float red, float green, float blue, float alpha)
 {
 	glClearColor(red, green, blue, alpha);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-#ifdef DEBUG
-	this->ErrorCheck();
-#endif
+	_ERROR_CHECK
 }
 
 void Renderer::SetViewport(float x, float y, float width, float height)
 {
 	glViewport((int)x, (int)y, (int)width, (int)height);
-
-#ifdef DEBUG
-	this->ErrorCheck();
-#endif
+	_ERROR_CHECK
 }
 
 void Renderer::SetWireframeMode(bool enabled)
@@ -80,9 +86,7 @@ void Renderer::BindTextures(std::vector<TextureBase*>& textures)
 			this->BindTexture(textures[index], index);
 	}
 
-#ifdef DEBUG
-	this->ErrorCheck();
-#endif
+	_ERROR_CHECK
 }
 
 void Renderer::BindTextures(std::vector<TextureBase*>* textures)
@@ -93,94 +97,59 @@ void Renderer::BindTextures(std::vector<TextureBase*>* textures)
 			this->BindTexture(textures->at(index), index);
 	}
 
-#ifdef DEBUG
-	this->ErrorCheck();
-#endif
+	_ERROR_CHECK
 }
 
-void Renderer::RenderMesh(Mesh*& mesh, ShaderProgram*& shader_program, std::vector<TextureBase*>& textures, std::function<void(ShaderProgram*&)> arguments)
-{
-	if (shader_program == NULL || !mesh->HasVertexBuffers())
-		throw std::runtime_error("Missing fields to render mesh");
+#define _RENDER_MESH \
+if (mesh->HasIndexBuffer()) \
+{ \
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->GetIndexBuffer()->_id); \
+	glDrawElements(mesh->_primitive_type, (GLsizei)mesh->GetIndexBuffer()->GetLength(), mesh->GetIndexBuffer()->_type_info, NULL); \
+} \
+else \
+	glDrawArrays(mesh->_primitive_type, 0, (GLsizei)mesh->_b_vbo_length); \
+_ERROR_CHECK \
 
-	this->BindTextures(textures);
+#define _USE_MESH \
+glBindVertexArray(mesh->_vao_id); \
+glUseProgram(shader_program->_id); \
 
-	glBindVertexArray(mesh->_vao_id);
-	glUseProgram(shader_program->_id);
+#define _CHECK_MESH_FIELDS \
+if (shader_program == NULL || !mesh->HasVertexBuffers()) \
+	throw std::runtime_error("Missing fields to render mesh"); \
 
-	if (arguments != NULL)
-		arguments(shader_program);
+#define _TEXTURE_MESH \
+_CHECK_MESH_FIELDS \
+\
+this->BindTextures(textures); \
+_USE_MESH \
+if (arguments != NULL) \
+	arguments(shader_program); \
+_RENDER_MESH \
 
-	if (mesh->HasIndexBuffer())
-	{
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->GetIndexBuffer()->_id);
-		glDrawElements(mesh->_primitive_type, (GLsizei)mesh->GetIndexBuffer()->GetLength(), mesh->GetIndexBuffer()->_type_info, NULL);
-	}
-	else
-		glDrawArrays(mesh->_primitive_type, 0, (GLsizei)mesh->_b_vbo_length);
+#define _TEXTURE_MESH_METHOD(PTR) \
+void Renderer::RenderMesh(Mesh*& mesh, ShaderProgram*& shader_program, std::vector<TextureBase*>PTR textures, std::function<void(ShaderProgram*&)> arguments) \
+{ \
+	_TEXTURE_MESH \
+} \
 
-#ifdef DEBUG
-	this->ErrorCheck();
-#endif
-}
+_TEXTURE_MESH_METHOD(&)
+_TEXTURE_MESH_METHOD(*)
 
-void Renderer::RenderMesh(Mesh*& mesh, ShaderProgram*& shader_program, std::vector<TextureBase*>* textures, std::function<void(ShaderProgram*&)> arguments)
-{
-	if (shader_program == NULL || !mesh->HasVertexBuffers())
-		throw std::runtime_error("Missing fields to render mesh");
-
-	this->BindTextures(textures);
-
-	glBindVertexArray(mesh->_vao_id);
-	glUseProgram(shader_program->_id);
-
-	if (arguments != NULL)
-		arguments(shader_program);
-
-	if (mesh->HasIndexBuffer())
-	{
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->GetIndexBuffer()->_id);
-		glDrawElements(mesh->_primitive_type, (GLsizei)mesh->GetIndexBuffer()->GetLength(), mesh->GetIndexBuffer()->_type_info, NULL);
-	}
-	else
-		glDrawArrays(mesh->_primitive_type, 0, (GLsizei)mesh->_b_vbo_length);
-
-#ifdef DEBUG
-	this->ErrorCheck();
-#endif
-}
+#undef _TEXTURE_MESH_METHOD
+#undef _TEXTURE_MESH
 
 void Renderer::RenderMesh(Mesh*& mesh, ShaderProgram*& shader_program, Material* material, std::function<void(ShaderProgram*&, Material*)> arguments)
 {
-	if (shader_program == NULL || !mesh->HasVertexBuffers())
-		throw std::runtime_error("Missing fields to render mesh");
-
-	glBindVertexArray(mesh->_vao_id);
-	glUseProgram(shader_program->_id);
-
+	_CHECK_MESH_FIELDS
+	
+	_USE_MESH
 	if (arguments != NULL)
 		arguments(shader_program, material);
-
-	if (mesh->HasIndexBuffer())
-	{
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->GetIndexBuffer()->_id);
-		glDrawElements(mesh->_primitive_type, (GLsizei)mesh->GetIndexBuffer()->GetLength(), mesh->GetIndexBuffer()->_type_info, NULL);
-	}
-	else
-		glDrawArrays(mesh->_primitive_type, 0, (GLsizei)mesh->_b_vbo_length);
-
-#ifdef DEBUG
-	this->ErrorCheck();
-#endif
+	_RENDER_MESH
 }
 
-#ifdef DEBUG
-
-void Renderer::ErrorCheck()
-{
-	GLenum error = glGetError();
-	if (error != GL_NO_ERROR)
-		throw std::runtime_error("OpenGL Runtime Error");
-}
-
-#endif
+#undef _CHECK_MESH_FIELDS
+#undef _USE_MESH
+#undef _RENDER_MESH
+#undef _ERROR_CHECK

@@ -49,6 +49,7 @@
     <ClCompile Include="RenderableShape.cpp">
       <Filter>Objects</Filter>
     </ClCompile>
+    <ClCompile Include="Particle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Jagerts.Kaleid.Shared\Common.hpp">
@@ -105,6 +106,7 @@
     <ClInclude Include="RenderableShape.hpp">
       <Filter>Objects</Filter>
     </ClInclude>
+    <ClInclude Include="Particle.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Buffers">

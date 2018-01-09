@@ -56,22 +56,32 @@
 
 #define jkSetterHeaderDefinition(NAME, TYPE, VALUE) jkSetterHeader(NAME, TYPE) { jkSetterBody(VALUE); }
 
-#define jkSetterSource(CLASS, NAME, TYPE) void ##CLASS##::Set##NAME##(TYPE value)
+#define jkSetterSource(CLASS, NAME, TYPE) void CLASS::Set##NAME##(TYPE value)
 
 #define jkSetterSourceDefinition(CLASS, NAME, TYPE, VALUE) jkSetterSource(CLASS, NAME, TYPE) { jkSetterBody(VALUE);}
 
 #define jkGetterBody(VALUE) return VALUE
 
-#define jkGetterHeader(NAME, TYPE) TYPE Get##NAME##()
+#define jkGetterHeader(NAME, TYPE) TYPE Get##NAME##() const
 
 #define jkGetterHeaderDefinition(NAME, TYPE, VALUE) jkGetterHeader(NAME, TYPE) { jkGetterBody(VALUE); }
 
-#define jkGetterSource(CLASS, NAME, TYPE) TYPE ##CLASS##::Get##NAME##()
+#define jkGetterSource(CLASS, NAME, TYPE) TYPE CLASS::Get##NAME##() const
 
 #define jkGetterSourceDefinition(CLASS, NAME, TYPE, VALUE) jkGetterSource(CLASS, NAME, TYPE) { jkGetterBody(VALUE); }
 
+#define jkGetterSetterHeader(NAME, TYPE) \
+jkSetterHeader(NAME, TYPE); \
+jkSetterHeader(NAME, TYPE&); \
+jkGetterHeader(NAME, TYPE&) \
+
 #define jkGetterSetterHeaderDefinition(NAME, TYPE, VALUE) \
-jkSetterHeaderDefinition(NAME, const TYPE, VALUE); \
-jkSetterHeaderDefinition(NAME, const TYPE&, VALUE); \
-jkGetterHeaderDefinition(NAME, const TYPE&, VALUE) \
+jkSetterHeaderDefinition(NAME, TYPE, VALUE) \
+jkSetterHeaderDefinition(NAME, TYPE&, VALUE) \
+jkGetterHeaderDefinition(NAME, TYPE&, VALUE) \
+
+#define jkGetterSetterSourceDefinition(CLASS, NAME, TYPE, VALUE) \
+jkSetterSourceDefinition(CLASS, NAME, TYPE, VALUE) \
+jkSetterSourceDefinition(CLASS, NAME, TYPE&, VALUE) \
+jkGetterSourceDefinition(CLASS, NAME, TYPE&, VALUE) \
 
