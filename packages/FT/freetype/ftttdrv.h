@@ -20,7 +20,7 @@
 #ifndef FTTTDRV_H_
 #define FTTTDRV_H_
 
-#include <ft2build.h>
+#include <FT/ft2build.h>
 #include FT_FREETYPE_H
 
 #ifdef FREETYPE_H
