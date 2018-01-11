@@ -72,16 +72,13 @@
 
 #define jkGetterSetterHeader(NAME, TYPE) \
 jkSetterHeader(NAME, TYPE); \
-jkSetterHeader(NAME, TYPE&); \
 jkGetterHeader(NAME, TYPE&) \
 
 #define jkGetterSetterHeaderDefinition(NAME, TYPE, VALUE) \
 jkSetterHeaderDefinition(NAME, TYPE, VALUE) \
-jkSetterHeaderDefinition(NAME, TYPE&, VALUE) \
 jkGetterHeaderDefinition(NAME, TYPE&, VALUE) \
 
 #define jkGetterSetterSourceDefinition(CLASS, NAME, TYPE, VALUE) \
 jkSetterSourceDefinition(CLASS, NAME, TYPE, VALUE) \
-jkSetterSourceDefinition(CLASS, NAME, TYPE&, VALUE) \
 jkGetterSourceDefinition(CLASS, NAME, TYPE&, VALUE) \
 

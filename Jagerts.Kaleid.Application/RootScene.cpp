@@ -178,6 +178,8 @@ void RootScene::Load()
 
 	this->SceneBase::Load();
 	this->_app->GetWindow(0)->SetCursorMode(CursorMode::Hidden);
+
+	this->font = new Font("C:\\Windows\\Fonts\\Arial.ttf");
 }
 
 void RootScene::Update()
@@ -216,10 +218,13 @@ void RootScene::Render()
 
 	// Cleanup Scene
 	this->_app->GetWindow(0)->SwapBuffers();
+
+	renderer->RenderText(this->font, "Hello World!", 48, Vector3F(1.0f, 0.0f, 0.0f), Vector2F(0.0f, 0.0f), Vector2F(0.5f, 0.5f));
 }
 
 void RootScene::Dispose()
 {
+	delete this->font;
 	//this->_graphics_factory->FreeShaderProgram(this->_model.GetShaderProgram());
 	//this->_graphics_factory->FreeIndexBuffer(this->_model.GetMesh()->GetIndexBuffer());
 	//this->_graphics_factory->FreeVertexBuffers(this->_model.GetMesh()->GetVertexBuffers());

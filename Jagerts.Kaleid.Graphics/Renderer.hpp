@@ -1,7 +1,8 @@
 #pragma once
 
 #include "Jagerts.Kaleid.Shared\Common.hpp"
-#include "Material.hpp"
+#include "Jagerts.Kaleid.Math\Vector.hpp"
+#include "Jagerts.Kaleid.Graphics\Material.hpp"
 #include <vector>
 #include <functional>
 
@@ -16,6 +17,7 @@ namespace Jagerts::Kaleid::Graphics
 	class Mesh;
 	class ShaderProgram;
 	class TextureBase;
+	class Font;
 
 	class JAGERTS_KALEID_GRAPHICS_API Renderer sealed
 	{
@@ -33,6 +35,7 @@ namespace Jagerts::Kaleid::Graphics
 		void RenderMesh(Mesh*& mesh, ShaderProgram*& shader_program, std::vector<TextureBase*>& textures, std::function<void(ShaderProgram*&)> arguments);
 		void RenderMesh(Mesh*& mesh, ShaderProgram*& shader_program, std::vector<TextureBase*>* textures, std::function<void(ShaderProgram*&)> arguments);
 		void RenderMesh(Mesh*& mesh, ShaderProgram*& shader_program, Material* material, std::function<void(ShaderProgram*&, Material*)> arguments);
+		void RenderText(Font* font, const std::string text, const int res, const Jagerts::Kaleid::Math::Vector3F color, const Jagerts::Kaleid::Math::Vector2F position, const Jagerts::Kaleid::Math::Vector2F scale);
 	private:
 #ifdef DEBUG
 		void ErrorCheck();

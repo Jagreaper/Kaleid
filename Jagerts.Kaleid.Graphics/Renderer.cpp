@@ -1,11 +1,12 @@
 #include "Renderer.hpp"
-#include "TextureBase.hpp"
+#include "Texture.hpp"
 #include "Mesh.hpp"
 #include "ShaderProgram.hpp"
 #include "VertexBuffer.hpp"
 #include "IndexBuffer.hpp"
 
 using namespace Jagerts::Kaleid::Graphics;
+using namespace Jagerts::Kaleid::Math;
 
 #if DEBUG
 
@@ -147,6 +148,46 @@ void Renderer::RenderMesh(Mesh*& mesh, ShaderProgram*& shader_program, Material*
 	if (arguments != NULL)
 		arguments(shader_program, material);
 	_RENDER_MESH
+}
+
+#include "Font.hpp"
+#include "Jagerts.Kaleid.Math\Transform.hpp"
+#include <FT/ft2build.h>
+#include FT_FREETYPE_H
+
+void Renderer::RenderText(Font* font, const std::string text, const int res, const Jagerts::Kaleid::Math::Vector3F color, const Vector2F position, const Jagerts::Kaleid::Math::Vector2F scale)
+{
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glDisable(GL_DEPTH_TEST);
+
+	FT_Face face = (FT_Face)font->_face;
+	FT_Set_Pixel_Sizes(face, 0, res);
+	FT_GlyphSlot glyph = face->glyph;
+
+	Transform transform;
+	const char *c;
+	for (c = text.c_str(); *c; c++)
+	{
+		if (FT_Load_Char(face, *c, FT_LOAD_RENDER))
+			continue;
+
+		transform.SetRelativePosition(Vector3F(position.x, position.y, 0.0f));
+		transform.SetRelativeScale(Vector3F(scale.x, scale.y, 0.0f));
+
+		Font::_texture->BufferImage(glyph->bitmap.buffer, glyph->bitmap.width, glyph->bitmap.rows, InternalTextureFormat::Red, TextureFormat::Red);
+		this->BindTexture(Font::_texture);
+		this->RenderMesh(Font::_mesh, Font::_shader_program, NULL, [&](ShaderProgram*& program)
+		{
+			Matrix4F mvp = (&Font::_camera)->GetProjectionMatrix() * (&Font::_camera)->GetViewMatrix() * transform.GetModelMatrix();
+			Font::_shader_program->SetUniform("mvp", mvp);
+			Font::_shader_program->SetUniform("color", color);
+			Font::_shader_program->SetUniform("character", 0);
+		});
+	}
+
+	glDisable(GL_BLEND);
+	glEnable(GL_DEPTH_TEST);
 }
 
 #undef _CHECK_MESH_FIELDS

@@ -4,6 +4,7 @@
 #include "Jagerts.Kaleid.Game\SceneBase.hpp"
 #include "Jagerts.Kaleid.Game\Actor.hpp"
 #include "Jagerts.Kaleid.Math\PerspectiveCamera.hpp"
+#include "Jagerts.Kaleid.Graphics\Font.hpp"
 #include <time.h>
 
 namespace Jagerts::Kaleid::Application
@@ -22,5 +23,6 @@ namespace Jagerts::Kaleid::Application
 		Jagerts::Kaleid::Graphics::ShaderProgram* _program;
 		Jagerts::Kaleid::Game::Actor _actor;
 		Jagerts::Kaleid::Math::PerspectiveCamera _camera;
+		Jagerts::Kaleid::Graphics::Font* font;
 	};
 }

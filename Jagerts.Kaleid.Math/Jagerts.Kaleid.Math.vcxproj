@@ -200,6 +200,7 @@ xcopy "$(SolutionDir)Jagerts.Kaleid.Shared\*.hpp" "$(SolutionDir)dist\Jagerts.Ka
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CameraBase.cpp" />
+    <ClCompile Include="OrthographicCamera.cpp" />
     <ClCompile Include="PerspectiveCamera.cpp" />
     <ClCompile Include="Transform.cpp" />
   </ItemGroup>
@@ -207,6 +208,7 @@ xcopy "$(SolutionDir)Jagerts.Kaleid.Shared\*.hpp" "$(SolutionDir)dist\Jagerts.Ka
     <ClInclude Include="..\Jagerts.Kaleid.Shared\Common.hpp" />
     <ClInclude Include="CameraBase.hpp" />
     <ClInclude Include="Matrix.hpp" />
+    <ClInclude Include="OrthographicCamera.hpp" />
     <ClInclude Include="PerspectiveCamera.hpp" />
     <ClInclude Include="Transform.hpp" />
     <ClInclude Include="Vector.hpp" />
