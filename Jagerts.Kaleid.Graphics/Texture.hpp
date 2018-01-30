@@ -7,7 +7,7 @@ namespace Jagerts::Kaleid::Graphics
 {
 	class GraphicsFactory;
 
-	class JAGERTS_KALEID_GRAPHICS_API Texture sealed : public TextureBase
+	class JAGERTS_KALEID_GRAPHICS_API Texture : public TextureBase
 	{
 	public:
 		jkgUsingTextureBase;

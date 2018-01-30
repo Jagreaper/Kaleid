@@ -4,7 +4,7 @@
 
 namespace Jagerts::Kaleid::Graphics
 {
-	enum ShaderType
+	enum class ShaderType : int
 	{
 		Fragment = 0x8B30,
 		Vertex = 0x8B31,
@@ -15,7 +15,7 @@ namespace Jagerts::Kaleid::Graphics
 	class GraphicsFactory;
 	class ShaderProgram;
 
-	class JAGERTS_KALEID_GRAPHICS_API Shader sealed
+	class JAGERTS_KALEID_GRAPHICS_API Shader
 	{
 	public:
 		void SetSource(const char** source);

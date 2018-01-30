@@ -1,11 +1,12 @@
 #include "Shader.hpp"
 #include <stdexcept>
+#include <string>
 
 using namespace Jagerts::Kaleid::Graphics;
 
 Shader::Shader(const ShaderType type)
 {
-	this->_id = glCreateShader(type);
+	this->_id = glCreateShader(static_cast<std::underlying_type<ShaderType>::type>(type));
 	if (this->_id == 0)
 		throw std::runtime_error("glCreateShader failed");
 }

@@ -1,7 +1,8 @@
 #include "ShaderProgram.hpp"
 #include "Shader.hpp"
+#include "GLM/gtc/type_ptr.hpp"
 #include <stdexcept>
-#include <glm/gtc/type_ptr.hpp>
+#include <string>
 
 using namespace Jagerts::Kaleid::Graphics;
 using namespace Jagerts::Kaleid::Math;

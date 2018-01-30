@@ -17,7 +17,7 @@ void IndexBuffer::Bind()
 void IndexBuffer::BufferData(const TYPE* data, size_t count, BufferUsage usage) \
 { \
 	this->Bind(); \
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, count * sizeof(TYPE), data, usage); \
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, count * sizeof(TYPE), data, static_cast<std::underlying_type<BufferUsage>::type>(usage)); \
 	this->_length = count; \
 	this->_type_info = OGL_TYPE; \
 } \
@@ -25,7 +25,7 @@ void IndexBuffer::BufferData(const TYPE* data, size_t count, BufferUsage usage) 
 void IndexBuffer::BufferData(const std::vector<TYPE>* data, BufferUsage usage) \
 { \
 	this->Bind(); \
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, data->size() * sizeof(TYPE), data, usage); \
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, data->size() * sizeof(TYPE), data, static_cast<std::underlying_type<BufferUsage>::type>(usage)); \
 	this->_length = data->size(); \
 	this->_type_info = OGL_TYPE; \
 } \

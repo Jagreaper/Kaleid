@@ -12,7 +12,7 @@ VertexBuffer::VertexBuffer()
 void VertexBuffer::BufferData(const TYPE* data, size_t count, unsigned int stride, BufferUsage usage) \
 { \
 	this->Bind(); \
-	glBufferData(GL_ARRAY_BUFFER, count * sizeof(TYPE), data, usage); \
+	glBufferData(GL_ARRAY_BUFFER, count * sizeof(TYPE), data, static_cast<std::underlying_type<BufferUsage>::type>(usage)); \
 	this->_stride = stride; \
 	this->_length = count / stride; \
 	this->_type_info = OGL_TYPE;\
@@ -21,7 +21,7 @@ void VertexBuffer::BufferData(const TYPE* data, size_t count, unsigned int strid
 void VertexBuffer::BufferData(const std::vector<TYPE>* data, unsigned int stride, BufferUsage usage) \
 { \
 	this->Bind(); \
-	glBufferData(GL_ARRAY_BUFFER, data->size() * sizeof(TYPE), data, usage); \
+	glBufferData(GL_ARRAY_BUFFER, data->size() * sizeof(TYPE), data, static_cast<std::underlying_type<BufferUsage>::type>(usage)); \
 	this->_stride = stride; \
 	this->_length = data->size() / stride; \
 	this->_type_info = OGL_TYPE; \

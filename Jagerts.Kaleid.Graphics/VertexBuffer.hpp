@@ -9,7 +9,7 @@ namespace Jagerts::Kaleid::Graphics
 	class Renderer;
 	class GraphicsFactory;
 
-	class JAGERTS_KALEID_GRAPHICS_API VertexBuffer sealed : public BufferBase
+	class JAGERTS_KALEID_GRAPHICS_API VertexBuffer : public BufferBase
 	{
 	public:
 #define _VERTEX_BUFFER_DATA_SETTER(TYPE) \

@@ -12,7 +12,7 @@ namespace Jagerts::Kaleid::Graphics
 	class Mesh;
 	class Shader;
 
-	class JAGERTS_KALEID_GRAPHICS_API ShaderProgram sealed
+	class JAGERTS_KALEID_GRAPHICS_API ShaderProgram
 	{
 	public:
 		void Attach(Shader* shader);

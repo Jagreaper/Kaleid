@@ -19,7 +19,7 @@ namespace Jagerts::Kaleid::Graphics
 		On = 1,
 	};
 
-	class JAGERTS_KALEID_GRAPHICS_API Window sealed
+	class JAGERTS_KALEID_GRAPHICS_API Window
 	{
 	public:
 		void MakeCurrent();

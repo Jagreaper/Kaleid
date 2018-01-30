@@ -4,7 +4,7 @@
 
 namespace Jagerts::Kaleid::Graphics
 {
-	enum BufferUsage
+	enum class BufferUsage : unsigned int
 	{
 		StreamDraw = 0x88E0,
 		StreamRead = 0x88E1,
@@ -19,7 +19,7 @@ namespace Jagerts::Kaleid::Graphics
 
 	class Mesh;
 
-	class JAGERTS_KALEID_GRAPHICS_API BufferBase abstract
+	class JAGERTS_KALEID_GRAPHICS_API BufferBase
 	{
 	public:
 		const size_t GetLength() const;

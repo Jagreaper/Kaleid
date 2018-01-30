@@ -28,7 +28,7 @@ namespace Jagerts::Kaleid::Graphics
 	class ShaderProgram;
 	class TextureBase;
 
-	class JAGERTS_KALEID_GRAPHICS_API Mesh sealed
+	class JAGERTS_KALEID_GRAPHICS_API Mesh
 	{
 	public:
 		void Compose();

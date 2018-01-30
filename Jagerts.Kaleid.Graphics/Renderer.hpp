@@ -19,7 +19,7 @@ namespace Jagerts::Kaleid::Graphics
 	class TextureBase;
 	class Font;
 
-	class JAGERTS_KALEID_GRAPHICS_API Renderer sealed
+	class JAGERTS_KALEID_GRAPHICS_API Renderer
 	{
 	public:
 		Renderer(bool use_defaults = true);

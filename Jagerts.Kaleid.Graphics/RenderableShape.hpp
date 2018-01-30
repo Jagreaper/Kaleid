@@ -44,59 +44,59 @@ protected: \
 	static std::vector<RenderableShape*> _shapes \
 
 #ifdef JAGERTS_KALEID_GRAPHICS_DLL
-#define jkgRenderableShapeStaticSource(CLASS, DATA) \
+#define jkgRenderableShapeStaticSource(_CLASS, _DATA) \
 \
 using namespace Jagerts::Kaleid::Math; \
 using namespace Jagerts::Kaleid::Graphics; \
 using namespace Jagerts::Felcp::Helpers; \
 \
-Mesh* CLASS::_s_mesh = NULL; \
-std::vector<RenderableShape*> CLASS::_shapes = std::vector<RenderableShape*>(); \
+Mesh* _CLASS::_s_mesh = NULL; \
+std::vector<RenderableShape*> _CLASS::_shapes = std::vector<RenderableShape*>(); \
 \
-CLASS::##CLASS##() \
+_CLASS::_CLASS() \
 { \
-	this->_mesh = CLASS::_s_mesh; \
+	this->_mesh = _CLASS::_s_mesh; \
 	this->_shader_program = NULL; \
 	this->_shapes.push_back(this); \
 } \
 \
-CLASS::~##CLASS##() \
+_CLASS::~_CLASS() \
 { \
-	VectorHelper::RemoveItem(CLASS::_shapes, (RenderableShape*)this); \
+	VectorHelper::RemoveItem(_CLASS::_shapes, (RenderableShape*)this); \
 } \
  \
-bool CLASS::MeshExists() \
+bool _CLASS::MeshExists() \
 { \
-	return CLASS::_s_mesh != NULL; \
+	return _CLASS::_s_mesh != NULL; \
 } \
  \
-Mesh* CLASS::CreateMesh(GraphicsFactory*& graphics_factory) \
+Mesh* _CLASS::CreateMesh(GraphicsFactory*& graphics_factory) \
 { \
-	if (CLASS::_s_mesh == NULL) \
+	if (_CLASS::_s_mesh == NULL) \
 	{ \
-		DATA; \
-		CLASS::_s_mesh = mesh; \
-		CLASS::_s_mesh->Compose(); \
+		_DATA; \
+		_CLASS::_s_mesh = mesh; \
+		_CLASS::_s_mesh->Compose(); \
 		 \
-		for (RenderableShape*& shape : CLASS::_shapes) \
-			shape->_mesh = CLASS::_s_mesh; \
+		for (RenderableShape*& shape : _CLASS::_shapes) \
+			shape->_mesh = _CLASS::_s_mesh; \
 	} \
  \
-	return CLASS::GetMesh(); \
+	return _CLASS::GetMesh(); \
 } \
 \
-Mesh* CLASS::GetMesh() \
+Mesh* _CLASS::GetMesh() \
 { \
-	return CLASS::_s_mesh; \
+	return _CLASS::_s_mesh; \
 } \
 \
-void CLASS::FreeMesh(GraphicsFactory*& graphics_factory) \
+void _CLASS::FreeMesh(GraphicsFactory*& graphics_factory) \
 { \
-	graphics_factory->FreeIndexBuffer(CLASS::_s_mesh->GetIndexBuffer()); \
-	graphics_factory->FreeVertexBuffers(CLASS::_s_mesh->GetVertexBuffers()); \
-	graphics_factory->FreeMesh(CLASS::_s_mesh); \
+	graphics_factory->FreeIndexBuffer(_CLASS::_s_mesh->GetIndexBuffer()); \
+	graphics_factory->FreeVertexBuffers(_CLASS::_s_mesh->GetVertexBuffers()); \
+	graphics_factory->FreeMesh(_CLASS::_s_mesh); \
  \
-	for (RenderableShape*& shape : CLASS::_shapes) \
+	for (RenderableShape*& shape : _CLASS::_shapes) \
 		shape->_mesh = NULL; \
 } \
 

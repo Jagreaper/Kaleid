@@ -151,7 +151,7 @@ void Renderer::RenderMesh(Mesh*& mesh, ShaderProgram*& shader_program, Material*
 }
 
 #include "Font.hpp"
-#include "Jagerts.Kaleid.Math\Transform.hpp"
+#include "Jagerts.Kaleid.Math/Transform.hpp"
 #include <FT/ft2build.h>
 #include FT_FREETYPE_H
 

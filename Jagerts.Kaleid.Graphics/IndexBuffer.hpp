@@ -9,7 +9,7 @@ namespace Jagerts::Kaleid::Graphics
 	class Renderer;
 	class GraphicsFactory;
 
-	class JAGERTS_KALEID_GRAPHICS_API IndexBuffer sealed : public BufferBase
+	class JAGERTS_KALEID_GRAPHICS_API IndexBuffer : public BufferBase
 	{
 	public:
 #define _INDEX_BUFFER_DATA_SETTER(TYPE) \

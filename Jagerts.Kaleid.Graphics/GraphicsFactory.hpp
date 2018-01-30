@@ -14,10 +14,10 @@ namespace Jagerts::Kaleid::Graphics
 	class Texture;
 	class TextureBase;
 
-	enum ShaderType;
-	enum BufferUsage;
+	enum class ShaderType;
+	enum class BufferUsage : unsigned int;
 
-	class JAGERTS_KALEID_GRAPHICS_API GraphicsFactory sealed
+	class JAGERTS_KALEID_GRAPHICS_API GraphicsFactory
 	{
 	public:
 		GraphicsFactory();
