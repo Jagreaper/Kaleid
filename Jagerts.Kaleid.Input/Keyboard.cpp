@@ -20,7 +20,7 @@ Keyboard::Keyboard(const std::vector<KeyBinding>* key_bindings)
 	this->Add(key_bindings);
 }
 
-void Keyboard::Add(KeyBinding& key_binding)
+void Keyboard::Add(KeyBinding key_binding)
 {
 	this->_key_bindings.push_back(key_binding);
 }

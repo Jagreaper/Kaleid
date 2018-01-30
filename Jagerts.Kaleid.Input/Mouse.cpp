@@ -32,12 +32,12 @@ Mouse::Mouse(const std::vector<MouseClickBinding>* mouse_bindings)
 	this->Add(mouse_bindings);
 }
 
-void Mouse::Add(MouseMoveBinding& mouse_binding)
+void Mouse::Add(MouseMoveBinding mouse_binding)
 {
 	this->_mouse_move_bindings.push_back(mouse_binding);
 }
 
-void Mouse::Add(MouseClickBinding& mouse_binding)
+void Mouse::Add(MouseClickBinding mouse_binding)
 {
 	this->_mouse_click_bindings.push_back(mouse_binding);
 }

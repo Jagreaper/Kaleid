@@ -20,8 +20,8 @@ namespace Jagerts::Kaleid::Input
 		Mouse(const std::vector<MouseMoveBinding>* mouse_bindings);
 		Mouse(const std::vector<MouseClickBinding>& mouse_bindings);
 		Mouse(const std::vector<MouseClickBinding>* mouse_bindings);
-		void Add(MouseMoveBinding& mouse_binding);
-		void Add(MouseClickBinding& mouse_binding);
+		void Add(MouseMoveBinding mouse_binding);
+		void Add(MouseClickBinding mouse_binding);
 		void Add(const std::vector<MouseMoveBinding>& mouse_bindings);
 		void Add(const std::vector<MouseMoveBinding>* mouse_bindings);
 		void Add(const std::vector<MouseClickBinding>& mouse_bindings);

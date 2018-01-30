@@ -17,7 +17,7 @@ namespace Jagerts::Kaleid::Input
 		Keyboard();
 		Keyboard(const std::vector<KeyBinding>& key_bindings);
 		Keyboard(const std::vector<KeyBinding>* key_bindings);
-		void Add(KeyBinding& key_binding);
+		void Add(KeyBinding key_binding);
 		void Add(const std::vector<KeyBinding>& key_bindings);
 		void Add(const std::vector<KeyBinding>* key_bindings);
 		void Remove(const unsigned int index);

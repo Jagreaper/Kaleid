@@ -7,7 +7,7 @@
 
 namespace Jagerts::Kaleid::Application
 {
-	class SceneManager sealed
+	class SceneManager
 	{
 	public:
 		static TestScene* CreateTestScene(Jagerts::Kaleid::Game::App* app);
