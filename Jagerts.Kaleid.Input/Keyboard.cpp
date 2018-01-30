@@ -1,5 +1,5 @@
 #include "Keyboard.hpp"
-#include "Jagerts.Felcp.Helpers\VectorHelper.hpp"
+#include "Jagerts.Felcp.Helpers/VectorHelper.hpp"
 
 using namespace Jagerts::Kaleid::Graphics;
 using namespace Jagerts::Felcp::Helpers;

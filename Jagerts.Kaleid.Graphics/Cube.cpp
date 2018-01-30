@@ -1,8 +1,8 @@
 #include "Cube.hpp"
-#include "Jagerts.Kaleid.Graphics\Renderer.hpp"
-#include "Jagerts.Kaleid.Graphics\Mesh.hpp"
-#include "Jagerts.Kaleid.Graphics\GraphicsFactory.hpp"
-#include "Jagerts.Felcp.Helpers\VectorHelper.hpp"
+#include "Jagerts.Kaleid.Graphics/Renderer.hpp"
+#include "Jagerts.Kaleid.Graphics/Mesh.hpp"
+#include "Jagerts.Kaleid.Graphics/GraphicsFactory.hpp"
+#include "Jagerts.Felcp.Helpers/VectorHelper.hpp"
 
 #define _CubeShapeMeshData \
 const float verticies[] = \

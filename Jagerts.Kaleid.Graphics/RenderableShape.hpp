@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Jagerts.Kaleid.Shared\Common.hpp"
-#include "Jagerts.Kaleid.Math\Transform.hpp"
+#include "Jagerts.Kaleid.Shared/Common.hpp"
+#include "Jagerts.Kaleid.Math/Transform.hpp"
 #include <functional>
 
 namespace Jagerts::Kaleid::Graphics

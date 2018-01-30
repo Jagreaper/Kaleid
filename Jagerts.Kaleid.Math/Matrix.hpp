@@ -1,6 +1,6 @@
 #pragma once
 
-#include "GLM\glm.hpp"
+#include "GLM/glm.hpp"
 
 namespace Jagerts::Kaleid::Math
 {

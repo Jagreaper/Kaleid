@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Jagerts.Kaleid.Shared\Common.hpp"
-#include "Jagerts.Kaleid.Math\OrthographicCamera.hpp"
+#include "Jagerts.Kaleid.Shared/Common.hpp"
+#include "Jagerts.Kaleid.Math/OrthographicCamera.hpp"
 #include <vector>
 #include <string>
 

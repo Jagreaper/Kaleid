@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RenderableShape.hpp"
+#include "Jagerts.Kaleid.Graphics/RenderableShape.hpp"
 
 namespace Jagerts::Kaleid::Graphics
 {

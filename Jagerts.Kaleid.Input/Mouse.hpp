@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Jagerts.Kaleid.Shared\Common.hpp"
-#include "MouseMoveBinding.hpp"
-#include "MouseClickBinding.hpp"
+#include "Jagerts.Kaleid.Shared/Common.hpp"
+#include "Jagerts.Kaleid.Input/MouseMoveBinding.hpp"
+#include "Jagerts.Kaleid.Input/MouseClickBinding.hpp"
 #include <vector>
 
 namespace Jagerts::Kaleid::Graphics

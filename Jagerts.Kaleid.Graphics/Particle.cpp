@@ -1,5 +1,5 @@
 #include "Particle.hpp"
-#include "Jagerts.Kaleid.Graphics\Point.hpp"
+#include "Jagerts.Kaleid.Graphics/Point.hpp"
 
 using namespace Jagerts::Kaleid::Graphics;
 

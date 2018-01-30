@@ -1,8 +1,8 @@
 #include "App.hpp"
 #include "SceneBase.hpp"
-#include "Jagerts.Kaleid.Graphics\Window.hpp"
-#include "Jagerts.Kaleid.Graphics\GraphicsFactory.hpp"
-#include "Jagerts.Kaleid.Graphics\Renderer.hpp"
+#include "Jagerts.Kaleid.Graphics/Window.hpp"
+#include "Jagerts.Kaleid.Graphics/GraphicsFactory.hpp"
+#include "Jagerts.Kaleid.Graphics/Renderer.hpp"
 
 using namespace Jagerts::Kaleid::Game;
 using namespace Jagerts::Kaleid::Graphics;

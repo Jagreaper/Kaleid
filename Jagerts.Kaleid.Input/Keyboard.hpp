@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Jagerts.Kaleid.Shared\Common.hpp"
-#include "KeyBinding.hpp"
+#include "Jagerts.Kaleid.Shared/Common.hpp"
+#include "Jagerts.Kaleid.Input/KeyBinding.hpp"
 #include <vector>
 
 namespace Jagerts::Kaleid::Graphics

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Jagerts.Kaleid.Shared\Common.hpp"
-#include "Jagerts.Kaleid.Math\Vector.hpp"
-#include "Jagerts.Kaleid.Math\Matrix.hpp"
+#include "Jagerts.Kaleid.Shared/Common.hpp"
+#include "Jagerts.Kaleid.Math/Vector.hpp"
+#include "Jagerts.Kaleid.Math/Matrix.hpp"
 #include <vector>
 
 namespace Jagerts::Kaleid::Graphics

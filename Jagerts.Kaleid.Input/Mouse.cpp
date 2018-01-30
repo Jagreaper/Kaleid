@@ -1,6 +1,6 @@
 #include "Mouse.hpp"
-#include "Jagerts.Felcp.Helpers\VectorHelper.hpp"
-#include "Jagerts.Kaleid.Graphics\Window.hpp"
+#include "Jagerts.Felcp.Helpers/VectorHelper.hpp"
+#include "Jagerts.Kaleid.Graphics/Window.hpp"
 
 using namespace Jagerts::Kaleid::Graphics;
 using namespace Jagerts::Felcp::Helpers;

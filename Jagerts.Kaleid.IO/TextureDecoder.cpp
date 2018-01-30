@@ -1,6 +1,6 @@
 #include "TextureDecoder.hpp"
-#include "Jagerts.Kaleid.Graphics\Texture.hpp"
-#include "STB\stb_image.h"
+#include "Jagerts.Kaleid.Graphics/Texture.hpp"
+#include "STB/stb_image.h"
 #include <stdexcept>
 
 using namespace Jagerts::Kaleid::IO;

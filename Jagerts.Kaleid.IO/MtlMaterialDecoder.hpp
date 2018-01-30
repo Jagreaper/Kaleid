@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Jagerts.Kaleid.Shared\Common.hpp"
-#include "MaterialDecoder.hpp"
+#include "Jagerts.Kaleid.Shared/Common.hpp"
+#include "Jagerts.Kaleid.IO/MaterialDecoder.hpp"
 #include <istream>
 
 namespace Jagerts::Kaleid::IO

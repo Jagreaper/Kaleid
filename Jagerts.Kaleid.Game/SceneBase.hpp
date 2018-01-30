@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Jagerts.Kaleid.Shared\Common.hpp"
-#include "Jagerts.Kaleid.Input\Keyboard.hpp"
-#include "Jagerts.Kaleid.Input\Mouse.hpp"
+#include "Jagerts.Kaleid.Shared/Common.hpp"
+#include "Jagerts.Kaleid.Input/Keyboard.hpp"
+#include "Jagerts.Kaleid.Input/Mouse.hpp"
 #include <ctime>
 
 namespace Jagerts::Kaleid::Graphics

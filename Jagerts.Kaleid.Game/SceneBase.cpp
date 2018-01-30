@@ -1,6 +1,6 @@
 #include "SceneBase.hpp"
 #include "App.hpp"
-#include "Jagerts.Kaleid.Graphics\Window.hpp"
+#include "Jagerts.Kaleid.Graphics/Window.hpp"
 
 using namespace Jagerts::Kaleid::Game;
 using namespace Jagerts::Kaleid::Graphics;

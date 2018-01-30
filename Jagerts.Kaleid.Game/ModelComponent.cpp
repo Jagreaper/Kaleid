@@ -1,5 +1,5 @@
 #include "ModelComponent.hpp"
-#include "Jagerts.Felcp.Helpers\VectorHelper.hpp"
+#include "Jagerts.Felcp.Helpers/VectorHelper.hpp"
 
 using namespace Jagerts::Kaleid::Math;
 using namespace Jagerts::Kaleid::Game;

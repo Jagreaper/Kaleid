@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Jagerts.Kaleid.Shared\Common.hpp"
-#include "Matrix.hpp"
-#include "Vector.hpp"
+#include "Jagerts.Kaleid.Shared/Common.hpp"
+#include "Jagerts.Kaleid.Math/Matrix.hpp"
+#include "Jagerts.Kaleid.Math/Vector.hpp"
 #include <vector>
 
 #define jkmUsingTransformableObject using Jagerts::Kaleid::Math::TransformableObject::GetTransform

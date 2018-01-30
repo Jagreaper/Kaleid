@@ -1,10 +1,10 @@
 #include "HeightmapDecoder.hpp"
-#include "Jagerts.Kaleid.Graphics\GraphicsFactory.hpp"
-#include "Jagerts.Kaleid.Graphics\Mesh.hpp"
-#include "Jagerts.Kaleid.Game\ModelComponent.hpp"
-#include "Jagerts.Kaleid.Game\Model.hpp"
-#include "Jagerts.Kaleid.Math\Vector.hpp"
-#include "Jagerts.Felcp.Imaging\Image.hpp"
+#include "Jagerts.Kaleid.Graphics/GraphicsFactory.hpp"
+#include "Jagerts.Kaleid.Graphics/Mesh.hpp"
+#include "Jagerts.Kaleid.Game/ModelComponent.hpp"
+#include "Jagerts.Kaleid.Game/Model.hpp"
+#include "Jagerts.Kaleid.Math/Vector.hpp"
+#include "Jagerts.Felcp.Imaging/Image.hpp"
 #include <string>
 #include <stdexcept>
 #include <vector>

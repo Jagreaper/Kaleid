@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Jagerts.Kaleid.Math\Vector.hpp"
-#include "Jagerts.Felcp.Helpers\Nullable.hpp"
+#include "Jagerts.Kaleid.Math/Vector.hpp"
+#include "Jagerts.Felcp.Helpers/Nullable.hpp"
 
 namespace Jagerts::Kaleid::Geometry
 {

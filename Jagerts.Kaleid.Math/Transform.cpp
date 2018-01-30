@@ -1,6 +1,6 @@
 #include "Transform.hpp"
-#include "GLM\gtx\rotate_vector.hpp"
-#include "GLM\gtc\matrix_transform.hpp"
+#include "GLM/gtx/rotate_vector.hpp"
+#include "GLM/gtc/matrix_transform.hpp"
 
 using namespace Jagerts::Kaleid::Math;
 

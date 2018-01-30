@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Jagerts.Kaleid.Shared\Common.hpp"
-#include "BufferBase.hpp"
+#include "Jagerts.Kaleid.Shared/Common.hpp"
+#include "Jagerts.Kaleid.Graphics/BufferBase.hpp"
 #include <vector>
 
 namespace Jagerts::Kaleid::Graphics

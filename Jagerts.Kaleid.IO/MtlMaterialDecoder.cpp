@@ -1,8 +1,8 @@
 #include "MtlMaterialDecoder.hpp"
-#include "Jagerts.Felcp.Helpers\StringHelper.hpp"
-#include "Jagerts.Felcp.Helpers\VectorHelper.hpp"
-#include "Jagerts.Kaleid.Graphics\Material.hpp"
-#include "Jagerts.Kaleid.Math\Vector.hpp"
+#include "Jagerts.Felcp.Helpers/StringHelper.hpp"
+#include "Jagerts.Felcp.Helpers/VectorHelper.hpp"
+#include "Jagerts.Kaleid.Graphics/Material.hpp"
+#include "Jagerts.Kaleid.Math/Vector.hpp"
 #include <string>
 #include <vector>
 #include <iostream>

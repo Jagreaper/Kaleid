@@ -1,5 +1,5 @@
 #include "KeyBinding.hpp"
-#include "Jagerts.Kaleid.Graphics\Window.hpp"
+#include "Jagerts.Kaleid.Graphics/Window.hpp"
 
 using namespace Jagerts::Kaleid::Input;
 

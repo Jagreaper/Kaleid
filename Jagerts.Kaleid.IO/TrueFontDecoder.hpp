@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Jagerts.Kaleid.Shared\Common.hpp"
-#include "Jagerts.Felcp.IO\DecoderBase.hpp"
+#include "Jagerts.Kaleid.Shared/Common.hpp"
+#include "Jagerts.Felcp.IO/DecoderBase.hpp"
 
 namespace Jagerts::Kaleid::Graphics
 {

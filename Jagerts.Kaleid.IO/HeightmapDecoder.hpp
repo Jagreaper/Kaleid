@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Jagerts.Kaleid.Shared\Common.hpp"
-#include "Jagerts.Felcp.IO\DecoderBase.hpp"
-#include "Jagerts.Felcp.IO.Imaging\ImageDecoder.hpp"
-#include "ModelDecoder.hpp"
+#include "Jagerts.Kaleid.Shared/Common.hpp"
+#include "Jagerts.Felcp.IO/DecoderBase.hpp"
+#include "Jagerts.Felcp.IO.Imaging/ImageDecoder.hpp"
+#include "Jagerts.Kaleid.IO/ModelDecoder.hpp"
 #include <istream>
 
 namespace Jagerts::Kaleid::Game

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Jagerts.Kaleid.Math\Vector.hpp"
+#include "Jagerts.Kaleid.Math/Vector.hpp"
 #include <string>
 
 namespace Jagerts::Kaleid::Graphics

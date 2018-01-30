@@ -1,6 +1,6 @@
 #include "Model.hpp"
-#include "Jagerts.Felcp.Helpers\VectorHelper.hpp"
-#include "Jagerts.Kaleid.Graphics\Renderer.hpp"
+#include "Jagerts.Felcp.Helpers/VectorHelper.hpp"
+#include "Jagerts.Kaleid.Graphics/Renderer.hpp"
 
 using namespace Jagerts::Kaleid::Math;
 using namespace Jagerts::Kaleid::Game;

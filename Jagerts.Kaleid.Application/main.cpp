@@ -1,7 +1,7 @@
 #include <iostream>
-#include "Jagerts.Kaleid.Game\App.hpp"
-#include "Jagerts.Kaleid.Graphics\GraphicsFactory.hpp"
-#include "Jagerts.Kaleid.Graphics\Renderer.hpp"
+#include "Jagerts.Kaleid.Game/App.hpp"
+#include "Jagerts.Kaleid.Graphics/GraphicsFactory.hpp"
+#include "Jagerts.Kaleid.Graphics/Renderer.hpp"
 #include "RootScene.hpp"
 #include "SceneManager.hpp"
 
@@ -9,14 +9,7 @@ using namespace Jagerts::Kaleid::Game;
 using namespace Jagerts::Kaleid::Graphics;
 using namespace Jagerts::Kaleid::Application;
 
-#ifdef DEBUG
 int main()
-#endif
-#ifdef RELEASE
-#include <windows.h>
-
-int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, char*, int nShowCmd)
-#endif
 {
 	App app;
 

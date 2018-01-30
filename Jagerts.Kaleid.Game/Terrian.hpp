@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Jagerts.Kaleid.Shared\Common.hpp"
-#include "Jagerts.Kaleid.Math\Transform.hpp"
-#include "Jagerts.Kaleid.Graphics\Renderer.hpp"
+#include "Jagerts.Kaleid.Shared/Common.hpp"
+#include "Jagerts.Kaleid.Math/Transform.hpp"
+#include "Jagerts.Kaleid.Graphics/Renderer.hpp"
 #include "Model.hpp"
 #include <vector>
 

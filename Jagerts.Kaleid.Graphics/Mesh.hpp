@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Jagerts.Kaleid.Shared\Common.hpp"
+#include "Jagerts.Kaleid.Shared/Common.hpp"
 #include <vector>
 #include <functional>
 

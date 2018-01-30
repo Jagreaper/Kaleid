@@ -1,4 +1,3 @@
-#include "Jagerts.Kaleid.Shared\Common.hpp"
 #include "GraphicsFactory.hpp"
 #include "Window.hpp"
 #include "Shader.hpp"
@@ -7,7 +6,7 @@
 #include "VertexBuffer.hpp"
 #include "IndexBuffer.hpp"
 #include "Mesh.hpp"
-#include "Jagerts.Felcp.Helpers\VectorHelper.hpp"
+#include "Jagerts.Felcp.Helpers/VectorHelper.hpp"
 #include "Texture.hpp"
 
 using namespace Jagerts::Kaleid::Graphics;

@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Jagerts.Kaleid.Shared\Common.hpp"
-#include "Jagerts.Kaleid.Math\Transform.hpp"
-#include "ModelComponent.hpp"
-#include "Jagerts.Kaleid.Graphics\Material.hpp"
-#include "Jagerts.Kaleid.Graphics\Renderer.hpp"
+#include "Jagerts.Kaleid.Shared/Common.hpp"
+#include "Jagerts.Kaleid.Math/Transform.hpp"
+#include "Jagerts.Kaleid.Game/ModelComponent.hpp"
+#include "Jagerts.Kaleid.Graphics/Material.hpp"
+#include "Jagerts.Kaleid.Graphics/Renderer.hpp"
 #include <functional>
 #include <vector>
 

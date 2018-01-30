@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Jagerts.Kaleid.Shared\Common.hpp"
-#include "ModelDecoder.hpp"
+#include "Jagerts.Kaleid.Shared/Common.hpp"
+#include "Jagerts.Kaleid.IO/ModelDecoder.hpp"
 #include <istream>
 
 namespace Jagerts::Kaleid::Game

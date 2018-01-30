@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Face.hpp"
+#include "Jagerts.Kaleid.Geometry/Face.hpp"
 
 namespace Jagerts::Kaleid::Geometry
 {

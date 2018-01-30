@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Vertex.hpp"
+#include "Jagerts.Kaleid.Geometry/Vertex.hpp"
 #include <vector>
 
 namespace Jagerts::Kaleid::Geometry
