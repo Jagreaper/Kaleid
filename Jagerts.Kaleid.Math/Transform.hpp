@@ -9,22 +9,22 @@
 
 namespace Jagerts::Kaleid::Math
 {
-	class JAGERTS_KALEID_MATH_API Transform sealed
+	class JAGERTS_KALEID_MATH_API Transform
 	{
 	public:
 		Transform();
 		~Transform();
 
-		void TranslateRelative(Vector3F& position);
-		void RotateRelative(Vector3F& rotation);
-		void ScaleRelative(Vector3F& scale);
+		void TranslateRelative(const Vector3F& position);
+		void RotateRelative(const Vector3F& rotation);
+		void ScaleRelative(const Vector3F& scale);
 
-		void SetRelativePosition(Vector3F& position);
-		void SetRelativeRotation(Vector3F& rotation);
-		void SetRelativeScale(Vector3F& scale);
-		void SetWorldPosition(Vector3F& position);
-		void SetWorldRotation(Vector3F& rotation);
-		void SetWorldScale(Vector3F& scale);
+		void SetRelativePosition(const Vector3F& position);
+		void SetRelativeRotation(const Vector3F& rotation);
+		void SetRelativeScale(const Vector3F& scale);
+		void SetWorldPosition(const Vector3F& position);
+		void SetWorldRotation(const Vector3F& rotation);
+		void SetWorldScale(const Vector3F& scale);
 
 		Vector3F GetRelativePosition();
 		Vector3F GetRelativeRotation();
@@ -63,6 +63,7 @@ namespace Jagerts::Kaleid::Math
 		void MarkPositionDirty();
 		void MarkRotationDirty();
 		void MarkScaleDirty();
+		Vector3F RotateRelativeByWorld(const Vector3F& p_rotation, const Vector3F& r_postion);
 	};
 
 	class JAGERTS_KALEID_MATH_API TransformableObject

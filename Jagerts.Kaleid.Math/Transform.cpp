@@ -62,43 +62,43 @@ void Transform::MarkScaleDirty()
 	}
 }
 
-void Transform::TranslateRelative(Vector3F& position)
+void Transform::TranslateRelative(const Vector3F& position)
 {
 	this->_r_position += position;
 	this->MarkPositionDirty();
 }
 
-void Transform::RotateRelative(Vector3F& rotation)
+void Transform::RotateRelative(const Vector3F& rotation)
 {
 	this->_r_rotation += rotation;
 	this->MarkRotationDirty();
 }
 
-void Transform::ScaleRelative(Vector3F& scale)
+void Transform::ScaleRelative(const Vector3F& scale)
 {
 	this->_r_scale *= scale;
 	this->MarkScaleDirty();
 }
 
-void Transform::SetRelativePosition(Vector3F& position)
+void Transform::SetRelativePosition(const Vector3F& position)
 {
 	this->_r_position = position;
 	this->MarkPositionDirty();
 }
 
-void Transform::SetRelativeRotation(Vector3F& rotation)
+void Transform::SetRelativeRotation(const Vector3F& rotation)
 {
 	this->_r_rotation = rotation;
 	this->MarkRotationDirty();
 }
 
-void Transform::SetRelativeScale(Vector3F& scale)
+void Transform::SetRelativeScale(const Vector3F& scale)
 {
 	this->_r_scale = scale;
 	this->MarkScaleDirty();
 }
 
-Vector3F RotateRelativeByWorld(Vector3F& p_rotation, Vector3F& r_postion)
+Vector3F Transform::RotateRelativeByWorld(const Vector3F& p_rotation, const Vector3F& r_postion)
 {
 	glm::vec2 xy = glm::rotate(glm::vec2(r_postion.x, r_postion.y), glm::radians(p_rotation.z));
 	glm::vec2 zy = glm::rotate(glm::vec2(r_postion.z, r_postion.y), glm::radians(p_rotation.x));
@@ -111,7 +111,7 @@ Vector3F RotateRelativeByWorld(Vector3F& p_rotation, Vector3F& r_postion)
 	return Vector3F(x, y, z);
 }
 
-void Transform::SetWorldPosition(Vector3F& position)
+void Transform::SetWorldPosition(const Vector3F& position)
 {
 	if (this->_parent != NULL)
 		this->SetRelativePosition(position - RotateRelativeByWorld(-this->_parent->GetWorldRotation(), this->_parent->GetWorldPosition()));
@@ -121,7 +121,7 @@ void Transform::SetWorldPosition(Vector3F& position)
 	this->MarkPositionDirty();
 }
 
-void Transform::SetWorldRotation(Vector3F& rotation)
+void Transform::SetWorldRotation(const Vector3F& rotation)
 {
 	if (this->_parent != NULL)
 		this->SetRelativeRotation(rotation - this->_parent->GetWorldRotation());
@@ -131,7 +131,7 @@ void Transform::SetWorldRotation(Vector3F& rotation)
 	this->MarkRotationDirty();
 }
 
-void Transform::SetWorldScale(Vector3F& scale)
+void Transform::SetWorldScale(const Vector3F& scale)
 {
 	if (this->_parent != NULL)
 		this->SetRelativeScale(scale / this->_parent->GetWorldScale());

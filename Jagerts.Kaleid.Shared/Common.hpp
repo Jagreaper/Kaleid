@@ -1,84 +1,94 @@
 #pragma once
 
-#ifdef JAGERTS_KALEID_GRAPHICS_DLL
-#define JAGERTS_KALEID_INPUT_HEADERS
-#include <GLEW/glew.h>
-#define JAGERTS_KALEID_GRAPHICS_API __declspec(dllexport)
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
+	#ifdef JAGERTS_KALEID_GRAPHICS_DLL
+		#define JAGERTS_KALEID_INPUT_HEADERS
+		#include <GLEW/glew.h>
+		#define JAGERTS_KALEID_GRAPHICS_API __declspec(dllexport)
+	#else
+		#define JAGERTS_KALEID_GRAPHICS_API __declspec(dllimport)
+	#endif
+
+	#ifdef JAGERTS_KALEID_GAME_DLL
+		#define JAGERTS_KALEID_GAME_API __declspec(dllexport)
+	#else
+		#define JAGERTS_KALEID_GAME_API __declspec(dllimport)
+	#endif
+
+	#ifdef JAGERTS_KALEID_MATH_DLL
+		#define JAGERTS_KALEID_MATH_API __declspec(dllexport)
+	#else
+		#define JAGERTS_KALEID_MATH_API __declspec(dllimport)
+	#endif
+
+	#ifdef JAGERTS_KALEID_IO_DLL
+		#define JAGERTS_KALEID_IO_API __declspec(dllexport)
+	#else
+		#define JAGERTS_KALEID_IO_API __declspec(dllimport)
+	#endif
+
+	#ifdef JAGERTS_KALEID_GEOMETRY_DLL
+		#define JAGERTS_KALEID_GEOMETRY_API __declspec(dllexport)
+	#else
+		#define JAGERTS_KALEID_GEOMETRY_API __declspec(dllimport)
+	#endif
+
+	#ifdef JAGERTS_KALEID_PHYSICS_DLL
+		#define JAGERTS_KALEID_PHYSICS_API __declspec(dllexport)
+	#else
+		#define JAGERTS_KALEID_PHYSICS_API __declspec(dllimport)
+	#endif
+
+	#ifdef JAGERTS_KALEID_INPUT_DLL
+		#define JAGERTS_KALEID_INPUT_HEADERS
+		#define JAGERTS_KALEID_INPUT_API __declspec(dllexport)
+	#else
+		#define JAGERTS_KALEID_INPUT_API __declspec(dllimport)
+	#endif
+
+	#ifdef JAGERTS_KALEID_INPUT_HEADERS
+		#define GLFW_DLL
+		#include <GLFW/glfw3.h>
+	#endif
 #else
-#define JAGERTS_KALEID_GRAPHICS_API __declspec(dllimport)
+	#define JAGERTS_KALEID_GRAPHICS_API
+	#define JAGERTS_KALEID_GAME_API
+	#define JAGERTS_KALEID_MATH_API 
+	#define JAGERTS_KALEID_IO_API
+	#define JAGERTS_KALEID_GEOMETRY_API
+	#define JAGERTS_KALEID_PHYSICS_API
+	#define JAGERTS_KALEID_INPUT_API
 #endif
 
-#ifdef JAGERTS_KALEID_GAME_DLL
-#define JAGERTS_KALEID_GAME_API __declspec(dllexport)
-#else
-#define JAGERTS_KALEID_GAME_API __declspec(dllimport)
-#endif
+#define jkSetterBody(_VALUE) _VALUE = value
 
-#ifdef JAGERTS_KALEID_MATH_DLL
-#define JAGERTS_KALEID_MATH_API __declspec(dllexport)
-#else
-#define JAGERTS_KALEID_MATH_API __declspec(dllimport)
-#endif
+#define jkSetterHeader(_NAME, _TYPE) void Set ## _NAME(_TYPE value)
 
-#ifdef JAGERTS_KALEID_IO_DLL
-#define JAGERTS_KALEID_IO_API __declspec(dllexport)
-#else
-#define JAGERTS_KALEID_IO_API __declspec(dllimport)
-#endif
+#define jkSetterHeaderDefinition(_NAME, _TYPE, _VALUE) jkSetterHeader(_NAME, _TYPE) { jkSetterBody(_VALUE); }
 
-#ifdef JAGERTS_KALEID_GEOMETRY_DLL
-#define JAGERTS_KALEID_GEOMETRY_API __declspec(dllexport)
-#else
-#define JAGERTS_KALEID_GEOMETRY_API __declspec(dllimport)
-#endif
+#define jkSetterSource(_CLASS, _NAME, _TYPE) void _CLASS::Set ## _NAME(_TYPE value)
 
-#ifdef JAGERTS_KALEID_PHYSICS_DLL
-#define JAGERTS_KALEID_PHYSICS_API __declspec(dllexport)
-#else
-#define JAGERTS_KALEID_PHYSICS_API __declspec(dllimport)
-#endif
+#define jkSetterSourceDefinition(_CLASS, _NAME, _TYPE, _VALUE) jkSetterSource(_CLASS, _NAME, _TYPE) { jkSetterBody(_VALUE);}
 
-#ifdef JAGERTS_KALEID_INPUT_DLL
-#define JAGERTS_KALEID_INPUT_HEADERS
-#define JAGERTS_KALEID_INPUT_API __declspec(dllexport)
-#else
-#define JAGERTS_KALEID_INPUT_API __declspec(dllimport)
-#endif
+#define jkGetterBody(_VALUE) return _VALUE
 
-#ifdef JAGERTS_KALEID_INPUT_HEADERS
-	#define GLFW_DLL
-	#include <GLFW/glfw3.h>
-#endif
+#define jkGetterHeader(_NAME, _TYPE) _TYPE Get ## _NAME() const
 
-#define jkSetterBody(VALUE) VALUE = value
+#define jkGetterHeaderDefinition(_NAME, _TYPE, _VALUE) jkGetterHeader(_NAME, _TYPE) { jkGetterBody(_VALUE); }
 
-#define jkSetterHeader(NAME, TYPE) void Set##NAME##(TYPE value)
+#define jkGetterSource(_CLASS, _NAME, _TYPE) _TYPE _CLASS::Get ## _NAME() const
 
-#define jkSetterHeaderDefinition(NAME, TYPE, VALUE) jkSetterHeader(NAME, TYPE) { jkSetterBody(VALUE); }
+#define jkGetterSourceDefinition(_CLASS, _NAME, _TYPE, _VALUE) jkGetterSource(_CLASS, _NAME, _TYPE) { jkGetterBody(_VALUE); }
 
-#define jkSetterSource(CLASS, NAME, TYPE) void CLASS::Set##NAME##(TYPE value)
+#define jkGetterSetterHeader(_NAME, _TYPE) \
+jkSetterHeader(_NAME, _TYPE); \
+jkGetterHeader(_NAME, _TYPE&) \
 
-#define jkSetterSourceDefinition(CLASS, NAME, TYPE, VALUE) jkSetterSource(CLASS, NAME, TYPE) { jkSetterBody(VALUE);}
+#define jkGetterSetterHeaderDefinition(_NAME, _TYPE, _VALUE) \
+jkSetterHeaderDefinition(_NAME, _TYPE, _VALUE) \
+jkGetterHeaderDefinition(_NAME, _TYPE&, _VALUE) \
 
-#define jkGetterBody(VALUE) return VALUE
-
-#define jkGetterHeader(NAME, TYPE) TYPE Get##NAME##() const
-
-#define jkGetterHeaderDefinition(NAME, TYPE, VALUE) jkGetterHeader(NAME, TYPE) { jkGetterBody(VALUE); }
-
-#define jkGetterSource(CLASS, NAME, TYPE) TYPE CLASS::Get##NAME##() const
-
-#define jkGetterSourceDefinition(CLASS, NAME, TYPE, VALUE) jkGetterSource(CLASS, NAME, TYPE) { jkGetterBody(VALUE); }
-
-#define jkGetterSetterHeader(NAME, TYPE) \
-jkSetterHeader(NAME, TYPE); \
-jkGetterHeader(NAME, TYPE&) \
-
-#define jkGetterSetterHeaderDefinition(NAME, TYPE, VALUE) \
-jkSetterHeaderDefinition(NAME, TYPE, VALUE) \
-jkGetterHeaderDefinition(NAME, TYPE&, VALUE) \
-
-#define jkGetterSetterSourceDefinition(CLASS, NAME, TYPE, VALUE) \
-jkSetterSourceDefinition(CLASS, NAME, TYPE, VALUE) \
-jkGetterSourceDefinition(CLASS, NAME, TYPE&, VALUE) \
+#define jkGetterSetterSourceDefinition(_CLASS, _NAME, _TYPE, _VALUE) \
+jkSetterSourceDefinition(_CLASS, _NAME, _TYPE, _VALUE) \
+jkGetterSourceDefinition(_CLASS, _NAME, _TYPE&, _VALUE) \
 
