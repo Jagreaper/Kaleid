@@ -2,8 +2,6 @@
 
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
 	#ifdef JAGERTS_KALEID_GRAPHICS_DLL
-		#define JAGERTS_KALEID_INPUT_HEADERS
-		#include <GLEW/glew.h>
 		#define JAGERTS_KALEID_GRAPHICS_API __declspec(dllexport)
 	#else
 		#define JAGERTS_KALEID_GRAPHICS_API __declspec(dllimport)
@@ -40,15 +38,9 @@
 	#endif
 
 	#ifdef JAGERTS_KALEID_INPUT_DLL
-		#define JAGERTS_KALEID_INPUT_HEADERS
 		#define JAGERTS_KALEID_INPUT_API __declspec(dllexport)
 	#else
 		#define JAGERTS_KALEID_INPUT_API __declspec(dllimport)
-	#endif
-
-	#ifdef JAGERTS_KALEID_INPUT_HEADERS
-		#define GLFW_DLL
-		#include <GLFW/glfw3.h>
 	#endif
 #else
 	#define JAGERTS_KALEID_GRAPHICS_API
@@ -58,6 +50,18 @@
 	#define JAGERTS_KALEID_GEOMETRY_API
 	#define JAGERTS_KALEID_PHYSICS_API
 	#define JAGERTS_KALEID_INPUT_API
+#endif
+
+#ifdef JAGERTS_KALEID_GRAPHICS_DLL
+	#define JAGERTS_KALEID_INPUT_HEADERS
+	#include <GLEW/glew.h>
+#elif JAGERTS_KALEID_INPUT_DLL
+	#define JAGERTS_KALEID_INPUT_HEADERS
+#endif
+
+#ifdef JAGERTS_KALEID_INPUT_HEADERS
+	#define GLFW_DLL
+	#include <GLFW/glfw3.h>
 #endif
 
 #define jkSetterBody(_VALUE) _VALUE = value

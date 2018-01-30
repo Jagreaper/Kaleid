@@ -68,7 +68,7 @@ LIB_FILES = $(foreach f, $(foreach d, $(LIB_DIRS), $(wildcard $d*.$(EXT_DLL))), 
 
 LIB_FLAGS = $(foreach F, $(LIB_FILES), $F)
 
-PREPROCESSOR_MACROS := 
+PREPROCESSOR_MACROS := JAGERTS_KALEID_PHYSICS_DLL=1
 C_PREPROCESSOR_MACROS = $(foreach m, $(PREPROCESSOR_MACROS), -D$m)
 
 COMPILIER = g++
