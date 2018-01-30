@@ -7,6 +7,7 @@
 #include "Jagerts.Kaleid.Graphics/Renderer.hpp"
 #include <functional>
 #include <vector>
+#include <unordered_map>
 
 #define jkgUsingModelObject \
 using Jagerts::Kaleid::Game::ModelObject::AddModel; \
@@ -22,7 +23,7 @@ namespace Jagerts::Kaleid::Graphics
 
 namespace Jagerts::Kaleid::Game
 {
-	class JAGERTS_KALEID_GAME_API Model sealed : public Jagerts::Kaleid::Math::TransformableObject, public Jagerts::Kaleid::Graphics::RenderableObject
+	class JAGERTS_KALEID_GAME_API Model : public Jagerts::Kaleid::Math::TransformableObject, public Jagerts::Kaleid::Graphics::RenderableObject
 	{
 	public:
 		static Model* AllocateMemory();

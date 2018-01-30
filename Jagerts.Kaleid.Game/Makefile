@@ -63,12 +63,12 @@ INCLUDE_FILES = $(wildcard $(INCLUDE_DIRS)*.hpp)
 SRC_FILES = $(wildcard $(PROJECT_DIR)*.cpp)
 OBJ_FILES = $(patsubst $(PROJECT_DIR)%.cpp,$(INT_DIR)%.o,$(SRC_FILES))
 
-LIB_DIRS = $(OUT_DIR) $(SOLUTION_DIR)Jagerts.Kaleid.Graphics/$(BIN_DIR)
+LIB_DIRS = $(OUT_DIR) $(SOLUTION_DIR)Jagerts.Kaleid.Math/$(BIN_DIR) $(SOLUTION_DIR)Jagerts.Kaleid.Graphics/$(BIN_DIR) $(SOLUTION_DIR)Jagerts.Kaleid.Input/$(BIN_DIR)
 LIB_FILES = $(foreach f, $(foreach d, $(LIB_DIRS), $(wildcard $d*.$(EXT_DLL))), $(if $(filter-out $(TARGET), $f), $f))
 
-LIB_FLAGS = $(foreach F, $(LIB_FILES), $F) -I/usr/local/include -L/usr/local/lib -lglfw -framework Cocoa -framework OpenGL -framework IOKit -framework CoreFoundation -framework CoreVideo
+LIB_FLAGS = $(foreach F, $(LIB_FILES), $F)
 
-PREPROCESSOR_MACROS := JAGERTS_KALEID_INPUT_DLL=1
+PREPROCESSOR_MACROS := JAGERTS_KALEID_GAME_DLL=1
 C_PREPROCESSOR_MACROS = $(foreach m, $(PREPROCESSOR_MACROS), -D$m)
 
 COMPILIER = g++

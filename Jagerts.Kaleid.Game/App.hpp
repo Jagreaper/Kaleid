@@ -15,7 +15,7 @@ namespace Jagerts::Kaleid::Game
 {
 	class SceneBase;
 
-	class JAGERTS_KALEID_GAME_API App sealed
+	class JAGERTS_KALEID_GAME_API App
 	{
 	public:
 		App();

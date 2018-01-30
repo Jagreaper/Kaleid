@@ -93,7 +93,7 @@ void App::SetScene(SceneBase* current_scene, std::function<void()> disposal)
 	if (this->_current_scene != NULL)
 	{
 		if (this->_disposal != NULL)
-			this->_disposal;
+			this->_disposal();
 		else
 		{
 			this->_current_scene->Dispose();

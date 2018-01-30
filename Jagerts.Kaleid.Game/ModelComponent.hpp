@@ -16,7 +16,7 @@ namespace Jagerts::Kaleid::Graphics
 
 namespace Jagerts::Kaleid::Game
 {
-	class JAGERTS_KALEID_GAME_API ModelComponent sealed : public Jagerts::Kaleid::Math::TransformableObject, public Jagerts::Kaleid::Graphics::RenderableObject
+	class JAGERTS_KALEID_GAME_API ModelComponent : public Jagerts::Kaleid::Math::TransformableObject, public Jagerts::Kaleid::Graphics::RenderableObject
 	{
 	public:
 		static ModelComponent* AllocateMemory();
