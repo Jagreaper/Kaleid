@@ -63,7 +63,7 @@ INCLUDE_FILES = $(wildcard $(INCLUDE_DIRS)*.hpp)
 SRC_FILES = $(wildcard $(PROJECT_DIR)*.cpp)
 OBJ_FILES = $(patsubst $(PROJECT_DIR)%.cpp,$(INT_DIR)%.o,$(SRC_FILES))
 
-LIB_DIRS = $(OUT_DIR)
+LIB_DIRS = $(OUT_DIR) $(SOLUTION_DIR)packages/Jagerts.Felcp.Helpers/$(BIN_DIR)
 LIB_FILES = $(foreach f, $(foreach d, $(LIB_DIRS), $(wildcard $d*.$(EXT_DLL))), $(if $(filter-out $(TARGET), $f), $f))
 
 LIB_FLAGS = $(foreach F, $(LIB_FILES), $F)
@@ -76,7 +76,7 @@ COMPILIER_FLAGS = $(INCLUDE_PARAMS) $(C_PREPROCESSOR_MACROS) -D$(OS_TARGET) -D$(
 
 CPP_LANGUAGE = c++1z
 
-COPY_DIRS = $(SOLUTION_DIR)Jagerts.Kaleid.Application/$(BIN_DIR) $(SOLUTION_DIR)Jagerts.Kaleid.Geometry/$(BIN_DIR) 
+COPY_DIRS = $(SOLUTION_DIR)Jagerts.Kaleid.Application/$(BIN_DIR)
 COPY_CMD = $(foreach d, $(COPY_DIRS), cp $(TARGET) $d;)
 COPY_MKDIR_CMD = $(foreach d, $(COPY_DIRS), mkdir -p $d;)
 COPY_CLEAN_CMD = $(foreach d, $(COPY_DIRS), rm -f $d$(TARGET_FILE);)
