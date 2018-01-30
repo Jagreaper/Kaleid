@@ -66,7 +66,7 @@ OBJ_FILES = $(patsubst $(PROJECT_DIR)%.cpp,$(INT_DIR)%.o,$(SRC_FILES))
 LIB_DIRS = $(OUT_DIR) $(SOLUTION_DIR)Jagerts.Kaleid.Helpers/$(BIN_DIR) $(SOLUTION_DIR)Jagerts.Kaleid.Math/$(BIN_DIR)
 LIB_FILES = $(foreach f, $(foreach d, $(LIB_DIRS), $(wildcard $d*.$(EXT_DLL))), $(if $(filter-out $(TARGET), $f), $f))
 
-LIB_FLAGS = $(foreach F, $(LIB_FILES), $F) -I/usr/local/include -L/usr/local/lib -lglfw -framework Cocoa -framework OpenGL -framework IOKit -framework CoreFoundation -framework CoreVideo -lGLEW
+LIB_FLAGS = $(foreach F, $(LIB_FILES), $F) -I/usr/local/include -L/usr/local/lib -lglfw -framework Cocoa -framework OpenGL -framework IOKit -framework CoreFoundation -framework CoreVideo -lGLEW -lfreetype
 
 PREPROCESSOR_MACROS := JAGERTS_KALEID_GRAPHICS_DLL=1
 C_PREPROCESSOR_MACROS = $(foreach m, $(PREPROCESSOR_MACROS), -D$m)
