@@ -15,6 +15,17 @@ Transform::Transform()
 	this->_is_scale_dirty = true;
 	this->_is_model_matrix_dirty = true;
 
+	this->_is_r_orientaion_dirty = true;
+	this->_is_w_orientaion_dirty = true;
+
+	this->_is_r_forward_dirty = true;
+	this->_is_r_right_dirty = true;
+	this->_is_r_up_dirty = true;
+
+	this->_is_w_forward_dirty = true;
+	this->_is_w_right_dirty = true;
+	this->_is_w_up_dirty = true;
+
 	this->_parent = NULL;
 }
 
@@ -29,11 +40,7 @@ void Transform::MarkPositionDirty()
 	this->_is_model_matrix_dirty = true;
 
 	for (unsigned int index = 0; index < (unsigned int)this->_children.size(); index++)
-	{
-		this->_children[index]->_is_position_dirty = true;
-		this->_children[index]->_is_model_matrix_dirty = true;
 		this->_children[index]->MarkPositionDirty();
-	}
 }
 
 void Transform::MarkRotationDirty()
@@ -41,12 +48,19 @@ void Transform::MarkRotationDirty()
 	this->_is_rotation_dirty = true;
 	this->_is_model_matrix_dirty = true;
 
+	this->_is_r_orientaion_dirty = true;
+	this->_is_w_orientaion_dirty = true;
+
+	this->_is_r_forward_dirty = true;
+	this->_is_r_right_dirty = true;
+	this->_is_r_up_dirty = true;
+
+	this->_is_w_forward_dirty = true;
+	this->_is_w_right_dirty = true;
+	this->_is_w_up_dirty = true;
+
 	for (unsigned int index = 0; index < (unsigned int)this->_children.size(); index++)
-	{
-		this->_children[index]->_is_rotation_dirty = true;
-		this->_children[index]->_is_model_matrix_dirty = true;
 		this->_children[index]->MarkRotationDirty();
-	}
 }
 
 void Transform::MarkScaleDirty()
@@ -55,11 +69,7 @@ void Transform::MarkScaleDirty()
 	this->_is_model_matrix_dirty = true;
 
 	for (unsigned int index = 0; index < (unsigned int)this->_children.size(); index++)
-	{
-		this->_children[index]->_is_scale_dirty = true;
-		this->_children[index]->_is_model_matrix_dirty = true;
 		this->_children[index]->MarkScaleDirty();
-	}
 }
 
 void Transform::TranslateRelative(const Vector3F& position)
@@ -308,6 +318,103 @@ Transform const* Transform::GetParent() const
 	return this->_parent;
 }
 
+
+Matrix4F& Transform::GetRelativeOrientation()
+{
+	if (this->_is_r_orientaion_dirty)
+	{
+		Matrix4F orientation;
+		orientation = glm::rotate(orientation, glm::radians(this->_r_rotation.x), Vector3F(1, 0, 0));
+		orientation = glm::rotate(orientation, glm::radians(this->_r_rotation.y), Vector3F(0, 1, 0));
+		orientation = glm::rotate(orientation, glm::radians(this->_r_rotation.z), Vector3F(0, 0, 1));
+		this->_r_orientation = orientation;
+		this->_is_r_orientaion_dirty = false;
+	}
+
+	return this->_r_orientation;
+}
+
+Matrix4F& Transform::GetWorldOrientation()
+{
+	if (this->_is_w_orientaion_dirty)
+	{
+		Matrix4F orientation;
+		orientation = glm::rotate(orientation, glm::radians(this->_w_rotation.x), Vector3F(1, 0, 0));
+		orientation = glm::rotate(orientation, glm::radians(this->_w_rotation.y), Vector3F(0, 1, 0));
+		orientation = glm::rotate(orientation, glm::radians(this->_w_rotation.z), Vector3F(0, 0, 1));
+		this->_w_orientation = orientation;
+		this->_is_w_orientaion_dirty = false;
+	}
+
+	return this->_w_orientation;
+}
+
+Vector3F& Transform::GetRelativeForward()
+{
+	if (this->_is_r_forward_dirty)
+	{
+		this->_r_forward = glm::normalize(Vector3F(glm::inverse(this->GetRelativeOrientation()) * glm::vec4(0, 0, -1, 1)));
+		this->_is_r_forward_dirty = true;
+	}
+	
+	return this->_r_forward;
+}
+
+Vector3F& Transform::GetRelativeRight()
+{
+	if (this->_is_r_right_dirty)
+	{
+		this->_r_right = glm::normalize(Vector3F(glm::inverse(this->GetRelativeOrientation()) * glm::vec4(1, 0, 0, 1)));
+		this->_is_r_right_dirty = true;
+	}
+
+	return this->_r_right;
+}
+
+Vector3F& Transform::GetRelativeUp()
+{
+	if (this->_is_r_up_dirty)
+	{
+		this->_r_up = glm::normalize(Vector3F(glm::inverse(this->GetRelativeOrientation()) * glm::vec4(0, 1, 0, 1)));
+		this->_is_r_up_dirty = true;
+	}
+
+	return this->_r_up;
+}
+
+Vector3F& Transform::GetWorldForward()
+{
+	if (this->_is_w_forward_dirty)
+	{
+		this->_w_forward = glm::normalize(Vector3F(glm::inverse(this->GetWorldOrientation()) * glm::vec4(0, 0, -1, 1)));
+		this->_is_w_forward_dirty = true;
+	}
+
+	return this->_w_forward;
+}
+
+Vector3F& Transform::GetWorldRight()
+{
+	if (this->_is_w_right_dirty)
+	{
+		this->_w_right = glm::normalize(Vector3F(glm::inverse(this->GetWorldOrientation()) * glm::vec4(1, 0, 0, 1)));
+		this->_is_w_right_dirty = true;
+	}
+
+	return this->_w_right;
+}
+
+Vector3F& Transform::GetWorldUp()
+{
+	if (this->_is_w_up_dirty)
+	{
+		this->_w_up = glm::normalize(Vector3F(glm::inverse(this->GetWorldOrientation()) * glm::vec4(0, 1, 0, 1)));
+		this->_is_w_up_dirty = true;
+	}
+
+	return this->_w_up;
+}
+
 Matrix4F& Transform::GetModelMatrix()
 {
 	if (this->_is_model_matrix_dirty)
@@ -326,6 +433,46 @@ Matrix4F& Transform::GetModelMatrix()
 	}
 
 	return this->_model_matrix;
+}
+
+const Matrix4F& Transform::GetRelativeOrientation() const
+{
+	return this->GetRelativeOrientation();
+}
+
+const Matrix4F& Transform::GetWorldOrientation() const
+{
+	return this->GetWorldOrientation();
+}
+
+const Vector3F& Transform::GetRelativeForward() const
+{
+	return this->GetRelativeForward();
+}
+
+const Vector3F& Transform::GetRelativeRight() const
+{
+	return this->GetRelativeRight();
+}
+
+const Vector3F& Transform::GetRelativeUp() const
+{
+	return this->GetRelativeUp();
+}
+
+const Vector3F& Transform::GetWorldForward() const
+{
+	return this->GetWorldForward();
+}
+
+const Vector3F& Transform::GetWorldRight() const
+{
+	return this->GetWorldRight();
+}
+
+const Vector3F& Transform::GetWorldUp() const
+{
+	return this->GetWorldUp();
 }
 
 const Matrix4F& Transform::GetModelMatrix() const
@@ -379,7 +526,7 @@ void Transform::DettachChild(Transform* child)
 	}
 }
 
-Jagerts::Kaleid::Math::Transform* TransformableObject::GetTransform()
+Transform* TransformableObject::GetTransform()
 {
 	return &this->_transform;
 }
