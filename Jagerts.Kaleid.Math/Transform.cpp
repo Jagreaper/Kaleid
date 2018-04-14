@@ -80,6 +80,30 @@ void Transform::ScaleRelative(const Vector3F& scale)
 	this->MarkScaleDirty();
 }
 
+void Transform::TranslateRelative(const float& x, const float& y, const float& z)
+{
+	this->_r_position.x += x;
+	this->_r_position.y += y;
+	this->_r_position.z += z;
+	this->MarkPositionDirty();
+}
+
+void Transform::RotateRelative(const float& x, const float& y, const float& z)
+{
+	this->_r_rotation.x += x;
+	this->_r_rotation.y += y;
+	this->_r_rotation.z += z;
+	this->MarkRotationDirty();
+}
+
+void Transform::ScaleRelative(const float& x, const float& y, const float& z)
+{
+	this->_r_scale.x *= x;
+	this->_r_scale.y *= y;
+	this->_r_scale.z *= z;
+	this->MarkScaleDirty();
+}
+
 void Transform::SetRelativePosition(const Vector3F& position)
 {
 	this->_r_position = position;
@@ -117,8 +141,6 @@ void Transform::SetWorldPosition(const Vector3F& position)
 		this->SetRelativePosition(position - RotateRelativeByWorld(-this->_parent->GetWorldRotation(), this->_parent->GetWorldPosition()));
 	else
 		this->SetRelativePosition(position);
-
-	this->MarkPositionDirty();
 }
 
 void Transform::SetWorldRotation(const Vector3F& rotation)
@@ -127,8 +149,6 @@ void Transform::SetWorldRotation(const Vector3F& rotation)
 		this->SetRelativeRotation(rotation - this->_parent->GetWorldRotation());
 	else
 		this->SetRelativeRotation(rotation);
-
-	this->MarkRotationDirty();
 }
 
 void Transform::SetWorldScale(const Vector3F& scale)
@@ -137,26 +157,78 @@ void Transform::SetWorldScale(const Vector3F& scale)
 		this->SetRelativeScale(scale / this->_parent->GetWorldScale());
 	else
 		this->SetRelativeScale(scale);
+}
 
+void Transform::SetRelativePosition(const float& x, const float& y, const float& z)
+{
+	this->_r_position.x = x;
+	this->_r_position.y = y;
+	this->_r_position.z = z;
+	this->MarkPositionDirty();
+}
+
+void Transform::SetRelativeRotation(const float& x, const float& y, const float& z)
+{
+	this->_r_rotation.x = x;
+	this->_r_rotation.y = y;
+	this->_r_rotation.z = z;
+	this->MarkRotationDirty();
+}
+
+void Transform::SetRelativeScale(const float& x, const float& y, const float& z)
+{
+	this->_r_scale.x = x;
+	this->_r_scale.y = y;
+	this->_r_scale.z = z;
 	this->MarkScaleDirty();
 }
 
-Vector3F Transform::GetRelativePosition()
+void Transform::SetWorldPosition(const float& x, const float& y, const float& z)
+{
+	Vector3F offset = RotateRelativeByWorld(-this->_parent->GetWorldRotation(), this->_parent->GetWorldPosition());
+
+	if (this->_parent != NULL)
+		this->SetRelativePosition(x - offset.x, y - offset.y, z - offset.z);
+	else
+		this->SetRelativePosition(x, y, z);
+}
+
+void Transform::SetWorldRotation(const float& x, const float& y, const float& z)
+{
+	Vector3F offset = this->_parent->GetWorldRotation();
+
+	if (this->_parent != NULL)
+		this->SetRelativeRotation(x - offset.x, y - offset.y, z - offset.z);
+	else
+		this->SetRelativeRotation(x, y, z);
+}
+
+void Transform::SetWorldScale(const float& x, const float& y, const float& z)
+{
+	Vector3F offset = this->_parent->GetWorldScale();
+
+	if (this->_parent != NULL)
+		this->SetRelativeScale(x - offset.x, y - offset.y, z - offset.z);
+	else
+		this->SetRelativeScale(x, y, z);
+}
+
+Vector3F& Transform::GetRelativePosition()
 {
 	return this->_r_position;
 }
 
-Vector3F Transform::GetRelativeRotation()
+Vector3F& Transform::GetRelativeRotation()
 {
 	return this->_r_rotation;
 }
 
-Vector3F Transform::GetRelativeScale()
+Vector3F& Transform::GetRelativeScale()
 {
 	return this->_r_scale;
 }
 
-Vector3F Transform::GetWorldPosition()
+Vector3F& Transform::GetWorldPosition()
 {
 	if (this->_is_position_dirty)
 	{
@@ -171,7 +243,7 @@ Vector3F Transform::GetWorldPosition()
 	return this->_w_position;
 }
 
-Vector3F Transform::GetWorldRotation()
+Vector3F& Transform::GetWorldRotation()
 {
 	if (this->_is_rotation_dirty)
 	{
@@ -186,7 +258,7 @@ Vector3F Transform::GetWorldRotation()
 	return this->_w_rotation;
 }
 
-Vector3F Transform::GetWorldScale()
+Vector3F& Transform::GetWorldScale()
 {
 	if (this->_is_scale_dirty)
 	{
@@ -201,13 +273,42 @@ Vector3F Transform::GetWorldScale()
 	return this->_w_scale;
 }
 
-Transform* Transform::GetParent()
+const Vector3F& Transform::GetRelativePosition() const
+{
+	return this->GetRelativePosition();
+}
+
+const Vector3F& Transform::GetRelativeRotation() const
+{
+	return this->GetRelativeRotation();
+}
+
+const Vector3F& Transform::GetRelativeScale() const
+{
+	return this->GetRelativeScale();
+}
+
+const Vector3F& Transform::GetWorldPosition() const
+{
+	return this->GetWorldPosition();
+}
+
+const Vector3F& Transform::GetWorldRotation() const
+{
+	return this->GetWorldRotation();
+}
+
+const Vector3F& Transform::GetWorldScale() const
+{
+	return this->GetWorldScale();
+}
+
+Transform const* Transform::GetParent() const
 {
 	return this->_parent;
 }
 
-
-Matrix4F Transform::GetModelMatrix()
+Matrix4F& Transform::GetModelMatrix()
 {
 	if (this->_is_model_matrix_dirty)
 	{
@@ -225,6 +326,11 @@ Matrix4F Transform::GetModelMatrix()
 	}
 
 	return this->_model_matrix;
+}
+
+const Matrix4F& Transform::GetModelMatrix() const
+{
+	return this->GetModelMatrix();
 }
 
 void Transform::AttachParent(Transform* parent)
