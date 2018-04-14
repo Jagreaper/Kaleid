@@ -7,7 +7,7 @@
 #include "Jagerts.Kaleid.Math/PerspectiveCamera.hpp"
 #include <time.h>
 
-namespace Jagerts::Kaleid::Application
+namespace Jagerts::Genzh
 {
 	class TestScene : public Jagerts::Kaleid::Game::SceneBase
 	{

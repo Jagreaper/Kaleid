@@ -1,7 +1,7 @@
 #include "SceneManager.hpp"
 
 using namespace Jagerts::Kaleid::Game;
-using namespace Jagerts::Kaleid::Application;
+using namespace Jagerts::Genzh;
 
 RootScene* SceneManager::CreateRootScene(App* app)
 {

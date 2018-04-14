@@ -7,7 +7,7 @@
 #include "Jagerts.Kaleid.Graphics/Font.hpp"
 #include <time.h>
 
-namespace Jagerts::Kaleid::Application
+namespace Jagerts::Genzh
 {
 	class RootScene : public Jagerts::Kaleid::Game::SceneBase
 	{

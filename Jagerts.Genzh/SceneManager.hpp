@@ -5,7 +5,7 @@
 #include "RootScene.hpp"
 #include "TestScene.hpp"
 
-namespace Jagerts::Kaleid::Application
+namespace Jagerts::Genzh
 {
 	class SceneManager
 	{

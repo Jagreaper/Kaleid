@@ -26,11 +26,11 @@ using namespace Jagerts::Kaleid::Game;
 using namespace Jagerts::Kaleid::Graphics;
 using namespace Jagerts::Kaleid::IO;
 using namespace Jagerts::Kaleid::Input;
-using namespace Jagerts::Kaleid::Application;
 using namespace Jagerts::Felcp::Helpers;
 using namespace Jagerts::Felcp::Xml;
 using namespace Jagerts::Felcp::IO::Xml;
 using namespace Jagerts::Felcp::Imaging;
+using namespace Jagerts::Genzh;
 
 RootScene::RootScene(App* app)
 	: SceneBase(app)

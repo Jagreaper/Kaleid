@@ -45,8 +45,8 @@ endif
 
 CONFIGURATION = Debug
 
-DIST_PROJECTS = Jagerts.Kaleid.Math Jagerts.Kaleid.Geometry Jagerts.Kaleid.Physics Jagerts.Kaleid.Graphics Jagerts.Kaleid.Input Jagerts.Kaleid.Game Jagerts.Kaleid.IO Jagerts.Kaleid.Application
-BUILD_PROJECTS = Jagerts.Kaleid.Math Jagerts.Kaleid.Geometry Jagerts.Kaleid.Physics Jagerts.Kaleid.Graphics Jagerts.Kaleid.Input Jagerts.Kaleid.Game Jagerts.Kaleid.IO Jagerts.Kaleid.Application
+DIST_PROJECTS = Jagerts.Kaleid.Math Jagerts.Kaleid.Geometry Jagerts.Kaleid.Physics Jagerts.Kaleid.Graphics Jagerts.Kaleid.Input Jagerts.Kaleid.Game Jagerts.Kaleid.IO Jagerts.Genzh
+BUILD_PROJECTS = Jagerts.Kaleid.Math Jagerts.Kaleid.Geometry Jagerts.Kaleid.Physics Jagerts.Kaleid.Graphics Jagerts.Kaleid.Input Jagerts.Kaleid.Game Jagerts.Kaleid.IO Jagerts.Genzh
 
 BUILD_CMD = echo ""; $(foreach p, $(BUILD_PROJECTS), make build CONFIGURATION='$(CONFIGURATION)' -f $p/Makefile; echo "";)
 REBUILD_CMD = echo ""; $(foreach p, $(BUILD_PROJECTS), make rebuild CONFIGURATION='$(CONFIGURATION)' -f $p/Makefile; echo "";)
