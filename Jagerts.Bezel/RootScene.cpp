@@ -135,8 +135,11 @@ void RootScene::BuildMesh()
 
 void RootScene::CameraMouseMovement(const double& x_delta, const double& y_delta)
 {
-	Vector3F vec(y_delta * 120.0 * this->GetDeltaTime(), x_delta * 120.0 * this->GetDeltaTime(), 0.0f);
-	this->_camera.GetTransform()->RotateRelative(vec);
+	if (x_delta != 0 || y_delta != 0)
+	{
+		Vector3F vec(y_delta * 120.0 * this->GetDeltaTime(), x_delta * 120.0 * this->GetDeltaTime(), 0.0f);
+		this->_camera.GetTransform()->RotateRelative(vec);
+	}
 }
 
 void RootScene::CreateKeyboardBindings()

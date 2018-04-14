@@ -426,6 +426,9 @@ void Transform::AttachChild(Transform* child)
 {
 	if (child != NULL)
 	{
+		if (child->_parent != NULL)
+			child->_parent->DettachChild(child);
+
 		child->_parent = this;
 		this->_children.push_back(child);
 	}
