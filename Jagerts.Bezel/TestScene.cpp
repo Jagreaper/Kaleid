@@ -18,7 +18,7 @@ using namespace Jagerts::Kaleid::Game;
 using namespace Jagerts::Kaleid::Graphics;
 using namespace Jagerts::Kaleid::IO;
 using namespace Jagerts::Kaleid::Input;
-using namespace Jagerts::Genzh;
+using namespace Jagerts::Bezel;
 
 TestScene::TestScene(App* app)
 	: SceneBase(app)
@@ -89,7 +89,7 @@ void TestScene::CreateKeyboardBindings()
 	this->_keyboard.Add(KeyBinding(KeyCode::A, KeyBindingState::Held, [&] { this->_camera.GetTransform()->TranslateRelative(-this->_camera.GetTransform()->GetRelativeRight() * 20.0f * (float)this->GetDeltaTime()); }));
 	this->_keyboard.Add(KeyBinding(KeyCode::Space, KeyBindingState::Held, [&] { this->_camera.GetTransform()->TranslateRelative(this->_camera.GetTransform()->GetRelativeUp() * 20.0f * (float)this->GetDeltaTime()); }));
 	this->_keyboard.Add(KeyBinding(KeyCode::LeftControl, KeyBindingState::Held, [&] { this->_camera.GetTransform()->TranslateRelative(-this->_camera.GetTransform()->GetRelativeUp() * 20.0f * (float)this->GetDeltaTime()); }));
-
+;
 	this->_keyboard.Add(KeyBinding(KeyCode::Left, KeyBindingState::Held, [&] { this->_camera.GetTransform()->RotateRelative(Vector3F(0.0f, -60.0f * this->GetDeltaTime(), 0.0f)); }));
 	this->_keyboard.Add(KeyBinding(KeyCode::Right, KeyBindingState::Held, [&] { this->_camera.GetTransform()->RotateRelative(Vector3F(0.0f, 60.0f * this->GetDeltaTime(), 0.0f)); }));
 	this->_keyboard.Add(KeyBinding(KeyCode::Up, KeyBindingState::Held, [&] { this->_camera.GetTransform()->RotateRelative(Vector3F(-60.0f * this->GetDeltaTime(), 0.0f, 0.0f)); }));

@@ -3,40 +3,27 @@
 #include "Jagerts.Kaleid.Shared/Common.hpp"
 #include "Jagerts.Kaleid.Math/Vector.hpp"
 #include "Jagerts.Kaleid.Math/Matrix.hpp"
+#include "Jagerts.Kaleid.Math/Transform.hpp"
 
 namespace Jagerts::Kaleid::Math
 {
-	class JAGERTS_KALEID_MATH_API CameraBase
+	class JAGERTS_KALEID_MATH_API CameraBase : public TransformableObject
 	{
 	public:
 		CameraBase();
 
-		const Vector3F& GetPosition() const;
-		void SetPosition(const Vector3F& position);
-		void TranslatePosition(const Vector3F& offset);
-
-		const Vector3F& GetRotation() const;
-		void SetRotation(const Vector3F& rotation);
-		void TranslateRotation(const Vector3F& offset);
+		Transform* GetTransform();
+		using TransformableObject::GetTransform;
 
 		float GetAspectRatio() const;
 		void SetAspectRatio(float aspect_ratio);
-
-		Matrix4F GetOrientation() const;
-
-		Vector3F GetForward() const;
-		Vector3F GetRight() const;
-		Vector3F GetUp() const;
 
 		virtual Matrix4F GetProjectionMatrix() = 0;
 		Matrix4F GetViewMatrix();
 		virtual bool IsPerspective() = 0;
 		virtual bool IsOrthographic() = 0;
 	protected:
-		void NormalizeRotation();
-
-		Vector3F _position;
-		Vector3F _rotation;
+		void _NormalizeRotation();
 
 		Matrix4F _projection_matrix;
 		Matrix4F _view_matrix;

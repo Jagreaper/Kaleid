@@ -8,10 +8,13 @@
 
 namespace Jagerts::Kaleid::Game
 {
-	class JAGERTS_KALEID_GAME_API Terrian : public ModelObject, public Jagerts::Kaleid::Graphics::RenderableObject
+	class JAGERTS_KALEID_GAME_API Terrian : public ModelObject
 	{
 	public:
 		Terrian(float length, float width);
 		jkgUsingModelObject;
+		virtual float GetLength() = 0;
+		virtual float GetWidth() = 0;
+		virtual float GetHeight() = 0;
 	};
 }

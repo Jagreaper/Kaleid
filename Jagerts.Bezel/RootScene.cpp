@@ -30,7 +30,7 @@ using namespace Jagerts::Felcp::Helpers;
 using namespace Jagerts::Felcp::Xml;
 using namespace Jagerts::Felcp::IO::Xml;
 using namespace Jagerts::Felcp::Imaging;
-using namespace Jagerts::Genzh;
+using namespace Jagerts::Bezel;
 
 RootScene::RootScene(App* app)
 	: SceneBase(app)

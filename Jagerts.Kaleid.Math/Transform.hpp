@@ -91,38 +91,38 @@ namespace Jagerts::Kaleid::Math
 		Vector3F _r_rotation;
 		Vector3F _r_scale;
 
-		Vector3F _w_position;
-		Vector3F _w_rotation;
-		Vector3F _w_scale;
+		mutable Vector3F _w_position;
+		mutable Vector3F _w_rotation;
+		mutable Vector3F _w_scale;
 
 		Matrix4F _model_matrix;
 
-		Matrix4F _r_orientation;
-		Matrix4F _w_orientation;
+		mutable Matrix4F _r_orientation;
+		mutable Matrix4F _w_orientation;
 
-		Vector3F _r_forward;
-		Vector3F _r_right;
-		Vector3F _r_up;
+		mutable Vector3F _r_forward;
+		mutable Vector3F _r_right;
+		mutable Vector3F _r_up;
 
-		Vector3F _w_forward;
-		Vector3F _w_right;
-		Vector3F _w_up;
+		mutable Vector3F _w_forward;
+		mutable Vector3F _w_right;
+		mutable Vector3F _w_up;
 
 		///
 		/// Dirty Tags
 		///
-		bool _is_position_dirty;
-		bool _is_rotation_dirty;
-		bool _is_scale_dirty;
+		mutable bool _is_position_dirty;
+		mutable bool _is_rotation_dirty;
+		mutable bool _is_scale_dirty;
 		bool _is_model_matrix_dirty;
-		bool _is_r_orientaion_dirty;
-		bool _is_w_orientaion_dirty;
-		bool _is_r_forward_dirty;
-		bool _is_r_right_dirty;
-		bool _is_r_up_dirty;
-		bool _is_w_forward_dirty;
-		bool _is_w_right_dirty;
-		bool _is_w_up_dirty;
+		mutable bool _is_r_orientaion_dirty;
+		mutable bool _is_w_orientaion_dirty;
+		mutable bool _is_r_forward_dirty;
+		mutable bool _is_r_right_dirty;
+		mutable bool _is_r_up_dirty;
+		mutable bool _is_w_forward_dirty;
+		mutable bool _is_w_right_dirty;
+		mutable bool _is_w_up_dirty;
 
 		///
 		/// Relative position bindings
@@ -133,37 +133,17 @@ namespace Jagerts::Kaleid::Math
 		///
 		/// Hidden Methods, important for class operation
 		///
-		void MarkPositionDirty();
-		void MarkRotationDirty();
-		void MarkScaleDirty();
-
-		Vector3F RotateRelativeByWorld(const Vector3F& p_rotation, const Vector3F& r_postion);
-
-		Matrix4F& GetRelativeOrientation();
-		Matrix4F& GetWorldOrientation();
-
-		Vector3F& GetRelativeForward();
-		Vector3F& GetRelativeRight();
-		Vector3F& GetRelativeUp();
-
-		Vector3F& GetWorldForward();
-		Vector3F& GetWorldRight();
-		Vector3F& GetWorldUp();
-
-		Vector3F& GetRelativePosition();
-		Vector3F& GetRelativeRotation();
-		Vector3F& GetRelativeScale();
-
-		Vector3F& GetWorldPosition();
-		Vector3F& GetWorldRotation();
-		Vector3F& GetWorldScale();
+		void _MarkPositionDirty();
+		void _MarkRotationDirty();
+		void _MarkScaleDirty();
 	};
 
 	class JAGERTS_KALEID_MATH_API TransformableObject
 	{
 	public:
-		Jagerts::Kaleid::Math::Transform* GetTransform();
+		virtual Transform* GetTransform();
+		const Transform const* GetTransform() const;
 	protected:
-		Jagerts::Kaleid::Math::Transform _transform;
+		Transform _transform;
 	};
 }
